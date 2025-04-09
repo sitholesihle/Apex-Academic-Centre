@@ -1011,6 +1011,66 @@
 	<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 	
+	<script>
+	
+	/* NAVBAR AND IMAGES */
+	
+	const navbarToggle = document.getElementById('navbar-toggle');
+	const navLinks = document.querySelector('.nav-links');
+	
+	// Toggle menu on button click
+	navbarToggle.addEventListener('click', function() {
+	    navLinks.classList.toggle('show');
+	});
+	
+	// Close menu when a link is clicked
+	navLinks.querySelectorAll('li a').forEach(link => {
+	    link.addEventListener('click', function() {
+	        navLinks.classList.remove('show'); // Close the menu
+	    });
+	});
+	
+	// Optional: Close menu when clicking outside of it
+	window.addEventListener('click', function(event) {
+	    if (!navbarToggle.contains(event.target) && !navLinks.contains(event.target)) {
+	        navLinks.classList.remove('show'); // Close the menu
+	    }
+	});
+	
+	
+	document.addEventListener("DOMContentLoaded", function() {
+		
+	  var imageWrapper = document.querySelector('.image-wrapper');
+	  var tutorContainer = document.querySelector('.tutor-container');
+	  var tutorRect = tutorContainer.getBoundingClientRect();
+	  var tutorTop = tutorRect.top + window.scrollY;
+	  var images = document.querySelectorAll('.image');
+	
+	  window.addEventListener('scroll', function() {
+	    var scrollTop = window.scrollY;
+	
+	    // Check if the scroll position is past the tutor container
+	    if (scrollTop > tutorTop) {
+	      images.forEach(function(image) {
+	        image.classList.add('fixed-image');
+	      });
+	    } else {
+	      images.forEach(function(image) {
+	        image.classList.remove('fixed-image');
+	      });
+	    }
+	  });
+	});
+	
+	/* NAVBAR AND IMAGES */
+	
+	function goBack() {
+	    window.history.back();
+	}
+
+	</script>
+	
+	
 	<script src="/js/swiper-bundle.min.js"></script> 
 	
 	<!--=============== MAIN JS ===============-->
