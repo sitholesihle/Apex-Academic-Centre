@@ -1,0 +1,810 @@
+
+        .checkbox-container{
+            display: inline-flex;
+        }   
+                
+        .opt{
+            display: none;
+        }
+
+        #fProvince{
+            display: none; 
+        }
+
+        .popup {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 1000;
+            }
+
+            .popup-content {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                width: 500px;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .popup-content:hover {
+                    transform: scale(1.05); 
+                }
+
+            .close {
+                cursor: pointer;
+                float: right;
+                font-size: 20px;
+            }
+            .hide {
+                display: none;
+            }
+
+            #pack-details {
+                text-align: left; 
+                padding: 10px; 
+            }
+
+            .package-details:hover{
+                transform: scale(1.05); 
+            }
+
+            #popular{
+                color: #001549;
+                font-weight: bold;
+            }
+
+            @media screen and (max-width: 1024px) {
+
+                
+                .popup {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0, 0, 0, 0.5);
+                        z-index: 1000;
+            }
+
+            .popup-content {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                width: 300px;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .popup-content:hover {
+                    transform: scale(1.05); 
+                    cursor: pointer;
+                }
+
+            .close {
+                cursor: pointer;
+                float: right;
+                font-size: 20px;
+            }
+            .hide {
+                display: none;
+            }
+
+            #pack-details {
+                text-align: left; 
+                padding: 10px; 
+            }
+
+            .package-details:hover{
+                transform: scale(1.05); 
+                cursor: pointer;
+            }
+
+            #popular{
+                color: #001549;
+                font-weight: bold;
+
+            }
+                
+            }
+
+            .subject-label {
+                max-width: 250x; 
+                overflow: hidden;
+                text-overflow: ellipsis; 
+                white-space: nowrap; 
+                display: flex; 
+                align-items: center; 
+            }
+
+            #tutorNameDisplay{
+                font-size: 20px;
+            }
+
+            #termsCondition{
+
+                  color: #02A552;
+            }
+
+            .welcome-hero-serch-box {
+            background-color: #fff; 
+            padding: 10px 15px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+            max-width: 900px; 
+            margin: 0 auto;
+        }
+
+        .welcome-hero-form {
+            display: flex; /* Keeps input fields in a single line */
+            align-items: center; /* Centers items vertically */
+        }
+
+        .single-welcome-hero-form {
+            flex: 1; /* Allows forms to expand evenly */
+            position: relative; /* Position for the separator */
+        }
+
+        /* Add separator line only to input fields except the last input */
+        .single-welcome-hero-form:not(:last-child)::after {
+            content: ""; /* Creates a separator line */
+            position: absolute;
+            right: 0; /* Aligns to the right of the input */
+            top: 50%; /* Centers vertically */
+            width: 1px; /* Width of the separator */
+            height: 100%; /* Height of the separator */
+            background-color: #ccc; /* Color of the separator */
+            transform: translateY(-50%); /* Centering adjustment */
+        }
+
+        .single-welcome-hero-form input {
+            width: 90%; /* Ensures input takes the full width */
+            padding: 8px; /* Adds padding for better appearance */
+            border: none; /* Removes the border */
+            background-color: #fff; /* White background for input */
+            outline: none; /* Prevents outline on focus */
+            height: 20px;           
+        }
+
+        .single-welcome-hero-form h3 {
+            margin: 0; /* Removes default margin */
+            font-size: 14px; /* Adjusts font size */
+        }
+
+        .welcome-hero-serch {
+            margin-left: 10px; /* Adds space between the inputs and the button */
+            display: flex; /* Ensures the button is in line */
+            background-color: #fff; /* White background for input */
+            font-size: 18px;
+        }
+
+        /* Ensure the last input has no margin and proper space with button */
+        .single-welcome-hero-form:last-child {
+            margin-right: 0; /* Removes margin from the last input */
+        }
+
+        .welcome-hero-btn {
+            padding: 10px 15px; /* Adds padding to the button */
+            background-color: #001549; /* Button background color */
+            color: white; /* Button text color */
+            border: none; /* Removes default border */
+            border-radius: 4px; /* Rounds the button corners */
+            cursor: pointer; /* Changes cursor on hover */
+            width: 100px;
+        }
+
+        .welcome-hero-btn:hover {
+            background-color: #fff; /* Darkens button on hover */
+            color: #00a550;
+        }
+
+        .engine-input::placeholder {
+            font-size: 16px; /* Change this value to your desired font size */
+            color: #001549; /* Optional: change the placeholder color */
+        }
+
+        .whatsapp-wrapper {
+            position: fixed; /* Keeps the icon fixed on the screen */
+            bottom: 20px; /* Distance from the bottom */
+            right: 20px; /* Distance from the right */
+            z-index: 1000; /* Ensure it stays on top of other content */
+        }
+
+        .whatsapp-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px; /* Adjust the size as needed */
+            height: 60px; /* Adjust the size as needed */
+            border-radius: 50%; /* Makes it circular */
+            background-color: #25D366; /* Circle background color */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Optional shadow for better visibility */
+            text-decoration: none; /* Remove underline */
+        }
+
+
+            body{
+                
+                background-color: #f6fffa;  
+            }
+
+            footer {
+                background-color: #001549; 
+                color: white; 
+                position: relative; 
+                z-index: 0; 
+                padding: 70px 0 ; 
+                padding-bottom: 0;
+                margin-top: -120px; 
+                padding-bottom: 0;
+            }
+
+
+            .footer-row {
+                margin-top: 90px; 
+                margin-right: 0;
+                margin-bottom: 10px;
+                margin-left: 0;
+                border-bottom: 2px solid white;
+            }
+
+        
+
+        .footer-heading {
+            text-align: left;
+            margin: 0 0 15px; 
+            font-size: 1.5em;
+        }
+
+        .links {
+            display: flex; 
+        }
+
+        .column {
+            flex: 1 0 20%; 
+            margin: 5px; 
+            text-align: left; 
+        }
+
+        .link {
+            color: white; 
+            background-color: #001549; 
+            padding: 10px 15px;
+            margin: 5px 0; 
+            text-decoration: none;
+            border-radius: 5px; 
+            display: flex; 
+            align-items: center; 
+        }
+
+        .link i {
+            margin-right: 5px; 
+        }
+
+        .link:hover {
+            color: #00a550; 
+        }
+
+        .myEmail a{
+            color: white;
+            font-size: small;
+        }
+
+       .icons{
+        font-size: 25px;
+       
+        
+       }
+
+       .icons a {
+            background-color: rgba(255, 255, 255, 0.3); 
+            color: white;
+            margin-right: 15px; 
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .icons a:last-child {
+            margin-right: 0;
+        }
+
+        .icons a:hover {
+            background-color: #02a552; 
+        }
+
+        .logo-style {
+            margin-right: 20px;
+            margin-left: 5px; 
+            max-width: 100%;
+            height: auto;
+        }
+
+        .aboutApex {
+            
+            line-height: 1.5;
+            margin: 0; 
+            padding: 0; 
+            text-align: left;
+            width: 100%; 
+            box-sizing: border-box;
+        }
+
+        .subscription-container {
+            text-align: left; 
+            padding: 40px; 
+            border: 1px solid #ccc; 
+            border-radius: 8px; 
+            background-color: #00a550; 
+           margin: -150px 80px 20px 130px; 
+            width: 80%; 
+            color: white; 
+            position: relative; 
+            z-index: 1; 
+            clear: both; 
+        }
+
+        .subscription-container h2 {
+            margin-bottom: 10px;
+        }
+
+        .subscription-wrapper {
+            display: flex;
+            justify-content: left;
+            align-items: left;
+            margin-top: 10px;
+        }
+
+       
+
+        .subscription-wrapper input {
+            padding: 25px; 
+            width: 900px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px 0 0 4px; 
+        }
+
+        .subscription-wrapper button {
+            padding: 10px; 
+            border: none;
+            background-color: #00a550;
+            color: white; 
+            border-radius: 0 4px 4px 0; 
+            cursor: pointer; 
+            width: 150px; 
+        }
+
+        .subscription-wrapper button:hover {
+            background-color: white; 
+            color: #00a550;
+        }
+
+        .footer-row.last-content-row {
+            border-bottom: none; 
+            margin-bottom: 10px; 
+        }
+
+        .footer-bottom .footer-column a:hover {
+            color: #00a550;
+        }
+
+        @media screen and (max-width:768px){
+
+         
+            footer {
+                background-color: #001549; 
+                color: white; 
+                position: relative; 
+                z-index: 0; 
+                padding: 50px 0; 
+                margin-top: -180px;
+                width: 100%;
+                overflow-x: hidden;
+            }
+
+            footer .footer-row:first-of-type {
+                 padding-top: 60px;  
+            }
+
+            .logo-style {
+                width:90%;
+                height:60px;
+                margin-top: 5px;
+                margin-bottom: 20px;
+            }
+
+           .aboutApex{
+            width: 90%;
+           }
+            .subscription-container {
+                margin: -150px 20px 10px; 
+                width: auto;
+                padding: 20px; 
+            }
+
+            .subscription-wrapper {
+                flex-direction: column; 
+                align-items: stretch; 
+            }
+
+            .subscription-wrapper input, 
+            .subscription-wrapper button {
+                width: 100%; 
+                margin-bottom: 10px; 
+                padding: 8px; 
+                font-size: 14px;
+            }
+
+            .subscription-wrapper button {
+                border-radius: 4px; 
+                padding: 8px; 
+            }
+
+            .links {
+                flex-direction: column; 
+                width: 100%; 
+            }
+
+            .myEmail a{
+            font-size: 18px;
+            }
+
+            .footer-bottom {
+                flex-direction: column; 
+                text-align: center;
+                margin-bottom: 0;
+            }
+
+            .footer-column {
+               margin-bottom: 15px;
+                text-align: center;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px){
+            .tutor-container {
+            margin-bottom: 140px;
+            }
+            footer {
+            background-color: #001549; 
+            color: white; 
+            position: relative; 
+            z-index: 0; 
+            padding: 50px 0; 
+            width: 100%;
+            overflow-x: hidden;
+            }
+
+          
+            .subscription-container {
+            text-align: left;
+            padding: 40px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #00a550;
+            margin: -100px 80px 20px 60px;
+            width: 80%;
+            color: white;
+            position: relative;
+            z-index: 1;
+            clear: both;
+        }
+
+        .subscription-container h2 {
+            margin-bottom: 10px;
+        }
+
+        .subscription-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .subscription-wrapper input {
+            padding: 10px 15px 10px 15px; 
+            width: 100%; 
+           /* max-width: 3200px; */
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px; 
+            box-sizing: border-box;
+            height: 60px;
+        }
+
+        .subscription-wrapper button {
+            position: absolute; 
+            top: 50%; 
+            right: 30px; 
+            transform: translateY(-50%); 
+            padding: 10px 5px; 
+            border: none;
+            background-color: #00a550;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            height: 70%; 
+        }
+
+        .subscription-wrapper button:hover {
+            background-color: white;
+            color: #00a550;
+        }
+
+
+            
+            .links {
+                justify-content: space-between; 
+                flex-wrap: wrap; 
+                padding: 0 70px; 
+                font-size: 18px;
+            }
+
+            .aboutApex{
+                margin-top: 20px;
+            }
+
+            .column {
+                flex: 1 0 45%;
+                margin: 10px; 
+                max-width: 45%;
+            }
+
+            
+
+            #tutorLog ,#popSub{
+                margin-left: 60px;
+            }
+
+            .footer-column {
+                display: inline-block;
+                margin: 0 10px;
+            }
+
+        }
+
+   
+        @media screen and (min-width:1025px){
+            
+            footer {
+                background-color: #001549; 
+                color: white; 
+                position: relative; 
+                z-index: 0; 
+                margin-top: -120px; 
+                margin-bottom: 0;
+            }
+
+
+        .footer-row {
+            margin: 40px 0 10px;
+            border-bottom: 2px solid white;
+            padding: 0 130px 0;
+        }
+
+
+        .footer-heading {
+            text-align: left;
+            margin: 0 0 15px; 
+            font-size: 1.5em;
+        }
+
+        .links {
+            display: flex; 
+        }
+
+        .column {
+            flex: 1 0 20%; 
+            margin: 5px; 
+            text-align: left; 
+        }
+
+        .link {
+            color: white; 
+            background-color: #001549; 
+            padding: 10px 15px;
+            margin: 5px 0; 
+            text-decoration: none;
+            border-radius: 5px; 
+            display: flex; 
+            align-items: center; 
+        }
+
+        .link i {
+            margin-right: 5px; 
+        }
+
+        .link:hover {
+            color: #00a550; 
+        }
+
+        .myEmail a{
+            color: white;
+        }
+
+       .icons{
+        font-size: 15px;
+        
+       }
+
+       .icons a {
+            color: white;
+            margin-right: 15px; 
+            padding: 5px 10px;
+        }
+
+        .icons a:last-child {
+            margin-right: 0;
+        }
+
+        .icons a:hover {
+            background-color: #00a550; 
+        }
+
+        .logo-style {
+            margin-right: 20px;
+            margin-left: 5px; 
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        .aboutApex {
+            margin-top: 25px;
+            line-height: 1.5; 
+            margin: 0; 
+            padding: 0; 
+            text-align: left; 
+            width: 100%;
+            box-sizing: border-box; 
+        }
+        
+
+        .subscription-container {
+            text-align: left;
+            padding: 40px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #00a550;
+
+            margin-left: 130px;
+            width: 73%;
+            color: white;
+            position: relative;
+            z-index: 1;
+            clear: both;
+        }
+
+        .subscription-container h2 {
+            margin-bottom: 10px;
+        }
+
+        .subscription-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .subscription-wrapper input {
+            padding: 10px 15px 10px 15px; 
+            width: 100%; 
+            max-width: 3200px; 
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px; 
+            box-sizing: border-box;
+            height: 60px;
+        }
+
+        .subscription-wrapper button {
+            position: absolute; 
+            top: 50%; 
+            right: 30px; 
+            transform: translateY(-50%); 
+            padding: 10px 5px; 
+            border: none;
+            background-color: #00a550;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            height: 70%; 
+        }
+
+        .subscription-wrapper input::placeholder {
+                font-size: 18px;
+            }
+
+        .subscription-wrapper button:hover {
+            background-color: white;
+            color: #00a550;
+        }
+
+
+        .footer-row.last-content-row {
+            border-bottom: none; 
+            margin-bottom: 10px; 
+        }
+        
+        .footer-bottom .footer-column {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-bottom .footer-column a {
+            color: #fff; 
+            text-decoration: none;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        .footer-bottom .footer-column a:hover {
+            color: #00a550;
+        }
+		
+
+    }
+	
+	.paginat {
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    margin: 20px 0;
+	}
+
+	.paginat .prev, .paginat .next {
+	   	background-color: #00a550;
+	    color: #fff;
+	    padding: 8px 16px;
+	    border-radius: 4px;
+	    text-decoration: none;
+	    margin: 0 10px;
+	}
+
+	.paginat .prev.disabled, .paginat .next.disabled {
+		background-color: #00a550;
+	    color: #777;
+	    cursor: not-allowed;
+	}
+
+	.paginat .prev:hover, .paginat .next:hover {
+	   background-color: #00a550;
+	}
+
+	.paginat .page-number {
+	    display: inline-block;
+	    background-color: #f0f0f0;
+	    color: #333;
+	    border-radius: 50%;
+	    width: 30px;
+	    height: 30px;
+	    text-align: center;
+	    line-height: 30px;
+	    margin: 0 5px;
+	    text-decoration: none;
+	    font-size: 16px;
+	    transition: background-color 0.3s;
+	}
+
+	.paginat .page-number.current {
+	 background-color: #00a550;
+	    color: white;
+	}
+
+	.paginat .page-number:hover {
+	background-color: #00a550;
+	    color: white;
+	}
+

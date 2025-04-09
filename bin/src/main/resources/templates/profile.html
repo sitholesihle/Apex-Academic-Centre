@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!--<title>Book a Tutor | Expert Online and In-person Tutors | Apex Academic Centre</title>-->
+	<title>Tutor Profile | Expert Online and In-person Tutors | Apex Academic Centre</title>
+	<meta name="description"
+		content="Get personalized tutoring with Apex Academic Centre's expert online and in-person tutors. Book your tutor today!">
+
+	<link rel="icon" href="seo_logo.jpeg" sizes="50x50" type="image/x-icon">
+
+	<!-- Open Graph Protocol (Facebook, LinkedIn) -->
+	<meta property="og:title" content="Expert Online and In-person Tutors | Apex Academic Centre">
+	<meta property="og:description"
+		content="Get personalized tutoring with Apex Academic Centre's expert online and in-person tutors. Book your tutor today!">
+	<meta property="og:image" content="https://bookatutorapexacademiccentre.co.za/seo.jpeg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:url" content="https://bookatutorapexacademiccentre.co.za/view-profile/name=${tutor.fullNames}">
+	<meta property="og:type" content="website">
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Expert Online and In-person Tutors | Apex Academic Centre">
+	<meta name="twitter:description"
+		content="Get personalized tutoring with Apex Academic Centre's expert online and in-person tutors. Book your tutor today!">
+	<meta name="twitter:image" content="https://bookatutorapexacademiccentre.co.za/seo.jpeg">
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--=============== REMIXICONS ===============-->
+	<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">
+	<!--=============== SWIPER CSS ===============-->
+
+	<link rel="preload" href="/css/Profile.css" as="style" />
+	<link rel="stylesheet" href="/css/Profile.css" th:href="@{/css/Profile.css}" /> 
+	
+	<link rel="preload" href="/css/Styles.css" as="style" />
+	<link rel="stylesheet" href="/css/Styles.css" th:href="@{/css/Styles.css}" />
+	
+</head>
+<body>
+	
+	  <nav class="navbar">
+	      <img src="/images/ApexLogo.png" alt="Logo" class="logo" id="logo_image">
+	      <button class="navbar-toggle" id="navbar-toggle">
+	          <i class="fas fa-bars"></i> <!-- Hamburger icon -->
+	      </button>
+	      <ul class="nav-links">
+	          <li><a href="https://www.apexacademiccentre.co.za/">Home</a></li>
+	          <li><a href="https://bookatutorapexacademiccentre.co.za/">Tutors</a></li>
+	          <li class="dropdown">
+	              <a href="#" class="dropbtn">Tutoring <i class="fas fa-chevron-down"></i></a>
+	              <div class="dropdown-content">
+	                  <a href="https://www.apexacademiccentre.co.za/online-tutoring/">Online Tutoring</a>
+	                  <a href="https://www.apexacademiccentre.co.za/in-person-tutoring/">In Person Tutoring</a>
+	                  <a href="https://www.apexacademiccentre.co.za/matric-rewrite-2025/">Matric Re-Write</a>
+	                  <a href="https://www.apexacademiccentre.co.za/special-needs-tutoring/">Special Need Tutoring</a>
+	                  <a href="https://www.apexacademiccentre.co.za/cambridge-tutoring/">Cambridge Tutoring</a>
+	                  <a href="https://www.apexacademiccentre.co.za/university-college-tutors/">University/ College
+	                      Tutors</a>
+	                  <a href="https://www.apexacademiccentre.co.za/pearson-edexcel-tutoring/">Person Edexcel Tutoring</a>
+	              </div>
+	          </li>
+
+	          <li><a href="https://www.apexacademiccentre.co.za/homeschooling-support/">Homeschooling</a></li>
+	          <li><a href="https://www.apexacademiccentre.co.za/resources/">Resources</a></li>
+	          <li><a href="https://www.apexacademiccentre.co.za/contact-us/">Contact</a></li>
+
+
+	          <li>
+	              <button class="login-register" id="tutorBtn">
+	                 BOOK TUTOR
+	              </button>
+	          </li>
+	      </ul>
+	  </nav>
+
+
+	  <div class="whatsapp-wrapper">
+	      <a href="https://wa.me/27680351845?text=Hi%20*Apex%20Academic%20Centre*!%20I%20need%20more%20info%20about%20Apex%20Academic%20Centre%20https://www.apexacademiccentre.co.za" target="_blank" class="whatsapp-icon">
+	        <i class="fab fa-whatsapp" style="font-size: 40px; color: #fff; "></i> 
+	       </a>
+	</div>
+	
+	<!--MAIN CONTENT-->
+	
+	<div class="whole-wrapper">
+	    <div class="main-section">
+
+	        <div class="the-left">
+	            <!-- Tutor's Picture and Info Div -->
+	            <div class="upper-line">
+	                <div class="profile-picture-container">
+						<!--<img th:src="@{/images/{filename}(filename=${tutor.fullNames.replace(' ', '') + '.' + (tutor.imageBase64 == 'jpeg' ? 'jpeg' : 'png')})}" alt="Tutor Image"  loading="lazy" /> -->
+					   <img src="/images/Chrishner.jpeg" loading="lazy" alt="Image 1" class="image image1">
+	                    <div class="name" th:text="${tutor.fullNames}"></div>
+	                    <div class="age"><span th:text="${age}"></span> years old</div>
+	                    <div class="age"><span th:text="${tutor.experience}"></span> experience</div>
+	                </div>
+	                <div class="details">
+	                    <p>
+	                        <span class="static-text">Country :</span> <span class="detail-info" th:text="${tutor.country}"></span><br>
+	                        <span class="static-text">Province :</span> <span class="detail-info" th:text="${tutor.address}"></span><br>
+	                        <span class="static-text">Area :</span> <span class="detail-info" th:text="${tutor.area}"></span><br>
+	                        <span class="static-text">Curriculum :</span> <span class="detail-info" th:text="${tutor.syllabus}"></span><br>
+	                        <span class="static-text">Tutoring Option :</span> <span class="detail-info" th:text="${tutor.availability}"></span>
+	                    </p>
+	                    <div class="ratings">
+	                        <i class="fas fa-star" id="rate-icon"></i>
+	                        <span id="rate" th:text="${tutor.ratings}"></span> Ratings
+	                    </div>
+	                    <div class="feedback-item">
+	                        <i class="fas fa-check-circle" id="back-icon"></i>
+	                        <span class="back">Background Checked</span>
+	                    </div>
+	                </div>
+	            </div>
+
+	            <!--Book Tutor Button-->
+	            <div class="profile-action">
+	                <button id="book-tutor-button" class="book-tutor-button" onclick="goBack()">Back</button>
+	            </div>
+
+
+	            <div class="matric">
+					<img src="/images/Chrishner.jpeg" loading="lazy" alt="Image 1" class="image image1">
+	            </div>
+	        </div>
+
+	        <div class="right-side">
+
+	            <div class="profile-container">
+
+	                <div class="about-tutor-row">
+	                    <div class="about-tutor-title"><i class="far fa-user"></i>&nbsp;&nbsp;Bio</div>
+	                    <div class="about-tutor-info">
+	                        <p id="profile_about" th:text="${tutor.about}"></p>
+	                        <br>
+	                    </div>
+	                </div>
+	                <div class="qualifications-row">
+	                    <div class="qualifications-title"><i class="fas fa-university"></i>&nbsp;&nbsp;Education</div>
+
+	                    <div class="subjects-info" >
+							
+	                        <ul>
+								<th:block th:each="qualifications : ${#strings.setSplit(tutor.bio, ',')}">
+								   <li>•&nbsp;<span th:text="${qualifications}"></span></li>
+								</th:block>
+	                        </ul>
+	                        <br><br>
+	                    </div>
+	                    <br><br>
+
+	                </div>
+	                <div class="subjects-row">
+	                    <div class="subjects-title">
+	                        <div class="school_head">
+	                            <i class="fa fa-book"></i>&nbsp;&nbsp;Subjects
+	                        </div>
+	                        <div class="bongi">
+	                            School tutoring<br>
+	                            <span class="grades">GRD:1 - GRD:12</span>
+	                        </div>
+	                    </div>
+	                  
+	                        <div class="subjects-info">
+								
+								<th:block th:each="subject : ${#strings.setSplit(tutor.subjects, ',')}">
+								   <p th:text="${subject}"></p>
+								</th:block>
+	                  
+	                            <br><br>
+	                        </div>
+
+	                </div>
+	               
+	            </div>
+			
+			
+			<div class="short-paragraph">
+			    Your Personal Tutor in the Comfort of Your Own Home
+			    <br>
+			    <!--Book Tutor Button and find tutor-->
+			    <div class="button-action">
+			        <button id="book-tutor-button" class="book-tutor-button" onclick="openOpenopen('<%= fullName %>' , '<%= email %>', '<%= curriculum %>', '<%= grades %> ', '<%= subjects %>')">Book <span th:text="${tutor.fullNames}"></span></button>
+			        <button id="find-tutor-button" class="find-tutor-button" onclick="window.location.href='https://bookatutorapexacademiccentre.co.za/bookingTutor';">Find Me A Tutor</button>
+			    </div>
+			</div>
+			
+
+	            <div class="long-paragraph">
+	                See the feedback and accolades from individuals who have experienced my work firsthand.
+	            </div>
+
+				<section class="container">
+				    <div class="card__container swiper">
+				        <div class="card__content">
+				            <div class="reviews1">
+				                <i class="fas fa-star" id="rate-icon"></i>
+				                <span id="rev">Reviews</span>
+				            </div>
+
+				            <div class="swiper-wrapper">
+				               <!-- <th:block th:each="review : ${reviews}">
+				                    <article class="card__article swiper-slide">
+				                        <div class="card__data">
+				                            <h3 class="card__name" th:text="${review.name}"></h3>
+				                            <p class="card__description" th:text="${review.message}"> </p>
+				                        </div>
+				                    </article>
+				                </th:block> -->
+								
+								<article class="card__article swiper-slide" th:each="review : ${reviews}">
+								    <div class="card__data">
+								        <h3 class="card__name" th:text="${review.name}"></h3>
+								        <p class="card__description" th:text="${review.message}"></p>
+								    </div>
+								</article>
+								
+				            </div> 
+
+				            <!-- Navigation buttons -->
+				            <div class="swiper-button-next">
+				                <i class="ri-arrow-right-s-line"></i>
+				            </div>
+
+				            <div class="swiper-button-prev">
+				                <i class="ri-arrow-left-s-line"></i>
+				            </div>
+
+				            <!-- Pagination -->
+				            <div class="swiper-pagination"></div>
+				        </div>
+				    </div>
+				</section>
+
+	        </div>
+
+	    </div>
+
+	</div>
+	
+	<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+	
+</body>
+</html>

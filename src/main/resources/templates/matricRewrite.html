@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en"> <!--1024 834 768-->
+
+<head>
+
+	<head>
+
+		<title> Matric Rewrite Classes | Online Registration | From R550/month</title>
+		<meta name="description"
+			content="Register for our Matric Rewrite Online Classes. Prepare for May-June 2025 exams with expert tutors. Fees from R550/month.">
+
+		<!-- SEO Image -->
+		<link rel="icon" href="seo_logo.jpeg" sizes="50x50" type="image/x-icon">
+
+		<!-- Open Graph Protocol (Facebook, LinkedIn) -->
+		<meta property="og:title" content="	Matric Rewrite Classes | Online Registration | From R550/month">
+		<meta property="og:description"
+			content="Register for our Matric Rewrite Online Classes. Prepare for May-June 2025 exams with expert tutors. Fees from R550/month.">
+		<meta property="og:image"
+			content="https://bookatutorapexacademiccentre.co.za/matric-rewrite-classes-online.jpeg">
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="630">
+		<meta property="og:url" content="https://bookatutorapexacademiccentre.co.za/matric-rewrite">
+		<meta property="og:type" content="website">
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Matric Rewrite Classes | Online Registration | From R550/month">
+		<meta name="twitter:description"
+			content="Register for our Matric Rewrite Online Classes. Prepare for May-June 2025 exams with expert tutors. Fees from R550/month.">
+		<meta name="twitter:image"
+			content="https://bookatutorapexacademiccentre.co.za/matric-rewrite-classes-online.jpeg">
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+		<link rel="preload" href="/css/mainTutorBookings.css" as="style" />
+		<link rel="stylesheet" href="/css/mainTutorBookings.css" th:href="@{/css/mainTutorBookings.css}" />
+		
+		<link rel="preload" href="/css/matricRewrite.css" as="style" />
+		<link rel="stylesheet" href="/css/matricRewrite.css" th:href="@{/css/matricRewrite.css}" />
+
+		<style>
+			.checkbox-container {
+				display: inline-flex;
+			}
+
+			.opt {
+				display: none;
+			}
+
+			#fProvince {
+				display: none;
+				/* Hide province by default */
+			}
+
+			.popup {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+				z-index: 1000;
+			}
+
+			.popup-content {
+				background-color: #fff;
+				padding: 20px;
+				border-radius: 5px;
+				width: 500px;
+				text-align: center;
+				cursor: pointer;
+			}
+
+			.popup-content:hover {
+				transform: scale(1.05);
+				/* Slightly enlarge on hover */
+			}
+
+			.close {
+				cursor: pointer;
+				float: right;
+				font-size: 20px;
+			}
+
+			.hide {
+				display: none;
+			}
+
+			#pack-details {
+				text-align: left;
+				/* Aligns text to the left */
+				/* Optional: You can also add padding or margin for better appearance */
+				padding: 10px;
+			}
+
+			.package-details:hover {
+				transform: scale(1.05);
+				/* Slightly enlarge on hover */
+			}
+
+			#popular {
+				color: #001549;
+				font-weight: bold;
+			}
+
+			@media screen and (max-width: 1024px) {
+
+
+				.popup {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					position: fixed;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: rgba(0, 0, 0, 0.5);
+					z-index: 1000;
+				}
+
+				.popup-content {
+					background-color: #fff;
+					padding: 20px;
+					border-radius: 5px;
+					width: 300px;
+					text-align: center;
+					cursor: pointer;
+				}
+
+				.popup-content:hover {
+					transform: scale(1.05);
+					/* Slightly enlarge on hover */
+					cursor: pointer;
+				}
+
+				.close {
+					cursor: pointer;
+					float: right;
+					font-size: 20px;
+				}
+
+				.hide {
+					display: none;
+				}
+
+				#pack-details {
+					text-align: left;
+					/* Aligns text to the left */
+					/* Optional: You can also add padding or margin for better appearance */
+					padding: 10px;
+				}
+
+				.package-details:hover {
+					transform: scale(1.05);
+					/* Slightly enlarge on hover */
+					cursor: pointer;
+				}
+
+				#popular {
+					color: #001549;
+					font-weight: bold;
+
+				}
+
+			}
+
+			.subject-label {
+				display: flex;
+				/* Use flex to align checkbox and text */
+				align-items: center;
+				/* Center vertically */
+				overflow: hidden;
+				/* Hide overflow text */
+				text-overflow: ellipsis;
+				/* Show ellipsis for overflow text */
+				white-space: nowrap;
+				/* Prevent text wrapping */
+				width: calc(25% - 15px);
+				/* Set width for each label to fit 4 columns */
+				margin-bottom: 10px;
+				/* Space between checkboxes */
+			}
+
+			#subjectContainer {
+				display: none;
+				/* Initially hidden */
+				/*flex-wrap: wrap;
+			/* Allow wrapping of checkboxes */
+
+			}
+
+			#tutorNameDisplay {
+				font-size: 20px;
+			}
+
+			.wrapper {
+				padding-top: 2%;
+			}
+
+			#toptop {
+				font-size: 18px;
+			}
+
+
+			#termsCondition {
+
+				color: #02A552;
+			}
+
+
+			.flex-container {
+				display: none;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+			}
+
+			.information {
+				text-align: center;
+				/* Center text and inline elements */
+			}
+
+			#info {
+				display: inline-block;
+				/* Allow the UL to respect the width and center it */
+				list-style-type: none;
+				/* Optional: Remove bullet points */
+				padding: 0;
+				/* Remove default padding */
+				margin: 0 auto;
+				/* Center the UL in its container */
+				text-align: left;
+				/* Align text within the UL to the left */
+			}
+		</style>
+	</head>
+
+<body>
+
+	<nav class="navbar">
+	    <img src="/images/ApexLogo.png" alt="Logo" class="logo" id="logo_image">
+		<button class="navbar-toggle" id="navbar-toggle">
+			<i class="fas fa-bars"></i> <!-- Hamburger icon -->
+		</button>
+		<ul class="nav-links">
+			<li><a href="https://www.apexacademiccentre.co.za/">Home</a></li>
+			<li class="dropdown">
+				<a href="#" class="dropbtn">Tutoring <i class="fas fa-chevron-down"></i></a>
+				<div class="dropdown-content">
+					<a href="https://www.apexacademiccentre.co.za/online-tutoring/">Online Tutoring</a>
+					<a href="https://www.apexacademiccentre.co.za/in-person-tutoring/">In Person Tutoring</a>
+					<a href="https://www.apexacademiccentre.co.za/matric-rewrite-2025/">Matric Re-Write</a>
+					<a href="https://www.apexacademiccentre.co.za/special-needs-tutoring/">Special Need Tutoring</a>
+					<a href="https://www.apexacademiccentre.co.za/cambridge-tutoring/">Cambridge Tutoring</a>
+					<a href="https://www.apexacademiccentre.co.za/university-college-tutors/">University/ College
+						Tutors</a>
+					<a href="https://www.apexacademiccentre.co.za/pearson-edexcel-tutoring/">Person Edexcel Tutoring</a>
+				</div>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropbtn">Online Classes <i class="fas fa-chevron-down"></i></a>
+				<div class="dropdown-content">
+					<a href="https://www.apexacademiccentre.co.za/mathematics-online-class/">Mathematics Online Class</a>
+					<a href="https://www.apexacademiccentre.co.za/matric-rewrite-2025/">Matric Rewrite 2025</a>
+				</div>
+			</li>
+			<li><a href="https://www.apexacademiccentre.co.za/homeschooling-support/">Homeschooling</a></li>
+			<li><a href="https://www.apexacademiccentre.co.za/resources/">Resources</a></li>
+			<li><a href="https://www.apexacademiccentre.co.za/contact-us/">Contact</a></li>
+
+		</ul>
+	</nav>
+
+
+	<div class="wrapper" id="modal">
+
+		<div class="modal-content" id="yesyes">
+
+			<div class="form_wrap">
+
+
+				<div class="information" id="div0">
+					<h2>Matric Rewrite Classes.</h2>
+					<h2>Register for our Matric Rewrite Online Classes.</h2>
+					<ul id="info">
+						<li><b>•&nbsp;&nbsp;From R550 per month</b></li><br>
+						<li><b>•&nbsp;&nbsp;Prepare for the May - June and November 2025 Matric Exams</b></li><br>
+						<li><b>•&nbsp;&nbsp;Each subject includes 2 weekly classes</b></li>
+
+					</ul>
+
+					<div class="btns_wrap">
+						<div class="common_btns form_1_btns">
+							<button type="button" onclick="showForm1()">Next</button>
+
+						</div>
+					</div>
+
+
+				</div>
+
+
+				<div class="form_1 data_info" id="div1">
+					<h2>Personal Information</h2>
+					<br>
+					<form id="contact-form">
+						<div class="form_container">
+							<div class="form-row">
+								<div class="form-group">
+									<label for="first-name">First Name <span class="required">*</span></label>
+									<input type="text" id="firstName" name="firstName" class="input" placeholder="Sihle"
+										required>
+									<div id="name-error" class="error"></div>
+								</div>
+								<div class="form-group">
+									<label for="last-name">Last Name <span class="required">*</span></label>
+									<input type="text" id="lastName" name="lastName" class="input" placeholder="Sithole"
+										required>
+									<div id="surname-error" class="error"></div>
+								</div>
+							</div>
+
+
+
+							<div class="form-row">
+
+								<div class="form-group">
+									<label for="first-name">Email<span class="required">*</span></label>
+									<input type="text" id="email" name="email" class="input"
+										placeholder="esihleconnections@gmail.com" required>
+									<div id="email-error" class="error"></div>
+								</div>
+								<div class="form-group">
+									<label for="last-name">Mobile<span class="required">*</span></label>
+									<input type="text" id="mobile" name="mobile" class="input"
+										placeholder="+27797565214" required>
+									<div id="mobile-error" class="error"></div>
+								</div>
+
+
+
+							</div>
+
+							<div class="form-row">
+								<div class="form-group">
+									<label for="idPassport">ID/Passport <span class="required">*</span></label>
+									<input type="text" id="idPassport" name="idPassport" placeholder="ID/Passport"
+										class="input" required>
+									<div id="idPassport-error" class="error"></div>
+								</div>
+
+
+								<div class="form-group">
+									<label for="gender">Gender <span class="required">*</span></label>
+									<select id="gender" name="gender" required>
+										<option value="">Select</option>
+										<option value="male">Male</option>
+										<option value="female">Female</option>
+										<option value="other">Other</option>
+									</select>
+									<div id="gender-error" class="error"></div>
+								</div>
+							</div>
+
+
+
+						</div>
+
+						<div class="btns_wrap">
+							<div class="common_btns form_2_btns">
+								<button type="button" class="btn_back" onclick="backToformZero()">Back</button>
+								<button type="button" class="btn_next" onclick="validateForm1()">Next</button>
+							</div>
+						</div>
+
+					</form>
+				</div>
+
+
+				<div class="form_2" id="div2">
+					<h2>Course Information</h2>
+					<br>
+					<div id="form-container-2" class="form-container hidden">
+						<form id="additional-form">
+
+
+							<div class="form-row">
+
+								<div class="form-group">
+
+									<label for="province">Province <span class="required">*</span></label><br>
+									<select id="province" name="province" required>
+										<option value="">Select your province</option>
+										<option value="Eastern Cape">Eastern Cape</option>
+										<option value="Free State">Free State</option>
+										<option value="Gauteng">Gauteng</option>
+										<option value="KwaZulu-Natal">KwaZulu-Natal</option>
+										<option value="Limpopo">Limpopo</option>
+										<option value="Mpumalanga">Mpumalanga</option>
+										<option value="North West">North West</option>
+										<option value="Northern Cape">Northern Cape</option>
+										<option value="Western Cape">Western Cape</option>
+									</select>
+									<div id="province-error" class="error"></div>
+
+
+
+								</div>
+
+								<div class="form-group">
+									<label for="writingDate">When are you writing? <span
+											class="required">*</span></label>
+									<select id="writingDate" name="writingDate" required>
+										<option value="">Select the date</option>
+										<option value="May - June 2025">May-June 2025</option>
+										<option value="November 2025">November 2025</option>
+									</select>
+									<div id="writingDate-error" class="error"></div>
+								</div>
+
+
+							</div>
+
+
+							<div class="form-row">
+
+								<div class="form-group">
+
+									<label for="syllabus">Select Subjects<span class="required">*</span></label><br>
+									<input type="text" id="chooseSubjects" name="chooseSubjects" class="input" required
+										readonly onclick="toggleSyllabusOptions()">
+									<div id="syllabusContainer" style="display: none;">
+										<label><input type="checkbox" value="Mathematics" onchange="updateSyllabus()">
+											Mathematics</label>
+										<label><input type="checkbox" value="Mathematics Literacy"
+												onchange="updateSyllabus()">
+											Mathematics Literacy</label>
+									
+										<label><input type="checkbox" value="Physical Sciences"
+												onchange="updateSyllabus()">
+											Physical Sciences</label>
+										<label><input type="checkbox" value="Life Sciences" onchange="updateSyllabus()">
+											Life Sciences</label>
+
+										<label><input type="checkbox" value="Accounting" onchange="updateSyllabus()">
+											Accounting</label>
+										<label><input type="checkbox" value="Business Studies"
+												onchange="updateSyllabus()">
+											Business Studies</label>
+									
+										<label><input type="checkbox" value="Econimics" onchange="updateSyllabus()">
+											Economics</label>
+										<label><input type="checkbox" value="History"
+												onchange="updateSyllabus()">History</label>
+
+										<label><input type="checkbox" value="Geography" onchange="updateSyllabus()">
+											Geography</label>
+										<label><input type="checkbox" value="Afrikaans FAL" onchange="updateSyllabus()">
+											Afrikaans FAL</label>
+										<label><input type="checkbox" value="IsiZulu FAL" onchange="updateSyllabus()">
+											IsiZulu FAL</label>
+										<label><input type="checkbox" value="English HL" onchange="updateSyllabus()">
+											English HL</label>
+											<label><input type="checkbox" value="English HL" onchange="updateSyllabus()">
+												English FAL</label>
+									
+										<label><input type="checkbox" value="Tourism"
+												onchange="updateSyllabus()">Tourism</label>
+
+									</div>
+									<div id="subjects-error" class="error"></div>
+
+								</div>
+
+
+								<div class="form-group">
+									<label for="grades">When Are you available?(Monday-Saturday)<span
+											class="required">*</span></label><br>
+									<input type="text" id="availableDays" name="availableDays" class="input" required
+										readonly onclick="toggleCheckboxes()">
+									<div id="gradesContainer" style="display: none;">
+										<label><input type="checkbox" value="Monday" onchange="updateGrades()">
+											Monday</label>
+										<label><input type="checkbox" value="Tuesday" onchange="updateGrades()">
+											Tuesday</label>
+										<label><input type="checkbox" value="Wednesday" onchange="updateGrades()">
+											Wednesday</label>
+										<label><input type="checkbox" value="Thursday" onchange="updateGrades()">
+											Thursday</label>
+										<label><input type="checkbox" value="Friday" onchange="updateGrades()">
+											Friday</label>
+										<label><input type="checkbox" value="Saturday" onchange="updateGrades()">
+											Saturday</label>
+
+									</div>
+									<div id="availableDays-error" class="error"></div>
+
+								</div>
+
+							</div>
+
+					</div>
+
+					<div class="btns_wrap">
+						<div class="common_btns form_2_btns">
+							<button type="button" class="btn_back" onclick="backToformOne()">Back</button>
+							<button type="button" class="btn_next" onclick="validateForm2()">Next</button>
+						</div>
+					</div>
+					</form>
+				</div>
+
+
+
+				<div class="form_2" id="div3">
+					<h2>Confirmation</h2>
+					<br>
+					<div id="form-container-2" class="form-container hidden">
+						<form id="submit-form">
+
+
+							<div class="form-group">
+
+								<div class="form-group">
+									<label for="message">Message <span class="required"></span></label><br><br>
+									<textarea id="message" name="message" placeholder="Optional Message...."
+										class="textarea" required></textarea>
+									<div id="message-error" class="error"></div>
+								</div>
+
+
+								<br>
+								<p>To join our online group classes, please ensure the following:</p>
+								<br>
+
+								<div class="terms-row">
+									<input type="checkbox" id="terms1" name="terms1" required>
+									<label for="terms">
+										You have fast, reliable broadband (at least 2 Mbps)
+									</label>
+									<div id="terms-error-1" class="error"></div>
+								</div>
+								<br>
+								<div class="terms-row">
+									<input type="checkbox" id="terms2" name="terms2" required>
+									<label for="terms">
+										You have a phone, tablet, computer, or laptop with a webcam, microphone, and
+										speakers.
+									</label>
+									<div id="terms-error2" class="error"></div>
+								</div>
+
+							</div>
+							<br>
+
+							<div class="terms-row">
+								<input type="checkbox" id="terms" name="terms" required>
+								<label for="terms">
+									I have read and agree to the <a
+										href="https://www.apexacademiccentre.co.za/terms-and-conditions/"
+										target="_blank" id="termsCondition">Terms and Conditions</a> and <a
+										href="https://www.apexacademiccentre.co.za/wp-content/uploads/2024/01/Privacy-Policy-for-Apex-Academic-Centre.pdf"
+										target="_blank" id="termsCondition">Privacy Policy</a>.<span
+										class="required">*</span>
+								</label>
+								<div id="terms-error" class="error"></div>
+							</div>
+
+
+					</div>
+
+					<div class="btns_wrap">
+						<div class="common_btns form_2_btns">
+							<button type="button" class="btn_back" onclick="backToformTwo()">Back</button>
+							<button type="button" class="btn_next" onclick="validateForm3()">Next</button>
+						</div>
+					</div>
+					</form>
+				</div>
+
+
+				<div class="form_4" id="div4">
+					<h2><span id="packageHeading"></span></h2>
+
+					<div class="div-container" id="schoolPackages">
+						<div class="custom-div" id="oneSubject">
+							<p>Monthly Package</p>
+							<div class="content">
+
+								<div class="package-details" onclick="onceOffPackage()">1 Subject</div>
+
+								<form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process"
+									method="post">
+									<input required type="hidden" name="cmd" value="_paynow">
+									<input required type="hidden" name="receiver" pattern="[0-9]" value="25220959">
+									<input type="hidden" name="return_url"
+										value="https://bookatutorapexacademiccentre.co.za/success_class_registration">
+									<input required type="hidden" name="amount" value="550">
+									<input required type="hidden" name="item_name" maxlength="255" value="Apex payment">
+									<input type="hidden" name="item_description" maxlength="255" value="Apex payment">
+									<table>
+										<tr>
+											<td colspan=2 align=center>
+												<button type="submit" class="package-btn">Pay R550 Now</button>
+												<!--<input type="text" src="https://my.payfast.io/images/buttons/PayNow/Primary-Small-PayNow.png" alt="Pay Now" title="Pay Now with Payfast">-->
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>
+						</div>
+						<div class="custom-div" id="twoSubject">
+							<p>Monthly Package</p>
+							<div class="content">
+								<div class="package-details" onclick="basicPackage()">2 Subjects</div>
+								<form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process"
+									method="post">
+									<input required type="hidden" name="cmd" value="_paynow">
+									<input required type="hidden" name="receiver" pattern="[0-9]" value="25220959">
+									<input type="hidden" name="return_url"
+										value="https://bookatutorapexacademiccentre.co.za/success_class_registration">
+									<input required type="hidden" name="amount" value="1050">
+									<input required type="hidden" name="item_name" maxlength="255" value="Apex payment">
+									<input type="hidden" name="item_description" maxlength="255" value="Apex payment">
+									<table>
+										<tr>
+											<td colspan=2 align=center>
+												<button type="submit" class="package-btn">Pay R1050 Now</button>
+												<!--<input type="text" src="https://my.payfast.io/images/buttons/PayNow/Primary-Small-PayNow.png" alt="Pay Now" title="Pay Now with Payfast">-->
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>
+						</div>
+						<div class="custom-div" id="threeSubject">
+							<p>Monthly Package</p>
+							<div class="content">
+								<div class="package-details" onclick="premiumPackage()" id="popular">3 Subjects</div>
+								<form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process"
+									method="post">
+									<input required type="hidden" name="cmd" value="_paynow">
+									<input required type="hidden" name="receiver" pattern="[0-9]" value="25220959">
+									<input type="hidden" name="return_url"
+										value="https://bookatutorapexacademiccentre.co.za/success_class_registration">
+									<input required type="hidden" name="amount" value="1550">
+									<input required type="hidden" name="item_name" maxlength="255" value="Apex payment">
+									<input type="hidden" name="item_description" maxlength="255" value="Apex payment">
+									<table>
+										<tr>
+											<td colspan=2 align=center>
+												<button type="submit" class="package-btn">Pay R1550 Now</button>
+												<!--<input type="text" src="https://my.payfast.io/images/buttons/PayNow/Primary-Small-PayNow.png" alt="Pay Now" title="Pay Now with Payfast">-->
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>
+						</div>
+						<div class="custom-div" id="fourSubject">
+							<p>Monthly Package</p>
+							<div class="content">
+								<div class="package-details" onclick="premiumPackage()" id="popular">4 Subjects</div>
+								<form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process"
+									method="post">
+									<input required type="hidden" name="cmd" value="_paynow">
+									<input required type="hidden" name="receiver" pattern="[0-9]" value="25220959">
+									<input type="hidden" name="return_url"
+										value="https://bookatutorapexacademiccentre.co.za/success_class_registration">
+									<input required type="hidden" name="amount" value="1950">
+									<input required type="hidden" name="item_name" maxlength="255" value="Apex payment">
+									<input type="hidden" name="item_description" maxlength="255" value="Apex payment">
+									<table>
+										<tr>
+											<td colspan=2 align=center>
+												<button type="submit" class="package-btn">Pay R1950 Now</button>
+												<!--<input type="text" src="https://my.payfast.io/images/buttons/PayNow/Primary-Small-PayNow.png" alt="Pay Now" title="Pay Now with Payfast">-->
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>
+						</div>
+						<!--<div class="custom-div" id="fourSubject">
+						<p>Monthly Package</p>
+						<div class="package-details" onclick="advanceElite()">4 Subjects</div>
+						<form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process" method="post">
+							<input required type="hidden" name="cmd" value="_paynow">
+							<input required type="hidden" name="receiver" pattern="[0-9]" value="25220959">
+							<input type="hidden" name="return_url"
+								value="https://bookatutorapexacademiccentre.co.za/success_class_registration">
+							<input required type="hidden" name="amount" value="1950">
+							<input required type="hidden" name="item_name" maxlength="255" value="Apex payment">
+							<input type="hidden" name="item_description" maxlength="255" value="Apex payment">
+							<table>
+								<tr>
+									<td colspan=2 align=center>
+										<button type="submit" class="package-btn">Pay R1950 Now</button>
+										<input type="text" src="https://my.payfast.io/images/buttons/PayNow/Primary-Small-PayNow.png" alt="Pay Now" title="Pay Now with Payfast">
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div> -->
+					</div>
+
+				</div>
+
+				<div class="form_4" id="div5">
+
+					<div class="div-container" id="schoolPackages">
+
+						<div class="custom-div" id="fiveSubject">
+							<p>Monthly Package</p>
+							<div class="content">
+								<div class="package-details" onclick="advanceElite()">5 Subjects</div>
+								<form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process"
+									method="post">
+									<input required type="hidden" name="cmd" value="_paynow">
+									<input required type="hidden" name="receiver" pattern="[0-9]" value="25220959">
+									<input type="hidden" name="return_url"
+										value="https://bookatutorapexacademiccentre.co.za/success_class_registration">
+									<input required type="hidden" name="amount" value="2350">
+									<input required type="hidden" name="item_name" maxlength="255" value="Apex payment">
+									<input type="hidden" name="item_description" maxlength="255" value="Apex payment">
+									<table>
+										<tr>
+											<td colspan=2 align=center>
+												<button type="submit" class="package-btn">Pay R2350 Now</button>
+												<!--<input type="text" src="https://my.payfast.io/images/buttons/PayNow/Primary-Small-PayNow.png" alt="Pay Now" title="Pay Now with Payfast">-->
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>
+						</div>
+						<div class="custom-div" id="sixSubject">
+							<p>Monthly Package</p>
+							<div class="content">
+								<div class="package-details" onclick="oneOnoneUniversity()">6 Subjects</div>
+								<form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process"
+									method="post">
+									<input required type="hidden" name="cmd" value="_paynow">
+									<input required type="hidden" name="receiver" pattern="[0-9]" value="25220959">
+									<input type="hidden" name="return_url"
+										value="https://bookatutorapexacademiccentre.co.za/success_class_registration">
+									<input required type="hidden" name="amount" value="2750">
+									<input required type="hidden" name="item_name" maxlength="255" value="Apex payment">
+									<input type="hidden" name="item_description" maxlength="255" value="Apex payment">
+									<table>
+										<tr>
+											<td colspan=2 align=center>
+												<button type="submit" class="package-btn">Pay R2750 Now</button>
+												<!--<input type="text" src="https://my.payfast.io/images/buttons/PayNow/Primary-Small-PayNow.png" alt="Pay Now" title="Pay Now with Payfast">-->
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>
+						</div>
+						<div class="custom-div" id="sevenSubject">
+							<p>Monthly Package</p>
+							<div class="content">
+								<div class="package-details" onclick="groupUniversity()">7 Subjects</div>
+								<form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process"
+									method="post">
+									<input required type="hidden" name="cmd" value="_paynow">
+									<input required type="hidden" name="receiver" pattern="[0-9]" value="25220959">
+									<input type="hidden" name="return_url"
+										value="https://bookatutorapexacademiccentre.co.za/success_class_registration">
+									<input required type="hidden" name="amount" value="3300">
+									<input required type="hidden" name="item_name" maxlength="255" value="Apex payment">
+									<input type="hidden" name="item_description" maxlength="255" value="Apex payment">
+									<table>
+										<tr>
+											<td colspan=2 align=center>
+												<button type="submit" class="package-btn">Pay R3300 Now</button>
+												<!--<input type="text" src="https://my.payfast.io/images/buttons/PayNow/Primary-Small-PayNow.png" alt="Pay Now" title="Pay Now with Payfast">-->
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>
+						</div>
+
+						<div class="custom-div" id="moreThan">
+							<p>Consultant</p>
+							<div class="content">
+								<div class="package-details" onclick="groupUniversity()">Get in touch with the
+									consultant.
+								</div>
+
+							</div>
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="btns_wrap">
+						<div class="common_btns form_5_btns">
+							<button type="button" class="btn_back" onclick="backToformThree()">Back</button>
+							<button type="button" class="btn_next" id="consult_btn" onclick="consultantEnquiry()">Speak
+								to
+								consultant</button>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<!--form 5-->
+
+		<!--</div>-->
+
+
+		<div id="popup" class="popup hide">
+			<div class="popup-content">
+				<span class="close" onclick="closePopup()">&times;</span>
+				<h2>Package Details</h2>
+				<div id="pack-details"></div>
+				<!-- Add more details as needed -->
+			</div>
+		</div>
+
+
+		<!--END OF FORMS-->
+		<div class="modal_wrapper">
+			<div class="shadow"></div>
+			<div class="success_wrap">
+				<div class="modal_icon">✓</div>
+				<p>Thank you! Your form has been submitted successfully.</p>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+	<!--</div>-->
+
+
+	<script>
+
+		document.getElementById('div1').style.display = 'none';
+		document.getElementById('div2').style.display = 'none';
+		document.getElementById('div3').style.display = 'none';
+		document.getElementById('div4').style.display = 'none';
+		document.getElementById('div5').style.display = 'none';
+
+		document.getElementById('oneSubject').style.display = 'block';
+		document.getElementById('twoSubject').style.display = 'none';
+		document.getElementById('threeSubject').style.display = 'none';
+		document.getElementById('fourSubject').style.display = 'none';
+		document.getElementById('fiveSubject').style.display = 'none';
+		document.getElementById('sixSubject').style.display = 'none';
+		document.getElementById('sevenSubject').style.display = 'none';
+		document.getElementById('moreThan').style.display = 'none';
+
+		function showForm1() {
+
+			document.getElementById('div1').style.display = 'block';
+			document.getElementById('div0').style.display = 'none';
+		}
+
+		function backToformZero() {
+
+			document.getElementById('div1').style.display = 'none';
+			document.getElementById('div2').style.display = 'none';
+			document.getElementById('div3').style.display = 'none';
+			document.getElementById('div4').style.display = 'none';
+			document.getElementById('div5').style.display = 'none';
+			document.getElementById('div0').style.display = 'block';
+
+		}
+
+		document.getElementById("modal").style.display = 'block';
+
+		var span = document.getElementById("close-popup");
+
+		function validateForm1() {
+
+			var isValid = true;
+
+
+			var name = document.getElementById("firstName").value;
+			var surname = document.getElementById("lastName").value;
+			var email = document.getElementById("email").value;
+			var mobile = document.getElementById("mobile").value;
+			var idPassport = document.getElementById("idPassport").value;
+			var gender = document.getElementById("gender").value;
+
+
+			if (!name) {
+				document.getElementById('name-error').textContent = "First name is required.";
+				isValid = false;
+			} else {
+				document.getElementById('name-error').textContent = "";
+			}
+
+
+			if (!surname) {
+				document.getElementById('surname-error').textContent = "Last name is required.";
+				isValid = false;
+			} else {
+				document.getElementById('surname-error').textContent = "";
+			}
+
+			if (!email) {
+				document.getElementById('email-error').textContent = "Email is required.";
+				isValid = false;
+			} else {
+				document.getElementById('email-error').textContent = "";
+			}
+
+			if (!mobile) {
+				document.getElementById('mobile-error').textContent = "Phone number is required.";
+				isValid = false;
+			} else {
+				document.getElementById('mobile-error').textContent = "";
+			}
+
+			if (!idPassport) {
+				document.getElementById('idPassport-error').textContent = "ID/Passport is required.";
+				isValid = false;
+			} else {
+				document.getElementById('idPassport-error').textContent = "";
+			}
+
+
+			if (!gender) {
+				document.getElementById('gender-error').textContent = "Gender is required.";
+				isValid = false;
+			} else {
+				document.getElementById('gender-error').textContent = "";
+			}
+
+			if (isValid) {
+
+				document.getElementById('div1').style.display = 'none';
+				document.getElementById('div2').style.display = 'block';
+				document.getElementById('div3').style.display = 'none';
+				document.getElementById('div4').style.display = 'none';
+				document.getElementById('div5').style.display = 'none';
+			}
+
+		}
+
+		function backToformOne() {
+
+			document.getElementById('div1').style.display = 'block';
+			document.getElementById('div2').style.display = 'none';
+			document.getElementById('div3').style.display = 'none';
+			document.getElementById('div4').style.display = 'none';
+			document.getElementById('div5').style.display = 'none';
+			document.getElementById('div0').style.display = 'none';
+		}
+
+		function validateForm2() {
+
+			var isValid = true;
+
+			var province = document.getElementById("province").value;
+			var date = document.getElementById("writingDate").value;
+			var subjects = document.getElementById("chooseSubjects").value;
+			var days = document.getElementById("availableDays").value;
+
+			if (!province) {
+				document.getElementById('province-error').textContent = "Province is required.";
+				isValid = false;
+			} else {
+				document.getElementById('province-error').textContent = "";
+			}
+
+			if (!date) {
+				document.getElementById('writingDate-error').textContent = "Date for writing is required.";
+				isValid = false;
+			} else {
+				document.getElementById('writingDate-error').textContent = "";
+			}
+
+			if (!subjects) {
+				document.getElementById('subjects-error').textContent = "Subject(s) required.";
+				isValid = false;
+			} else {
+				document.getElementById('subjects-error').textContent = "";
+			}
+
+			if (!days) {
+				document.getElementById('availableDays-error').textContent = "Day(s) required.";
+				isValid = false;
+			} else {
+				document.getElementById('availableDays-error').textContent = "";
+			}
+
+
+			if (isValid) {
+
+				document.getElementById('div1').style.display = 'none';
+				document.getElementById('div2').style.display = 'none';
+				document.getElementById('div3').style.display = 'block';
+				document.getElementById('div4').style.display = 'none';
+				document.getElementById('div5').style.display = 'none';
+			}
+
+
+
+		}
+
+		function backToformTwo() {
+
+			document.getElementById('div1').style.display = 'none';
+			document.getElementById('div2').style.display = 'block';
+			document.getElementById('div3').style.display = 'none';
+			document.getElementById('div4').style.display = 'none';
+			document.getElementById('div5').style.display = 'none';
+			document.getElementById('div0').style.display = 'none';
+		}
+
+
+		function validateForm3() {
+
+			var isValid = true;
+
+			var termsCheckbox = document.getElementById('terms');
+			if (termsCheckbox.checked) {
+				document.getElementById('terms-error').textContent = "";
+			} else {
+				document.getElementById('terms-error').textContent = "Required";
+				isValid = false;
+			}
+
+
+			if (isValid) {
+
+				const allData = combineFormData();
+				var status = "pending";
+
+				const dataToSend = {
+					...allData, status: status
+				};
+
+
+				fetch('/online-registration', { // Replace with your actual endpoint URL
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(dataToSend)
+				})
+					.then(response => response.json())
+					.then(result => {
+
+						// Optionally show success message or handle response
+					})
+					.catch(error => {
+						console.error('Error:', error);
+						// Optionally handle error response
+					});
+
+				document.getElementById('div1').style.display = 'none';
+				document.getElementById('div2').style.display = 'none';
+				document.getElementById('div3').style.display = 'none';
+				document.getElementById('div4').style.display = 'block';
+				document.getElementById('div5').style.display = 'block';
+				displayPackage();
+
+			}
+
+
+		}
+
+		function backToformThree() {
+
+			document.getElementById('div1').style.display = 'none';
+			document.getElementById('div2').style.display = 'none';
+			document.getElementById('div3').style.display = 'block';
+			document.getElementById('div4').style.display = 'none';
+			document.getElementById('div5').style.display = 'none';
+			document.getElementById('div0').style.display = 'none';
+		}
+
+
+		function combineFormData() {
+
+			const form1 = document.getElementById('contact-form');
+			const form2 = document.getElementById('additional-form');
+			const form3 = document.getElementById('submit-form');
+
+			const form1Data = new FormData(form1);
+			const form2Data = new FormData(form2);
+			const form3Data = new FormData(form3);
+
+			const data1 = formDataToObject(form1Data);
+			const data2 = formDataToObject(form2Data);
+			const data3 = formDataToObject(form3Data);
+
+			// Combine all data into a single object
+			return {...data1, ...data2, ...data3, };
+		}
+
+		function formDataToObject(formData) {
+			const data = {};
+			formData.forEach((value, key) => {
+				// Handle multiple values for the same key
+				if (data[key]) {
+					// If value is already an array, push the new value
+					if (Array.isArray(data[key])) {
+						data[key].push(value);
+					} else {
+						// Convert existing value to an array and add new value
+						data[key] = [data[key], value];
+					}
+				} else {
+					data[key] = value;
+				}
+			});
+			return data;
+		}
+
+		function consultantEnquiry() {
+
+			alert("Consultant will get in touch  with you shortly. Thank you.");
+
+			const allData = combineFormData();
+			var status = "consult";
+
+			const dataToSend = {
+				...allData, status: status
+			};
+
+
+			fetch('/online-registration', { // Replace with your actual endpoint URL
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(dataToSend)
+			})
+				.then(response => response.json())
+				.then(result => {
+
+					// Optionally show success message or handle response
+				})
+				.catch(error => {
+					console.error('Error:', error);
+					// Optionally handle error response
+				});
+
+			setTimeout(function () {
+				window.location.href = '/';
+			}, 2000);
+
+		}
+
+
+		function showSection(sectionId) {
+
+			const sections = ['personalInfo', 'courseInfo', 'confirmationInfo', 'formFive'];
+			sections.forEach(id => {
+				document.getElementById(id).classList.add('hidden');
+			});
+			document.getElementById(sectionId).classList.remove('hidden');
+		}
+
+
+
+		function showPersonalInfo() {
+			showSection('personalInfo');
+		}
+
+
+
+		function showPaymentPackages() {
+			showSection('formFive');
+		}
+
+		function toggleSubjects() {
+			const subjectContainer = document.getElementById('subjectsContainer');
+			subjectContainer.style.display = subjectContainer.style.display === 'none' || subjectContainer.style.display === '' ? 'flex' : 'none';
+		}
+
+		function toggleSyllabusOptions() {
+			const container = document.getElementById('syllabusContainer');
+			container.style.display = container.style.display === 'none' ? 'block' : 'none';
+		}
+
+		function updateSyllabus() {
+			const checkboxes = document.querySelectorAll('#syllabusContainer input[type="checkbox"]');
+			const selectedSyllabi = [];
+
+			checkboxes.forEach((checkbox) => {
+				if (checkbox.checked) {
+					selectedSyllabi.push(checkbox.value);
+				}
+			});
+
+			document.getElementById('chooseSubjects').value = selectedSyllabi.join(', ');
+		}
+
+		function toggleCheckboxes() {
+			const container = document.getElementById('gradesContainer');
+			container.style.display = container.style.display === 'none' ? 'block' : 'none';
+		}
+
+		function updateGrades() {
+			const checkboxes = document.querySelectorAll('#gradesContainer input[type="checkbox"]');
+			const selectedGrades = [];
+
+			checkboxes.forEach((checkbox) => {
+				if (checkbox.checked) {
+					selectedGrades.push(checkbox.value);
+				}
+			});
+
+			document.getElementById('availableDays').value = selectedGrades.join(', ');
+		}
+
+
+		function displayPackage() {
+
+			var subjects = document.getElementById("chooseSubjects").value;
+			var subjectsArray = subjects.split(","); // Splitting the string by commas
+			var packageHeading = document.getElementById("packageHeading");
+
+			if (subjectsArray.length === 1) {
+
+				document.getElementById('oneSubject').style.display = 'block';
+				document.getElementById('twoSubject').style.display = 'none';
+				document.getElementById('threeSubject').style.display = 'none';
+				document.getElementById('fourSubject').style.display = 'none';
+				document.getElementById('fiveSubject').style.display = 'none';
+				document.getElementById('sixSubject').style.display = 'none';
+				document.getElementById('sevenSubject').style.display = 'none';
+				document.getElementById('moreThan').style.display = 'none';
+				packageHeading.innerText = "Payment Package";
+			}
+
+			else {
+
+				if (subjectsArray.length === 2) {
+
+					document.getElementById('oneSubject').style.display = 'none';
+					document.getElementById('twoSubject').style.display = 'block';
+					document.getElementById('threeSubject').style.display = 'none';
+					document.getElementById('fourSubject').style.display = 'none';
+					document.getElementById('fiveSubject').style.display = 'none';
+					document.getElementById('sixSubject').style.display = 'none';
+					document.getElementById('sevenSubject').style.display = 'none';
+					document.getElementById('moreThan').style.display = 'none';
+					packageHeading.innerText = "Payment Package";
+
+				}
+
+				else {
+
+					if (subjectsArray.length === 3) {
+
+						document.getElementById('oneSubject').style.display = 'none';
+						document.getElementById('twoSubject').style.display = 'none';
+						document.getElementById('threeSubject').style.display = 'block';
+						document.getElementById('fourSubject').style.display = 'none';
+						document.getElementById('fiveSubject').style.display = 'none';
+						document.getElementById('sixSubject').style.display = 'none';
+						document.getElementById('sevenSubject').style.display = 'none';
+						document.getElementById('moreThan').style.display = 'none';
+						packageHeading.innerText = "Payment Package";
+
+					}
+					else {
+
+						if (subjectsArray.length === 4) {
+
+							document.getElementById('oneSubject').style.display = 'none';
+							document.getElementById('twoSubject').style.display = 'none';
+							document.getElementById('threeSubject').style.display = 'none';
+							document.getElementById('fourSubject').style.display = 'block';
+							document.getElementById('fiveSubject').style.display = 'none';
+							document.getElementById('sixSubject').style.display = 'none';
+							document.getElementById('sevenSubject').style.display = 'none';
+							document.getElementById('moreThan').style.display = 'none';
+							packageHeading.innerText = "Payment Package";
+						}
+
+						else {
+
+							if (subjectsArray.length === 5) {
+
+								document.getElementById('oneSubject').style.display = 'none';
+								document.getElementById('twoSubject').style.display = 'none';
+								document.getElementById('threeSubject').style.display = 'none';
+								document.getElementById('fourSubject').style.display = 'none';
+								document.getElementById('fiveSubject').style.display = 'block';
+								document.getElementById('sixSubject').style.display = 'none';
+								document.getElementById('sevenSubject').style.display = 'none';
+								document.getElementById('moreThan').style.display = 'none';
+								packageHeading.innerText = "Payment Package";
+							}
+
+							else {
+
+								if (subjectsArray.length === 6) {
+
+									document.getElementById('oneSubject').style.display = 'none';
+									document.getElementById('twoSubject').style.display = 'none';
+									document.getElementById('threeSubject').style.display = 'none';
+									document.getElementById('fourSubject').style.display = 'none';
+									document.getElementById('fiveSubject').style.display = 'none';
+									document.getElementById('sixSubject').style.display = 'block';
+									document.getElementById('sevenSubject').style.display = 'none';
+									document.getElementById('moreThan').style.display = 'none';
+									packageHeading.innerText = "Payment Package";
+
+								}
+
+								else {
+
+									if (subjectsArray.length === 7) {
+
+										document.getElementById('oneSubject').style.display = 'none';
+										document.getElementById('twoSubject').style.display = 'none';
+										document.getElementById('threeSubject').style.display = 'none';
+										document.getElementById('fourSubject').style.display = 'none';
+										document.getElementById('fiveSubject').style.display = 'none';
+										document.getElementById('sixSubject').style.display = 'none';
+										document.getElementById('sevenSubject').style.display = 'block';
+										document.getElementById('moreThan').style.display = 'none';
+										packageHeading.innerText = "Payment Package";
+
+									}
+
+									else {
+
+										document.getElementById('oneSubject').style.display = 'none';
+										document.getElementById('twoSubject').style.display = 'none';
+										document.getElementById('threeSubject').style.display = 'none';
+										document.getElementById('fourSubject').style.display = 'none';
+										document.getElementById('fiveSubject').style.display = 'none';
+										document.getElementById('sixSubject').style.display = 'none';
+										document.getElementById('sevenSubject').style.display = 'none';
+										document.getElementById('moreThan').style.display = 'block';
+
+										packageHeading.innerText = "GET IN TOUCH";
+									}
+
+								}
+
+
+							}
+
+						}
+
+					}
+
+
+				}
+
+
+			}
+
+		}
+
+
+	</script>
+
+</body>
+
+</html>

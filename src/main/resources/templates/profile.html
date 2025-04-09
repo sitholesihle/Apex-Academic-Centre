@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!--<title>Book a Tutor | Expert Online and In-person Tutors | Apex Academic Centre</title>-->
+	<title>Tutor Profile | Expert Online and In-person Tutors | Apex Academic Centre</title>
+	<meta name="description"
+		content="Get personalized tutoring with Apex Academic Centre's expert online and in-person tutors. Book your tutor today!">
+
+	<link rel="icon" href="seo_logo.jpeg" sizes="50x50" type="image/x-icon">
+
+	<!-- Open Graph Protocol (Facebook, LinkedIn) -->
+	<meta property="og:title" content="Expert Online and In-person Tutors | Apex Academic Centre">
+	<meta property="og:description"
+		content="Get personalized tutoring with Apex Academic Centre's expert online and in-person tutors. Book your tutor today!">
+	<meta property="og:image" content="https://bookatutorapexacademiccentre.co.za/seo.jpeg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:url" content="https://bookatutorapexacademiccentre.co.za/view-profile/name=${tutor.fullNames}">
+	<meta property="og:type" content="website">
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Expert Online and In-person Tutors | Apex Academic Centre">
+	<meta name="twitter:description"
+		content="Get personalized tutoring with Apex Academic Centre's expert online and in-person tutors. Book your tutor today!">
+	<meta name="twitter:image" content="https://bookatutorapexacademiccentre.co.za/seo.jpeg">
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--=============== REMIXICONS ===============-->
+	<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">
+	<!--=============== SWIPER CSS ===============-->
+
+	<link rel="preload" href="/css/Profile.css" as="style" />
+	<link rel="stylesheet" href="/css/Profile.css" th:href="@{/css/Profile.css}" /> 
+	
+	<link rel="preload" href="/css/Styles.css" as="style" />
+	<link rel="stylesheet" href="/css/Styles.css" th:href="@{/css/Styles.css}" />
+	
+	<link rel="stylesheet" href="/css/swiper-bundle.min.css"> 
+	
+	
+	     <style>
+	
+	      .checkbox-container{
+	         display: inline-flex;
+	     }   
+	             
+	     .opt{
+	         display: none;
+	     }
+	
+	     #fProvince{
+	         display: none; /* Hide province by default */
+	     }
+	
+	     .popup {
+	             display: flex;
+	             justify-content: center;
+	             align-items: center;
+	             position: fixed;
+	             top: 0;
+	             left: 0;
+	             width: 100%;
+	             height: 100%;
+	             background-color: rgba(0, 0, 0, 0.5);
+	             z-index: 1000;
+	         }
+	
+	         .popup-content {
+	             background-color: #fff;
+	             padding: 20px;
+	             border-radius: 5px;
+	             width: 500px;
+	             text-align: center;
+	             cursor: pointer;
+	         }
+	
+	         .popup-content:hover {
+	                 transform: scale(1.05); /* Slightly enlarge on hover */
+	             }
+	
+	         .close {
+	             cursor: pointer;
+	             float: right;
+	             font-size: 20px;
+	         }
+	         .hide {
+	             display: none;
+	         }
+	
+	         #pack-details {
+	             text-align: left; /* Aligns text to the left */
+	             /* Optional: You can also add padding or margin for better appearance */
+	             padding: 10px; 
+	         }
+	
+	         .package-details:hover{
+	             transform: scale(1.05); /* Slightly enlarge on hover */
+	         }
+	
+	         #popular{
+	             color: #001549;
+	             font-weight: bold;
+	         }
+	
+	         @media screen and (max-width: 1024px) {
+	
+	             
+	             .popup {
+	                     display: flex;
+	                     justify-content: center;
+	                     align-items: center;
+	                     position: fixed;
+	                     top: 0;
+	                     left: 0;
+	                     width: 100%;
+	                     height: 100%;
+	                     background-color: rgba(0, 0, 0, 0.5);
+	                     z-index: 1000;
+	         }
+	
+	         .popup-content {
+	             background-color: #fff;
+	             padding: 20px;
+	             border-radius: 5px;
+	             width: 300px;
+	             text-align: center;
+	             cursor: pointer;
+	         }
+	
+	         .popup-content:hover {
+	                 transform: scale(1.05); /* Slightly enlarge on hover */
+	                 cursor: pointer;
+	             }
+	
+	         .close {
+	             cursor: pointer;
+	             float: right;
+	             font-size: 20px;
+	         }
+	         .hide {
+	             display: none;
+	         }
+	
+	         #pack-details {
+	             text-align: left; /* Aligns text to the left */
+	             /* Optional: You can also add padding or margin for better appearance */
+	             padding: 10px; 
+	         }
+	
+	         .package-details:hover{
+	             transform: scale(1.05); /* Slightly enlarge on hover */
+	             cursor: pointer;
+	         }
+	
+	         #popular{
+	             color: #001549;
+	             font-weight: bold;
+	
+	         }
+	             
+	         }
+	
+	         .subject-label {
+	             max-width: 250x; /* Set max width for the label */
+	             overflow: hidden; /* Hide overflow text */
+	             text-overflow: ellipsis; /* Show ellipsis for overflow text */
+	             white-space: nowrap; /* Prevent text wrapping */
+	             display: flex; /* Keep flex for alignment */
+	             align-items: center; /* Center checkbox and text */
+	         }
+	
+	         #tutorNameDisplay{
+	             font-size: 20px;
+	         }
+	
+	         #termsCondition{
+	
+	               color: #02A552;
+	         }
+	
+	         .whatsapp-wrapper {
+	         position: fixed; /* Keeps the icon fixed on the screen */
+	         bottom: 20px; /* Distance from the bottom */
+	         right: 20px; /* Distance from the right */
+	         z-index: 1000; /* Ensure it stays on top of other content */
+	     }
+	
+	     .whatsapp-icon {
+	         display: inline-flex;
+	         align-items: center;
+	         justify-content: center;
+	         width: 60px; /* Adjust the size as needed */
+	         height: 60px; /* Adjust the size as needed */
+	         border-radius: 50%; /* Makes it circular */
+	         background-color: #25D366; /* Circle background color */
+	         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Optional shadow for better visibility */
+	         text-decoration: none; /* Remove underline */
+	     }
+	    
+	     .arrow-container{
+	         margin-bottom: 90px;
+	     }
+	
+	
+	     /*The footer*/
+	
+	     body{
+	
+	         background-color: #e7eeff;  
+	     }
+	
+	     footer {
+	             background-color: #001549; 
+	             color: white; 
+	             font-family: 'Montserrat', sans-serif;
+	             position: relative; 
+	             z-index: 0; 
+	             padding: 70px 0 ; 
+	             padding-bottom: 0;
+	             margin-top: -120px; 
+	             padding-bottom: 0;
+	         }
+	
+	
+	         .footer-row {
+	             margin-top: 90px; 
+	             margin-right: 0;
+	             margin-bottom: 10px;
+	             margin-left: 0;
+	             border-bottom: 2px solid white;
+	         }
+	
+	     
+	
+	     .footer-heading {
+	         text-align: left;
+	         margin: 0 0 15px; 
+	         font-size: 1.5em;
+	     }
+	
+	     .links {
+	         display: flex; 
+	     }
+	
+	     .column {
+	         flex: 1 0 20%; 
+	         margin: 5px; 
+	         text-align: left; 
+	     }
+	
+	     .link {
+	         color: white; 
+	         background-color: #001549; 
+	         padding: 10px 15px;
+	         margin: 5px 0; 
+	         text-decoration: none;
+	         border-radius: 5px; 
+	         display: flex; 
+	         align-items: center; 
+	     }
+	
+	     .link i {
+	         margin-right: 5px; 
+	     }
+	
+	     .link:hover {
+	         color: #00a550; 
+	     }
+	
+	     .myEmail a{
+	         color: white;
+	         font-size: small;
+	     }
+	
+	    .icons{
+	     font-size: 25px;
+	    
+	     
+	    }
+	
+	    .icons a {
+	         background-color: rgba(255, 255, 255, 0.3); 
+	         color: white;
+	         margin-right: 15px; 
+	         padding: 5px 10px;
+	         border-radius: 4px;
+	     }
+	
+	     .icons a:last-child {
+	         margin-right: 0;
+	     }
+	
+	     .icons a:hover {
+	         background-color: #02a552; 
+	     }
+	
+	     .logo-style {
+	         margin-right: 20px;
+	         margin-left: 5px; 
+	         max-width: 100%;
+	         height: auto;
+	     }
+	
+	     .aboutApex {
+	         
+	         line-height: 1.5;
+	         margin: 0; 
+	         padding: 0; 
+	         text-align: left;
+	         width: 100%; 
+	         box-sizing: border-box;
+	     }
+	     
+	
+	     /*subscription div*/
+	     .subscription-container {
+	         text-align: left; 
+	         padding: 40px; 
+	         border: 1px solid #ccc; 
+	         border-radius: 8px; 
+	         background-color: #00a550; 
+	         margin: -80px 80px 20px 60px; 
+	         width: 80%; 
+	         color: white; 
+	         position: relative; 
+	         z-index: 1; 
+	         clear: both; 
+	     }
+	
+	     .subscription-container h2 {
+	         margin-bottom: 10px;
+	     }
+	
+	     .subscription-wrapper {
+	         display: flex;
+	         justify-content: left;
+	         align-items: left;
+	         margin-top: 10px;
+	     }
+	
+	    
+	
+	     .subscription-wrapper input {
+	         padding: 25px; 
+	         width: 900px; 
+	         border: 1px solid #ccc; 
+	         border-radius: 4px 0 0 4px; 
+	     }
+	
+	     .subscription-wrapper button {
+	         padding: 10px; 
+	         border: none;
+	         background-color: #00a550;
+	         color: white; 
+	         border-radius: 0 4px 4px 0; 
+	         cursor: pointer; 
+	         width: 150px; 
+	     }
+	
+	     .subscription-wrapper button:hover {
+	         background-color: white; 
+	         color: #00a550;
+	     }
+	
+	     .footer-row.last-content-row {
+	         border-bottom: none; 
+	         margin-bottom: 10px; 
+	     }
+	
+	     .footer-bottom {
+	         display: flex;
+	         justify-content: space-between;
+	         align-items: center;
+	         padding: 10px 5px;
+	         background-color: #000; 
+	         color: #fff;
+	         font-size: 14px;
+	         margin-top: 10px; 
+	         margin-bottom: 0; 
+	         width: 100%; 
+	     }
+	     
+	     /* Footer column styling (for layout inside footer-bottom) */
+	     .footer-bottom .footer-column {
+	         flex: 1;
+	         display: flex;
+	         justify-content: center;
+	         align-items: center;
+	     }
+	
+	     /* Footer link styling */
+	     .footer-bottom .footer-column a {
+	         color: #fff; 
+	         text-decoration: none;
+	         font-size: 14px;
+	         margin-left: 10px;
+	     }
+	
+	     /* Footer link hover effect */
+	     .footer-bottom .footer-column a:hover {
+	         color: #00a550;
+	     }
+	
+	
+	
+	     /*Media for mobile */
+	
+	     @media screen and (max-width:768px){
+	
+	     .tutor-container {
+	     margin-bottom: 150px;
+	     }
+	     footer {
+	         background-color: #001549; 
+	         color: white; 
+	         position: relative; 
+	         z-index: 0; 
+	         padding: 50px 0; 
+	         margin-top: -220px;
+	         width: 100%;
+	         overflow-x: hidden;
+	     }
+	
+	     footer .footer-row:first-of-type {
+	         padding-top: 60px;  
+	     }
+	
+	     .logo-style {
+	         width:90%;
+	         height:60px;
+	         margin-top: 30px;
+	         margin-bottom: 20px;
+	     }
+	
+	     .aboutApex{
+	     width: 90%;
+	     }
+	     .subscription-container {
+	         margin: -80px 20px 10px; 
+	         width: auto;
+	         padding: 20px; 
+	     }
+	
+	     .subscription-wrapper {
+	         flex-direction: column; 
+	         align-items: stretch; 
+	     }
+	
+	     .subscription-wrapper input, 
+	     .subscription-wrapper button {
+	         width: 100%; 
+	         margin-bottom: 10px; 
+	         padding: 8px; 
+	         font-size: 14px;
+	     }
+	
+	     .subscription-wrapper button {
+	         border-radius: 4px; 
+	         padding: 8px; 
+	     }
+	
+	     .links {
+	         flex-direction: column; 
+	         width: 100%; 
+	     }
+	
+	     .myEmail a{
+	     font-size: 18px;
+	     }
+	
+	     .footer-bottom {
+	         flex-direction: column; 
+	         text-align: center;
+	         margin-bottom: 0;
+	     }
+	
+	     .footer-column {
+	     margin-bottom: 15px;
+	         text-align: center;
+	     }
+	     }
+	
+	     /*LANDSCAPE RESPONSIVE*/
+	     @media (min-width: 769px) and (max-width: 1024px){
+	         footer {
+	         background-color: #001549; 
+	         color: white; 
+	         position: relative; 
+	         z-index: 0; 
+	         padding: 50px 0; 
+	         width: 100%;
+	         overflow-x: hidden;
+	         }
+	
+	         .subscription-container {
+	         text-align: left;
+	         padding: 40px;
+	         border: 1px solid #ccc;
+	         border-radius: 8px;
+	         background-color: #00a550;
+	         margin: -80px 80px 20px 60px;
+	         width: 80%;
+	         color: white;
+	         position: relative;
+	         z-index: 1;
+	         clear: both;
+	     }
+	
+	     .subscription-container h2 {
+	         margin-bottom: 10px;
+	     }
+	
+	     .subscription-wrapper {
+	         position: relative;
+	         display: flex;
+	         justify-content: flex-start;
+	         align-items: center;
+	         margin-top: 10px;
+	     }
+	
+	     .subscription-wrapper input {
+	         padding: 10px 15px 10px 15px; 
+	         width: 100%; 
+	         border: 1px solid #ccc;
+	         border-radius: 4px 0 0 4px; 
+	         box-sizing: border-box;
+	         height: 60px;
+	     }
+	
+	     .subscription-wrapper button {
+	         position: absolute; 
+	         top: 50%; 
+	         right: 30px; 
+	         transform: translateY(-50%); 
+	         padding: 10px 5px; 
+	         border: none;
+	         background-color: #00a550;
+	         color: white;
+	         border-radius: 4px;
+	         cursor: pointer;
+	         font-size: 16px;
+	         height: 70%; 
+	     }
+	
+	     .subscription-wrapper button:hover {
+	         background-color: white;
+	         color: #00a550;
+	     }
+	
+	
+	
+	         
+	         .links {
+	             justify-content: space-between; 
+	             flex-wrap: wrap; 
+	             padding: 0 70px; 
+	             font-size: 18px;
+	         }
+	
+	         .aboutApex{
+	             margin-top: 20px;
+	         }
+	
+	         .column {
+	             flex: 1 0 45%;
+	             margin: 10px; 
+	             max-width: 45%;
+	         }
+	
+	         
+	
+	         #tutorLog ,#popSub{
+	             margin-left: 60px;
+	         }
+	
+	         .footer-column {
+	             display: inline-block;
+	             margin: 0 10px;
+	         }
+	
+	     }
+	
+	     /*large desktop*/
+	
+	     @media screen and (min-width:1025px){
+	         footer {
+	             background-color: #001549; 
+	             color: white; 
+	             position: relative; 
+	             z-index: 0; 
+	             margin-top: -120px; 
+	             margin-bottom: 0;
+	         }
+	
+	
+	     .footer-row {
+	         margin: 40px 0 10px;
+	         border-bottom: 2px solid white;
+	         padding: 0 130px 0;
+	     }
+	
+	
+	     .footer-heading {
+	         text-align: left;
+	         margin: 0 0 15px; 
+	         font-size: 1.5em;
+	     }
+	
+	     .links {
+	         display: flex; 
+	     }
+	
+	     .column {
+	         flex: 1 0 20%; 
+	         margin: 5px; 
+	         text-align: left; 
+	     }
+	
+	     .link {
+	         color: white; 
+	         background-color: #001549; 
+	         padding: 10px 15px;
+	         margin: 5px 0; 
+	         text-decoration: none;
+	         border-radius: 5px; 
+	         display: flex; 
+	         align-items: center; 
+	     }
+	
+	     .link i {
+	         margin-right: 5px; 
+	     }
+	
+	     .link:hover {
+	         color: #00a550; 
+	     }
+	
+	     .myEmail a{
+	         color: white;
+	     }
+	
+	    .icons{
+	     font-size: 15px;
+	     
+	    }
+	
+	    .icons a {
+	         color: white;
+	         margin-right: 15px; 
+	         padding: 5px 10px;
+	     }
+	
+	     .icons a:last-child {
+	         margin-right: 0;
+	     }
+	
+	     .icons a:hover {
+	         background-color: #00a550; 
+	     }
+	
+	     .logo-style {
+	         margin-right: 20px;
+	         margin-left: 5px; 
+	         max-width: 100%;
+	         height: auto;
+	         margin-bottom: 30px;
+	     }
+	
+	     .aboutApex {
+	         margin-top: 25px;
+	         line-height: 1.5; 
+	         margin: 0; 
+	         padding: 0; 
+	         text-align: left; 
+	         width: 100%;
+	         box-sizing: border-box; 
+	     }
+	     
+	     footer .footer-row:first-of-type {
+	         padding-top: 20px;  
+	     }
+	
+	     .subscription-container {
+	         text-align: left;
+	         padding: 40px;
+	         border: 1px solid #ccc;
+	         border-radius: 8px;
+	         background-color: #00a550;
+	         margin: -80px 80px 20px 130px;
+	         width: 80%;
+	         color: white;
+	         position: relative;
+	         z-index: 1;
+	         clear: both;
+	     }
+	
+	
+	     .subscription-container h2 {
+	         margin-bottom: 10px;
+	     }
+	
+	     .subscription-wrapper {
+	         position: relative;
+	         display: flex;
+	         justify-content: flex-start;
+	         align-items: center;
+	         margin-top: 10px;
+	     }
+	
+	     .subscription-wrapper input {
+	         padding: 10px 15px 10px 15px; 
+	         width: 100%; 
+	         max-width: 3200px; 
+	         border: 1px solid #ccc;
+	         border-radius: 4px 0 0 4px; 
+	         box-sizing: border-box;
+	         height: 60px;
+	     }
+	
+	     .subscription-wrapper button {
+	         position: absolute; 
+	         top: 50%; 
+	         right: 30px; 
+	         transform: translateY(-50%); 
+	         padding: 10px 5px; 
+	         border: none;
+	         background-color: #00a550;
+	         color: white;
+	         border-radius: 4px;
+	         cursor: pointer;
+	         font-size: 16px;
+	         height: 70%; 
+	     }
+	
+	
+	     .subscription-wrapper input::placeholder {
+	             font-size: 18px;
+	         }
+	         
+	     .subscription-wrapper button:hover {
+	         background-color: white;
+	         color: #00a550;
+	     }
+	
+	
+	     .footer-row.last-content-row {
+	         border-bottom: none; 
+	         margin-bottom: 10px; 
+	     }
+	
+	     .footer-bottom {
+	         display: flex;
+	         justify-content: space-between;
+	         align-items: center;
+	         padding: 10px 5px 0;
+	         background-color: #000; 
+	         color: #fff;
+	         font-size: 14px;
+	         margin-top: 10px; 
+	         margin-bottom: 0; 
+	         width: 100%; 
+	     }
+	     
+	     /* Footer column styling (for layout inside footer-bottom) */
+	     .footer-bottom .footer-column {
+	         flex: 1;
+	         display: flex;
+	         justify-content: center;
+	         align-items: center;
+	     }
+	
+	     /* Footer link styling */
+	     .footer-bottom .footer-column a {
+	         color: #fff; 
+	         text-decoration: none;
+	         font-size: 14px;
+	         margin-left: 10px;
+	     }
+	
+	     /* Footer link hover effect */
+	     .footer-bottom .footer-column a:hover {
+	         color: #00a550;
+	     }
+	
+	
+	 }
+	
+	
+	  /*#footer-footer
+	    {
+	     display: none;
+	    } 
+	
+	     /*End  footer*/
+	
+	 </style>
+	
+</head>
+<body>
+	
+	  <nav class="navbar">
+	      <img src="/images/ApexLogo.png" alt="Logo" class="logo" id="logo_image">
+	      <button class="navbar-toggle" id="navbar-toggle">
+	          <i class="fas fa-bars"></i> <!-- Hamburger icon -->
+	      </button>
+	      <ul class="nav-links">
+	          <li><a href="https://www.apexacademiccentre.co.za/">Home</a></li>
+	          <li><a href="https://bookatutorapexacademiccentre.co.za/">Tutors</a></li>
+	          <li class="dropdown">
+	              <a href="#" class="dropbtn">Tutoring <i class="fas fa-chevron-down"></i></a>
+	              <div class="dropdown-content">
+	                  <a href="https://www.apexacademiccentre.co.za/online-tutoring/">Online Tutoring</a>
+	                  <a href="https://www.apexacademiccentre.co.za/in-person-tutoring/">In Person Tutoring</a>
+	                  <a href="https://www.apexacademiccentre.co.za/matric-rewrite-2025/">Matric Re-Write</a>
+	                  <a href="https://www.apexacademiccentre.co.za/special-needs-tutoring/">Special Need Tutoring</a>
+	                  <a href="https://www.apexacademiccentre.co.za/cambridge-tutoring/">Cambridge Tutoring</a>
+	                  <a href="https://www.apexacademiccentre.co.za/university-college-tutors/">University/ College
+	                      Tutors</a>
+	                  <a href="https://www.apexacademiccentre.co.za/pearson-edexcel-tutoring/">Person Edexcel Tutoring</a>
+	              </div>
+	          </li>
+
+	          <li><a href="https://www.apexacademiccentre.co.za/homeschooling-support/">Homeschooling</a></li>
+	          <li><a href="https://www.apexacademiccentre.co.za/resources/">Resources</a></li>
+	          <li><a href="https://www.apexacademiccentre.co.za/contact-us/">Contact</a></li>
+
+
+	          <li>
+	              <button class="login-register" id="tutorBtn">
+	                 BOOK TUTOR
+	              </button>
+	          </li>
+	      </ul>
+	  </nav>
+
+
+	  <div class="whatsapp-wrapper">
+	      <a href="https://wa.me/27680351845?text=Hi%20*Apex%20Academic%20Centre*!%20I%20need%20more%20info%20about%20Apex%20Academic%20Centre%20https://www.apexacademiccentre.co.za" target="_blank" class="whatsapp-icon">
+	        <i class="fab fa-whatsapp" style="font-size: 40px; color: #fff; "></i> 
+	       </a>
+	</div>
+	
+	<!--MAIN CONTENT-->
+	
+	<div class="whole-wrapper">
+	    <div class="main-section">
+
+	        <div class="the-left">
+	            <!-- Tutor's Picture and Info Div -->
+	            <div class="upper-line">
+	                <div class="profile-picture-container">
+						<!--<img th:src="@{/images/{filename}(filename=${tutor.fullNames.replace(' ', '') + '.' + (tutor.imageBase64 == 'jpeg' ? 'jpeg' : 'png')})}" alt="Tutor Image"  loading="lazy" /> -->
+					   <img src="/images/Chrishner.jpeg" loading="lazy" alt="Image 1" class="image image1">
+	                    <div class="name" th:text="${tutor.fullNames}"></div>
+	                    <div class="age"><span th:text="${age}"></span> years old</div>
+	                    <div class="age"><span th:text="${tutor.experience}"></span> experience</div>
+	                </div>
+	                <div class="details">
+	                    <p>
+	                        <span class="static-text">Country :</span> <span class="detail-info" th:text="${tutor.country}"></span><br>
+	                        <span class="static-text">Province :</span> <span class="detail-info" th:text="${tutor.address}"></span><br>
+	                        <span class="static-text">Area :</span> <span class="detail-info" th:text="${tutor.area}"></span><br>
+	                        <span class="static-text">Curriculum :</span> <span class="detail-info" th:text="${tutor.syllabus}"></span><br>
+	                        <span class="static-text">Tutoring Option :</span> <span class="detail-info" th:text="${tutor.availability}"></span>
+	                    </p>
+	                    <div class="ratings">
+	                        <i class="fas fa-star" id="rate-icon"></i>
+	                        <span id="rate" th:text="${tutor.ratings}"></span> Ratings
+	                    </div>
+	                    <div class="feedback-item">
+	                        <i class="fas fa-check-circle" id="back-icon"></i>
+	                        <span class="back">Background Checked</span>
+	                    </div>
+	                </div>
+	            </div>
+
+	            <!--Book Tutor Button-->
+	            <div class="profile-action">
+	                <button id="book-tutor-button" class="book-tutor-button" onclick="goBack()">Back</button>
+	            </div>
+
+
+	            <div class="matric">
+					<img src="/images/Chrishner.jpeg" loading="lazy" alt="Image 1" class="image image1">
+	            </div>
+	        </div>
+
+	        <div class="right-side">
+
+	            <div class="profile-container">
+
+	                <div class="about-tutor-row">
+	                    <div class="about-tutor-title"><i class="far fa-user"></i>&nbsp;&nbsp;Bio</div>
+	                    <div class="about-tutor-info">
+	                        <p id="profile_about" th:text="${tutor.about}"></p>
+	                        <br>
+	                    </div>
+	                </div>
+	                <div class="qualifications-row">
+	                    <div class="qualifications-title"><i class="fas fa-university"></i>&nbsp;&nbsp;Education</div>
+
+	                    <div class="subjects-info" >
+							
+	                        <ul>
+								<th:block th:each="qualifications : ${#strings.setSplit(tutor.bio, ',')}">
+								   <li>•&nbsp;<span th:text="${qualifications}"></span></li>
+								</th:block>
+	                        </ul>
+	                        <br><br>
+	                    </div>
+	                    <br><br>
+
+	                </div>
+	                <div class="subjects-row">
+	                    <div class="subjects-title">
+	                        <div class="school_head">
+	                            <i class="fa fa-book"></i>&nbsp;&nbsp;Subjects
+	                        </div>
+	                        <div class="bongi">
+	                            School tutoring<br>
+	                            <span class="grades">GRD:1 - GRD:12</span>
+	                        </div>
+	                    </div>
+	                  
+	                        <div class="subjects-info">
+								
+								<th:block th:each="subject : ${#strings.setSplit(tutor.subjects, ',')}">
+								   <p th:text="${subject}"></p>
+								</th:block>
+	                  
+	                            <br><br>
+	                        </div>
+
+	                </div>
+	               
+	            </div>
+			
+			
+			<div class="short-paragraph">
+			    Your Personal Tutor in the Comfort of Your Own Home
+			    <br>
+			    <!--Book Tutor Button and find tutor-->
+			    <div class="button-action">
+					<button id="book-tutor-button" class="book-tutor-button">
+					    <a th:href="@{/bookingTutor/{email}(email=${tutor.email})}" style="text-decoration: none; color: white;">
+					        Book <span th:text="${tutor.fullNames}"></span>
+					    </a>
+					</button>
+			        <button id="find-tutor-button" class="find-tutor-button" onclick="window.location.href='/bookingTutor';">Find Me A Tutor</button>
+			    </div>
+			</div>
+			
+	            <div class="long-paragraph">
+	                See the feedback and accolades from individuals who have experienced my work firsthand.
+	            </div>
+
+				<section class="container">
+				    <div class="card__container swiper">
+				        <div class="card__content">
+				            <div class="reviews1">
+				                <i class="fas fa-star" id="rate-icon"></i>
+				                <span id="rev">Reviews</span>
+				            </div>
+
+				            <div class="swiper-wrapper">
+				               <!-- <th:block th:each="review : ${reviews}">
+				                    <article class="card__article swiper-slide">
+				                        <div class="card__data">
+				                            <h3 class="card__name" th:text="${review.name}"></h3>
+				                            <p class="card__description" th:text="${review.message}"> </p>
+				                        </div>
+				                    </article>
+				                </th:block> -->
+								
+								<article class="card__article swiper-slide" th:each="review : ${reviews}">
+								    <div class="card__data">
+								        <h3 class="card__name" th:text="${review.name}"></h3>
+								        <p class="card__description" th:text="${review.message}"></p>
+								    </div>
+								</article>
+								
+				            </div> 
+
+				            <!-- 
+				            <div class="swiper-button-next">
+				                <i class="ri-arrow-right-s-line"></i>
+				            </div>
+
+				            <div class="swiper-button-prev">
+				                <i class="ri-arrow-left-s-line"></i>
+				            </div>
+
+				          
+				            <div class="swiper-pagination"></div>
+							-->
+							
+				        </div>
+				    </div>
+				</section>
+
+	        </div>
+
+	    </div>
+
+	</div>
+	
+	<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+	
+	<script src="/js/swiper-bundle.min.js"></script> 
+	
+	<!--=============== MAIN JS ===============-->
+	 <script src="/js/main.js"></script> 
+
+	
+</body>
+</html>

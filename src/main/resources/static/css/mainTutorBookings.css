@@ -1,0 +1,2749 @@
+	@-ms-viewport {
+		width: device-width;
+	}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f6fffa;
+}
+
+/* Reset some default styles */
+body, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    background-color: white;
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    position: fixed; /* Fixes the navbar to the top of the viewport */
+    top: 0; /* Positions it at the top */
+    left: 0; /* Ensures it stretches from the left edge */
+    right: 0; /* Ensures it stretches to the right edge */
+    z-index: 1000; /* Ensures it stays on top of other content */
+}
+
+/* Logo image */
+.logo {
+    /*height: 60px;*/
+    margin-right: 20px;
+    margin-left: 30px;
+   /* width: 220px;*/
+    max-width: 100%;
+    height: auto;
+    
+}
+
+/* Navbar links container */
+.nav-links {
+	margin-left: 6%;
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* Pushes the nav links to the left */
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+/* Navbar links */
+.nav-links li {
+    position: relative;
+    margin: 0 10px;
+}
+
+.nav-links a {
+    color: #00154A;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+/* Dropdown container */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.nav-links a:hover {
+    color: #02A552; /* Ensure text color remains white on hover */
+}
+
+/* Nav-right styling */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds spacing between items */
+}
+
+/* Search container */
+.search-container {
+    position: relative;
+    margin-right: 10px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    z-index: 10; /* Ensures it's on top of other content */
+    height: 40px;
+}
+
+#search-input {
+    padding: 5px 30px 5px 30px;
+    border: 1px solid transparent; /* Hide the border */
+    border-radius: 4px;
+    font-size: 14px;
+    width: 0;
+    padding-left: 35px; /* Space for icon */
+    background: white;
+    outline: none;
+    transition: width 0.3s, padding 0.3s;
+}
+
+#search-input:focus {
+    width: 200px;
+    padding-left: 35px; /* Adjust for icon */
+}
+
+#search-button {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#search-button .search-icon {
+    font-size: 18px;
+    color: #00a550; /* Set the icon color */
+}
+
+.login-register {
+    background-color: #00a550;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.login-register .login-icon {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.navbar-toggle {
+    display: none; /* Hide by default */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px; /* Adjust icon size */
+    margin-left: auto; /* Push it to the right */
+  
+}
+
+   .hidSubjects{
+					
+      display: none;
+			       
+    }
+		
+
+@media  (max-width: 1024px)  {
+	
+	.hidSubjects{
+			
+	    display: block;
+		font-size: 18px;
+		color: #001549;
+	    font-weight: bold;
+			       
+			    }
+	
+    .navbar {
+        height: 60px; /* Adjust the height as needed */
+    }
+
+    .navbar-toggle {
+		color: #00a550;
+        display: block; /* Show toggle button */
+    }
+
+    .nav-links {
+        margin-top: 5%;
+        position: fixed; /* Fix position */
+        top: 0; /* Align to top */
+        right: -300px; /* Start off-screen */
+        height: 100%; /* Full height */
+        width: 250px; /* Width of the nav */
+        background-color: white; /* Background color */
+        flex-direction: column; /* Stack vertically */
+        transition: right 0.3s ease; /* Sliding effect */
+        z-index: 999; /* Ensure it is above other content */
+        
+    }
+
+    .nav-links.show {
+        right: 0; /* Slide in */
+    }
+
+    .search-container {
+        display: none; /* Hide search on small screens */
+    }
+
+    .login-register {
+        width: 100%; /* Full width */
+        margin: 10px 0; /* Add spacing */
+    }
+
+    .logo {
+        margin: 0; /* Remove margins */
+        position: absolute; /* Position it absolutely */
+        top: 10px; /* Adjust as needed */
+        left: 0; /* Align to the left */
+        width:70%;
+    }
+    
+    
+    #tutorBtn {
+     display: none;
+}
+
+}
+
+.main-section {
+  padding-top: 80px; /* Adjust this value based on the height of your navbar */
+}
+
+.main-class .tutorImage{
+	
+	  width: 100%;
+	  align-items: center;
+	  height: 235px;
+	
+}
+
+#tutorHead{
+	
+	color: #001549;
+	font-size: 35px;
+	margin-bottom: 0%;
+}
+
+#tutorPar{
+	
+	color: #00a550;
+	font-weight: bold;
+	
+}
+
+#tutorBtn {
+    background-color: #00a550;
+    height: 35px;
+    color: white;
+    width: 150px;
+    border-radius: 10px;
+    border-color: transparent;
+    font-size: 18px;
+    display: block; /* Make sure the button is a block element */
+    margin: 0 auto; /* Center the button */
+}
+
+#tutorBtn:hover {
+    background-color: white;
+    color: #02A552; /* Change text color on hover */
+}
+
+
+#tutorBtnClass{
+	
+	background-color: #00a550;
+    height: 35px;
+    color: white;
+    width: 150px;
+    border-radius: 10px;
+    border-color: transparent;
+    font-size: 18px;
+    display: block; /* Make sure the button is a block element */
+    margin: 0 auto; /* Center the button */
+}
+
+#tutorBtnClass:hover {
+    background-color: white;
+    color: #02A552; /* Change text color on hover */
+}
+
+
+/*TUTOR DESIGN*/
+
+.main-section {
+	
+ 	background-color: #f6fffa;
+    display: block ;
+  	font-family: 'Montserrat', sans-serif;
+
+  
+}
+
+/*TOP DIV START*/
+
+.main-section .top {
+
+  background-color: white;
+  display: flex; 
+  width: 65%;
+  margin-left: 110px;
+  border-radius: 10px 10px 0 0 ; /* top-left top-right bottom-right bottom-left */
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+  position: relative; /* Or 'absolute' if needed */
+  z-index: 10; /* Ensures it's on top of other content */
+  
+}
+
+.main-section .top .row {
+
+  background-color: white;
+  display: flex; 
+  flex: 4;
+  border-radius: 10px 0 0 0 ;
+
+  
+}
+
+.main-section .last {
+
+  background-color: white;
+  display: flex; 
+  width: 65%;
+  margin-left: 110px;
+  border-radius:0 0  10px 10px  ; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  position: relative;
+  z-index: 10;
+  
+}
+
+/* Profile Section */
+.main-section .top .row .profile {
+	
+  background-color: white;
+  height: 120px; /* Ensure consistent height */
+  width: 200px; /* Fixed width for the .profile div */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px 0 0 0;
+  margin-top: 20px;
+  padding-bottom: 13px;
+  
+}
+
+/* Profile Image */
+.main-section .top .row .profile img {
+	
+  padding-top: 8px;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; 
+ /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  position: relative;
+  z-index: 10; */
+  
+}
+
+/* Details Section */
+.main-section .top .row .details {
+  background-color: white;
+  height: fit-content;
+  flex: 3; /* Adjust this value to control the relative width */
+}
+
+/* Feedback Section */
+.main-section .top .feedback {
+  background-color: white;
+  height: auto;
+  flex: 1; /* Adjust this value to control the relative width */
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 0 10px 0 0;
+  padding-top: 25px;
+  gap: 10px;
+}
+
+
+.main-section .top .feedback a {
+  text-align: center; /* Center text within the anchor element */
+  display: block; /* Ensure the anchor is a block-level element */
+  padding: 10px; /* Optional: Add padding for better click area and visual appeal */
+  margin: 5px 0; /* Optional: Add vertical margin between links */
+  text-decoration: none;
+  color: inherit; /* Use the color from the parent element, or set a specific color */
+  font: inherit; /* Use the font from the parent element, or set a specific font */
+}
+
+/*LAST DESIGN*/
+
+.main-section .last .grades {
+  background-color: white;
+  height: 100%; /* Ensure consistent height */
+  width: 200px; /* Fixed width for the .profile div */
+  display: block;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px 0 0 0;
+  box-sizing: border-box; /* Ensure padding is included in the width and height */
+  
+}
+
+.inside{
+	display: flex;
+	gap: 5px;
+	align-items: center;
+    justify-content: center;
+}
+
+.main-section .last .grades h4{
+  
+   margin: 0; 
+   text-align: center; /* Center text within the paragraph */
+   color: #001549;
+   
+}
+
+.grades .inside{
+  display: grid; /* Use CSS Grid layout */
+  grid-template-columns: repeat(3, minmax(0, 52px)); /* Set a maximum width for each column */
+  gap: 5px; /* Minimal spacing between paragraphs */
+  
+}
+
+.grades p {
+  margin: 0; /* Remove default margin */
+  background-color: #e7eeff; /* Set the background color */
+  border-radius: 2px; /* Apply border radius for rounded corners */
+  text-align: center;
+  color: #00a550;
+  font-size: 13.5px;
+}
+
+
+.main-section .last .user-details {
+  background-color: white;
+  height: fit-content;
+  flex: 3; /* Adjust this value to control the relative width */
+ 
+}
+
+.main-section .last .user-details .about {
+  background-color: white;
+  height: fit-content;
+  flex: 2; /* Adjust this value to control the relative width */
+  align-content: start;
+  
+}
+
+.main-section .last .user-details .subjects {
+  background-color: white;
+  height: fit-content;
+  flex: 2; /* Adjust this value to control the relative width */
+  align-content: start;
+  
+
+}
+
+.subjects p {
+    display: inline-block; /* Allows width to be determined by content */
+    padding-left: 5px; /* Set padding to 3px */
+    padding-right: 5px; /* Set padding to 3px */
+    margin: 3px; /* Margin for spacing between paragraphs */
+    background-color: #e7eeff; /* Light background for visibility */
+    text-align: center;
+    border-radius: 3px;
+    color: #00a550;
+}
+
+
+.main-section .last .book-view {
+  background-color: white;
+  height: auto;
+  flex: 1; /* Adjust this value to control the relative width */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+   border-radius:0 0 10px 10px; 
+
+}
+
+.main-section .last .book-view button {
+    margin: 5px 0; /* Adjust margin to control spacing between buttons */
+    padding: 10px; /* Optional: Add padding for better visual appeal */
+    display: block; /* Ensure buttons are block-level elements */
+    width: 80%; /* Optional: Set width for buttons, or use auto */
+    text-align: center; /* Center text inside the button */
+    background-color: #02A552; /* Lime green background */
+    color: white; /* White text color for contrast */
+    border: none; /* Remove default border */
+    border-radius: 2px; /* Optional: Rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+    margin-left: 10px; 
+    font-size: 13px;
+    
+}
+
+.main-section .last .book-view .view_pp {
+    margin: 5px 0; /* Adjust margin to control spacing between buttons */
+    padding: 10px; /* Optional: Add padding for better visual appeal */
+    display: block; /* Ensure buttons are block-level elements */
+    width: 80%; /* Optional: Set width for buttons, or use auto */
+    text-align: center; /* Center text inside the button */
+    background-color: #001549; /* Lime green background */
+    color: white; /* White text color for contrast */
+    border: none; /* Remove default border */
+    border-radius: 2px; /* Optional: Rounded corners */
+    font-size: 13px; /* Optional: Adjust font size */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+    margin-left: 10px;
+    
+}
+
+@media screen and (max-width:768px){
+	
+	    #tutorBtn {
+     display: none;
+}
+
+         #tutorBtnClass {
+     display: block;
+    }
+	
+		 .hidSubjects{
+					
+			       display: block;
+			       font-size: 18px;
+			       color: #001549;
+			       font-weight: bold;
+			       
+			    }
+	
+     .tutorImage{
+		display: none;
+	}
+		
+	.image-wrapper .image1,
+	.image-wrapper .image2 {
+	    display: none; /* Hide both images */
+	    border-radius: 5px;
+	}
+	
+	#tutorHead {
+        font-size: 2rem; /* Smaller font size for mobile */
+    }
+
+    #tutorPar {
+        font-size: 1rem; /* Smaller font size for mobile */
+    }
+
+
+    .main-class br:nth-of-type(2) {
+        display: none; /* Hides the second <br> element */
+    }
+    
+    .main-section .top,
+    .main-section .last {
+        width: 90%; /* Increase width on smaller screens */
+        margin-left: auto; /* Center the section */
+        margin-right: auto; /* Center the section */
+    }
+
+    .main-section .top .row {
+        flex-direction: column; /* Stack profile and details vertically */
+    }
+    
+    
+    .main-section .top {
+        width: 100%; /* Full width on very small screens */
+        margin-left: 0; /* Remove left margin */
+        margin-right: 0; /* Remove right margin */
+        border-radius: 10px 10px 0 0; /* Keep border-radius */
+    }
+
+    .main-section .last {
+        width: 100%; /* Full width on very small screens */
+        margin-left: 0; /* Remove left margin */
+        margin-right: 0; /* Remove right margin */
+        border-radius: 0 0 10px 10px; /* Keep border-radius */
+    }
+
+    .main-section .top .row {
+        flex-direction: column; /* Ensure vertical stacking on smaller screens */
+    }
+    
+    .main-section .top {
+       flex-direction: column; /* Stack elements vertically */
+       height:fit-content ;
+       
+    }
+	
+  .main-section .top .row {
+    display: flex; /* Align profile and details in a row */
+    flex-direction: row; /* Ensure they stay in a row */
+    border-radius: 10px;
+    align-items: stretch; /* Ensure both items stretch to the same height */
+}
+
+.main-section .top .row .profile {
+    flex: 0 0 40%; /* Set profile width */
+    margin-right: 10px; /* Add space to the right */
+
+   
+}
+
+.main-section .top .row .profile img {
+   
+    width: 100%; /* Ensure it fits within the container */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Maintain aspect ratio */
+    padding: 5px;
+    padding-left: 20px;
+ 
+}
+
+.main-section .top .row .details {
+    flex: 1; /* Allow the details to grow */
+    font-size: 16px; /* Set font size */
+    display: flex; /* Make the details section a flex container */
+    align-items: center; /* Center content vertically */
+    border-radius: 10px;
+}
+
+#tutorNameDisplay {
+    font-size: 25px;
+}
+
+#tutorNameDisplay + br {
+    display: none; /* Hide the next <br> element */
+}
+
+
+    .main-section .top .feedback {
+        flex: 0 0 100%; /* Full width */
+        display: flex; /* Ensure feedback retains its flex properties */
+        flex-direction: row; /* Keep column layout */
+        padding-left: 10%;
+        position: relative;
+       
+    }
+    
+
+		.ratings {
+		    position: absolute;
+		    top: 1px;
+		    left: 5%; 
+		}
+		
+		.feedback-item {
+		    position: absolute;
+		    top: 1px;
+		    left: 35%; 
+		    
+		  }
+		  
+		      .main-section .last {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        width: 100%; /* Ensure full width */
+    }
+
+    .main-section .last .user-details {
+		
+         order: 1; /* Position .about first */
+          background-color: white;
+          height: fit-content;
+          flex: 2; /* Adjust this value to control the relative width */
+          align-content: start;
+          padding: 10px;
+          font-size: 18px;
+   
+    }
+    
+    .main-section .last .grades {
+        order: 2; /* Position .grades second */
+        margin: 0; 
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100%; /* Fixed width for the .profile div */
+        
+        }
+        
+        .main-section .last .grades h4{
+  
+		   margin: 0; 
+		   text-align: left; /* Center text within the paragraph */
+		   color: #001549;
+		   padding-left: 13px;
+		   font-size: 18px;
+		   
+		}
+		
+		.grades h4 + br {
+			    display: none; /* Hides the <br> element immediately following the <h4> */
+			}
+					
+		.grades .inside {
+			  display: flex; /* Change to flex layout */
+			  flex-wrap: wrap; /* Allow items to wrap to the next line */
+			  gap: 5px; /* Space between items */
+			  align-items: flex-start;
+              justify-content: flex-start;
+              padding-left: 14px;
+			}
+			
+			.grades p {
+			  display: inline-block; /* Allows width to be determined by content */
+			  padding-left: 5px; /* Set padding */
+			  padding-right: 5px; /* Set padding */
+			  margin: 3px; /* Margin for spacing between paragraphs */
+			  background-color: #e7eeff; /* Light background for visibility */
+			  border-radius: 3px; /* Apply border radius for rounded corners */
+			  text-align: center;
+			  color: #00a550;
+			  font-size: 13.5px; /* Retain original font size */
+			  align-items: flex-start;
+              justify-content: flex-start;
+              font-size: 15px;
+			}		
+		
+  
+    
+			    .main-section .last .user-details .subjects {
+			        order: 3; /* Position .subjects third */
+			        height: fit-content;
+				    align-content: start;
+			       
+			    }
+			    
+			    .hidSubjects{
+					
+			       display: block;
+			       font-size: 18px;
+			       color: #001549;
+			       font-weight: bold;
+			       
+			    }
+
+
+			    .main-section .last .book-view {
+			        order: 4; /* Position .book-view last */
+			        display: inline-flex;
+			    
+			        align-items: center;
+                    justify-content: center;
+			    }
+			    
+		
+				   .main-section .last .book-view .repoStyle{
+					
+					   display: inline-flex;   
+					   
+				   }
+
+				
+				
+				.main-section .last .book-view .repoStyle button{
+					
+					width: 150px;
+					border-radius: 10px;
+				}
+		  
+	
+}
+
+
+/*LANDSCAPE RESPONSIVE*/
+
+@media (min-width:480px) and (max-width:833px){
+	
+	 .navbar {
+        height: 50px; /* Adjust the height as needed */
+       
+    }
+
+    .navbar-toggle {
+		color: #00a550;
+        display: block; /* Show toggle button */
+    }
+
+    .nav-links {
+        margin-top: 5%;
+        position: fixed; /* Fix position */
+        top: 0; /* Align to top */
+        right: -300px; /* Start off-screen */
+        height: 100%; /* Full height */
+        width: 250px; /* Width of the nav */
+        background-color: white; /* Background color */
+        flex-direction: column; /* Stack vertically */
+        transition: right 0.3s ease; /* Sliding effect */
+        z-index: 999; /* Ensure it is above other content */
+        
+    }
+
+    .nav-links.show {
+        right: 0; /* Slide in */
+    }
+
+    .search-container {
+        display: none; /* Hide search on small screens */
+    }
+
+    .login-register {
+        width: 100%; /* Full width */
+        margin: 10px 0; /* Add spacing */
+    }
+
+    .logo {
+        margin: 0; /* Remove margins */
+        position: absolute; /* Position it absolutely */
+        top: 10px; /* Adjust as needed */
+        left: 0; /* Align to the left */
+        width:50%;
+        height:50px;
+    }
+    
+	
+			 .hidSubjects{
+					
+			       display: block;
+			       font-size: 18px;
+			       color: #001549;
+			       font-weight: bold;
+			       
+			    }
+ 
+	.image-wrapper .image1,
+	.image-wrapper .image2 {
+	    display: none; /* Hide both images */
+	  
+	}
+	
+	#tutorHead {
+        font-size: 2rem; /* Smaller font size for mobile */
+    }
+
+    #tutorPar {
+        font-size: 1rem; /* Smaller font size for mobile */
+    }
+
+    #tutorBtnss {
+        height: 40px; /* Slightly reduce height */
+        font-size: 1rem; /* Smaller font size for mobile */
+    }
+    
+        #tutorBtn {
+     display: none;
+}
+
+         #tutorBtnClass {
+     display: block;
+    }
+    
+    .main-class br:nth-of-type(2) {
+        display: none; /* Hides the second <br> element */
+    }
+    
+    .main-section .top,
+    .main-section .last {
+        width: 70%; /* Increase width on smaller screens */
+        margin-left: 10%; /* Center the section */
+        margin-right: auto; /* Center the section */
+    }
+
+    .main-section .top .row {
+        flex-direction: column; /* Stack profile and details vertically */
+    }
+    
+    
+    .main-section .top {
+        width: 70%; /* Full width on very small screens */
+        margin-left: 13%; /* Remove left margin */
+        margin-right: 0; /* Remove right margin */
+        border-radius: 10px 10px 0 0; /* Keep border-radius */
+    }
+
+    .main-section .last {
+        width: 70%; /* Full width on very small screens */
+        margin-left: 13%; /* Remove left margin */
+        margin-right: 0; /* Remove right margin */
+        border-radius: 0 0 10px 10px; /* Keep border-radius */
+    }
+
+    .main-section .top .row {
+        flex-direction: column; /* Ensure vertical stacking on smaller screens */
+    }
+    
+    .main-section .top {
+       flex-direction: column; /* Stack elements vertically */
+       height:fit-content ;
+       
+    }
+	
+  .main-section .top .row {
+    display: flex; /* Align profile and details in a row */
+    flex-direction: row; /* Ensure they stay in a row */
+    border-radius: 10px;
+    align-items: stretch; /* Ensure both items stretch to the same height */
+}
+
+.main-section .top .row .profile {
+    flex: 0 0 30%; /* Set profile width */
+    margin-right: 10px; /* Add space to the right */
+
+   
+}
+
+.main-section .top .row .profile img {
+   
+    width: 100%; /* Ensure it fits within the container */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Maintain aspect ratio */
+    padding: 5px;
+    padding-left: 20px;
+ 
+}
+
+.main-section .top .row .details {
+    flex: 1; /* Allow the details to grow */
+    font-size: 16px; /* Set font size */
+    display: flex; /* Make the details section a flex container */
+    align-items: center; /* Center content vertically */
+    border-radius: 10px;
+}
+
+#tutorNameDisplay {
+    font-size: 25px;
+}
+
+#tutorNameDisplay + br {
+    display: none; /* Hide the next <br> element */
+}
+
+
+    .main-section .top .feedback {
+        flex: 0 0 100%; /* Full width */
+        display: flex; /* Ensure feedback retains its flex properties */
+        flex-direction: row; /* Keep column layout */
+        padding-left: 10%;
+        position: relative;
+       
+    }
+    
+
+		.ratings {
+		    position: absolute;
+		    top: 1px;
+		    left: 5%; 
+		}
+		
+		.feedback-item {
+		    position: absolute;
+		    top: 1px;
+		    left: 35%; 
+		    
+		  }
+		  
+		      .main-section .last {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        width: 70%; /* Ensure full width */
+    }
+
+    .main-section .last .user-details {
+		
+         order: 1; /* Position .about first */
+          background-color: white;
+          height: fit-content;
+          flex: 2; /* Adjust this value to control the relative width */
+          align-content: start;
+          padding: 10px;
+          font-size: 18px;
+   
+    }
+    
+    .main-section .last .grades {
+        order: 2; /* Position .grades second */
+        margin: 0; 
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100%; /* Fixed width for the .profile div */
+        
+        }
+        
+        .main-section .last .grades h4{
+  
+		   margin: 0; 
+		   text-align: left; /* Center text within the paragraph */
+		   color: #001549;
+		   padding-left: 13px;
+		   font-size: 18px;
+		   
+		}
+		
+		.grades h4 + br {
+			    display: none; /* Hides the <br> element immediately following the <h4> */
+			}
+					
+		.grades .inside {
+			  display: flex; /* Change to flex layout */
+			  flex-wrap: wrap; /* Allow items to wrap to the next line */
+			  gap: 5px; /* Space between items */
+			  align-items: flex-start;
+              justify-content: flex-start;
+              padding-left: 14px;
+			}
+			
+			.grades p {
+			  display: inline-block; /* Allows width to be determined by content */
+			  padding-left: 5px; /* Set padding */
+			  padding-right: 5px; /* Set padding */
+			  margin: 3px; /* Margin for spacing between paragraphs */
+			  background-color: #e7eeff; /* Light background for visibility */
+			  border-radius: 3px; /* Apply border radius for rounded corners */
+			  text-align: center;
+			  color: #00a550;
+			  font-size: 13.5px; /* Retain original font size */
+			  align-items: flex-start;
+              justify-content: flex-start;
+              font-size: 15px;
+			}		
+		
+  
+    
+			    .main-section .last .user-details .subjects {
+			        order: 3; /* Position .subjects third */
+			        height: fit-content;
+				    align-content: start;
+			       
+			    }
+			    
+			    .hidSubjects{
+					
+			       display: block;
+			       font-size: 18px;
+			       color: #001549;
+			       font-weight: bold;
+			       
+			    }
+
+
+			    .main-section .last .book-view {
+			        order: 4; /* Position .book-view last */
+			        display: inline-flex;
+			    
+			        align-items: center;
+                    justify-content: center;
+			    }
+			    
+		
+				   .main-section .last .book-view .repoStyle{
+					
+					   display: inline-flex;   
+					   
+				   }
+
+				
+				
+				.main-section .last .book-view .repoStyle button{
+					
+					width: 150px;
+					border-radius: 10px;
+				}
+		  
+	
+}
+
+/*LANSCAPE TABLET*/
+
+@media (min-width:834px) and (max-width:1023px){
+	
+	 .navbar {
+        height: 60px; /* Adjust the height as needed */
+     
+       
+    }
+
+    .navbar-toggle {
+		color: #00a550;
+        display: block; /* Show toggle button */
+    }
+
+    .nav-links {
+        margin-top: 5%;
+        position: fixed; /* Fix position */
+        top: 0; /* Align to top */
+        right: -300px; /* Start off-screen */
+        height: 100%; /* Full height */
+        width: 250px; /* Width of the nav */
+        background-color: white; /* Background color */
+        flex-direction: column; /* Stack vertically */
+        transition: right 0.3s ease; /* Sliding effect */
+        z-index: 999; /* Ensure it is above other content */
+        
+    }
+
+    .nav-links.show {
+        right: 0; /* Slide in */
+    }
+
+    .search-container {
+        display: none; /* Hide search on small screens */
+    }
+
+    .login-register {
+        width: 100%; /* Full width */
+        margin: 10px 0; /* Add spacing */
+    }
+
+    .logo {
+        margin: 0; /* Remove margins */
+        position: absolute; /* Position it absolutely */
+        top: 10px; /* Adjust as needed */
+        left: 0; /* Align to the left */
+        width:35%;
+        height:60px;
+    }
+    
+	
+ 
+	.image-wrapper .image1,
+	.image-wrapper .image2 {
+	    display: none; /* Hide both images */
+	  
+	}
+	
+	#tutorHead {
+        font-size: 2rem; /* Smaller font size for mobile */
+    }
+
+    #tutorPar {
+        font-size: 1rem; /* Smaller font size for mobile */
+    }
+
+    #tutorBtnss {
+        height: 40px; /* Slightly reduce height */
+        font-size: 1rem; /* Smaller font size for mobile */
+    }
+    
+        #tutorBtn {
+     display: none;
+}
+
+         #tutorBtnClass {
+     display: block;
+    }
+    
+    .main-class br:nth-of-type(2) {
+        display: none; /* Hides the second <br> element */
+    }
+    
+    .main-section .top,
+    .main-section .last {
+        width: 70%; /* Increase width on smaller screens */
+        margin-left: 10%; /* Center the section */
+        margin-right: auto; /* Center the section */
+    }
+
+    .main-section .top .row {
+        flex-direction: column; /* Stack profile and details vertically */
+    }
+    
+    
+    .main-section .top {
+        width: 70%; /* Full width on very small screens */
+        margin-left: 13%; /* Remove left margin */
+        margin-right: 0; /* Remove right margin */
+        border-radius: 10px 10px 0 0; /* Keep border-radius */
+    }
+
+    .main-section .last {
+        width: 70%; /* Full width on very small screens */
+        margin-left: 13%; /* Remove left margin */
+        margin-right: 0; /* Remove right margin */
+        border-radius: 0 0 10px 10px; /* Keep border-radius */
+    }
+
+    .main-section .top .row {
+        flex-direction: column; /* Ensure vertical stacking on smaller screens */
+    }
+    
+    .main-section .top {
+       flex-direction: column; /* Stack elements vertically */
+       height:fit-content ;
+       
+    }
+	
+  .main-section .top .row {
+    display: flex; /* Align profile and details in a row */
+    flex-direction: row; /* Ensure they stay in a row */
+    border-radius: 10px;
+    align-items: stretch; /* Ensure both items stretch to the same height */
+}
+
+.main-section .top .row .profile {
+    flex: 0 0 30%; /* Set profile width */
+    margin-right: 10px; /* Add space to the right */
+
+   
+}
+
+.main-section .top .row .profile img {
+   
+    width: 100%; /* Ensure it fits within the container */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Maintain aspect ratio */
+    padding: 5px;
+    padding-left: 20px;
+ 
+}
+
+.main-section .top .row .details {
+    flex: 1; /* Allow the details to grow */
+    font-size: 16px; /* Set font size */
+    display: flex; /* Make the details section a flex container */
+    align-items: center; /* Center content vertically */
+    border-radius: 10px;
+}
+
+#tutorNameDisplay {
+    font-size: 25px;
+}
+
+#tutorNameDisplay + br {
+    display: none; /* Hide the next <br> element */
+}
+
+
+    .main-section .top .feedback {
+        flex: 0 0 100%; /* Full width */
+        display: flex; /* Ensure feedback retains its flex properties */
+        flex-direction: row; /* Keep column layout */
+        padding-left: 10%;
+        position: relative;
+       
+    }
+    
+
+		.ratings {
+		    position: absolute;
+		    top: 1px;
+		    left: 5%; 
+		}
+		
+		.feedback-item {
+		    position: absolute;
+		    top: 1px;
+		    left: 35%; 
+		    
+		  }
+		  
+		      .main-section .last {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        width: 70%; /* Ensure full width */
+    }
+
+    .main-section .last .user-details {
+		
+         order: 1; /* Position .about first */
+          background-color: white;
+          height: fit-content;
+          flex: 2; /* Adjust this value to control the relative width */
+          align-content: start;
+          padding: 10px;
+          font-size: 18px;
+   
+    }
+    
+    .main-section .last .grades {
+        order: 2; /* Position .grades second */
+        margin: 0; 
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100%; /* Fixed width for the .profile div */
+        
+        }
+        
+        .main-section .last .grades h4{
+  
+		   margin: 0; 
+		   text-align: left; /* Center text within the paragraph */
+		   color: #001549;
+		   padding-left: 13px;
+		   font-size: 18px;
+		   
+		}
+		
+		.grades h4 + br {
+			    display: none; /* Hides the <br> element immediately following the <h4> */
+			}
+					
+		.grades .inside {
+			  display: flex; /* Change to flex layout */
+			  flex-wrap: wrap; /* Allow items to wrap to the next line */
+			  gap: 5px; /* Space between items */
+			  align-items: flex-start;
+              justify-content: flex-start;
+              padding-left: 14px;
+			}
+			
+			.grades p {
+			  display: inline-block; /* Allows width to be determined by content */
+			  padding-left: 5px; /* Set padding */
+			  padding-right: 5px; /* Set padding */
+			  margin: 3px; /* Margin for spacing between paragraphs */
+			  background-color: #e7eeff; /* Light background for visibility */
+			  border-radius: 3px; /* Apply border radius for rounded corners */
+			  text-align: center;
+			  color: #00a550;
+			  font-size: 13.5px; /* Retain original font size */
+			  align-items: flex-start;
+              justify-content: flex-start;
+              font-size: 15px;
+			}		
+		
+  
+    
+			    .main-section .last .user-details .subjects {
+			        order: 3; /* Position .subjects third */
+			        height: fit-content;
+				    align-content: start;
+			       
+			    }
+			    
+			    .hidSubjects{
+					
+			       display: block;
+			       font-size: 18px;
+			       color: #001549;
+			       font-weight: bold;
+			       
+			    }
+
+
+			    .main-section .last .book-view {
+			        order: 4; /* Position .book-view last */
+			        display: inline-flex;
+			    
+			        align-items: center;
+                    justify-content: center;
+			    }
+			    
+		
+				   .main-section .last .book-view .repoStyle{
+					
+					   display: inline-flex;   
+					   
+				   }
+
+				
+				
+				.main-section .last .book-view .repoStyle button{
+					
+					width: 150px;
+					border-radius: 10px;
+				}
+		  
+	
+}
+
+@media (min-width: 1280px)  {
+	
+		#tutorBtnClass{
+		
+    display: none; /* Make sure the button is a block element */
+ 
+}
+
+}
+
+/*Ipad Pro*/
+
+@media (min-width: 1024px) and (max-width:1024px) {
+	
+	 .navbar {
+        height: 75px; /* Adjust the height as needed */
+       
+       
+    }
+
+    .navbar-toggle {
+		color: #00a550;
+        display: block; /* Show toggle button */
+    }
+
+    .nav-links {
+        margin-top: 5%;
+        position: fixed; /* Fix position */
+        top: 0; /* Align to top */
+        right: -300px; /* Start off-screen */
+        height: 100%; /* Full height */
+        width: 250px; /* Width of the nav */
+        background-color: white; /* Background color */
+        flex-direction: column; /* Stack vertically */
+        transition: right 0.3s ease; /* Sliding effect */
+        z-index: 999; /* Ensure it is above other content */
+        
+    }
+
+    .nav-links.show {
+        right: 0; /* Slide in */
+    }
+
+    .search-container {
+        display: none; /* Hide search on small screens */
+    }
+
+    .login-register {
+        width: 100%; /* Full width */
+        margin: 10px 0; /* Add spacing */
+    }
+
+    .logo {
+        margin: 0; /* Remove margins */
+        position: absolute; /* Position it absolutely */
+        top: 10px; /* Adjust as needed */
+        left: 0; /* Align to the left */
+        width:35%;
+        height:65px;
+    }
+    
+	
+	
+	.tutorImage{
+
+	  display: none;
+	
+   }
+  
+	
+ 
+	.image-wrapper .image1,
+	.image-wrapper .image2 {
+	    display: block; /* Hide both images */
+	  
+	}
+	
+	#tutorHead {
+        font-size: 2rem; /* Smaller font size for mobile */
+        
+    }
+
+    #tutorPar {
+        font-size: 1rem; /* Smaller font size for mobile */
+    }
+
+    #tutorBtnss {
+        height: 40px; /* Slightly reduce height */
+        font-size: 1rem; /* Smaller font size for mobile */
+    }
+    
+            #tutorBtn {
+     display: none;
+}
+
+         #tutorBtnClass {
+     display: block;
+    }
+    
+    
+    .main-class br:nth-of-type(2) {
+        display: none; /* Hides the second <br> element */
+    }
+    
+    .main-section .top,
+    .main-section .last {
+        width: 60%; /* Increase width on smaller screens */
+        margin-left: 10%; /* Center the section */
+        margin-right: auto; /* Center the section */
+    }
+
+    .main-section .top .row {
+        flex-direction: column; /* Stack profile and details vertically */
+    }
+    
+    
+    .main-section .top {
+        width: 60%; /* Full width on very small screens */
+        margin-left: 3%; /* Remove left margin */
+        margin-right: 0; /* Remove right margin */
+        border-radius: 10px 10px 0 0; /* Keep border-radius */
+    }
+
+    .main-section .last {
+        width: 60%; /* Full width on very small screens */
+        margin-left: 3%; /* Remove left margin */
+        margin-right: 0; /* Remove right margin */
+        border-radius: 0 0 10px 10px; /* Keep border-radius */
+    }
+
+    .main-section .top .row {
+        flex-direction: column; /* Ensure vertical stacking on smaller screens */
+    }
+    
+    .main-section .top {
+       flex-direction: column; /* Stack elements vertically */
+       height:fit-content ;
+       
+    }
+	
+  .main-section .top .row {
+    display: flex; /* Align profile and details in a row */
+    flex-direction: row; /* Ensure they stay in a row */
+    border-radius: 10px;
+    align-items: stretch; /* Ensure both items stretch to the same height */
+}
+
+.main-section .top .row .profile {
+    flex: 0 0 30%; /* Set profile width */
+    margin-right: 10px; /* Add space to the right */
+
+   
+}
+
+.main-section .top .row .profile img {
+   
+    width: 100%; /* Ensure it fits within the container */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Maintain aspect ratio */
+    padding: 5px;
+    padding-left: 20px;
+ 
+}
+
+.main-section .top .row .details {
+    flex: 1; /* Allow the details to grow */
+    font-size: 16px; /* Set font size */
+    display: flex; /* Make the details section a flex container */
+    align-items: center; /* Center content vertically */
+    border-radius: 10px;
+}
+
+#tutorNameDisplay {
+    font-size: 25px;
+}
+
+#tutorNameDisplay + br {
+    display: none; /* Hide the next <br> element */
+}
+
+
+    .main-section .top .feedback {
+        flex: 0 0 100%; /* Full width */
+        display: flex; /* Ensure feedback retains its flex properties */
+        flex-direction: row; /* Keep column layout */
+        padding-left: 10%;
+        position: relative;
+       
+    }
+    
+
+		.ratings {
+		    position: absolute;
+		    top: 1px;
+		    left: 5%; 
+		}
+		
+		.feedback-item {
+		    position: absolute;
+		    top: 1px;
+		    left: 35%; 
+		    
+		  }
+		  
+		      .main-section .last {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        width: 60%; /* Ensure full width */
+    }
+
+    .main-section .last .user-details {
+		
+         order: 1; /* Position .about first */
+          background-color: white;
+          height: fit-content;
+          flex: 2; /* Adjust this value to control the relative width */
+          align-content: start;
+          padding: 10px;
+          font-size: 18px;
+   
+    }
+    
+    .main-section .last .grades {
+        order: 2; /* Position .grades second */
+        margin: 0; 
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100%; /* Fixed width for the .profile div */
+        
+        }
+        
+        .main-section .last .grades h4{
+  
+		   margin: 0; 
+		   text-align: left; /* Center text within the paragraph */
+		   color: #001549;
+		   padding-left: 13px;
+		   font-size: 18px;
+		   
+		}
+		
+		.grades h4 + br {
+			    display: none; /* Hides the <br> element immediately following the <h4> */
+			}
+					
+		.grades .inside {
+			  display: flex; /* Change to flex layout */
+			  flex-wrap: wrap; /* Allow items to wrap to the next line */
+			  gap: 5px; /* Space between items */
+			  align-items: flex-start;
+              justify-content: flex-start;
+              padding-left: 14px;
+			}
+			
+			.grades p {
+			  display: inline-block; /* Allows width to be determined by content */
+			  padding-left: 5px; /* Set padding */
+			  padding-right: 5px; /* Set padding */
+			  margin: 3px; /* Margin for spacing between paragraphs */
+			  background-color: #e7eeff; /* Light background for visibility */
+			  border-radius: 3px; /* Apply border radius for rounded corners */
+			  text-align: center;
+			  color: #00a550;
+			  font-size: 13.5px; /* Retain original font size */
+			  align-items: flex-start;
+              justify-content: flex-start;
+              font-size: 15px;
+			}		
+		
+  
+    
+			    .main-section .last .user-details .subjects {
+			        order: 3; /* Position .subjects third */
+			        height: fit-content;
+				    align-content: start;
+			       
+			    }
+			    
+			    .hidSubjects{
+					
+			       display: block;
+			       font-size: 18px;
+			       color: #001549;
+			       font-weight: bold;
+			       
+			    }
+
+
+			    .main-section .last .book-view {
+			        order: 4; /* Position .book-view last */
+			        display: inline-flex;
+			    
+			        align-items: center;
+                    justify-content: center;
+			    }
+			    
+		
+				   .main-section .last .book-view .repoStyle{
+					
+					   display: inline-flex;   
+					   
+				   }
+
+				
+				
+				.main-section .last .book-view .repoStyle button{
+					
+					width: 150px;
+					border-radius: 10px;
+				}
+				
+
+	
+}
+
+@media (min-width: 906px) and (max-width: 1280px){
+	
+	
+	
+	    .navbar {
+        height: 70px; /* Adjust the height as needed */
+     
+    }
+
+    .navbar-toggle {
+		color: #00a550;
+        display: block; /* Show toggle button */
+        margin-right: 5%;
+    }
+
+    .nav-links {
+        margin-top: 5%;
+        position: fixed; /* Fix position */
+        top: 0; /* Align to top */
+        right: -300px; /* Start off-screen */
+        height: 100%; /* Full height */
+        width: 250px; /* Width of the nav */
+        background-color: white; /* Background color */
+        flex-direction: column; /* Stack vertically */
+        transition: right 0.3s ease; /* Sliding effect */
+        z-index: 999; /* Ensure it is above other content */
+        
+    }
+
+    .nav-links.show {
+        right: 0; /* Slide in */
+    }
+
+    .search-container {
+        display: none; /* Hide search on small screens */
+    }
+
+    .login-register {
+        width: 100%; /* Full width */
+        margin: 10px 0; /* Add spacing */
+    }
+
+    .logo {
+        margin: 0; /* Remove margins */
+        position: absolute; /* Position it absolutely */
+        top: 10px; /* Adjust as needed */
+        left: 0; /* Align to the left */
+        margin-left: 10%;
+    }
+	
+	
+	
+	.image-wrapper .image1,
+	.image-wrapper .image2 {
+	    display: none; /* Hide both images */
+	}
+	
+	    .main-section .top,
+    .main-section .last {
+        width: 60%; /* Increase width on smaller screens */
+        margin-left: 12%; /* Center the section */
+        width: 75%;
+        margin-right: auto; /* Center the section */
+    }
+    
+     #tutorBtn {
+     display: none;
+    }
+
+}
+
+@media (min-width: 1600px){
+	
+	.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    background-color: white;
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    position: fixed; /* Fixes the navbar to the top of the viewport */
+    top: 0; /* Positions it at the top */
+    left: 0; /* Ensures it stretches from the left edge */
+    right: 0; /* Ensures it stretches to the right edge */
+    z-index: 1000; /* Ensures it stays on top of other content */
+}
+
+/* Logo image */
+.logo {
+    /*height: 60px;*/
+    margin-right: 20px;
+    margin-left: 30px;
+   /* width: 220px;*/
+    max-width: 100%;
+    height: auto;
+    
+}
+
+
+/* Navbar links container */
+.nav-links {
+	margin-left: 9%;
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* Pushes the nav links to the left */
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Navbar links */
+.nav-links li {
+    position: relative;
+    margin: 0 10px;
+}
+
+.nav-links a {
+    color: #00154A;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+/* Dropdown container */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.nav-links a:hover {
+    color: #02A552; /* Ensure text color remains white on hover */
+}
+
+/* Nav-right styling */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds spacing between items */
+   
+    
+  
+}
+
+/* Search container */
+.search-container {
+    position: relative;
+    margin-right: 20px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    z-index: 10; /* Ensures it's on top of other content */
+    height: 40px;
+    margin-left: 15%;
+ 
+}
+
+#search-input {
+    padding: 5px 30px 5px 30px;
+    border: 1px solid transparent; /* Hide the border */
+    border-radius: 4px;
+    font-size: 25px;
+    width: 0;
+    padding-left: 35px; /* Space for icon */
+    background: white;
+    outline: none;
+    transition: width 0.3s, padding 0.3s;
+}
+
+#search-input:focus {
+    width: 200px;
+    padding-left: 35px; /* Adjust for icon */
+}
+
+#search-button {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#search-button .search-icon {
+    font-size: 18px;
+    color: #00a550; /* Set the icon color */
+}
+
+.login-register {
+    background-color: #00a550;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left : 15%;
+     width: 100%;
+}
+
+.login-register .login-icon {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.main-section {
+  padding-top: 80px; /* Adjust this value based on the height of your navbar */
+}
+
+.main-class .tutorImage{
+	
+	  width: 100%;
+	  align-items: center;
+	  height: 350px;
+	
+}
+
+#tutorHead{
+	
+	color: #001549;
+	font-size: 50px;
+}
+
+#tutorPar{
+	
+	color: #00a550;
+	font-weight: bold;
+	font-size: 25px;
+}
+
+#tutorBtn {
+    background-color: #00a550;
+    height: 50px;
+    color: white;
+    width: 200px;
+    border-radius: 10px;
+    border-color: transparent;
+    font-size: 18px;
+    display: block; /* Make sure the button is a block element */
+    margin: 0 auto; /* Center the button */
+}
+
+#tutorBtn:hover {
+    background-color: white;
+    color: #02A552; /* Change text color on hover */
+}
+
+
+
+.main-section .top {
+
+  background-color: WHITE;
+  display: flex; 
+  width: 56%;
+  margin-left: 150px;
+  border-radius: 10px 10px 0 0 ; /* top-left top-right bottom-right bottom-left */
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+  position: relative; /* Or 'absolute' if needed */
+  z-index: 10; /* Ensures it's on top of other content */
+  height: 23%;
+  margin-left: 12%;
+ 
+  
+}
+
+.main-section .last {
+
+  background-color: white;
+  display: flex; 
+  width: 56%;
+  margin-left: 150px;
+  border-radius:0 0  10px 10px  ; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  position: relative;
+  z-index: 10;
+   margin-left: 12%;
+  
+  
+}
+
+/* Profile Section */
+.main-section .top .row .profile {
+  background-color: WHITE;
+  height: 75%; /* Ensure consistent height */
+  width: 30%; /* Fixed width for the .profile div */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px 0 0 0;
+  margin-top: 20px;
+  padding-bottom: 13px;
+}
+
+/* Profile Image */
+.main-section .top .row .profile img {
+	
+  padding-top: 8px;
+  max-width: 80%;
+  max-height: 100%;
+  object-fit: contain; 
+
+}
+
+/* Details Section */
+.main-section .top .row .details {
+	margin-top: 2%;
+  background-color: WHITE;
+  height: fit-content;
+  flex: 3; /* Adjust this value to control the relative width */
+}
+
+/* Feedback Section */
+.main-section .top .feedback {
+  background-color: WHITE;
+  height: fit-content;
+  flex: 1; /* Adjust this value to control the relative width */
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 0 10px 0 0;
+  padding-top: 25px;
+  gap: 10px;
+}
+
+
+.main-section .top .feedback a {
+  text-align: center; /* Center text within the anchor element */
+  display: block; /* Ensure the anchor is a block-level element */
+  padding: 10px; /* Optional: Add padding for better click area and visual appeal */
+  margin: 5px 0; /* Optional: Add vertical margin between links */
+  text-decoration: none;
+  color: inherit; /* Use the color from the parent element, or set a specific color */
+  font: inherit; /* Use the font from the parent element, or set a specific font */
+}
+
+
+#tutorNameDisplay{
+	
+	  font-size: 25px;
+}
+
+
+
+.image-wrapper {
+ 
+  margin-right: 8%;
+  display: block;
+
+}
+
+
+/*LAST TIME*/
+
+.main-section .last .grades {
+  background-color: white;
+  height: 100%; /* Ensure consistent height */
+  width: 200px; /* Fixed width for the .profile div */
+  display: block;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px 0 0 0;
+  box-sizing: border-box; /* Ensure padding is included in the width and height */
+  
+}
+
+.inside{
+	display: flex;
+	gap: 5px;
+	align-items: center;
+    justify-content: center;
+}
+
+.main-section .last .grades h4{
+  
+   margin: 0; 
+   text-align: center; /* Center text within the paragraph */
+   color: #001549;
+   
+}
+
+.grades .inside{
+  display: grid; /* Use CSS Grid layout */
+  grid-template-columns: repeat(3, minmax(0, 52px)); /* Set a maximum width for each column */
+  gap: 5px; /* Minimal spacing between paragraphs */
+  
+}
+
+.grades p {
+  margin: 0; /* Remove default margin */
+  background-color: #e7eeff; /* Set the background color */
+  border-radius: 2px; /* Apply border radius for rounded corners */
+  text-align: center;
+  color: #00a550;
+  font-size: 13.5px;
+}
+
+.main-section .last .user-details {
+	padding-left:2%;
+  background-color: white;
+  height: fit-content;
+  flex: 3; /* Adjust this value to control the relative width */
+ 
+}
+
+.main-section .last .user-details .about {
+  background-color: white;
+  height: fit-content;
+  flex: 2; /* Adjust this value to control the relative width */
+  align-content: start;
+  
+}
+
+.main-section .last .user-details .subjects {
+  background-color: white;
+  height: fit-content;
+  flex: 2; /* Adjust this value to control the relative width */
+  align-content: start;
+  
+
+}
+
+.subjects p {
+    display: inline-block; /* Allows width to be determined by content */
+    padding-left: 5px; /* Set padding to 3px */
+    padding-right: 5px; /* Set padding to 3px */
+    margin: 3px; /* Margin for spacing between paragraphs */
+    background-color: #e7eeff; /* Light background for visibility */
+    text-align: center;
+    border-radius: 3px;
+    color: #00a550;
+}
+
+
+.main-section .last .book-view {
+  background-color: white;
+  height: auto;
+  flex: 1; /* Adjust this value to control the relative width */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+   border-radius:0 0 10px 10px; 
+
+}
+
+.main-section .last .book-view button {
+    margin: 5px 0; /* Adjust margin to control spacing between buttons */
+    padding: 10px; /* Optional: Add padding for better visual appeal */
+    display: block; /* Ensure buttons are block-level elements */
+    width: 80%; /* Optional: Set width for buttons, or use auto */
+    text-align: center; /* Center text inside the button */
+    background-color: #02A552; /* Lime green background */
+    color: white; /* White text color for contrast */
+    border: none; /* Remove default border */
+    border-radius: 2px; /* Optional: Rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+    margin-left: 10px; 
+    font-size: 13px;
+    
+}
+
+.main-section .last .book-view .view_pp {
+    margin: 5px 0; /* Adjust margin to control spacing between buttons */
+    padding: 10px; /* Optional: Add padding for better visual appeal */
+    display: block; /* Ensure buttons are block-level elements */
+    width: 80%; /* Optional: Set width for buttons, or use auto */
+    text-align: center; /* Center text inside the button */
+    background-color: #001549; /* Lime green background */
+    color: white; /* White text color for contrast */
+    border: none; /* Remove default border */
+    border-radius: 2px; /* Optional: Rounded corners */
+    font-size: 13px; /* Optional: Adjust font size */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+    margin-left: 10px;
+    
+}
+
+.main-section .last .book-view button:hover {
+    background-color: white; /* Change background to white on hover */
+    color: #02A552; /* Change text color to lime green on hover */
+}
+
+
+}
+
+@media (min-width: 1800px) {
+	.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    background-color: white;
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    position: fixed; /* Fixes the navbar to the top of the viewport */
+    top: 0; /* Positions it at the top */
+    left: 0; /* Ensures it stretches from the left edge */
+    right: 0; /* Ensures it stretches to the right edge */
+    z-index: 1000; /* Ensures it stays on top of other content */
+}
+
+/* Logo image */
+.logo {
+    /*height: 60px;*/
+    margin-right: 20px;
+    margin-left: 9%;
+   /* width: 220px;*/
+    max-width: 100%;
+    height: auto;
+    
+}
+
+
+/* Navbar links container */
+.nav-links {
+	margin-left: 9%;
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* Pushes the nav links to the left */
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Navbar links */
+.nav-links li {
+    position: relative;
+    margin: 0 10px;
+}
+
+.nav-links a {
+    color: #00154A;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+/* Dropdown container */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.nav-links a:hover {
+    color: #02A552; /* Ensure text color remains white on hover */
+}
+
+/* Nav-right styling */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds spacing between items */
+   
+    
+  
+}
+
+/* Search container */
+.search-container {
+    position: relative;
+    margin-right: 20px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    z-index: 10; /* Ensures it's on top of other content */
+    height: 40px;
+    margin-left: 15%;
+ 
+}
+
+#search-input {
+    padding: 5px 30px 5px 30px;
+    border: 1px solid transparent; /* Hide the border */
+    border-radius: 4px;
+    font-size: 25px;
+    width: 0;
+    padding-left: 35px; /* Space for icon */
+    background: white;
+    outline: none;
+    transition: width 0.3s, padding 0.3s;
+}
+
+#search-input:focus {
+    width: 200px;
+    padding-left: 35px; /* Adjust for icon */
+}
+
+#search-button {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#search-button .search-icon {
+    font-size: 18px;
+    color: #00a550; /* Set the icon color */
+}
+
+.login-register {
+    background-color: #00a550;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left : 15%;
+     width: 100%;
+}
+
+.login-register .login-icon {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.main-section {
+  padding-top: 80px; /* Adjust this value based on the height of your navbar */
+}
+
+.main-class .tutorImage{
+	
+	  width: 100%;
+	  align-items: center;
+	  height: 350px;
+	
+}
+
+#tutorHead{
+	
+	color: #001549;
+	font-size: 50px;
+}
+
+#tutorPar{
+	
+	color: #00a550;
+	font-weight: bold;
+	font-size: 25px;
+}
+
+#tutorBtn {
+    background-color: #00a550;
+    height: 50px;
+    color: white;
+    width: 200px;
+    border-radius: 10px;
+    border-color: transparent;
+    font-size: 18px;
+    display: block; /* Make sure the button is a block element */
+    margin: 0 auto; /* Center the button */
+}
+
+#tutorBtn:hover {
+    background-color: white;
+    color: #02A552; /* Change text color on hover */
+}
+
+
+
+.main-section .top {
+
+  background-color: WHITE;
+  display: flex; 
+  width: 50%;
+  margin-left: 150px;
+  border-radius: 10px 10px 0 0 ; /* top-left top-right bottom-right bottom-left */
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+  position: relative; /* Or 'absolute' if needed */
+  z-index: 10; /* Ensures it's on top of other content */
+  height: 23%;
+  margin-left: 15%;
+ 
+  
+}
+
+.main-section .last {
+
+  background-color: white;
+  display: flex; 
+  width: 50%;
+  margin-left: 150px;
+  border-radius:0 0  10px 10px  ; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  position: relative;
+  z-index: 10;
+   margin-left: 15%;
+  
+  
+}
+
+/* Profile Section */
+.main-section .top .row .profile {
+  background-color: WHITE;
+  height: 75%; /* Ensure consistent height */
+  width: 30%; /* Fixed width for the .profile div */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px 0 0 0;
+  margin-top: 20px;
+  padding-bottom: 13px;
+}
+
+/* Profile Image */
+.main-section .top .row .profile img {
+	
+  padding-top: 8px;
+  max-width: 80%;
+  max-height: 100%;
+  object-fit: contain; 
+
+}
+
+/* Details Section */
+.main-section .top .row .details {
+	margin-top: 2%;
+  background-color: WHITE;
+  height: fit-content;
+  flex: 3; /* Adjust this value to control the relative width */
+}
+
+/* Feedback Section */
+.main-section .top .feedback {
+  background-color: WHITE;
+  height: fit-content;
+  flex: 1; /* Adjust this value to control the relative width */
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 0 10px 0 0;
+  padding-top: 25px;
+  gap: 10px;
+}
+
+
+.main-section .top .feedback a {
+  text-align: center; /* Center text within the anchor element */
+  display: block; /* Ensure the anchor is a block-level element */
+  padding: 10px; /* Optional: Add padding for better click area and visual appeal */
+  margin: 5px 0; /* Optional: Add vertical margin between links */
+  text-decoration: none;
+  color: inherit; /* Use the color from the parent element, or set a specific color */
+  font: inherit; /* Use the font from the parent element, or set a specific font */
+}
+
+
+#tutorNameDisplay{
+	
+	  font-size: 25px;
+}
+
+
+
+.image-wrapper {
+ 
+  margin-right: 15%;
+  display: block;
+
+}
+
+
+/*LAST TIME*/
+
+.main-section .last .grades {
+  background-color: white;
+  height: 100%; /* Ensure consistent height */
+  width: 200px; /* Fixed width for the .profile div */
+  display: block;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px 0 0 0;
+  box-sizing: border-box; /* Ensure padding is included in the width and height */
+  
+}
+
+.inside{
+	display: flex;
+	gap: 5px;
+	align-items: center;
+    justify-content: center;
+}
+
+.main-section .last .grades h4{
+  
+   margin: 0; 
+   text-align: center; /* Center text within the paragraph */
+   color: #001549;
+   
+}
+
+.grades .inside{
+  display: grid; /* Use CSS Grid layout */
+  grid-template-columns: repeat(3, minmax(0, 52px)); /* Set a maximum width for each column */
+  gap: 5px; /* Minimal spacing between paragraphs */
+  
+}
+
+.grades p {
+  margin: 0; /* Remove default margin */
+  background-color: #e7eeff; /* Set the background color */
+  border-radius: 2px; /* Apply border radius for rounded corners */
+  text-align: center;
+  color: #00a550;
+  font-size: 13.5px;
+}
+
+.main-section .last .user-details {
+	padding-left:2%;
+  background-color: white;
+  height: fit-content;
+  flex: 3; /* Adjust this value to control the relative width */
+ 
+}
+
+.main-section .last .user-details .about {
+  background-color: white;
+  height: fit-content;
+  flex: 2; /* Adjust this value to control the relative width */
+  align-content: start;
+  
+}
+
+.main-section .last .user-details .subjects {
+  background-color: white;
+  height: fit-content;
+  flex: 2; /* Adjust this value to control the relative width */
+  align-content: start;
+  
+
+}
+
+.subjects p {
+    display: inline-block; /* Allows width to be determined by content */
+    padding-left: 5px; /* Set padding to 3px */
+    padding-right: 5px; /* Set padding to 3px */
+    margin: 3px; /* Margin for spacing between paragraphs */
+    background-color: #e7eeff; /* Light background for visibility */
+    text-align: center;
+    border-radius: 3px;
+    color: #00a550;
+}
+
+
+.main-section .last .book-view {
+  background-color: white;
+  height: auto;
+  flex: 1; /* Adjust this value to control the relative width */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+   border-radius:0 0 10px 10px; 
+
+}
+
+.main-section .last .book-view button {
+    margin: 5px 0; /* Adjust margin to control spacing between buttons */
+    padding: 10px; /* Optional: Add padding for better visual appeal */
+    display: block; /* Ensure buttons are block-level elements */
+    width: 80%; /* Optional: Set width for buttons, or use auto */
+    text-align: center; /* Center text inside the button */
+    background-color: #02A552; /* Lime green background */
+    color: white; /* White text color for contrast */
+    border: none; /* Remove default border */
+    border-radius: 2px; /* Optional: Rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+    margin-left: 10px; 
+    font-size: 13px;
+    
+}
+
+.main-section .last .book-view .view_pp {
+    margin: 5px 0; /* Adjust margin to control spacing between buttons */
+    padding: 10px; /* Optional: Add padding for better visual appeal */
+    display: block; /* Ensure buttons are block-level elements */
+    width: 80%; /* Optional: Set width for buttons, or use auto */
+    text-align: center; /* Center text inside the button */
+    background-color: #001549; /* Lime green background */
+    color: white; /* White text color for contrast */
+    border: none; /* Remove default border */
+    border-radius: 2px; /* Optional: Rounded corners */
+    font-size: 13px; /* Optional: Adjust font size */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+    margin-left: 10px;
+    
+}
+
+.main-section .last .book-view button:hover {
+    background-color: white; /* Change background to white on hover */
+    color: #02A552; /* Change text color to lime green on hover */
+}
+
+}
+
+
+
+.main-section .last .book-view button:hover {
+    background-color: white; /* Change background to white on hover */
+    color: #02A552; /* Change text color to lime green on hover */
+}
+
+
+.feedback-item i {
+    font-size: 18px; /* Size of the icon */
+  
+}
+
+.feedback-item .back{
+	
+	color: #02A552;
+}
+
+.feedback-item #back-icon{
+	
+	color: #02A552;
+	
+}
+
+
+.ratings #rate-icon{
+	
+	color:#FFDB58;
+	
+}
+
+
+.feedback-item span {
+    font-size: 14px; /* Size of the text */
+}
+
+
+
+.detail-info {
+    color: #00a550;
+    font-size: 14px;
+    font-weight: bold;
+    
+}
+
+.static-text {
+    color: #001549;
+    font-style: italic;
+    font-weight: bold;
+    
+}
+
+#h{
+	display: none;
+}
+
+/*SCROLLING ON TUTOR*/
+
+.tutor-container {
+    max-height: 660px; /* Adjust height as needed */
+    overflow: auto; /* Allows scrolling */
+    padding: 10px;
+    scrollbar-width: thin; /* Thin scrollbar for Firefox */
+    scrollbar-color: transparent transparent; /* Transparent scrollbars for Firefox */
+  
+}
+
+/* WebKit browsers (Chrome, Safari) */
+.tutor-container::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+.tutor-container::-webkit-scrollbar-track {
+    background: transparent; /* Background of the track */
+}
+
+.tutor-container::-webkit-scrollbar-thumb {
+    background: transparent; /* Transparent scrollbar thumb */
+}
+
+
+/*FIXED IMAGES FOR THE TUTOR*/
+
+.tutor-wrapper {
+  position: relative;
+}
+
+.image-wrapper {
+  position: absolute; /* Initially positioned within the page flow */
+  right: 80px;
+  display: block;
+  max-height: 800px; /* Adjust height as needed */
+}
+
+.image {
+  width: 250px; /* Adjust size as needed */
+  height: 300px;
+  margin-bottom: 20px; /* Adjust spacing between images */
+  display: block;
+  
+}
+

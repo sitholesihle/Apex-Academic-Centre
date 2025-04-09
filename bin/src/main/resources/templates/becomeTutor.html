@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="en"> <!--1024 834 768-->
+
+<head>
+
+	<head>
+
+		<title>Become a Tutor | Join Apex Academic Centre's Tutoring Team</title>
+		<meta name="description"
+			content="Unlock your potential as a tutor with Apex Academic Centre. Explore our tutoring opportunities and join our team of expert educators.">
+
+		<!-- SEO Image -->
+		<link rel="icon" href="seo_logo.jpeg" sizes="50x50" type="image/x-icon">
+
+		<!-- Open Graph Protocol (Facebook, LinkedIn) -->
+		<meta property="og:title" content="Become a Tutor | Join Apex Academic Centre's Tutoring Team">
+		<meta property="og:description"
+			content="Unlock your potential as a tutor with Apex Academic Centre. Explore our tutoring opportunities and join our team of expert educators.">
+		<meta property="og:image"
+			content="https://bookatutorapexacademiccentre.co.za/Become A Tutor - Apex Academic Centre.jpeg">
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="630">
+		<meta property="og:url" content="https://bookatutorapexacademiccentre.co.za/become-tutor">
+		<meta property="og:type" content="website">
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Become a Tutor | Join Apex Academic Centre's Tutoring Team">
+		<meta name="twitter:description"
+			content="Unlock your potential as a tutor with Apex Academic Centre. Explore our tutoring opportunities and join our team of expert educators.">
+		<meta name="twitter:image"
+			content="https://bookatutorapexacademiccentre.co.za/Become A Tutor - Apex Academic Centre.jpeg">
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+		<link rel="preload" href="/css/mainTutorBookings.css" as="style" />
+		<link rel="stylesheet" href="/css/mainTutorBookings.css" th:href="@{/css/mainTutorBookings.css}" />
+
+		<link rel="preload" href="/css/matricRewrite.css" as="style" />
+		<link rel="stylesheet" href="/css/matricRewrite.css" th:href="@{/css/matricRewrite.css}" />
+
+		<style>
+			.checkbox-container {
+				display: inline-flex;
+			}
+
+			.opt {
+				display: none;
+			}
+
+			#fProvince {
+				display: none;
+				/* Hide province by default */
+			}
+
+			.popup {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+				z-index: 1000;
+			}
+
+			.popup-content {
+				background-color: #fff;
+				padding: 20px;
+				border-radius: 5px;
+				width: 500px;
+				text-align: center;
+				cursor: pointer;
+			}
+
+			.popup-content:hover {
+				transform: scale(1.05);
+				/* Slightly enlarge on hover */
+			}
+
+			.close {
+				cursor: pointer;
+				float: right;
+				font-size: 20px;
+			}
+
+			.hide {
+				display: none;
+			}
+
+			#pack-details {
+				text-align: left;
+				/* Aligns text to the left */
+				/* Optional: You can also add padding or margin for better appearance */
+				padding: 10px;
+			}
+
+			.package-details:hover {
+				transform: scale(1.05);
+				/* Slightly enlarge on hover */
+			}
+
+			#popular {
+				color: #001549;
+				font-weight: bold;
+			}
+
+			@media screen and (max-width: 1024px) {
+
+
+				.popup {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					position: fixed;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: rgba(0, 0, 0, 0.5);
+					z-index: 1000;
+				}
+
+				.popup-content {
+					background-color: #fff;
+					padding: 20px;
+					border-radius: 5px;
+					width: 300px;
+					text-align: center;
+					cursor: pointer;
+				}
+
+				.popup-content:hover {
+					transform: scale(1.05);
+					/* Slightly enlarge on hover */
+					cursor: pointer;
+				}
+
+				.close {
+					cursor: pointer;
+					float: right;
+					font-size: 20px;
+				}
+
+				.hide {
+					display: none;
+				}
+
+				#pack-details {
+					text-align: left;
+					/* Aligns text to the left */
+					/* Optional: You can also add padding or margin for better appearance */
+					padding: 10px;
+				}
+
+				.package-details:hover {
+					transform: scale(1.05);
+					/* Slightly enlarge on hover */
+					cursor: pointer;
+				}
+
+				#popular {
+					color: #001549;
+					font-weight: bold;
+
+				}
+
+			}
+
+			.subject-label {
+				display: flex;
+				/* Use flex to align checkbox and text */
+				align-items: center;
+				/* Center vertically */
+				overflow: hidden;
+				/* Hide overflow text */
+				text-overflow: ellipsis;
+				/* Show ellipsis for overflow text */
+				white-space: nowrap;
+				/* Prevent text wrapping */
+				width: calc(25% - 15px);
+				/* Set width for each label to fit 4 columns */
+				margin-bottom: 10px;
+				/* Space between checkboxes */
+			}
+
+			#subjectContainer {
+				display: none;
+				/* Initially hidden */
+				/*flex-wrap: wrap;
+			/* Allow wrapping of checkboxes */
+
+			}
+
+			#tutorNameDisplay {
+				font-size: 20px;
+			}
+
+			.wrapper {
+				padding-top: 2%;
+			}
+
+			#toptop {
+				font-size: 18px;
+			}
+
+
+			#termsCondition {
+
+				color: #02A552;
+			}
+
+
+			.flex-container {
+				display: none;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+			}
+
+			.information {
+				text-align: center;
+				/* Center text and inline elements */
+			}
+
+			#info {
+				display: inline-block;
+				/* Allow the UL to respect the width and center it */
+				list-style-type: none;
+				/* Optional: Remove bullet points */
+				padding: 0;
+				/* Remove default padding */
+				margin: 0 auto;
+				/* Center the UL in its container */
+				text-align: left;
+				/* Align text within the UL to the left */
+			}
+
+			.lefty {
+				color: green;
+				font-size: 12px;
+			}
+		</style>
+	</head>
+
+<body>
+
+	<nav class="navbar">
+		<img src="/images/ApexLogo.png" alt="Logo" class="logo" id="logo_image">
+		<button class="navbar-toggle" id="navbar-toggle">
+			<i class="fas fa-bars"></i> <!-- Hamburger icon -->
+		</button>
+		<ul class="nav-links">
+			<li><a href="https://www.apexacademiccentre.co.za/">Home</a></li>
+			<li class="dropdown">
+				<a href="#" class="dropbtn">Tutoring <i class="fas fa-chevron-down"></i></a>
+				<div class="dropdown-content">
+					<a href="https://www.apexacademiccentre.co.za/online-tutoring/">Online Tutoring</a>
+					<a href="https://www.apexacademiccentre.co.za/in-person-tutoring/">In Person Tutoring</a>
+					<a href="https://www.apexacademiccentre.co.za/matric-rewrite-2025/">Matric Re-Write</a>
+					<a href="https://www.apexacademiccentre.co.za/special-needs-tutoring/">Special Need Tutoring</a>
+					<a href="https://www.apexacademiccentre.co.za/cambridge-tutoring/">Cambridge Tutoring</a>
+					<a href="https://www.apexacademiccentre.co.za/university-college-tutors/">University/ College
+						Tutors</a>
+					<a href="https://www.apexacademiccentre.co.za/pearson-edexcel-tutoring/">Person Edexcel Tutoring</a>
+				</div>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropbtn">Online Classes <i class="fas fa-chevron-down"></i></a>
+				<div class="dropdown-content">
+					<a href="https://www.apexacademiccentre.co.za/mathematics-online-class/">Mathematics Online
+						Class</a>
+					<a href="https://www.apexacademiccentre.co.za/matric-rewrite-2025/">Matric Rewrite 2025</a>
+				</div>
+			</li>
+			<li><a href="https://www.apexacademiccentre.co.za/homeschooling-support/">Homeschooling</a></li>
+			<li><a href="https://www.apexacademiccentre.co.za/resources/">Resources</a></li>
+			<li><a href="https://www.apexacademiccentre.co.za/contact-us/">Contact</a></li>
+
+		</ul>
+	</nav>
+
+
+	<div class="wrapper" id="modal">
+
+		<div class="modal-content" id="yesyes">
+
+			<div class="form_wrap">
+
+
+				<div class="information" id="div0">
+					<h2>Instructions for Tutors</h2>
+
+					<ul id="info">
+						<li><b>•&nbsp;&nbsp;All fields must be completed, and the required documents must be uploaded to
+								proceed to the next step.</b></li><br>
+						<li><b>•&nbsp;&nbsp;Your profile will not be visible on the platform until approved by the
+								admin.</b></li><br>
+						<li><b>•&nbsp;&nbsp;Only the admin can approve tutors and make them visible on the front end of
+								the app.</b></li><br>
+						<li><b>•&nbsp;&nbsp;Background checks, if required, will be handled exclusively by the
+								admin.</b></li><br>
+						<li><b>•&nbsp;&nbsp;Once submitted, your profile is subject to review, and the admin reserves
+								the right to edit or delete the profile at any time.</b></li>
+					</ul>
+
+					<div class="btns_wrap">
+						<div class="common_btns form_1_btns">
+							<button type="button" onclick="showForm1()">Next</button>
+
+						</div>
+					</div>
+
+
+				</div>
+
+
+				<div class="form_1 data_info" id="div1">
+					<h2>Personal Details</h2>
+
+					<form id="contact-form">
+						<div class="form_container">
+							<div class="form-row">
+								<div class="form-group">
+									<label for="first-name">First Name <span class="required">*</span></label>
+									<input type="text" id="firstName" name="firstName" class="input" placeholder="Sihle"
+										required>
+									<div id="name-error" class="error"></div>
+								</div>
+								<div class="form-group">
+									<label for="last-name">Last Name <span class="required">*</span></label>
+									<input type="text" id="lastName" name="lastName" class="input" placeholder="Sithole"
+										required>
+									<div id="surname-error" class="error"></div>
+								</div>
+							</div>
+
+
+
+							<div class="form-row">
+
+								<div class="form-group">
+									<label for="email">Email<span class="required">*</span></label>
+									<input type="text" id="email" name="email" class="input"
+										placeholder="esihleconnections@gmail.com" required>
+									<div id="email-error" class="error"></div>
+								</div>
+
+								<div class="form-group">
+									<label for="country">Country <span class="required">*</span></label>
+									<select id="country" name="country" class="input" required
+										onchange="updateCountryCode()">
+										<option value="" disabled selected>Select your country</option>
+										<option value="South Africa" data-code="+27" data-length="10">South Africa
+										</option>
+										<option value="Afghanistan" data-code="+93" data-length="9">Afghanistan</option>
+										<option value="Albania" data-code="+355" data-length="8">Albania</option>
+										<option value="Algeria" data-code="+213" data-length="9">Algeria</option>
+										<option value="Andorra" data-code="+376" data-length="6">Andorra</option>
+										<option value="Angola" data-code="+244" data-length="9">Angola</option>
+										<option value="Antigua and Barbuda" data-code="+1-268" data-length="7">Antigua
+											and Barbuda</option>
+										<option value="Argentina" data-code="+54" data-length="10">Argentina</option>
+										<option value="Armenia" data-code="+374" data-length="8">Armenia</option>
+										<option value="Australia" data-code="+61" data-length="9">Australia</option>
+										<option value="Austria" data-code="+43" data-length="10">Austria</option>
+										<option value="Azerbaijan" data-code="+994" data-length="9">Azerbaijan</option>
+										<option value="Bahamas" data-code="+1-242" data-length="7">Bahamas</option>
+										<option value="Bahrain" data-code="+973" data-length="8">Bahrain</option>
+										<option value="Bangladesh" data-code="+880" data-length="10">Bangladesh</option>
+										<option value="Barbados" data-code="+1-246" data-length="7">Barbados</option>
+										<option value="Belarus" data-code="+375" data-length="9">Belarus</option>
+										<option value="Belgium" data-code="+32" data-length="8">Belgium</option>
+										<option value="Belize" data-code="+501" data-length="7">Belize</option>
+										<option value="Benin" data-code="+229" data-length="8">Benin</option>
+										<option value="Bhutan" data-code="+975" data-length="8">Bhutan</option>
+										<option value="Bolivia" data-code="+591" data-length="8">Bolivia</option>
+										<option value="Bosnia and Herzegovina" data-code="+387" data-length="8">Bosnia
+											and Herzegovina</option>
+										<option value="Botswana" data-code="+267" data-length="7">Botswana</option>
+										<option value="Brazil" data-code="+55" data-length="11">Brazil</option>
+										<option value="Brunei" data-code="+673" data-length="7">Brunei</option>
+										<option value="Bulgaria" data-code="+359" data-length="8">Bulgaria</option>
+										<option value="Burkina Faso" data-code="+226" data-length="8">Burkina Faso
+										</option>
+										<option value="Burundi" data-code="+257" data-length="8">Burundi</option>
+										<option value="Cabo Verde" data-code="+238" data-length="7">Cabo Verde</option>
+										<option value="Cambodia" data-code="+855" data-length="8">Cambodia</option>
+										<option value="Cameroon" data-code="+237" data-length="9">Cameroon</option>
+										<option value="Canada" data-code="+1" data-length="10">Canada</option>
+										<option value="Central African Republic" data-code="+236" data-length="8">
+											Central African Republic</option>
+										<option value="Chad" data-code="+235" data-length="8">Chad</option>
+										<option value="Chile" data-code="+56" data-length="9">Chile</option>
+										<option value="China" data-code="+86" data-length="11">China</option>
+										<option value="Colombia" data-code="+57" data-length="10">Colombia</option>
+										<option value="Comoros" data-code="+269" data-length="7">Comoros</option>
+										<option value="Congo (Congo-Brazzaville)" data-code="+242" data-length="8">Congo
+											(Congo-Brazzaville)</option>
+										<option value="Costa Rica" data-code="+506" data-length="8">Costa Rica</option>
+										<option value="Croatia" data-code="+385" data-length="9">Croatia</option>
+										<option value="Cuba" data-code="+53" data-length="8">Cuba</option>
+										<option value="Cyprus" data-code="+357" data-length="8">Cyprus</option>
+										<option value="Czechia (Czech Republic)" data-code="+420" data-length="9">
+											Czechia (Czech Republic)</option>
+										<option value="Democratic Republic of the Congo" data-code="+243"
+											data-length="9">Democratic Republic of the Congo</option>
+										<option value="Denmark" data-code="+45" data-length="8">Denmark</option>
+										<option value="Djibouti" data-code="+253" data-length="6">Djibouti</option>
+										<option value="Dominica" data-code="+1-767" data-length="7">Dominica</option>
+										<option value="Dominican Republic" data-code="+1-809" data-length="10">Dominican
+											Republic</option>
+										<option value="Ecuador" data-code="+593" data-length="9">Ecuador</option>
+										<option value="Egypt" data-code="+20" data-length="10">Egypt</option>
+										<option value="El Salvador" data-code="+503" data-length="8">El Salvador
+										</option>
+										<option value="Equatorial Guinea" data-code="+240" data-length="9">Equatorial
+											Guinea</option>
+										<option value="Eritrea" data-code="+291" data-length="7">Eritrea</option>
+										<option value="Estonia" data-code="+372" data-length="7">Estonia</option>
+										<option value="Eswatini" data-code="+268" data-length="7">Eswatini</option>
+										<option value="Ethiopia" data-code="+251" data-length="10">Ethiopia</option>
+										<option value="Fiji" data-code="+679" data-length="7">Fiji</option>
+										<option value="Finland" data-code="+358" data-length="10">Finland</option>
+										<option value="France" data-code="+33" data-length="9">France</option>
+										<option value="Gabon" data-code="+241" data-length="7">Gabon</option>
+										<option value="Gambia" data-code="+220" data-length="7">Gambia</option>
+										<option value="Georgia" data-code="+995" data-length="9">Georgia</option>
+										<option value="Germany" data-code="+49" data-length="11">Germany</option>
+										<option value="Ghana" data-code="+233" data-length="10">Ghana</option>
+										<option value="Greece" data-code="+30" data-length="10">Greece</option>
+										<option value="Grenada" data-code="+1-473" data-length="7">Grenada</option>
+										<option value="Guatemala" data-code="+502" data-length="8">Guatemala</option>
+										<option value="Guinea" data-code="+224" data-length="9">Guinea</option>
+										<option value="Guinea-Bissau" data-code="+245" data-length="7">Guinea-Bissau
+										</option>
+										<option value="Guyana" data-code="+592" data-length="7">Guyana</option>
+										<option value="Haiti" data-code="+509" data-length="8">Haiti</option>
+										<option value="Honduras" data-code="+504" data-length="8">Honduras</option>
+										<option value="Hungary" data-code="+36" data-length="9">Hungary</option>
+										<option value="Iceland" data-code="+354" data-length="7">Iceland</option>
+										<option value="India" data-code="+91" data-length="10">India</option>
+										<option value="Indonesia" data-code="+62" data-length="10">Indonesia</option>
+										<option value="Iran" data-code="+98" data-length="10">Iran</option>
+										<option value="Iraq" data-code="+964" data-length="10">Iraq</option>
+										<option value="Ireland" data-code="+353" data-length="9">Ireland</option>
+										<option value="Israel" data-code="+972" data-length="9">Israel</option>
+										<option value="Italy" data-code="+39" data-length="10">Italy</option>
+										<option value="Jamaica" data-code="+1-876" data-length="7">Jamaica</option>
+										<option value="Japan" data-code="+81" data-length="10">Japan</option>
+										<option value="Jordan" data-code="+962" data-length="9">Jordan</option>
+										<option value="Kazakhstan" data-code="+7" data-length="10">Kazakhstan</option>
+										<option value="Kenya" data-code="+254" data-length="10">Kenya</option>
+										<option value="Kiribati" data-code="+686" data-length="7">Kiribati</option>
+										<option value="Kuwait" data-code="+965" data-length="8">Kuwait</option>
+										<option value="Kyrgyzstan" data-code="+996" data-length="9">Kyrgyzstan</option>
+										<option value="Laos" data-code="+856" data-length="8">Laos</option>
+										<option value="Latvia" data-code="+371" data-length="8">Latvia</option>
+										<option value="Lebanon" data-code="+961" data-length="8">Lebanon</option>
+										<option value="Lesotho" data-code="+266" data-length="8">Lesotho</option>
+										<option value="Liberia" data-code="+231" data-length="7">Liberia</option>
+										<option value="Libya" data-code="+218" data-length="9">Libya</option>
+										<option value="Liechtenstein" data-code="+423" data-length="8">Liechtenstein
+										</option>
+										<option value="Lithuania" data-code="+370" data-length="8">Lithuania</option>
+										<option value="Luxembourg" data-code="+352" data-length="6">Luxembourg</option>
+										<option value="Madagascar" data-code="+261" data-length="9">Madagascar</option>
+										<option value="Malawi" data-code="+265" data-length="9">Malawi</option>
+										<option value="Malaysia" data-code="+60" data-length="10">Malaysia</option>
+										<option value="Maldives" data-code="+960" data-length="7">Maldives</option>
+										<option value="Mali" data-code="+223" data-length="8">Mali</option>
+										<option value="Malta" data-code="+356" data-length="8">Malta</option>
+										<option value="Marshall Islands" data-code="+692" data-length="7">Marshall
+											Islands</option>
+										<option value="Mauritania" data-code="+222" data-length="8">Mauritania</option>
+										<option value="Mauritius" data-code="+230" data-length="8">Mauritius</option>
+										<option value="Mexico" data-code="+52" data-length="10">Mexico</option>
+										<option value="Micronesia" data-code="+691" data-length="7">Micronesia</option>
+										<option value="Moldova" data-code="+373" data-length="8">Moldova</option>
+										<option value="Monaco" data-code="+377" data-length="7">Monaco</option>
+										<option value="Mongolia" data-code="+976" data-length="8">Mongolia</option>
+										<option value="Montenegro" data-code="+382" data-length="8">Montenegro</option>
+										<option value="Morocco" data-code="+212" data-length="10">Morocco</option>
+										<option value="Mozambique" data-code="+258" data-length="9">Mozambique</option>
+										<option value="Myanmar (Burma)" data-code="+95" data-length="9">Myanmar (Burma)
+										</option>
+										<option value="Namibia" data-code="+264" data-length="9">Namibia</option>
+										<option value="Nauru" data-code="+674" data-length="7">Nauru</option>
+										<option value="Nepal" data-code="+977" data-length="10">Nepal</option>
+										<option value="Netherlands" data-code="+31" data-length="9">Netherlands</option>
+										<option value="New Zealand" data-code="+64" data-length="9">New Zealand</option>
+										<option value="Nicaragua" data-code="+505" data-length="8">Nicaragua</option>
+										<option value="Niger" data-code="+227" data-length="8">Niger</option>
+										<option value="Nigeria" data-code="+234" data-length="10">Nigeria</option>
+										<option value="North Macedonia" data-code="+389" data-length="8">North Macedonia
+										</option>
+										<option value="Norway" data-code="+47" data-length="8">Norway</option>
+										<option value="Oman" data-code="+968" data-length="8">Oman</option>
+										<option value="Pakistan" data-code="+92" data-length="10">Pakistan</option>
+										<option value="Palau" data-code="+680" data-length="7">Palau</option>
+										<option value="Palestine" data-code="+970" data-length="9">Palestine</option>
+										<option value="Panama" data-code="+507" data-length="7">Panama</option>
+										<option value="Papua New Guinea" data-code="+675" data-length="8">Papua New
+											Guinea</option>
+										<option value="Paraguay" data-code="+595" data-length="9">Paraguay</option>
+										<option value="Peru" data-code="+51" data-length="9">Peru</option>
+										<option value="Philippines" data-code="+63" data-length="10">Philippines
+										</option>
+										<option value="Poland" data-code="+48" data-length="9">Poland</option>
+										<option value="Portugal" data-code="+351" data-length="9">Portugal</option>
+										<option value="Qatar" data-code="+974" data-length="8">Qatar</option>
+										<option value="Romania" data-code="+40" data-length="10">Romania</option>
+										<option value="Russia" data-code="+7" data-length="10">Russia</option>
+										<option value="Rwanda" data-code="+250" data-length="9">Rwanda</option>
+										<option value="Saint Kitts and Nevis" data-code="+1-869" data-length="7">Saint
+											Kitts and Nevis</option>
+										<option value="Saint Lucia" data-code="+1-758" data-length="7">Saint Lucia
+										</option>
+										<option value="Saint Vincent and the Grenadines" data-code="+1-784"
+											data-length="7">Saint Vincent and the Grenadines</option>
+										<option value="Samoa" data-code="+685" data-length="7">Samoa</option>
+										<option value="San Marino" data-code="+378" data-length="7">San Marino</option>
+										<option value="Sao Tome and Principe" data-code="+239" data-length="7">Sao Tome
+											and Principe</option>
+										<option value="Saudi Arabia" data-code="+966" data-length="9">Saudi Arabia
+										</option>
+										<option value="Senegal" data-code="+221" data-length="8">Senegal</option>
+										<option value="Serbia" data-code="+381" data-length="9">Serbia</option>
+										<option value="Seychelles" data-code="+248" data-length="7">Seychelles</option>
+										<option value="Sierra Leone" data-code="+232" data-length="8">Sierra Leone
+										</option>
+										<option value="Singapore" data-code="+65" data-length="8">Singapore</option>
+										<option value="Slovakia" data-code="+421" data-length="9">Slovakia</option>
+										<option value="Slovenia" data-code="+386" data-length="8">Slovenia</option>
+										<option value="Solomon Islands" data-code="+677" data-length="7">Solomon Islands
+										</option>
+										<option value="Somalia" data-code="+252" data-length="9">Somalia</option>
+										<option value="South Korea" data-code="+82" data-length="10">South Korea
+										</option>
+										<option value="South Sudan" data-code="+211" data-length="9">South Sudan
+										</option>
+										<option value="Spain" data-code="+34" data-length="9">Spain</option>
+										<option value="Sri Lanka" data-code="+94" data-length="10">Sri Lanka</option>
+										<option value="Sudan" data-code="+249" data-length="9">Sudan</option>
+										<option value="Suriname" data-code="+597" data-length="7">Suriname</option>
+										<option value="Sweden" data-code="+46" data-length="10">Sweden</option>
+										<option value="Switzerland" data-code="+41" data-length="9">Switzerland</option>
+										<option value="Syria" data-code="+963" data-length="9">Syria</option>
+										<option value="Taiwan" data-code="+886" data-length="10">Taiwan</option>
+										<option value="Tajikistan" data-code="+992" data-length="9">Tajikistan</option>
+										<option value="Tanzania" data-code="+255" data-length="10">Tanzania</option>
+										<option value="Thailand" data-code="+66" data-length="9">Thailand</option>
+										<option value="Timor-Leste" data-code="+670" data-length="7">Timor-Leste
+										</option>
+										<option value="Togo" data-code="+228" data-length="8">Togo</option>
+										<option value="Tonga" data-code="+676" data-length="7">Tonga</option>
+										<option value="Trinidad and Tobago" data-code="+1-868" data-length="7">Trinidad
+											and Tobago</option>
+										<option value="Tunisia" data-code="+216" data-length="8">Tunisia</option>
+										<option value="Turkey" data-code="+90" data-length="10">Turkey</option>
+										<option value="Turkmenistan" data-code="+993" data-length="8">Turkmenistan
+										</option>
+										<option value="Tuvalu" data-code="+688" data-length="7">Tuvalu</option>
+										<option value="Uganda" data-code="+256" data-length="10">Uganda</option>
+										<option value="Ukraine" data-code="+380" data-length="9">Ukraine</option>
+										<option value="United Arab Emirates" data-code="+971" data-length="9">United
+											Arab Emirates</option>
+										<option value="United Kingdom" data-code="+44" data-length="10">United Kingdom
+										</option>
+										<option value="United States" data-code="+1" data-length="10">United States
+										</option>
+										<option value="Uruguay" data-code="+598" data-length="8">Uruguay</option>
+										<option value="Uzbekistan" data-code="+998" data-length="9">Uzbekistan</option>
+										<option value="Vanuatu" data-code="+678" data-length="7">Vanuatu</option>
+										<option value="Vatican City" data-code="+39" data-length="7">Vatican City
+										</option>
+										<option value="Venezuela" data-code="+58" data-length="10">Venezuela</option>
+										<option value="Vietnam" data-code="+84" data-length="10">Vietnam</option>
+										<option value="Yemen" data-code="+967" data-length="9">Yemen</option>
+										<option value="Zambia" data-code="+260" data-length="10">Zambia</option>
+										<option value="Zimbabwe" data-code="+263" data-length="9">Zimbabwe</option>
+									</select>
+									<div id="country-error" class="error"></div>
+								</div>
+
+
+
+
+
+							</div>
+
+							<div class="form-row">
+
+								<div class="form-group">
+									<label for="dob">Date of Birth <span class="required">*</span></label>
+									<input type="date" id="dob" name="dob" class="input" required>
+									<div id="dob-error" class="error"></div>
+								</div>
+
+
+								<div class="form-group">
+									<label for="experience">Year started tutoring/teaching<span
+											class="required">*</span></label>
+									<input type="tel" id="experience" name="experience" class="input"
+										placeholder="year started tutoring" required minlength="4" maxlength="4"
+										onkeypress="return isNumber(event)" oninput="validateYear(this)">
+									<div id="experience-error" class="error"></div>
+								</div>
+
+							</div>
+
+							<div class="form-row">
+
+								<div class="form-group">
+									<label for="phone">Phone <span class="required">*</span></label>
+									<input type="tel" id="phone" name="phone" class="input" placeholder="+27797565412"
+										required onfocus="updateCountryCode();" oninput="validatePhoneNumber();">
+									<div id="phone-error" class="error"></div>
+								</div>
+
+
+								<div class="form-group">
+									<label for="area">Area<span class="required">*</span></label>
+									<input type="text" id="area" name="area" class="input"
+										placeholder="Town or Suburb e.g (Pretoria / Wonderpark) " required>
+									<div id="area-error" class="error"></div>
+								</div>
+							</div>
+							<div class="form-row">
+
+								<div class="form-group">
+									<label for="area">Address<span class="required">*</span></label>
+									<input type="text" id="address" name="address" class="input"
+										placeholder="1234 Main St, Apt 5B " required>
+									<div id="address-error" class="error"></div>
+								</div>
+							</div>
+
+							<div class="form-group" id="province-group" style="display: none;">
+								<label for="province">Province <span class="required">*</span></label><br>
+								<select id="province" name="province" required>
+									<option value="">Select your province</option>
+									<option value="Eastern Cape">Eastern Cape</option>
+									<option value="Free State">Free State</option>
+									<option value="Gauteng">Gauteng</option>
+									<option value="KwaZulu-Natal">KwaZulu-Natal</option>
+									<option value="Limpopo">Limpopo</option>
+									<option value="Mpumalanga">Mpumalanga</option>
+									<option value="North West">North West</option>
+									<option value="Northern Cape">Northern Cape</option>
+									<option value="Western Cape">Western Cape</option>
+								</select>
+								<div id="province-error" class="error"></div>
+							</div>
+
+						</div>
+
+						<div class="btns_wrap">
+							<div class="common_btns form_2_btns">
+								<button type="button" class="btn_back" onclick="backToformZero()">Back</button>
+								<button type="button" class="btn_next" onclick="validateForm1()">Next</button>
+							</div>
+						</div>
+
+					</form>
+				</div>
+
+
+				<div class="form_2" id="div2">
+					<h2>Tutoring Information</h2>
+					<br>
+					<div id="form-container-2" class="form-container hidden">
+						<form id="additional-form">
+
+
+							<div class="form-row">
+
+								<div class="form-group">
+									<label for="subjects">Subject(s)<span class="required">*</span></label>
+									<input type="text" id="subjects" name="subjects" class="input"
+										placeholder="Separated by a comma" required oninput="validateSubjects()">
+									<div id="subjects-error" class="error"></div>
+								</div>
+
+								<div class="form-group">
+									<label for="grades">Select Grades<span class="required">*</span></label>
+									<input type="text" id="grades" name="grades" class="input" required readonly
+										onclick="toggleCheckboxes()">
+									<div id="gradesContainer" style="display: none;">
+										<label><input type="checkbox" value="GRD:R" onchange="updateGrades()">
+											R</label>
+										<label><input type="checkbox" value="GRD:1" onchange="updateGrades()">
+											1</label>
+										<label><input type="checkbox" value="GRD:2" onchange="updateGrades()">
+											2</label>
+										<label><input type="checkbox" value="GRD:3" onchange="updateGrades()">
+											3</label>
+										<label><input type="checkbox" value="GRD:4" onchange="updateGrades()">
+											4</label>
+										<label><input type="checkbox" value="GRD:5" onchange="updateGrades()">
+											5</label>
+										<label><input type="checkbox" value="GRD:6" onchange="updateGrades()">
+											6</label>
+										<label><input type="checkbox" value="GRD:7" onchange="updateGrades()">
+											7</label>
+										<label><input type="checkbox" value="GRD:8" onchange="updateGrades()">
+											8</label>
+										<label><input type="checkbox" value="GRD:9" onchange="updateGrades()">
+											9</label>
+										<label><input type="checkbox" value="GRD:10" onchange="updateGrades()">
+											10</label>
+										<label><input type="checkbox" value="GRD:11" onchange="updateGrades()">
+											11</label>
+										<label><input type="checkbox" value="GRD:12" onchange="updateGrades()">
+											12</label>
+									</div>
+									<div id="gradesError" class="error">
+
+									</div>
+								</div>
+
+
+							</div>
+
+
+							<div class="form-row">
+
+								<div class="form-group">
+									<label for="syllabus">Select Syllabus<span class="required">*</span></label>
+									<input type="text" id="syllabus" name="syllabus" class="input" required readonly
+										onclick="toggleSyllabusOptions()">
+									<div id="syllabusContainer" style="display: none;">
+										<label><input type="checkbox" value="CAPs" onchange="updateSyllabus(this)">
+											CAPs</label>
+										<label><input type="checkbox" value="IEB" onchange="updateSyllabus(this)">
+											IEB</label>
+										<label><input type="checkbox" value="IB" onchange="updateSyllabus(this)">
+											IB</label>
+										<label><input type="checkbox" value="Cambridge" onchange="updateSyllabus(this)">
+											Cambridge</label>
+										<label><input type="checkbox" value="Pearson Edexcel"
+												onchange="updateSyllabus(this)"> Pearson Edexcel</label>
+									</div>
+									<div id="syllabusError" class="error"></div>
+								</div>
+
+
+								<div class="form-group">
+									<label for="tutorOptions">Tutoring
+										Options<span class="required">*</span></label>
+									<select id="tutorOptions" name="tutorOptions" class="form-control" required
+										aria-placeholder="Tutoring Options">
+										<option value="Online">Online</option>
+										<option value="In person">In person
+										</option>
+										<option value="Online / In person">Online & In person</option>
+									</select>
+									<div id="tutotingOpt" class="error"></div>
+								</div>
+
+							</div>
+
+							<div class="form-group">
+								<input type="checkbox" name="university" value="yes" id="universityCheckbox">
+								Do you tutor University Students?
+								</label>
+							</div>
+							<br>
+
+
+							<div class="form-row" id="universityOptions">
+
+								<div class="form-group">
+									<label for="qualifications">Modules(s) <span class="required">*</span></label>
+									<input type="text" id="qualifications" name="qualifications" class="input"
+										placeholder="Internet Programming, Database programming" required>
+									<div id="qualification-error" class="error"></div>
+								</div>
+
+								<div class="form-group" id="universityOptionss">
+									<label for="specifications">Specific Area <span class="required">*</span></label>
+									<input type="text" id="specifications" name="specifications" class="input"
+										placeholder="Database connectivity, PLSQL functions" required>
+									<div id="specifications-error" class="error"></div>
+								</div>
+
+
+
+							</div>
+
+
+
+
+
+					</div>
+
+					<div class="btns_wrap">
+						<div class="common_btns form_2_btns">
+							<button type="button" class="btn_back" onclick="backToformOne()">Back</button>
+							<button type="button" class="btn_next" onclick="validateForm2()">Next</button>
+						</div>
+					</div>
+					</form>
+				</div>
+
+
+
+				<div class="form_2" id="div3">
+					<h2>Tell Us?</h2>
+					<br>
+					<div id="form-container-2" class="form-container hidden">
+						<form id="submit-form" enctype="multipart/form-data">
+
+							<div class="form-row">
+
+								<div class="form-group">
+									<label for="bio">Bio <span class="required">*</span></label><br><br>
+									<textarea id="bio" name="bio" placeholder="Brief message of yourself..."
+										class="textarea" required minlength="200" maxlength="400"
+										oninput="updateCounter()"></textarea>
+									<div id="bio-error" class="error"></div>
+									<div id="char-count" class="lefty">Characters left: 400</div>
+								</div>
+
+								<div class="form-group">
+									<label for="about">About Yourself <span class="required">*</span></label><br><br>
+									<textarea id="about" name="about" placeholder="Detailed message of yourself..."
+										class="textarea" required minlength="150" maxlength="300"
+										oninput="updateAboutCounter()"></textarea>
+									<div id="about-error" class="error"></div>
+									<div id="about-char-count" class="lefty">Characters left: 300</div>
+								</div>
+
+							</div>
+
+							<div class="form-row">
+
+								<div class="form-group">
+									<label for="achievements">Qualification(s)<span class="required">*</span></label>
+									<input type="achievements" id="achievements" name="achievements" class="input"
+										placeholder="BSc Computer Science, BSc Informatics ">
+									<div id="achievements-error" class="error"></div>
+								</div>
+
+
+							</div>
+
+							<h2>Upload Documents</h2>
+
+							<div class="form-row">
+
+								<div class="form-group">
+								    <label for="cv">Curriculum Vitae <span class="required">*</span></label><br><br>
+								    <input type="file" id="cv" name="cv" class="input" placeholder="upload cv" required onchange="validateFileSize('cv', 'cv-error')">
+								    <div id="cv-error" class="error"></div>
+								</div>
+
+								<div class="form-group">
+								    <label for="dQual">Qualification(s).merged <span class="required">*</span></label><br><br>
+								    <input type="file" id="dQual" name="dQual" class="input" placeholder="upload qualification" required onchange="validateFileSize('dQual', 'dQual-error')">
+								    <div id="dQual-error" class="error"></div>
+								</div>
+
+							</div>
+
+							<div class="form-row">
+
+								<div class="form-group">
+								    <label for="ids">ID / Passport <span class="required">*</span></label><br><br>
+								    <input type="file" id="ids" name="ids" class="input" placeholder="upload ID / Passport" required onchange="validateFileSize('ids', 'id_pass-error')">
+								    <div id="id_pass-error" class="error"></div>
+								</div>
+
+								<div class="form-group">
+								    <label for="image">Your Image<span class="required">*</span></label><br><br>
+								    <input type="file" id="image" name="image" class="input" placeholder="upload professional image" required onchange="validateFileSizeImage('image', 'image-error')">
+								    <div id="image-error" class="error"></div>
+								</div>
+
+							</div>
+
+
+
+
+							<div class="btns_wrap">
+								<div class="common_btns form_2_btns">
+									<button type="button" class="btn_back" onclick="backToformTwo()">Back</button>
+									<button type="submit" class="apply_btn"
+										onclick="validateForm3(event)">Apply</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!--END OF FORMS-->
+
+	</div>
+	</div>
+	</div>
+	<!--</div>-->
+
+
+	<script>
+
+		document.getElementById('universityOptions').style.display = 'none';
+		document.getElementById('universityOptionss').style.display = 'none';
+
+		document.getElementById('country').addEventListener('change', function () {
+			const countryValue = this.value;
+			const provinceGroup = document.getElementById('province-group');
+
+			if (countryValue === 'South Africa') {
+				provinceGroup.style.display = 'block';
+			} else {
+				provinceGroup.style.display = 'none';
+				document.getElementById('province').value = ''; // Reset province selection
+			}
+		});
+
+		document.getElementById('div1').style.display = 'none';
+		document.getElementById('div2').style.display = 'none';
+		document.getElementById('div3').style.display = 'none';
+
+		function showForm1() {
+
+			document.getElementById('div1').style.display = 'block';
+			document.getElementById('div0').style.display = 'none';
+		}
+
+		function backToformZero() {
+
+			document.getElementById('div1').style.display = 'none';
+			document.getElementById('div2').style.display = 'none';
+			document.getElementById('div3').style.display = 'none';
+			document.getElementById('div0').style.display = 'block';
+
+		}
+
+		document.getElementById("modal").style.display = 'block';
+
+		var span = document.getElementById("close-popup");
+
+		function validateForm1() {
+
+			var isValid = true;
+
+
+			var name = document.getElementById("firstName").value;
+			var surname = document.getElementById("lastName").value;
+			var email = document.getElementById("email").value;
+
+			var mobile = document.getElementById("phone").value;
+			var dob = document.getElementById("dob").value;
+			var experience = document.getElementById("experience").value;
+
+			var country = document.getElementById("country").value;
+			var area = document.getElementById("area").value;
+			var addressInput = document.getElementById('address').value;
+			var province = document.getElementById("province").value;
+
+
+			if (!name) {
+				document.getElementById('name-error').textContent = "First name is required.";
+				isValid = false;
+			} else {
+				document.getElementById('name-error').textContent = "";
+			}
+
+
+			if (!surname) {
+				document.getElementById('surname-error').textContent = "Last name is required.";
+				isValid = false;
+			} else {
+				document.getElementById('surname-error').textContent = "";
+			}
+
+			if (!email) {
+				document.getElementById('email-error').textContent = "Email is required.";
+				isValid = false;
+			} else {
+				document.getElementById('email-error').textContent = "";
+			}
+
+			/*if (!mobile) {
+				document.getElementById('phone-error').textContent = "Phone number is required.";
+				isValid = false;
+			} else {
+				document.getElementById('phone-error').textContent = "";
+			}*/
+
+			if (!mobile) {
+				document.getElementById('phone-error').textContent = "Phone number is required.";
+				isValid = false;
+			}
+			else {
+
+				var checkNumber = validatePhoneNumber();
+
+				if (!checkNumber) {
+					isValid = false;
+				}
+
+			}
+
+			if (!dob) {
+				document.getElementById('dob-error').textContent = "Date of Birth is required.";
+				isValid = false;
+			} else {
+				document.getElementById('dob-error').textContent = "";
+			}
+
+
+			// Validate Experience Year
+			if (!experience) {
+				document.getElementById('experience-error').textContent = "Experience is required.";
+				isValid = false;
+			} else {
+				var experienceYear = parseInt(experience, 10);
+
+				if (isNaN(experienceYear) || experienceYear < 1900 || experienceYear > new Date().getFullYear()) {
+					document.getElementById('experience-error').textContent = "Please enter a valid year between 1900 and " + new Date().getFullYear() + ".";
+					isValid = false;
+				} else {
+					document.getElementById('experience-error').textContent = ""; // Clear error message
+				}
+			}
+
+
+			if (!country) {
+				document.getElementById('country-error').textContent = "Country is required.";
+				isValid = false;
+			} else {
+				document.getElementById('country-error').textContent = "";
+			}
+
+			if (!area) {
+				document.getElementById('area-error').textContent = "Town/Suburb is required.";
+				isValid = false;
+			} else {
+				document.getElementById('area-error').textContent = "";
+			}
+
+			if (!addressInput) {
+				document.getElementById('address-error').textContent = "Address is required.";
+				isValid = false;
+			} else {
+				document.getElementById('address-error').textContent = "";
+			}
+
+			if (country === "South Africa") {
+
+
+				if (!province) {
+					document.getElementById('province-error').textContent = "Province is required.";
+					isValid = false;
+				} else {
+					document.getElementById('province-error').textContent = "";
+				}
+
+			}
+
+
+
+
+
+
+
+			if (isValid) {
+
+				document.getElementById('div1').style.display = 'none';
+				document.getElementById('div2').style.display = 'block';
+				document.getElementById('div3').style.display = 'none';
+
+			}
+
+		}
+
+		function backToformOne() {
+
+			document.getElementById('div1').style.display = 'block';
+			document.getElementById('div2').style.display = 'none';
+			document.getElementById('div3').style.display = 'none';
+			document.getElementById('div0').style.display = 'none';
+		}
+
+		function validateForm2() {
+
+			var isValid = true;
+
+			var subjects = document.getElementById("subjects").value;
+			var grades = document.getElementById("grades").value;
+			var syllabus = document.getElementById("syllabus").value;
+			var tutorOption = document.getElementById("tutorOptions").value;
+
+			const university = document.getElementById('universityCheckbox');
+
+			var qualifications = document.getElementById("qualifications").value;
+
+			var specifications = document.getElementById("specifications").value;
+
+			if (!subjects) {
+				document.getElementById('subjects-error').textContent = "Subject(s) required.";
+				isValid = false;
+			} else {
+				document.getElementById('subjects-error').textContent = "";
+			}
+
+			if (!grades) {
+				document.getElementById('gradesError').textContent = "Grade(s) required";
+				isValid = false;
+			} else {
+				document.getElementById('gradesError').textContent = "";
+			}
+
+			if (!syllabus) {
+				document.getElementById('syllabusError').textContent = "Syllabus(s) required.";
+				isValid = false;
+			} else {
+				document.getElementById('syllabusError').textContent = "";
+			}
+
+			if (!tutorOption) {
+				document.getElementById('tutotingOpt').textContent = "Tutoring Option required.";
+				isValid = false;
+			} else {
+				document.getElementById('tutotingOpt').textContent = "";
+			}
+
+
+			const checkbox = document.getElementById('universityCheckbox');
+			if (checkbox.checked) {
+
+				if (!qualifications) {
+					document.getElementById('qualification-error').textContent = "Modules(s) required";
+					isValid = false;
+				} else {
+					document.getElementById('qualification-error').textContent = "";
+				}
+
+
+				if (!specifications) {
+					document.getElementById('specifications-error').textContent = "Specification(s) required.";
+					isValid = false;
+				} else {
+					document.getElementById('specifications-error').textContent = "";
+				}
+
+
+			}
+
+
+
+
+			if (isValid) {
+
+				document.getElementById('div1').style.display = 'none';
+				document.getElementById('div2').style.display = 'none';
+				document.getElementById('div3').style.display = 'block';
+
+			}
+
+
+
+		}
+
+		function backToformTwo() {
+
+			document.getElementById('div1').style.display = 'none';
+			document.getElementById('div2').style.display = 'block';
+			document.getElementById('div3').style.display = 'none';
+			document.getElementById('div0').style.display = 'none';
+		}
+
+
+		function backToformThree() {
+
+			document.getElementById('div1').style.display = 'none';
+			document.getElementById('div2').style.display = 'none';
+			document.getElementById('div3').style.display = 'block';
+			document.getElementById('div4').style.display = 'none';
+			document.getElementById('div5').style.display = 'none';
+			document.getElementById('div0').style.display = 'none';
+		}
+
+
+		function combineFormData() {
+
+			const form1 = document.getElementById('contact-form');
+			const form2 = document.getElementById('additional-form');
+			const form3 = document.getElementById('submit-form');
+
+			const form1Data = new FormData(form1);
+			const form2Data = new FormData(form2);
+			const form3Data = new FormData(form3);
+
+			const data1 = formDataToObject(form1Data);
+			const data2 = formDataToObject(form2Data);
+			const data3 = formDataToObject(form3Data);
+
+			// Combine all data into a single object
+			return {...data1, ...data2, ...data3, };
+		}
+
+		function formDataToObject(formData) {
+			const data = {};
+			formData.forEach((value, key) => {
+				// Handle multiple values for the same key
+				if (data[key]) {
+					// If value is already an array, push the new value
+					if (Array.isArray(data[key])) {
+						data[key].push(value);
+					} else {
+						// Convert existing value to an array and add new value
+						data[key] = [data[key], value];
+					}
+				} else {
+					data[key] = value;
+				}
+			});
+			return data;
+		}
+
+
+		function showSection(sectionId) {
+
+			const sections = ['personalInfo', 'courseInfo', 'confirmationInfo', 'formFive'];
+			sections.forEach(id => {
+				document.getElementById(id).classList.add('hidden');
+			});
+			document.getElementById(sectionId).classList.remove('hidden');
+		}
+
+
+
+		function showPersonalInfo() {
+			showSection('personalInfo');
+		}
+
+
+
+		function showPaymentPackages() {
+			showSection('formFive');
+		}
+
+		function toggleSubjects() {
+			const subjectContainer = document.getElementById('subjectsContainer');
+			subjectContainer.style.display = subjectContainer.style.display === 'none' || subjectContainer.style.display === '' ? 'flex' : 'none';
+		}
+
+		function toggleSyllabusOptions() {
+			const container = document.getElementById('syllabusContainer');
+			container.style.display = container.style.display === 'none' ? 'block' : 'none';
+		}
+
+		function updateSyllabus() {
+			const checkboxes = document.querySelectorAll('#syllabusContainer input[type="checkbox"]');
+			const selectedSyllabi = [];
+
+			checkboxes.forEach((checkbox) => {
+				if (checkbox.checked) {
+					selectedSyllabi.push(checkbox.value);
+				}
+			});
+
+			document.getElementById('chooseSubjects').value = selectedSyllabi.join(', ');
+		}
+
+		function toggleCheckboxes() {
+			const container = document.getElementById('gradesContainer');
+			container.style.display = container.style.display === 'none' ? 'block' : 'none';
+		}
+
+		function updateGrades() {
+			const checkboxes = document.querySelectorAll('#gradesContainer input[type="checkbox"]');
+			const selectedGrades = [];
+
+			checkboxes.forEach((checkbox) => {
+				if (checkbox.checked) {
+					selectedGrades.push(checkbox.value);
+				}
+			});
+
+			document.getElementById('availableDays').value = selectedGrades.join(', ');
+		}
+
+
+
+		/*form functions*/
+
+		function updateCountryCode() {
+			const countrySelect = document.getElementById("country");
+			const phoneInput = document.getElementById("phone");
+			const lengthMessage = document.getElementById("lengthMessage");
+			const phoneError = document.getElementById("phone-error");
+
+			// Get the selected option
+			const selectedOption = countrySelect.options[countrySelect.selectedIndex];
+			const code = selectedOption.getAttribute("data-code");
+			const length = selectedOption.getAttribute("data-length");
+
+			// Update the phone input with the country code and a space
+			phoneInput.value = code + " ";
+
+			// Update the message to display required length
+			lengthMessage.textContent = `Required length: ${length} digits (excluding code)`;
+			phoneError.textContent = ''; // Clear previous error message
+		}
+
+		function validatePhoneNumber() {
+			const phoneInput = document.getElementById("phone");
+			const countrySelect = document.getElementById("country");
+			const phoneError = document.getElementById("phone-error");
+
+			if (countrySelect.selectedIndex === 0) {
+				phoneError.textContent = ''; // Clear error if no country selected
+				return;
+			}
+
+			// Get the selected option's length
+			const selectedOption = countrySelect.options[countrySelect.selectedIndex];
+			const requiredLength = parseInt(selectedOption.getAttribute("data-length"), 10);
+
+			// Extract the digits entered after the country code
+			const phoneValue = phoneInput.value.trim();
+			const phoneDigits = phoneValue.slice(phoneValue.indexOf(" ") + 1).replace(/\D/g, ''); // Get only the digits
+
+			// Validate the phone number length
+			const actualLength = phoneDigits.length; // Actual length of entered digits
+			var phoneValid = false;
+
+			// Check if the entered digits match the required length
+			if (actualLength < requiredLength) {
+				phoneError.textContent = `Phone number must be exactly ${requiredLength} digits (excluding code).`;
+
+
+			} else if (actualLength > requiredLength) {
+				// If too long, prevent further input
+				phoneInput.value = phoneValue.slice(0, phoneValue.indexOf(" ") + requiredLength + 1); // Keep the code, space, and required digits
+
+
+			} else {
+
+				phoneValid = true;
+				phoneError.textContent = ''; // Clear error if valid
+			}
+
+			return phoneValid;
+
+		}
+
+		// Ensure the input maintains the format
+		document.getElementById("phone").addEventListener("input", (event) => {
+			const phoneInput = event.target;
+			const code = document.getElementById("country").options[document.getElementById("country").selectedIndex].getAttribute("data-code");
+
+			// If the current value doesn't start with the country code, reset it
+			if (!phoneInput.value.startsWith(code + " ")) {
+				phoneInput.value = code + " "; // Reset to include country code and space
+			}
+
+			// Move cursor to the end of the input
+			phoneInput.setSelectionRange(phoneInput.value.length, phoneInput.value.length);
+		});
+
+
+		function updateGrades() {
+			const checkboxes = document.querySelectorAll('#gradesContainer input[type="checkbox"]');
+			const selectedGrades = [];
+			let checkedCount = 0;
+
+			// First, count the currently checked checkboxes
+			checkboxes.forEach((checkbox) => {
+				if (checkbox.checked) {
+					checkedCount++;
+				}
+			});
+
+			// Check if more than 6 are being selected
+			if (checkedCount > 6) {
+				document.getElementById('gradesError').textContent = 'You can select a maximum of 6 grades.';
+				return; // Exit the function early if limit exceeded
+			} else {
+				document.getElementById('gradesError').textContent = ''; // Clear error if valid
+			}
+
+			// Update the grades input value
+			const checkedCheckboxes = Array.from(checkboxes).filter(checkbox => checkbox.checked);
+			document.getElementById('grades').value = checkedCheckboxes.map(checkbox => checkbox.value).join(', ');
+		}
+
+		function toggleCheckboxes() {
+			const container = document.getElementById('gradesContainer');
+			container.style.display = container.style.display === 'none' ? 'block' : 'none';
+		}
+
+
+		function validateSubjects() {
+			const subjectsInput = document.getElementById('subjects');
+			const errorDiv = document.getElementById('subjects-error');
+			const subjects = subjectsInput.value.split(',').map(subject => subject.trim());
+
+			// Check if the number of subjects exceeds 5
+			if (subjects.length > 5) {
+				errorDiv.textContent = 'You can enter a maximum of 5 subjects.';
+				// Optionally, truncate the input to the first 5 subjects
+				subjectsInput.value = subjects.slice(0, 5).join(', ');
+			} else {
+				errorDiv.textContent = ''; // Clear the error if valid
+			}
+		}
+
+
+		function updateSyllabus(checkbox) {
+			const checkboxes = document.querySelectorAll('#syllabusContainer input[type="checkbox"]');
+			const selectedSyllabus = [];
+			let checkedCount = 0;
+
+			// Count the currently checked checkboxes
+			checkboxes.forEach((cb) => {
+				if (cb.checked) {
+					checkedCount++;
+				}
+			});
+
+			// If the current checkbox is being checked and it would exceed the limit
+			if (checkbox.checked) {
+				checkedCount++;
+			}
+
+			// Check if more than 3 are being selected
+			if (checkedCount > 4) {
+				checkbox.checked = false; // Uncheck the current checkbox
+				document.getElementById('syllabusError').textContent = 'You can select a maximum of 3 syllabus.';
+				return; // Exit the function early if limit exceeded
+			} else {
+				document.getElementById('syllabusError').textContent = ''; // Clear error if valid
+			}
+
+			// Update the syllabus input value
+			const checkedCheckboxes = Array.from(checkboxes).filter(cb => cb.checked);
+			document.getElementById('syllabus').value = checkedCheckboxes.map(cb => cb.value).join(', ');
+		}
+
+		const checkbox = document.getElementById('universityCheckbox');
+		const modulesDiv = document.getElementById('universityOptions');
+		const modulesDivs = document.getElementById('universityOptionss');
+
+		checkbox.addEventListener('change', function () {
+			if (this.checked) {
+				modulesDiv.style.display = 'flex';
+				modulesDivs.style.display = 'block';
+			} else {
+				modulesDiv.style.display = 'none';
+				modulesDivs.style.display = 'none';
+			}
+		});
+
+
+
+		//Submit to database
+
+		//validate form 3
+		function validateForm3(event) {
+			event.preventDefault(); // Prevent the default form submission
+
+			var isValid = true;
+
+			// Validate inputs
+			var bio = document.getElementById("bio").value;
+			var about = document.getElementById("about").value;
+			var achievementsInput = document.getElementById('achievements').value;
+			var cv = document.getElementById("cv").files.length;
+			var dQual = document.getElementById("dQual").files.length;
+			var ids = document.getElementById("ids").files.length;
+			var image = document.getElementById("image").files.length;
+
+			// Check bio
+			if (!bio) {
+				document.getElementById('bio-error').textContent = "Bio is required.";
+				isValid = false;
+			} else if (bio.length < 200 || bio.length > 400) {
+				document.getElementById('bio-error').textContent = "Bio must be between 200 and 400 characters.";
+				isValid = false;
+			} else {
+				document.getElementById('bio-error').textContent = "";
+			}
+
+			// Check about
+			if (!about) {
+				document.getElementById('about-error').textContent = "About Yourself is required.";
+				isValid = false;
+			} else if (about.length < 150 || about.length > 300) {
+				document.getElementById('about-error').textContent = "About Yourself must be between 150 and 300 characters.";
+				isValid = false;
+			} else {
+				document.getElementById('about-error').textContent = "";
+			}
+
+			if (!achievementsInput) {
+				document.getElementById('achievements-error').textContent = "Achievements is required.";
+				isValid = false;
+			} else {
+				document.getElementById('achievements-error').textContent = "";
+			}
+
+
+
+			if (cv === 0) {
+				document.getElementById('cv-error').textContent = "Curriculum Vitae is required.";
+				isValid = false;
+			} else {
+				document.getElementById('cv-error').textContent = "";
+			}
+
+			if (dQual === 0) {
+				document.getElementById('dQual-error').textContent = "Qualification(s) are required.";
+				isValid = false;
+			} else {
+				document.getElementById('dQual-error').textContent = "";
+			}
+
+			if (ids === 0) {
+				document.getElementById('id_pass-error').textContent = "ID/Passport is required.";
+				isValid = false;
+			} else {
+				document.getElementById('id_pass-error').textContent = "";
+			}
+
+			if (image === 0) {
+				document.getElementById('image-error').textContent = "Your Image is required.";
+				isValid = false;
+			} else {
+				document.getElementById('image-error').textContent = "";
+			}
+
+			if (isValid) {
+
+				document.querySelector('.apply_btn').style.display = 'none';
+
+				const allData = combineFormData(); // Combine data from all forms
+				var status = "application";
+
+				// Create FormData object
+				const formDataToSend = new FormData();
+				Object.keys(allData).forEach(key => {
+					formDataToSend.append(key, allData[key]);
+				});
+				formDataToSend.append('status', status); // Add status
+
+				fetch('/becomeTutor-applications', { // Updated endpoint
+					method: 'POST',
+					body: formDataToSend // Send FormData
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw new Error('Network response was not ok');
+						}
+						return response.json();
+					})
+					.then(result => {
+
+					})
+					.catch(error => {
+
+					});
+
+				alert("Application sent, Kindly check your emails.");
+
+				// Redirect after a short delay (optional)
+				setTimeout(function () {
+					window.location.href = '/'; // Redirect to home page or any other page
+				}, 2000);
+			}
+
+
+		}
+
+
+		document.getElementById('submit-form').addEventListener('submit', validateForm3);
+
+
+		function updateCounter() {
+			const textarea = document.getElementById('bio');
+			const charCountDisplay = document.getElementById('char-count');
+			const maxLength = 400;
+			const currentLength = textarea.value.length;
+			const charsLeft = maxLength - currentLength;
+
+			charCountDisplay.textContent = `Characters left: ${charsLeft}`;
+
+			// Optionally, you can change the text color based on remaining characters
+			if (charsLeft < 0) {
+				charCountDisplay.style.color = 'red';
+			} else {
+				charCountDisplay.style.color = 'green';
+			}
+		}
+
+
+		function updateAboutCounter() {
+			const textarea = document.getElementById('about');
+			const charCountDisplay = document.getElementById('about-char-count');
+			const maxLength = 300;
+			const currentLength = textarea.value.length;
+			const charsLeft = maxLength - currentLength;
+
+			charCountDisplay.textContent = `Characters left: ${charsLeft}`;
+
+			// Change text color if limit is exceeded
+			if (charsLeft < 0) {
+				charCountDisplay.style.color = 'red';
+			} else {
+				charCountDisplay.style.color = 'green';
+			}
+		}
+
+		function isNumber(event) {
+			const char = String.fromCharCode(event.which);
+			// Allow only numbers and prevent input if it starts with '0' or is less than 1900
+			if (!/[0-9]/.test(char) || (event.target.value.length === 0 && (char === '0' || char > '2'))) {
+				event.preventDefault();
+			}
+		}
+		/*
+		function validateYear(input) {
+			const errorDiv = document.getElementById('experience-error');
+			const year = parseInt(input.value, 10);
+		    
+			if (input.value.length > 0 && (year < 1900 || year > 2024)) {
+				errorDiv.textContent = "Please enter a valid year between 1900 and 2024.";
+			} else {
+				errorDiv.textContent = ""; // Clear error message
+			}
+		}*/
+		
+		function validateFileSize(inputId, errorDivId) {
+		    var fileInput = document.getElementById(inputId);
+		    var file = fileInput.files[0];
+		    var errorDiv = document.getElementById(errorDivId);
+		    
+		    // Clear any previous error message
+		    errorDiv.innerHTML = '';
+		    
+		    // Check if a file is selected
+		    if (file) {
+		        var maxSize = 1 * 1024 * 1024; // 2MB in bytes
+		        
+		        if (file.size > maxSize) {
+		            errorDiv.innerHTML = 'The file size exceeds 1MB. Please upload a smaller file. <a href="https://www.ilovepdf.com/compress_pdf" target="_blank">Compress PDF</a>';
+					fileInput.value = '';
+					fileInput.placeholder = '';
+		        }
+		    }
+		}
+		
+		function validateFileSizeImage(inputId, errorDivId) {
+		    var fileInput = document.getElementById(inputId);
+		    var file = fileInput.files[0];
+		    var errorDiv = document.getElementById(errorDivId);
+		    
+		    // Clear any previous error message
+		    errorDiv.innerHTML = '';
+		    
+		    // Check if a file is selected
+		    if (file) {
+		        var maxSize = 50 * 1024; // 50KB in bytes
+		        
+		        if (file.size > maxSize) {
+		            errorDiv.innerHTML = 'The file size exceeds 50KB. Please upload a smaller file.  <a href="https://imageresizer.com/image-compressor" target="_blank">Compress Image</a>';
+					fileInput.value = '';
+					fileInput.placeholder = '';
+		        }
+		    }
+		}
+
+
+
+	</script>
+
+
+</body>
+
+</html>

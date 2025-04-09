@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en"> <!--1024 834 768-->
+
+<head>
+
+	<head>
+
+		<title>Math Online Classes | Grade 7-12 | IEB and CAPS Curriculum</title>
+		<meta name="description"
+			content="Enroll your child in our online math classes with experienced tutors. Personalized tutoring for Grade 7-12, IEB and CAPS curriculum. From R480/month.">
+
+		<!-- SEO Image -->
+		<link rel="icon" href="seo_logo.jpeg" sizes="50x50" type="image/x-icon">
+
+		<!-- Open Graph Protocol (Facebook, LinkedIn) -->
+		<meta property="og:title" content="Math Online Classes | Grade 7-12 | IEB and CAPS Curriculum">
+		<meta property="og:description"
+			content="Enroll your child in our online math classes with experienced tutors. Personalized tutoring for Grade 7-12, IEB and CAPS curriculum. From R480/month.">
+		<meta property="og:image" content="https://bookatutorapexacademiccentre.co.za/math-online-classes.jpeg">
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="630">
+		<meta property="og:url" content="https://bookatutorapexacademiccentre.co.za/maths-class">
+		<meta property="og:type" content="website">
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Math Online Classes | Grade 7-12 | IEB and CAPS Curriculum">
+		<meta name="twitter:description"
+			content="Enroll your child in our online math classes with experienced tutors. Personalized tutoring for Grade 7-12, IEB and CAPS curriculum. From R480/month.">
+		<meta name="twitter:image" content="https://bookatutorapexacademiccentre.co.za/math-online-classes.jpeg">
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+		<link rel="preload" href="/css/mainTutorBookings.css" as="style" />
+		<link rel="stylesheet" href="/css/mainTutorBookings.css" th:href="@{/css/mainTutorBookings.css}" />
+
+		<link rel="preload" href="/css/matricRewrite.css" as="style" />
+		<link rel="stylesheet" href="/css/matricRewrite.css" th:href="@{/css/matricRewrite.css}" />
+
+		<style>
+			.checkbox-container {
+				display: inline-flex;
+			}
+
+			.opt {
+				display: none;
+			}
+
+			#fProvince {
+				display: none;
+				/* Hide province by default */
+			}
+
+			.popup {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+				z-index: 1000;
+			}
+
+			.popup-content {
+				background-color: #fff;
+				padding: 20px;
+				border-radius: 5px;
+				width: 500px;
+				text-align: center;
+				cursor: pointer;
+			}
+
+			.popup-content:hover {
+				transform: scale(1.05);
+				/* Slightly enlarge on hover */
+			}
+
+			.close {
+				cursor: pointer;
+				float: right;
+				font-size: 20px;
+			}
+
+			.hide {
+				display: none;
+			}
+
+			#pack-details {
+				text-align: left;
+				/* Aligns text to the left */
+				/* Optional: You can also add padding or margin for better appearance */
+				padding: 10px;
+			}
+
+			.package-details:hover {
+				transform: scale(1.05);
+				/* Slightly enlarge on hover */
+			}
+
+			#popular {
+				color: #001549;
+				font-weight: bold;
+			}
+
+
+
+			.bottom-row {
+				display: flex;
+				justify-content: center;
+				/* Center the two bottom divs */
+				width: 100%;
+				/* Full width */
+			}
+
+			.bottom-row .custom-div {
+				margin: 0 10px;
+				/* Spacing between the two bottom divs */
+			}
+
+
+
+
+
+
+
+
+
+
+			@media screen and (max-width: 1024px) {
+
+
+				.popup {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					position: fixed;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: rgba(0, 0, 0, 0.5);
+					z-index: 1000;
+				}
+
+				.popup-content {
+					background-color: #fff;
+					padding: 20px;
+					border-radius: 5px;
+					width: 300px;
+					text-align: center;
+					cursor: pointer;
+				}
+
+				.popup-content:hover {
+					transform: scale(1.05);
+					/* Slightly enlarge on hover */
+					cursor: pointer;
+				}
+
+				.close {
+					cursor: pointer;
+					float: right;
+					font-size: 20px;
+				}
+
+				.hide {
+					display: none;
+				}
+
+				#pack-details {
+					text-align: left;
+					/* Aligns text to the left */
+					/* Optional: You can also add padding or margin for better appearance */
+					padding: 10px;
+				}
+
+				.package-details:hover {
+					transform: scale(1.05);
+					/* Slightly enlarge on hover */
+					cursor: pointer;
+				}
+
+				#popular {
+					color: #001549;
+					font-weight: bold;
+
+				}
+
+			}
+
+			.subject-label {
+				display: flex;
+				/* Use flex to align checkbox and text */
+				align-items: center;
+				/* Center vertically */
+				overflow: hidden;
+				/* Hide overflow text */
+				text-overflow: ellipsis;
+				/* Show ellipsis for overflow text */
+				white-space: nowrap;
+				/* Prevent text wrapping */
+				width: calc(25% - 15px);
+				/* Set width for each label to fit 4 columns */
+				margin-bottom: 10px;
+				/* Space between checkboxes */
+			}
+
+			#subjectContainer {
+				display: none;
+				/* Initially hidden */
+				/*flex-wrap: wrap;
+			/* Allow wrapping of checkboxes */
+
+			}
+
+			#tutorNameDisplay {
+				font-size: 20px;
+			}
+
+			.wrapper {
+				padding-top: 2%;
+			}
+
+			#toptop {
+				font-size: 18px;
+			}
+
+
+			#termsCondition {
+
+				color: #02A552;
+			}
+
+
+			.flex-container {
+				display: none;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+			}
+
+			.information {
+				text-align: center;
+				/* Center text and inline elements */
+			}
+
+			#info {
+				display: inline-block;
+				/* Allow the UL to respect the width and center it */
+				list-style-type: none;
+				/* Optional: Remove bullet points */
+				padding: 0;
+				/* Remove default padding */
+				margin: 0 auto;
+				/* Center the UL in its container */
+				text-align: left;
+				/* Align text within the UL to the left */
+			}
+
+
+			@media (max-width: 600px) {
+				#schoolPackages {
+					flex-direction: column;
+					/* Stack divs vertically */
+					align-items: stretch;
+					/* Stretch to fill available width */
+				}
+
+				.bottom-row {
+					flex-direction: column;
+					/* Stack bottom row divs vertically */
+					align-items: stretch;
+					/* Stretch to fill available width */
+					width: 100%;
+					/* Ensure full width */
+				}
+
+				.bottom-row .custom-div {
+					margin: 10px 0;
+					/* Space between stacked divs */
+					width: 100%;
+					/* Make each div full width */
+				}
+			}
+		</style>
+	</head>
+
+<body>
+
+	<nav class="navbar">
+		 <img src="/images/ApexLogo.png" alt="Logo" class="logo" id="logo_image">
+		<button class="navbar-toggle" id="navbar-toggle">
+			<i class="fas fa-bars"></i> <!-- Hamburger icon -->
+		</button>
+		<ul class="nav-links">
+			<li><a href="https://www.apexacademiccentre.co.za/">Home</a></li>
+			<li class="dropdown">
+				<a href="#" class="dropbtn">Tutoring <i class="fas fa-chevron-down"></i></a>
+				<div class="dropdown-content">
+					<a href="https://www.apexacademiccentre.co.za/online-tutoring/">Online Tutoring</a>
+					<a href="https://www.apexacademiccentre.co.za/in-person-tutoring/">In Person Tutoring</a>
+					<a href="https://www.apexacademiccentre.co.za/matric-rewrite-2025/">Matric Re-Write</a>
+					<a href="https://www.apexacademiccentre.co.za/special-needs-tutoring/">Special Need Tutoring</a>
+					<a href="https://www.apexacademiccentre.co.za/cambridge-tutoring/">Cambridge Tutoring</a>
+					<a href="https://www.apexacademiccentre.co.za/university-college-tutors/">University/ College
+						Tutors</a>
+					<a href="https://www.apexacademiccentre.co.za/pearson-edexcel-tutoring/">Person Edexcel Tutoring</a>
+				</div>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropbtn">Online Classes <i class="fas fa-chevron-down"></i></a>
+				<div class="dropdown-content">
+					<a href="https://www.apexacademiccentre.co.za/grades-7-to12-mathematics-online-classes/">
+						Mathematics Online Class</a>
+					<a href="https://www.apexacademiccentre.co.za/matric-rewrite-2025/">Matric Rewrite 2025</a>
+				</div>
+			</li>
+			<li><a href="https://www.apexacademiccentre.co.za/homeschooling-support/">Homeschooling</a></li>
+
+			<li><a href="https://www.apexacademiccentre.co.za/resources/">Resources</a></li>
+			<li><a href="https://www.apexacademiccentre.co.za/contact-us/">Contact Us</a></li>
+
+		</ul>
+	</nav>
+
+
+	<div class="wrapper" id="modal">
+
+		<div class="modal-content" id="yesyes">
+
+			<div class="form_wrap">
+
+
+				<div class="information" id="div0">
+					<h2>Mathematics Online Classes.</h2>
+					<h2>Sign up Your Child for Our Math Classes</h2>
+					<ul id="info">
+						<li><b>•&nbsp;&nbsp;2 classes per week</b></li><br>
+						<li><b>•&nbsp;&nbsp;Personalized tutoring with experienced tutors</b></li><br>
+						<li><b>•&nbsp;&nbsp;For Grade 7 to 12 (IEB and CAPS)</b></li><br>
+						<li><b>•&nbsp;&nbsp;From R480 per month</b></li><br>
+
+					</ul>
+
+					<div class="btns_wrap">
+						<div class="common_btns form_1_btns">
+							<button type="button" onclick="showForm1()">Next</button>
+
+						</div>
+					</div>
+
+
+				</div>
+
+
+				<div class="form_1 data_info" id="div1">
+					<h2>Parent’s Information</h2>
+					<br>
+					<form id="parents-form">
+						<div class="form_container">
+							<div class="form-row">
+								<div class="form-group">
+									<label for="parentFirstName">Parent's First Name <span
+											class="required">*</span></label>
+									<input type="text" id="parentFirstName" name="parentFirstName" class="input"
+										placeholder="Bongisani" required>
+									<div id="parentFirstName-error" class="error"></div>
+								</div>
+								<div class="form-group">
+									<label for="parentLastName">Parent's Last Name <span
+											class="required">*</span></label>
+									<input type="text" id="parentLastName" name="parentLastName" class="input"
+										placeholder="Mabhena" required>
+									<div id="parentLastName-error" class="error"></div>
+								</div>
+							</div>
+
+
+
+							<div class="form-row">
+
+								<div class="form-group">
+									<label for="parentEmail">Email<span class="required">*</span></label>
+									<input type="text" id="parentEmail" name="parentEmail" class="input"
+										placeholder="bongisanif@gmail.com" required>
+									<div id="parentEmail-error" class="error"></div>
+								</div>
+								<div class="form-group">
+									<label for="parentPhone">Mobile<span class="required">*</span></label>
+									<input type="text" id="parentPhone" name="parentPhone" class="input"
+									       placeholder="+27608337219" maxlength="10" pattern="\d{10}" required>
+									<div id="parentPhone-error" class="error"></div>
+								</div>
+
+
+
+							</div>
+
+
+
+						</div>
+
+						<div class="btns_wrap">
+							<div class="common_btns form_2_btns">
+								<button type="button" class="btn_back" onclick="backToformZero()">Back</button>
+								<button type="button" class="btn_next" onclick="showStudentInfo()">Next</button>
+							</div>
+						</div>
+
+					</form>
+				</div>
+
+
+				<div class="form_2" id="div2">
+					<h2>Student’s Information</h2>
+					<br>
+					<div id="form-container-2" class="form-container hidden">
+						<form id="studentForm">
+
+
+							<div class="form-row">
+								<div class="form-group">
+									<label for="studentFirstName">Student’s First Name <span
+											class="required">*</span></label>
+									<input type="text" id="studentFirstName" name="studentFirstName" class="input"
+										placeholder="Bongisani" required>
+									<div id="studentFirstName-error" class="error"></div>
+								</div>
+								<div class="form-group">
+									<label for="studentLastName">Student’s Last Name <span
+											class="required">*</span></label>
+									<input type="text" id="studentLastName" name="studentLastName" class="input"
+										placeholder="Mabhena" required>
+									<div id="studentLastName-error" class="error"></div>
+								</div>
+							</div>
+
+
+
+							<div class="form-row">
+
+								<div class="form-group">
+
+									<label for="grade">Grade <span class="required">*</span></label>
+									<select id="grade" name="grade" required onchange="updateSubjects()">
+										<option value="">Choose from 7 to 12</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+									</select>
+									<div id="grade-error" class="error"></div>
+
+								</div>
+
+								<div class="form-group">
+									<label for="subject">Subject <span class="required">*</span></label>
+									<select id="subject" name="subject" required>
+										<option value="">Choose Mathematics or Mathematical Literacy</option>
+										<option value="Mathematics">Mathematics</option>
+										<option value="Mathematical Literacy">Mathematical Literacy</option>
+									</select>
+									<div id="subject-error" class="error"></div>
+								</div>
+
+
+							</div>
+
+
+							<div class="form-row">
+
+								<div class="form-group">
+
+									<label for="curriculum">Curriculum <span class="required">*</span></label>
+									<select id="curriculum" name="curriculum" required>
+										<option value="" disabled selected>Choose IEB or CAPS</option>
+										<option value="IEB">IEB</option>
+										<option value="CAPS">CAPS</option>
+									</select>
+									<div id="curriculum-error" class="error"></div>
+								</div>
+
+
+								<div class="form-group">
+									<label for="marks">What were your child’s marks for the previous term? <span
+											class="required">*</span></label>
+									<select id="marks" name="marks" required>
+										<option value="">Select marks range</option>
+										<option value="0-20">0-20%</option>
+										<option value="21-40">21-40%</option>
+										<option value="41-60">41-60%</option>
+										<option value="61-80">61-80%</option>
+										<option value="81-100">81-100%</option>
+									</select>
+									<div id="marks-error" class="error"></div>
+
+								</div>
+
+							</div>
+
+					</div>
+
+					<div class="btns_wrap">
+						<div class="common_btns form_2_btns">
+							<button type="button" class="btn_back" onclick="backToformOne()">Back</button>
+							<button type="button" class="btn_next" onclick="showMathSupportInfo()">Next</button>
+						</div>
+					</div>
+					</form>
+				</div>
+
+
+
+				<div class="form_2" id="div3">
+					<h2>Math Development Support</h2>
+					<br>
+					<div id="form-container-2" class="form-container hidden">
+						<form id="mathSupportForm">
+
+
+							<div class="form-group">
+
+								<div class="form-group">
+									<label for="message">Message <span class="required"></span></label><br><br>
+									<textarea id="message" name="message" placeholder="Optional Message...."
+										class="textarea" required></textarea>
+									<div id="message-error" class="error"></div>
+								</div>
+
+
+								<br>
+								<p><strong>How can we support your child’s math development? (Tick one or more)</strong>
+								</p>
+								<br>
+
+								<div class="terms-row">
+									<input type="checkbox" id="one" name="one" required>
+									<label for="one">
+										Improve Marks: Boost grades and achieve academic success
+									</label>
+								
+								</div>
+
+								<div class="terms-row">
+									<input type="checkbox" id="two" name="two" required>
+									<label for="two">
+										Understand Basic Concepts: Clarify fundamental ideas and build a strong
+										foundation
+									</label>
+									
+								</div>
+								<div class="terms-row">
+									<input type="checkbox" id="three" name="three" required>
+									<label for="three">
+										Study Techniques: Develop effective learning strategies for better results
+									</label>
+									
+								</div>
+								<div class="terms-row">
+									<input type="checkbox" id="terms4" name="term4" required>
+									<label for="four">
+										Exam Preparation: Prepare for upcoming exams with confidence
+									</label>
+									
+								</div>
+
+							</div>
+							<br>
+
+							<div class="terms-row">
+								<input type="checkbox" id="terms" name="terms" required>
+								<label for="terms">
+									I have read and agree to the <a
+										href="https://www.apexacademiccentre.co.za/terms-and-conditions/"
+										target="_blank" id="termsCondition">Terms and Conditions</a> and <a
+										href="https://www.apexacademiccentre.co.za/privacy-policy/" target="_blank"
+										id="termsCondition">Privacy Policy</a>.<span class="required">*</span>
+								</label>
+								<div id="terms-error" class="error"></div>
+							</div>
+
+
+					</div>
+
+					<div class="btns_wrap">
+						<div class="common_btns form_2_btns">
+							<button type="button" class="btn_back" onclick="backToformTwo()">Back</button>
+							<button type="button" class="btn_next" onclick="validateForm3()">Next</button>
+						</div>
+					</div>
+					</form>
+				</div>
+
+
+				<div class="form_4" id="div4">
+					<h2><span id="packageHeading"></span></h2>
+
+					<div class="div-container" id="schoolPackages">
+						<div class="custom-div" id="oneSubject">
+							<p>Monthly Package</p>
+							<div class="content">
+
+								<div class="package-details" onclick="onceOffPackage()">R480</div>
+
+								<form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process"
+									method="post">
+									<input required type="hidden" name="cmd" value="_paynow">
+									<input required type="hidden" name="receiver" pattern="[0-9]" value="25220959">
+									<input type="hidden" name="return_url"
+										value="https://bookatutorapexacademiccentre.co.za/success_maths_registration">
+									<input required type="hidden" name="amount" value="480">
+									<input required type="hidden" name="item_name" maxlength="255" value="Apex payment">
+									<input type="hidden" name="item_description" maxlength="255" value="Apex payment">
+									<table>
+										<tr>
+											<td colspan=2 align=center>
+												<button type="submit" class="package-btn">Pay R480 Now</button>
+												<!--<input type="text" src="https://my.payfast.io/images/buttons/PayNow/Primary-Small-PayNow.png" alt="Pay Now" title="Pay Now with Payfast">-->
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>
+						</div>
+
+						<div class="bottom-row">
+
+							<div class="custom-div" id="twoSubject">
+								<p>3 Months Package</p>
+								<div class="content">
+									<div class="package-details">R1440 (10% discount)</div>
+									<form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process"
+										method="post">
+										<input required type="hidden" name="cmd" value="_paynow">
+										<input required type="hidden" name="receiver" pattern="[0-9]" value="25220959">
+										<input type="hidden" name="return_url"
+											value="https://bookatutorapexacademiccentre.co.za/success_maths_registration">
+										<input required type="hidden" name="amount" value="1296">
+										<input required type="hidden" name="item_name" maxlength="255"
+											value="Apex payment">
+										<input type="hidden" name="item_description" maxlength="255"
+											value="Apex payment">
+										<table>
+											<tr>
+												<td colspan=2 align=center>
+													<button type="submit" class="package-btn">Pay R1296 Now</button>
+													<!--<input type="text" src="https://my.payfast.io/images/buttons/PayNow/Primary-Small-PayNow.png" alt="Pay Now" title="Pay Now with Payfast">-->
+												</td>
+											</tr>
+										</table>
+									</form>
+								</div>
+							</div>
+							<div class="custom-div" id="threeSubject">
+								<p>6 Months Package</p>
+								<div class="content">
+									<div class="package-details" id="popular">R2880 (15% discount)</div>
+									<form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process"
+										method="post">
+										<input required type="hidden" name="cmd" value="_paynow">
+										<input required type="hidden" name="receiver" pattern="[0-9]" value="25220959">
+										<input type="hidden" name="return_url"
+											value="https://bookatutorapexacademiccentre.co.za/success_maths_registration">
+										<input required type="hidden" name="amount" value="2448">
+										<input required type="hidden" name="item_name" maxlength="255"
+											value="Apex payment">
+										<input type="hidden" name="item_description" maxlength="255"
+											value="Apex payment">
+										<table>
+											<tr>
+												<td colspan=2 align=center>
+													<button type="submit" class="package-btn">Pay R2448 Now</button>
+													<!--<input type="text" src="https://my.payfast.io/images/buttons/PayNow/Primary-Small-PayNow.png" alt="Pay Now" title="Pay Now with Payfast">-->
+												</td>
+											</tr>
+										</table>
+									</form>
+								</div>
+							</div>
+
+
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="form_4" id="div5">
+
+					<div class="div-container" id="schoolPackages">
+
+
+
+						<div class="custom-div" id="fourSubject">
+							<p>Monthly Package</p>
+							<div class="content">
+								<div class="package-details" id="popular">R550</div>
+								<form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process"
+									method="post">
+									<input required type="hidden" name="cmd" value="_paynow">
+									<input required type="hidden" name="receiver" pattern="[0-9]" value="25220959">
+									<input type="hidden" name="return_url"
+										value="https://bookatutorapexacademiccentre.co.za/success_maths_registration">
+									<input required type="hidden" name="amount" value="550">
+									<input required type="hidden" name="item_name" maxlength="255" value="Apex payment">
+									<input type="hidden" name="item_description" maxlength="255" value="Apex payment">
+									<table>
+										<tr>
+											<td colspan=2 align=center>
+												<button type="submit" class="package-btn">Pay R550 Now</button>
+												<!--<input type="text" src="https://my.payfast.io/images/buttons/PayNow/Primary-Small-PayNow.png" alt="Pay Now" title="Pay Now with Payfast">-->
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>
+						</div>
+
+
+						<div class="bottom-row">
+
+							<div class="custom-div" id="fiveSubject">
+								<p>3 Months Package</p>
+								<div class="content">
+									<div class="package-details">R1650 (10% discount)</div>
+									<form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process"
+										method="post">
+										<input required type="hidden" name="cmd" value="_paynow">
+										<input required type="hidden" name="receiver" pattern="[0-9]" value="25220959">
+										<input type="hidden" name="return_url"
+											value="https://bookatutorapexacademiccentre.co.za/success_maths_registration">
+										<input required type="hidden" name="amount" value="1485">
+										<input required type="hidden" name="item_name" maxlength="255"
+											value="Apex payment">
+										<input type="hidden" name="item_description" maxlength="255"
+											value="Apex payment">
+										<table>
+											<tr>
+												<td colspan=2 align=center>
+													<button type="submit" class="package-btn">Pay R1485 Now</button>
+													<!--<input type="text" src="https://my.payfast.io/images/buttons/PayNow/Primary-Small-PayNow.png" alt="Pay Now" title="Pay Now with Payfast">-->
+												</td>
+											</tr>
+										</table>
+									</form>
+								</div>
+							</div>
+							<div class="custom-div" id="sixSubject">
+								<p>6 Monthly Package</p>
+								<div class="content">
+									<div class="package-details">R3300 (15% discount)</div>
+									<form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process"
+										method="post">
+										<input required type="hidden" name="cmd" value="_paynow">
+										<input required type="hidden" name="receiver" pattern="[0-9]" value="25220959">
+										<input type="hidden" name="return_url"
+											value="https://bookatutorapexacademiccentre.co.za/success_maths_registration">
+										<input required type="hidden" name="amount" value="2805">
+										<input required type="hidden" name="item_name" maxlength="255"
+											value="Apex payment">
+										<input type="hidden" name="item_description" maxlength="255"
+											value="Apex payment">
+										<table>
+											<tr>
+												<td colspan=2 align=center>
+													<button type="submit" class="package-btn">Pay R2805 Now</button>
+													<!--<input type="text" src="https://my.payfast.io/images/buttons/PayNow/Primary-Small-PayNow.png" alt="Pay Now" title="Pay Now with Payfast">-->
+												</td>
+											</tr>
+										</table>
+									</form>
+								</div>
+							</div>
+						</div>
+
+
+
+						<div class="custom-div" id="sevenSubject">
+							<p>Monthly Package</p>
+							<div class="content">
+								<div class="package-details">7 Subjects</div>
+								<form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process"
+									method="post">
+									<input required type="hidden" name="cmd" value="_paynow">
+									<input required type="hidden" name="receiver" pattern="[0-9]" value="25220959">
+									<input type="hidden" name="return_url"
+										value="https://bookatutorapexacademiccentre.co.za/success_maths_registration">
+									<input required type="hidden" name="amount" value="3300">
+									<input required type="hidden" name="item_name" maxlength="255" value="Apex payment">
+									<input type="hidden" name="item_description" maxlength="255" value="Apex payment">
+									<table>
+										<tr>
+											<td colspan=2 align=center>
+												<button type="submit" class="package-btn">Pay R3300 Now</button>
+												<!--<input type="text" src="https://my.payfast.io/images/buttons/PayNow/Primary-Small-PayNow.png" alt="Pay Now" title="Pay Now with Payfast">-->
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>
+						</div>
+
+						<div class="custom-div" id="moreThan">
+							<p>Consultant</p>
+							<div class="content">
+								<div class="package-details">Get in touch with the consultant.
+								</div>
+
+							</div>
+						</div>
+
+
+
+					</div>
+
+
+
+					<div class="btns_wrap">
+						<div class="common_btns form_5_btns">
+							<button type="button" class="btn_back" onclick="backToformThree()">Back</button>
+							<button type="button" class="btn_next" id="consult_btn" onclick="consultantEnquiry()">Speak
+								to
+								consultant</button>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<!--form 5-->
+
+		<!--</div>-->
+
+
+		<div id="popup" class="popup hide">
+			<div class="popup-content">
+				<span class="close" onclick="closePopup()">&times;</span>
+				<h2>Package Details</h2>
+				<div id="pack-details"></div>
+				<!-- Add more details as needed -->
+			</div>
+		</div>
+
+
+		<!--END OF FORMS-->
+		<div class="modal_wrapper">
+			<div class="shadow"></div>
+			<div class="success_wrap">
+				<div class="modal_icon">✓</div>
+				<p>Thank you! Your form has been submitted successfully.</p>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+	<!--</div>-->
+
+
+	<script>
+
+		document.getElementById('div1').style.display = 'none';
+		document.getElementById('div2').style.display = 'none';
+		document.getElementById('div3').style.display = 'none';
+		document.getElementById('div4').style.display = 'none';
+		document.getElementById('div5').style.display = 'none';
+
+
+		function showForm1() {
+
+			document.getElementById('div1').style.display = 'block';
+			document.getElementById('div0').style.display = 'none';
+		}
+
+		function backToformZero() {
+
+			document.getElementById('div1').style.display = 'none';
+			document.getElementById('div2').style.display = 'none';
+			document.getElementById('div3').style.display = 'none';
+			document.getElementById('div4').style.display = 'none';
+			document.getElementById('div5').style.display = 'none';
+			document.getElementById('div0').style.display = 'block';
+
+		}
+
+		document.getElementById("modal").style.display = 'block';
+
+		var span = document.getElementById("close-popup");
+
+		function showStudentInfo() {
+
+			var isValid = true;
+
+
+			var name = document.getElementById("parentFirstName").value;
+			var surname = document.getElementById("parentLastName").value;
+			var email = document.getElementById("parentEmail").value;
+			var mobile = document.getElementById("parentPhone").value;
+
+
+
+			if (!name) {
+				document.getElementById('parentFirstName-error').textContent = "First name is required.";
+				isValid = false;
+			} else {
+				document.getElementById('parentFirstName-error').textContent = "";
+			}
+
+
+			if (!surname) {
+				document.getElementById('parentLastName-error').textContent = "Last name is required.";
+				isValid = false;
+			} else {
+				document.getElementById('parentLastName-error').textContent = "";
+			}
+
+			if (!email) {
+				document.getElementById('parentEmail-error').textContent = "Email is required.";
+				isValid = false;
+			} else {
+				document.getElementById('parentEmail-error').textContent = "";
+			}
+
+			if (!mobile || !/^\d{10}$/.test(mobile)) {
+			    if (!mobile) {
+			        document.getElementById('parentPhone-error').textContent = "Phone number is required.";
+			    } else {
+			        document.getElementById('parentPhone-error').textContent = "Phone number must be exactly 10 digits.";
+			    }
+			    isValid = false;
+			} else {
+			    document.getElementById('parentPhone-error').textContent = "";
+			}
+
+
+
+			if (isValid) {
+
+				document.getElementById('div1').style.display = 'none';
+				document.getElementById('div2').style.display = 'block';
+				document.getElementById('div3').style.display = 'none';
+				document.getElementById('div4').style.display = 'none';
+				document.getElementById('div5').style.display = 'none';
+			}
+
+		}
+
+		function backToformOne() {
+
+			document.getElementById('div1').style.display = 'block';
+			document.getElementById('div2').style.display = 'none';
+			document.getElementById('div3').style.display = 'none';
+			document.getElementById('div4').style.display = 'none';
+			document.getElementById('div5').style.display = 'none';
+			document.getElementById('div0').style.display = 'none';
+		}
+
+		function showMathSupportInfo() {
+
+			var isValid = true;
+
+			var studName = document.getElementById("studentFirstName").value;
+			var studSurname = document.getElementById("studentLastName").value;
+
+			var grade = document.getElementById("grade").value;
+			var subject = document.getElementById("subject").value;
+			var curriculum = document.getElementById("curriculum").value;
+			var marks = document.getElementById('marks').value;
+
+			if (!studName) {
+				document.getElementById('studentFirstName-error').textContent = "First name is required.";
+				isValid = false;
+			} else {
+				document.getElementById('studentFirstName-error').textContent = "";
+			}
+
+
+			if (!studSurname) {
+				document.getElementById('studentLastName-error').textContent = "Last name is required.";
+				isValid = false;
+			} else {
+				document.getElementById('studentLastName-error').textContent = "";
+			}
+
+
+			if (!grade) {
+				document.getElementById('grade-error').textContent = "Grade is required.";
+				isValid = false;
+			} else {
+				document.getElementById('grade-error').textContent = "";
+			}
+
+
+
+			if (!subject) {
+				document.getElementById('subject-error').textContent = "Subject is  required.";
+				isValid = false;
+			} else {
+				document.getElementById('subject-error').textContent = "";
+			}
+
+			if (!curriculum) {
+				document.getElementById('curriculum-error').textContent = "Curriculum is required.";
+				isValid = false;
+			} else {
+				document.getElementById('curriculum-error').textContent = "";
+			}
+
+			if (!marks) {
+				document.getElementById('marks-error').textContent = "Marks  required.";
+				isValid = false;
+			} else {
+				document.getElementById('marks-error').textContent = "";
+			}
+
+
+
+
+			if (isValid) {
+
+				document.getElementById('div1').style.display = 'none';
+				document.getElementById('div2').style.display = 'none';
+				document.getElementById('div3').style.display = 'block';
+				document.getElementById('div4').style.display = 'none';
+				document.getElementById('div5').style.display = 'none';
+			}
+
+
+
+		}
+
+		function backToformTwo() {
+
+			document.getElementById('div1').style.display = 'none';
+			document.getElementById('div2').style.display = 'block';
+			document.getElementById('div3').style.display = 'none';
+			document.getElementById('div4').style.display = 'none';
+			document.getElementById('div5').style.display = 'none';
+			document.getElementById('div0').style.display = 'none';
+		}
+
+
+		function validateForm3() {
+
+			var isValid = true;
+
+			var termsCheckbox = document.getElementById('terms');
+			if (termsCheckbox.checked) {
+				document.getElementById('terms-error').textContent = "";
+			} else {
+				document.getElementById('terms-error').textContent = "Required";
+				isValid = false;
+			}
+
+
+			if (isValid) {
+
+				const allData = combineFormData();
+				var status = "pending";
+
+				const dataToSend = {
+					...allData, status: status
+				};
+
+
+				fetch('/maths-registration', { // Replace with your actual endpoint URL
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(dataToSend)
+				})
+					.then(response => response.json())
+					.then(result => {
+
+						// Optionally show success message or handle response
+					})
+					.catch(error => {
+						console.error('Error:', error);
+						// Optionally handle error response
+					});
+
+				document.getElementById('div1').style.display = 'none';
+				document.getElementById('div2').style.display = 'none';
+				document.getElementById('div3').style.display = 'none';
+				document.getElementById('div4').style.display = 'block';
+				document.getElementById('div5').style.display = 'block';
+				displayPackage();
+
+			}
+
+
+		}
+
+		function backToformThree() {
+
+			document.getElementById('div1').style.display = 'none';
+			document.getElementById('div2').style.display = 'none';
+			document.getElementById('div3').style.display = 'block';
+			document.getElementById('div4').style.display = 'none';
+			document.getElementById('div5').style.display = 'none';
+			document.getElementById('div0').style.display = 'none';
+		}
+
+
+		function combineFormData() {
+
+			const form1 = document.getElementById('parents-form');
+			const form2 = document.getElementById('studentForm');
+			const form3 = document.getElementById('mathSupportForm');
+
+			const form1Data = new FormData(form1);
+			const form2Data = new FormData(form2);
+			const form3Data = new FormData(form3);
+
+			const data1 = formDataToObject(form1Data);
+			const data2 = formDataToObject(form2Data);
+			const data3 = formDataToObject(form3Data);
+
+			// Combine all data into a single object
+			return {...data1, ...data2, ...data3, };
+		}
+
+		function formDataToObject(formData) {
+			const data = {};
+			formData.forEach((value, key) => {
+				// Handle multiple values for the same key
+				if (data[key]) {
+					// If value is already an array, push the new value
+					if (Array.isArray(data[key])) {
+						data[key].push(value);
+					} else {
+						// Convert existing value to an array and add new value
+						data[key] = [data[key], value];
+					}
+				} else {
+					data[key] = value;
+				}
+			});
+			return data;
+		}
+
+		function consultantEnquiry() {
+			alert("Consultant will get in touch with you shortly. Thank you.");
+
+			const allData = combineFormData(); // Combine data from all forms
+			var status = "consult"; // Set the status
+
+			const dataToSend = {
+				...allData,
+				status: status // Include status in the data
+			};
+
+			fetch('/maths-registration', { // Replace with your actual endpoint URL
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(dataToSend)
+			})
+				.then(response => response.json())
+				.then(result => {
+					console.log('Success:', result);
+
+				})
+				.catch(error => {
+					console.error('Error:', error);
+
+				});
+
+
+
+			// Redirect after a brief delay
+			setTimeout(function () {
+				window.location.href = '/'; // Redirect to homepage or desired location
+			}, 2000);
+		}
+
+		function showSection(sectionId) {
+
+			const sections = ['personalInfo', 'courseInfo', 'confirmationInfo', 'formFive'];
+			sections.forEach(id => {
+				document.getElementById(id).classList.add('hidden');
+			});
+			document.getElementById(sectionId).classList.remove('hidden');
+		}
+
+
+
+		function showPersonalInfo() {
+			showSection('personalInfo');
+		}
+
+
+
+		function showPaymentPackages() {
+			showSection('formFive');
+		}
+
+
+
+
+		function displayPackage() {
+			var gradeValue = document.getElementById("grade").value;
+			var packageHeading = document.getElementById("packageHeading");
+
+			// Hide all subject divs initially
+			document.getElementById('oneSubject').style.display = 'none';
+			document.getElementById('twoSubject').style.display = 'none';
+			document.getElementById('threeSubject').style.display = 'none';
+			document.getElementById('fourSubject').style.display = 'none';
+			document.getElementById('fiveSubject').style.display = 'none';
+			document.getElementById('sixSubject').style.display = 'none';
+			document.getElementById('sevenSubject').style.display = 'none';
+			document.getElementById('moreThan').style.display = 'none';
+
+			// Display subjects based on selected grade
+			if (gradeValue >= 7 && gradeValue <= 9) {
+				document.getElementById('oneSubject').style.display = 'block';
+				document.getElementById('twoSubject').style.display = 'block';
+				document.getElementById('threeSubject').style.display = 'block';
+				packageHeading.innerText = "Payment Package for Grades 7 to 9";
+			} else if (gradeValue > 9) {
+				// You can customize what happens for grades 10 to 12
+				document.getElementById('fourSubject').style.display = 'block';
+				document.getElementById('fiveSubject').style.display = 'block';
+				document.getElementById('sixSubject').style.display = 'block';
+				packageHeading.innerText = "Payment Package for Grades 10 to 12";
+			}
+		}
+
+
+		//update the grades and subjects
+		function updateSubjects() {
+			const gradeSelect = document.getElementById('grade');
+			const subjectSelect = document.getElementById('subject');
+			const selectedGrade = gradeSelect.value;
+
+			// Clear current subject options
+			subjectSelect.innerHTML = '';
+
+			if (selectedGrade >= 7 && selectedGrade <= 9) {
+				// Show only Mathematics for grades 7 to 9
+				subjectSelect.innerHTML += '<option value="Mathematics">Mathematics</option>';
+			} else if (selectedGrade >= 10 && selectedGrade <= 12) {
+				// Show both options for grades 10 to 12
+				subjectSelect.innerHTML += '<option value="Mathematics">Mathematics</option>';
+				subjectSelect.innerHTML += '<option value="Mathematical Literacy">Mathematical Literacy</option>';
+			}
+
+			// Add a default option
+			subjectSelect.innerHTML = '<option value="">Choose Mathematics or Mathematical Literacy</option>' + subjectSelect.innerHTML;
+		}
+
+
+	</script>
+
+	<script src="js/jquery-3.3.1.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery-3.3.1.min.js"></script>
+
+</body>
+
+</html>

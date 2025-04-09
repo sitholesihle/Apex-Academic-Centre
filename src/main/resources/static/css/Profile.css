@@ -1,0 +1,3267 @@
+body{
+	
+	font-family: 'Arial', sans-serif;
+	background-color: #f6fffa;
+
+}
+
+
+/* @import syntax to load Google Fonts in CSS */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Now apply it to elements */
+#footer-footer {
+    font-family: 'Montserrat', sans-serif;
+    font-size: small;
+    font-weight: bold;
+}
+
+.aboutApex, .links, .footer-heading
+{
+	font-family: 'Montserrat', sans-serif;
+	font-size: small;
+	font-weight: bold;
+}
+
+
+        .main-section {
+            display: flex; /* Use flexbox to align child elements horizontally */
+            align-items: flex-start; /* Align items to the top of the container */
+            padding: 20px;
+            width: 100%;
+            background-color: #e7eeff; /* Optional: for better visibility */
+            border: none;
+        }
+
+        .whole-wrapper {
+            display: flex; /* Use flexbox to align child elements horizontally */
+            align-items: flex-start; /* Align items to the top of the container */
+            padding: 20px;
+            border: 1px solid #ccc; /* Optional: for better visibility */
+            background-color: #e7eeff; /* Optional: for better visibility */
+            margin-top: 75px;
+            width: 100%;
+            border: none;
+        }
+
+
+.profile-row {
+            display: flex;
+            align-items: flex-start;
+        }
+
+           .content-wrapper {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+
+.qualification {
+    display: inline-block;
+    padding: 5px;
+    background-color: gainsboro;
+    border-radius: 4px;
+    color: blue;
+    text-align: center;
+}
+
+.subjectt {
+    display: inline-block;
+    padding: 5px;
+    background-color: gainsboro;
+    border-radius: 4px;
+    color: blue;
+    text-align: center;
+}
+
+/*The added */
+
+
+
+#rate-icon, #back-icon {
+    margin-right: 5px; /* Adds spacing between icons and text */
+   
+}
+
+#rate-icon{
+    color: #fd590d;
+}
+
+.book-tutor-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #02A552;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 170px;
+    
+}
+
+.find-tutor-button{
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #001549;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 170px;
+    margin-left: 30px;
+}
+
+.book-tutor-button:hover {
+    background-color: white;
+    color: #02A552;
+}
+
+.find-tutor-button:hover {
+    background-color: white;
+    color: #001549;
+}
+
+body, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Navbar container */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+   /* background-color: white; */
+    background-color: white;
+    padding: 10px;
+    font-family: 'Arial', sans-serif;
+    position: fixed; /* Fixes the navbar to the top of the viewport */
+    top: 0; /* Positions it at the top */
+    left: 0; /* Ensures it stretches from the left edge */
+    right: 0; /* Ensures it stretches to the right edge */
+    z-index: 1000; /* Ensures it stays on top of other content */
+}
+
+/* Logo image */
+.logo {
+    /*height: 60px;*/
+    margin-right: 20px;
+    margin-left: 6%;
+   /* width: 220px;*/
+    max-width: 100%;
+    height: auto;
+    
+}
+
+/* Navbar links container */
+.nav-links {
+	margin-left: 8%;
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* Pushes the nav links to the left */
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+
+/* Navbar links */
+.nav-links li {
+    position: relative;
+    margin: 0 10px;
+}
+
+.nav-links a {
+    color: #00154A;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+/* Dropdown container */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.nav-links a:hover {
+    color: #02A552; /* Ensure text color remains white on hover */
+}
+
+/* Nav-right styling */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds spacing between items */
+}
+
+/* Search container */
+.search-container {
+    position: relative;
+    margin-right: 20px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    z-index: 10; /* Ensures it's on top of other content */
+    height: 40px;
+}
+
+#search-input {
+    padding: 5px 30px 5px 30px;
+    border: 1px solid transparent; /* Hide the border */
+    border-radius: 4px;
+    font-size: 14px;
+    width: 0;
+    padding-left: 35px; /* Space for icon */
+    background: white;
+    outline: none;
+    transition: width 0.3s, padding 0.3s;
+}
+
+#search-input:focus {
+    width: 200px;
+    padding-left: 35px; /* Adjust for icon */
+}
+
+#search-button {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#search-button .search-icon {
+    font-size: 18px;
+    color: #00a550; /* Set the icon color */
+}
+
+.login-register {
+    background-color: #001549;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.login-register:hover {
+    background-color: white; /* Change the background color on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+    color: #02A552;
+}
+
+.login-register .login-icon {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.navbar-toggle {
+    display: none; /* Hide by default */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px; /* Adjust icon size */
+    margin-left: auto; /* Push it to the right */
+  
+}
+
+/* Styles for the mobile view */
+@media screen and (max-width: 768px) {
+    .navbar {
+        height: 80px; /* Adjust the height as needed */
+    }
+
+    .navbar-toggle {
+		color: #00a550;
+        display: block; /* Show toggle button */
+    }
+
+    .nav-links {
+        margin-top: 5%;
+        position: fixed; /* Fix position */
+        top: 0; /* Align to top */
+        right: -300px; /* Start off-screen */
+        height: 100%; /* Full height */
+        width: 250px; /* Width of the nav */
+        background-color: white; /* Background color */
+        flex-direction: column; /* Stack vertically */
+        transition: right 0.3s ease; /* Sliding effect */
+        z-index: 999; /* Ensure it is above other content */
+    }
+
+    .nav-links.show {
+        right: 0; /* Slide in */
+    }
+
+    .search-container {
+        display: none; /* Hide search on small screens */
+    }
+
+    .login-register {
+        width: 100%; /* Full width */
+        margin: 10px 0; /* Add spacing */
+    }
+
+    .logo {
+        margin: 0; /* Remove margins */
+        position: absolute; /* Position it absolutely */
+        top: 10px; /* Adjust as needed */
+        left: 0; /* Align to the left */
+    }
+
+	
+}
+
+.main-class .tutorImage{
+	
+	  width: 100%;
+	  align-items: center;
+	  height: 235px;
+	
+}
+
+.the-left{
+   
+    margin-top: 10px;
+    margin-left: 7%;
+}
+
+ .profile-picture-container, .matric {
+            width: 310px; /* Adjust as needed */
+            /*background-color: #f6fffa; */
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .matric img{
+            width: 100%;
+            height: 345px;
+            border-radius: 8px;
+        }
+
+        .profile-picture-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .profile-picture-container .name,
+        .profile-picture-container .age {
+            margin-top: 10px;
+            color: #001549;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .profile-picture-container .name{
+            font-size: larger;
+        }
+        .profile-picture-container .age {
+            font-style: italic;
+        }
+
+        /*The left div*/
+.details {
+    background-color: #fff; /* Sets the background color to white */
+    border-radius: 8px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    border: none; /* Ensures no border is visible */
+    padding: 10px; /* Adds some padding for better spacing */
+}
+
+.static-text {
+    color: #001549; /* Sets the color of static text to dark blue */
+    font-style: italic;
+}
+
+.detail-info {
+    color: #00a550; /* Sets the color of detail information to green */
+}
+
+.ratings, .feedback-item {
+    margin-top: 10px; /* Adds spacing between items */
+}
+
+/*Book tutor button*/
+.profile-action {
+    margin-top: 20px;
+    margin-left: 70px;
+}
+
+.details {
+    background-color: white; /* Sets the background color to white */
+    border-radius: 8px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    border: none; /* Ensures no border is visible */
+    padding: 10px; /* Adds some padding for better spacing */
+    width: 290px; 
+    margin-left: 4%;
+}
+
+@media screen and (max-width: 768px) {
+	
+	.whole-wrapper {
+       display: flex; /* Use flexbox to align child elements horizontally */
+       align-items: flex-start; /* Align items to the top of the container */
+       border: 1px solid #ccc; /* Optional: for better visibility */
+       background-color: #e7eeff; /* Optional: for better visibility */
+       width: 100%;
+       border: none;
+       margin-left: 0%;
+       padding-left: 0%;
+    }
+    
+    .main-section {
+     display: block;
+     padding: 0px;
+     margin-left: 0px;
+}
+        
+
+.the-left{
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.upper-line {
+    display: flex; /* Enable flexbox */
+    flex-direction: row; /* Align items in a row */
+   
+}
+
+ .profile-picture-container, .matric {
+            width: 290px; /* Adjust as needed */
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+.details {
+    background-color: #fff; /* Sets the background color to white */
+    border-radius: 8px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    border: none; /* Ensures no border is visible */
+    padding: 10px; /* Adds some padding for better spacing */
+    flex: 1; /* Allow details to expand and fill the available space */
+    min-width: 200px; /* Prevents overflow and allows flex to work properly */
+    height: fit-content;
+}
+
+.profile-picture-container img {
+    width: 130px; /* Set a fixed width for the image */
+    height: 130px; /* Set a fixed height for the image */
+    border-radius: 8px;
+    align-items: flex-start;
+
+}
+
+.profile-picture-container .name,
+.profile-picture-container .age {
+    margin-top: 0px;
+    color: #001549;
+    font-weight: bold;
+    text-align: center;
+    
+}
+
+.profile-picture-container .name {
+    font-size: larger;
+}
+
+.profile-picture-container .age {
+    font-style: italic;
+}
+    .matric {
+        display: none; /* Hide matric on mobile devices */
+    }
+    
+    
+    /*button here*/
+    .profile-action {
+    margin-top: 0px;
+    margin-left: 100px;
+    align-items: center;
+    align-self: center;
+    }
+
+}
+
+/*THE RIGHT SIDE*/
+
+.right-side{
+    width: 60%;
+    background-color: #e7eeff;
+   /*box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    border-radius: 8px;
+    margin-left:5%;
+    margin-top: 19px;
+    }
+
+
+  .profile-container{
+        background-color: #f6fffa;
+        border-radius: 8px;
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+        
+    }
+    
+    .profile-container {
+            flex: 1;
+        }
+        
+        
+     .about-tutor-row, .qualifications-row {
+	    display: flex;
+	    align-items: center;
+	    border-bottom: 1px solid #1cee50;
+	    padding-top: 15px;
+	    margin-left: 15px;
+	    margin-right: 15px;
+	    
+	   }
+
+     
+    .about-tutor-title, .qualifications-title {
+    width: 150px;
+    height: 100px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #021631;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    text-align: left;
+}
+
+
+.about-tutor-info {
+    flex: 1 1 auto;
+    color: #001549;
+    margin-right: 20px;
+    font-size: 14px;
+    width:50%;
+}
+
+.qualifications-info, .subjects-info {
+    flex: 1 1 auto;
+    color: #001549;
+    overflow: auto;
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+.subjects-info {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap onto the next line */
+   
+
+}
+
+.subjects-info p {
+    display: inline-block; /* Allows width to be determined by content */
+    padding-left: 5px; /* Set padding to 3px */
+    padding-right: 5px; /* Set padding to 3px */
+    margin: 5px; /* Margin for spacing between paragraphs */
+    background-color: #e7eeff; /* Light background for visibility */
+    text-align: center;
+    border-radius: 3px;
+    color: #00a550;
+}
+
+.subjects-row,  .qualifications-row, .University-row {
+  display: flex;
+  align-items: center; /* Align items to the top */
+}
+
+.subjects-row, .University-row{
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+
+.subjects-title ,.about-tutor-title ,.qualifications-title{
+ 
+  align-items: center; /* Center the icon above the text */
+  text-align: left; /* Center the text within the title */
+  font-size: 14px; /* Adjust text size if needed */
+}
+
+.qualifications-title{
+    align-items: center; /* Center the icon above the text */
+  text-align: center;
+}
+
+
+        .subjects-title i,
+        .about-tutor-title i,
+        .qualifications-title i {
+            font-size: 24px; /* Adjust icon size if needed */
+            margin-bottom: 7px;
+            color: #00a550;
+            display: inline-block; /* Ensure the icon can have a shadow */
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Add shadow */
+            background-color: #e7eeff;
+            width: 35px; /* Fixed width */
+            height: 35px; /* Fixed height */
+            line-height: 35px; /* Center vertically */
+            text-align: center; /* Center horizontally */
+            padding: 0; /* Remove default padding */
+        }
+
+.subjects-info {
+  display: flex;
+  align-items: center; /* Center the content vertically */
+}
+
+#profile_subjects {
+  margin: 0; /* Remove default margin from <p> tag */
+  font-size: 16px; /* Adjust text size if needed */
+}
+
+ .tutoring-container1 {
+            color: #00a550; /* Color for the tutoring title */
+            font-size: 13px; /* Adjust font size as needed */
+            margin-top: 8px; /* Space between title and grades */
+            margin-left: 10px;
+        }
+
+
+        .grades, .modules {
+            color: #001549; /* Color for grades */
+            font-size: 10px; /* Adjust font size as needed */
+            margin-left: 20px;
+            background-color: #e7eeff; /* Light background color */
+            /*border-radius: 8px; /* Rounded corners */
+            /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+        
+    .long-paragraph{
+        margin-top: 40px;
+        text-align: center;
+        font-weight: bold;
+        color: #001549;
+        font-size: 30px;
+        height: 13vh;
+    }
+
+    .short-paragraph{
+        margin-top: 20px;
+        text-align: center;
+        font-size: 35px;
+        font-weight: bold;
+        color: #00a550;
+    }
+
+
+@media screen and (max-width: 768px){
+	
+	.right-side {
+    width: 100%;
+    background-color: #e7eeff;
+    border-radius: 8px;
+    margin-left: 2%;
+    margin-top: 19px;
+    display: block; /* Use flexbox to control layout */
+    flex-direction: column; /* Stack children vertically */
+}
+
+.profile-container {
+    background-color: #f6fffa;
+    border-radius: 8px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0%;
+   
+}
+
+.about-tutor-row, .qualifications-row, .subjects-row, .University-row {
+    display: block; /* Flex for horizontal alignment of title and info */
+    align-items: flex-start; /* Align items at the top */
+    border-bottom: 1px solid #1cee50;
+    padding-top:0%;
+    padding-bottom: 15px; /* Space above and below */
+    margin-top: 0%;
+    height: fit-content;
+}
+
+.qualifications-row br {
+    display: none;
+}
+
+.about-tutor-title, .qualifications-title {
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #021631;
+    display: flex;
+    align-items: center; /* Center icon and text vertically */
+}
+
+.about-tutor-info, .qualifications-info, .subjects-info {
+    width: 100%;/* Allow this section to take the remaining space */
+    color: #001549;
+    margin-left: 15px; /* Space to the left of the text */
+    font-size: 18px;
+}
+
+.subjects-info {
+    display: inline;
+    flex-direction: column; /* Stack subjects vertically */
+}
+
+
+.subjects-info br {
+    display: none;
+}
+
+.subjects-info p {
+    padding: 5px; /* Space around each subject */
+    margin: 5px 0; /* Vertical spacing between subjects */
+    background-color: #e7eeff;
+    text-align: center;
+    border-radius: 3px;
+    color: #00a550;
+}
+
+.subjects-info li{
+
+    margin-top: 0%;
+    margin-left: 5%;
+}
+
+.tutoring-container1 {
+    color: #00a550;
+    font-size: 13px;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.grades, .modules {
+    color: #001549;
+    font-size: 10px;
+    margin-left: 20px;
+    background-color: #e7eeff;
+}
+
+/* Additional adjustments can be made as needed */
+
+      .long-paragraph{
+        margin-top: 20px;
+        text-align: center;
+        font-weight: bold;
+        color: #001549;
+        font-size:18px;
+        height: 10vh;
+    }
+
+    .short-paragraph{
+        margin-top: 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #00a550;
+        
+    }
+    
+    .button-action{
+	    margin-right: 200px;
+	    display: flex;
+	    width: 100%;
+	    
+	   }
+	   
+    .container {
+        min-height: 100px; /* Adjust for smaller screens if necessary */
+        margin-top: 4%;
+    }
+	   
+	   .card__container {
+        flex-direction: column; /* Stack cards vertically on smaller screens */
+    }
+
+    .card__article {
+        margin: 10px 0; /* Space between stacked cards */
+    }
+
+    .card__name {
+        font-size: 1.2rem; /* Adjust font size */
+        background-color: white;
+    }
+
+    .card__description {
+        font-size: 1rem; /* Adjust font size */
+         background-color: white;
+         margin-left: 5%;
+         width: 100%;
+    }
+    
+    .card__data{
+		background-color: white;
+	}
+
+	
+	
+}
+    
+   
+    
+ /*potrait*/
+ 
+ @media (min-width: 769px) and (max-width: 850px) {
+		
+    .navbar {
+        height: 80px; /* Adjust the height as needed */
+       
+    }
+
+    .navbar-toggle {
+		color: #00a550;
+        display: block; /* Show toggle button */
+        margin-right: 2%;
+    }
+
+    .nav-links {
+        margin-top: 5%;
+        position: fixed; /* Fix position */
+        top: 0; /* Align to top */
+        right: -300px; /* Start off-screen */
+        height: 100%; /* Full height */
+        width: 250px; /* Width of the nav */
+        background-color: white; /* Background color */
+        flex-direction: column; /* Stack vertically */
+        transition: right 0.3s ease; /* Sliding effect */
+        z-index: 999; /* Ensure it is above other content */
+    }
+
+    .nav-links.show {
+        right: 0; /* Slide in */
+    }
+
+    .search-container {
+        display: none; /* Hide search on small screens */
+    }
+
+    .login-register {
+        width: 100%; /* Full width */
+        margin: 10px 0; /* Add spacing */
+    }
+
+    .logo {
+        margin: 0; /* Remove margins */
+        position: absolute; /* Position it absolutely */
+        top: 10px; /* Adjust as needed */
+        left: 0; /* Align to the left */
+        margin-left: 2%;
+    }
+    
+    /*THE RIGHT*/
+    
+    .the-left{
+    margin-top: 0px;
+    margin-left: -5%;
+    background-color: #e7eeff;
+    margin-right: -5%;
+    	
+	}
+	
+	 .profile-picture-container, .matric {
+            width: 250px; /* Adjust as needed */
+            /*background-color: #f6fffa; */
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+	
+	
+	.details {
+    background-color: #f6fffa; /* Sets the background color to white */
+    border-radius: 8px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    border: none; /* Ensures no border is visible */
+    padding: 10px; /* Adds some padding for better spacing */
+    width: 225px; 
+    margin-left: 4%;
+}
+
+.profile-action {
+    margin-top: 20px;
+    margin-left: 35px;
+}
+	
+   .long-paragraph{
+	
+	  display: none;
+   }
+      
+    /*THE LEFT*/
+    
+    
+  	.right-side {
+    width: 100%;
+    background-color: #e7eeff;
+    border-radius: 8px;
+  /*  margin-left: 2%; */
+    margin-top: 19px;
+    display: block; /* Use flexbox to control layout */
+    flex-direction: column; /* Stack children vertically */
+}
+
+.profile-container {
+    background-color: #f6fffa;
+    border-radius: 8px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0%;
+    width: 95%;
+   
+}
+
+.about-tutor-row, .qualifications-row, .subjects-row, .University-row {
+    display: block; /* Flex for horizontal alignment of title and info */
+    align-items: flex-start; /* Align items at the top */
+    border-bottom: 1px solid #1cee50;
+    padding-top:0%;
+    padding-bottom: 15px; /* Space above and below */
+    margin-top: 0%;
+    height: fit-content;
+}
+
+.qualifications-row br {
+    display: none;
+}
+
+.about-tutor-title, .qualifications-title {
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #021631;
+    display: flex;
+    align-items: center; /* Center icon and text vertically */
+}
+
+.about-tutor-info, .qualifications-info, .subjects-info {
+    width: 100%;/* Allow this section to take the remaining space */
+    color: #001549;
+    margin-left: 15px; /* Space to the left of the text */
+    font-size: 18px;
+}
+
+.subjects-info {
+    display: inline;
+    flex-direction: column; /* Stack subjects vertically */
+}
+
+
+.subjects-info br {
+    display: none;
+}
+
+.subjects-info p {
+    padding: 5px; /* Space around each subject */
+    margin: 5px 0; /* Vertical spacing between subjects */
+    background-color: #e7eeff;
+    text-align: center;
+    border-radius: 3px;
+    color: #00a550;
+}
+
+.subjects-info li{
+
+    margin-top: 0%;
+    margin-left: 5%;
+}
+
+.tutoring-container1 {
+    color: #00a550;
+    font-size: 13px;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.grades, .modules {
+    color: #001549;
+    font-size: 10px;
+    margin-left: 20px;
+    background-color: #e7eeff;
+}
+
+/* Additional adjustments can be made as needed */
+
+      .long-paragraph{
+        margin-top: 20px;
+        text-align: center;
+        font-weight: bold;
+        color: #001549;
+        font-size:18px;
+        height: 10vh;
+    }
+
+    .short-paragraph{
+        margin-top: 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #00a550;
+        
+    }
+    
+    .button-action{
+	    margin-right: 200px;
+	    display: flex;
+	    width: 100%;
+	    
+	   }
+	   
+    .container {
+        min-height: 100px; /* Adjust for smaller screens if necessary */
+        margin-top: 4%;
+    }
+	   
+	   .card__container {
+        flex-direction: column; /* Stack cards vertically on smaller screens */
+    }
+
+    .card__article {
+        margin: 10px 0; /* Space between stacked cards */
+    }
+
+    .card__name {
+        font-size: 1.2rem; /* Adjust font size */
+        background-color: white;
+    }
+
+    .card__description {
+        font-size: 1rem; /* Adjust font size */
+         background-color: white;
+         margin-left: 5%;
+         width: 100%;
+    }
+    
+    .card__data{
+		background-color: white;
+	}
+
+	
+}
+ 
+ 
+/*############################################################################################################*/
+    
+    
+ @media (min-width: 851px) and (max-width: 1100px) {
+		
+    .navbar {
+        height: 80px; /* Adjust the height as needed */
+  
+       
+    }
+
+    .navbar-toggle {
+		color: #00a550;
+        display: block; /* Show toggle button */
+        margin-right: 2%;
+    }
+
+    .nav-links {
+        margin-top: 6%;
+        position: fixed; /* Fix position */
+        top: 0; /* Align to top */
+        right: -300px; /* Start off-screen */
+        height: 100%; /* Full height */
+        width: 250px; /* Width of the nav */
+        background-color: white; /* Background color */
+        flex-direction: column; /* Stack vertically */
+        transition: right 0.3s ease; /* Sliding effect */
+        z-index: 999; /* Ensure it is above other content */
+    }
+
+    .nav-links.show {
+        right: 0; /* Slide in */
+    }
+
+    .search-container {
+        display: none; /* Hide search on small screens */
+    }
+
+    .login-register {
+        width: 100%; /* Full width */
+        margin: 10px 0; /* Add spacing */
+    }
+
+.logo {
+    /*height: 60px;*/
+    margin-right: 20px;
+    margin-left: 9%;
+   /* width: 220px;*/
+    max-width: 100%;
+    height: auto;
+    
+}
+    
+    /*THE RIGHT*/
+    
+    .the-left{
+    margin-top: 0px;
+    margin-left: -2%;
+    background-color: #e7eeff;
+    margin-right: -4%;
+    	
+	}
+	
+	 .profile-picture-container, .matric {
+            width: 250px; /* Adjust as needed */
+            /*background-color: #f6fffa; */
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+	
+	
+	.details {
+    background-color: #f6fffa; /* Sets the background color to white */
+    border-radius: 8px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    border: none; /* Ensures no border is visible */
+    padding: 10px; /* Adds some padding for better spacing */
+    width: 225px; 
+    margin-left: 4%;
+}
+
+.profile-action {
+    margin-top: 20px;
+    margin-left: 35px;
+}
+	
+   .long-paragraph{
+	
+	  display: none;
+   }
+      
+    /*THE LEFT*/
+    
+    
+  	.right-side {
+    width: 100%;
+    background-color: #e7eeff;
+    border-radius: 8px;
+  /*  margin-left: 2%; */
+    margin-top: 19px;
+    display: block; /* Use flexbox to control layout */
+    flex-direction: column; /* Stack children vertically */
+}
+
+.profile-container {
+    background-color: #f6fffa;
+    border-radius: 8px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0%;
+    width: 95%;
+   
+}
+
+.about-tutor-row, .qualifications-row, .subjects-row, .University-row {
+    display: block; /* Flex for horizontal alignment of title and info */
+    align-items: flex-start; /* Align items at the top */
+    border-bottom: 1px solid #1cee50;
+    padding-top:0%;
+    padding-bottom: 15px; /* Space above and below */
+    margin-top: 0%;
+    height: fit-content;
+}
+
+.qualifications-row br {
+    display: none;
+}
+
+.about-tutor-title, .qualifications-title {
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #021631;
+    display: flex;
+    align-items: center; /* Center icon and text vertically */
+}
+
+.about-tutor-info, .qualifications-info, .subjects-info {
+    width: 100%;/* Allow this section to take the remaining space */
+    color: #001549;
+    margin-left: 15px; /* Space to the left of the text */
+    font-size: 18px;
+}
+
+.subjects-info {
+    display: inline;
+    flex-direction: column; /* Stack subjects vertically */
+}
+
+
+.subjects-info br {
+    display: none;
+}
+
+.subjects-info p {
+    padding: 5px; /* Space around each subject */
+    margin: 5px 0; /* Vertical spacing between subjects */
+    background-color: #e7eeff;
+    text-align: center;
+    border-radius: 3px;
+    color: #00a550;
+}
+
+.subjects-info li{
+
+    margin-top: 0%;
+    margin-left: 5%;
+}
+
+.tutoring-container1 {
+    color: #00a550;
+    font-size: 13px;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.grades, .modules {
+    color: #001549;
+    font-size: 10px;
+    margin-left: 20px;
+    background-color: #e7eeff;
+}
+
+/* Additional adjustments can be made as needed */
+
+      .long-paragraph{
+        margin-top: 20px;
+        text-align: center;
+        font-weight: bold;
+        color: #001549;
+        font-size:18px;
+        height: 10vh;
+    }
+
+    .short-paragraph{
+        margin-top: 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #00a550;
+        
+    }
+    
+    .button-action{
+	    margin-right: 200px;
+	    display: flex;
+	    width: 100%;
+	    
+	   }
+	   
+    .container {
+        min-height: 100px; /* Adjust for smaller screens if necessary */
+        margin-top: 4%;
+    }
+	   
+	   .card__container {
+        flex-direction: column; /* Stack cards vertically on smaller screens */
+    }
+
+    .card__article {
+        margin: 10px 0; /* Space between stacked cards */
+    }
+
+    .card__name {
+        font-size: 1.2rem; /* Adjust font size */
+        background-color: white;
+    }
+
+    .card__description {
+        font-size: 1rem; /* Adjust font size */
+         background-color: white;
+         margin-left: 5%;
+         width: 100%;
+    }
+    
+    .card__data{
+		background-color: white;
+	}
+
+	
+}
+
+
+
+
+/*################################################################################################################################*/
+
+
+    
+ @media (min-width: 1001px) and (max-width: 1300px) {
+		
+    .navbar {
+        height: 80px; /* Adjust the height as needed */
+      
+       
+    }
+
+    .navbar-toggle {
+		color: #00a550;
+        display: block; /* Show toggle button */
+        margin-right: 4%;
+    }
+
+    .nav-links {
+        margin-top: 6%;
+        position: fixed; /* Fix position */
+        top: 0; /* Align to top */
+        right: -300px; /* Start off-screen */
+        height: 100%; /* Full height */
+        width: 250px; /* Width of the nav */
+        background-color: white; /* Background color */
+        flex-direction: column; /* Stack vertically */
+        transition: right 0.3s ease; /* Sliding effect */
+        z-index: 999; /* Ensure it is above other content */
+    }
+
+    .nav-links.show {
+        right: 0; /* Slide in */
+    }
+
+    .search-container {
+        display: none; /* Hide search on small screens */
+    }
+
+    .login-register {
+        width: 100%; /* Full width */
+        margin: 10px 0; /* Add spacing */
+    }
+
+.logo {
+    /*height: 60px;*/
+    margin-right: 20px;
+    margin-left: 9%;
+   /* width: 220px;*/
+    max-width: 100%;
+    height: auto;
+    
+}
+    /*THE RIGHT*/
+    
+    .the-left{
+    margin-top: 0px;
+    margin-left: 2%;
+    background-color: #e7eeff;
+    
+    	
+	}
+	
+	 .profile-picture-container, .matric {
+            width: 250px; /* Adjust as needed */
+            /*background-color: #f6fffa; */
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+	
+	
+	.details {
+    background-color: #f6fffa; /* Sets the background color to white */
+    border-radius: 8px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    border: none; /* Ensures no border is visible */
+    padding: 10px; /* Adds some padding for better spacing */
+    width: 225px; 
+    margin-left: 4%;
+}
+
+.profile-action {
+    margin-top: 20px;
+    margin-left: 35px;
+}
+	
+   .long-paragraph{
+	
+	  display: none;
+   }
+      
+    /*THE LEFT*/
+    
+    
+  	.right-side {
+    width: 100%;
+    background-color: #e7eeff;
+    border-radius: 8px;
+  /*  margin-left: 2%; */
+    margin-top: 19px;
+    display: block; /* Use flexbox to control layout */
+    flex-direction: column; /* Stack children vertically */
+}
+
+.profile-container {
+    background-color: #f6fffa;
+    border-radius: 8px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0%;
+    width: 100%;
+   
+}
+
+.about-tutor-row, .qualifications-row, .subjects-row, .University-row {
+    display: block; /* Flex for horizontal alignment of title and info */
+    align-items: flex-start; /* Align items at the top */
+    border-bottom: 1px solid #1cee50;
+    padding-top:0%;
+    padding-bottom: 15px; /* Space above and below */
+    margin-top: 0%;
+    height: fit-content;
+}
+
+.qualifications-row br {
+    display: none;
+}
+
+.about-tutor-title, .qualifications-title {
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #021631;
+    display: flex;
+    align-items: center; /* Center icon and text vertically */
+}
+
+.about-tutor-info, .qualifications-info, .subjects-info {
+    width: 100%;/* Allow this section to take the remaining space */
+    color: #001549;
+    margin-left: 15px; /* Space to the left of the text */
+    font-size: 18px;
+}
+
+.subjects-info {
+    display: inline;
+    flex-direction: column; /* Stack subjects vertically */
+}
+
+
+.subjects-info br {
+    display: none;
+}
+
+.subjects-info p {
+    padding: 5px; /* Space around each subject */
+    margin: 5px 0; /* Vertical spacing between subjects */
+    background-color: #e7eeff;
+    text-align: center;
+    border-radius: 3px;
+    color: #00a550;
+}
+
+.subjects-info li{
+
+    margin-top: 0%;
+    margin-left: 5%;
+}
+
+.tutoring-container1 {
+    color: #00a550;
+    font-size: 13px;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.grades, .modules {
+    color: #001549;
+    font-size: 10px;
+    margin-left: 20px;
+    background-color: #e7eeff;
+}
+
+/* Additional adjustments can be made as needed */
+
+      .long-paragraph{
+        margin-top: 20px;
+        text-align: center;
+        font-weight: bold;
+        color: #001549;
+        font-size:18px;
+        height: 10vh;
+    }
+
+    .short-paragraph{
+        margin-top: 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #00a550;
+        
+    }
+    
+    .button-action{
+	   
+	    margin-left: 5%;
+	    display: flex;
+	    width: 100%;
+	    
+	   }
+	   
+    .container {
+        min-height: 100px; /* Adjust for smaller screens if necessary */
+        margin-top: 4%;
+    }
+	   
+	   .card__container {
+        flex-direction: column; /* Stack cards vertically on smaller screens */
+    }
+
+    .card__article {
+        margin: 10px 0; /* Space between stacked cards */
+    }
+
+    .card__name {
+        font-size: 1.2rem; /* Adjust font size */
+        background-color: white;
+    }
+
+    .card__description {
+        font-size: 1rem; /* Adjust font size */
+         background-color: white;
+         margin-left: 5%;
+         width: 100%;
+    }
+    
+    .card__data{
+		background-color: white;
+	}
+
+	
+}
+
+
+/*####################################################################################################################*/
+
+    
+ @media (min-width: 1367px) and (max-width: 1500px) {
+		
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+
+    padding: 10px;
+    font-family: 'Arial', sans-serif;
+    position: fixed; /* Fixes the navbar to the top of the viewport */
+    top: 0; /* Positions it at the top */
+    left: 0; /* Ensures it stretches from the left edge */
+    right: 0; /* Ensures it stretches to the right edge */
+    z-index: 1000; /* Ensures it stays on top of other content */
+}
+
+/* Logo image */
+.logo {
+    /*height: 60px;*/
+    margin-right: 20px;
+    margin-left: 9%;
+   /* width: 220px;*/
+    max-width: 100%;
+    height: auto;
+    
+}
+
+/* Navbar links container */
+.nav-links {
+	margin-left: 11%;
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* Pushes the nav links to the left */
+    font-size: 18px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar links */
+.nav-links li {
+    position: relative;
+    margin: 0 10px;
+}
+
+.nav-links a {
+    color: #00154A;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+/* Dropdown container */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.nav-links a:hover {
+    color: #02A552; /* Ensure text color remains white on hover */
+}
+
+/* Nav-right styling */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds spacing between items */
+}
+
+/* Search container */
+.search-container {
+    position: relative;
+    margin-right: 20px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    z-index: 10; /* Ensures it's on top of other content */
+    height: 40px;
+}
+
+#search-input {
+    padding: 5px 30px 5px 30px;
+    border: 1px solid transparent; /* Hide the border */
+    border-radius: 4px;
+    font-size: 14px;
+    width: 0;
+    padding-left: 35px; /* Space for icon */
+    background: white;
+    outline: none;
+    transition: width 0.3s, padding 0.3s;
+}
+
+#search-input:focus {
+    width: 200px;
+    padding-left: 35px; /* Adjust for icon */
+}
+
+#search-button {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#search-button .search-icon {
+    font-size: 18px;
+    color: #00a550; /* Set the icon color */
+}
+
+.login-register {
+    background-color: #001549;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.login-register:hover {
+    background-color: white; /* Change the background color on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+    color: #02A552;
+}
+
+.login-register .login-icon {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+    
+    /*THE RIGHT*/
+    
+    .the-left{
+    margin-top: 0px;
+    margin-left: 4%;
+    background-color: #e7eeff;
+    
+    	
+	}
+	
+	 .profile-picture-container, .matric {
+            width: 325px; /* Adjust as needed */
+            /*background-color: #f6fffa; */
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+	
+	
+	.details {
+    background-color: #f6fffa; /* Sets the background color to white */
+    border-radius: 8px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    border: none; /* Ensures no border is visible */
+    padding: 10px; /* Adds some padding for better spacing */
+    width: 300px; 
+    margin-left: 4%;
+    font-size: 17px;
+}
+
+.profile-action {
+    margin-top: 20px;
+    margin-left: 85px;
+}
+	
+      .long-paragraph{
+        margin-top: 20px;
+        text-align: center;
+        font-weight: bold;
+        color: #001549;
+        font-size:35px;
+        height: 10vh;
+        display: block;
+    }
+      
+    /*THE LEFT*/
+    
+    
+  	.right-side {
+    width: 100%;
+    background-color: #e7eeff;
+    border-radius: 8px;
+  /*  margin-left: 2%; */
+    margin-top: 19px;
+    display: block; /* Use flexbox to control layout */
+    flex-direction: column; /* Stack children vertically */
+}
+
+.profile-container {
+    background-color: #f6fffa;
+    border-radius: 8px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0%;
+    width: 100%;
+   
+}
+
+.about-tutor-row, .qualifications-row, .subjects-row, .University-row {
+    display: block; /* Flex for horizontal alignment of title and info */
+    align-items: flex-start; /* Align items at the top */
+    border-bottom: 1px solid #1cee50;
+    padding-top:0%;
+    padding-bottom: 15px; /* Space above and below */
+    margin-top: 0%;
+    height: fit-content;
+    font-size: 17px;
+}
+
+.qualifications-row br {
+    display: none;
+}
+
+.about-tutor-title, .qualifications-title {
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #021631;
+    display: flex;
+    align-items: center; /* Center icon and text vertically */
+    font-size: 16px;
+}
+
+.about-tutor-info, .qualifications-info, .subjects-info {
+    width: 100%;/* Allow this section to take the remaining space */
+    color: #001549;
+    margin-left: 15px; /* Space to the left of the text */
+    font-size: 18px;
+}
+
+.subjects-info {
+    display: inline;
+    flex-direction: column; /* Stack subjects vertically */
+}
+
+
+.subjects-info br {
+    display: none;
+}
+
+.subjects-info p {
+    padding: 5px; /* Space around each subject */
+    margin: 5px 0; /* Vertical spacing between subjects */
+    background-color: #e7eeff;
+    text-align: center;
+    border-radius: 3px;
+    color: #00a550;
+}
+
+.subjects-info li{
+
+    margin-top: 0%;
+    margin-left: 5%;
+}
+
+.tutoring-container1 {
+    color: #00a550;
+    font-size: 13px;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.grades, .modules {
+    color: #001549;
+    font-size: 10px;
+    margin-left: 20px;
+    background-color: #e7eeff;
+}
+
+/* Additional adjustments can be made as needed */
+
+    .short-paragraph{
+        margin-top: 20px;
+        text-align: center;
+        font-size: 35px;
+        font-weight: bold;
+        color: #00a550;
+        
+    }
+    
+    .button-action{
+	    margin-right: 200px;
+	    display: flex;
+	    width: 100%;
+	    margin-left: 25%;
+	    
+	   }
+	   
+    .container {
+        min-height: 100px; /* Adjust for smaller screens if necessary */
+        margin-top: 4%;
+    }
+	   
+	   .card__container {
+        flex-direction: column; /* Stack cards vertically on smaller screens */
+    }
+
+    .card__article {
+        margin: 10px 0; /* Space between stacked cards */
+    }
+
+    .card__name {
+        font-size: 1.2rem; /* Adjust font size */
+        background-color: white;
+    }
+
+    .card__description {
+        font-size: 1rem; /* Adjust font size */
+         background-color: white;
+         margin-left: 5%;
+         width: 100%;
+    }
+    
+    .card__data{
+		background-color: white;
+	}
+
+	
+}
+
+
+
+/*################################################################################################################*/
+
+
+    
+ @media (min-width: 1501px) and (max-width: 1700px) {
+		
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+   /* background-color: white; */
+
+    padding: 10px;
+    font-family: 'Arial', sans-serif;
+    position: fixed; /* Fixes the navbar to the top of the viewport */
+    top: 0; /* Positions it at the top */
+    left: 0; /* Ensures it stretches from the left edge */
+    right: 0; /* Ensures it stretches to the right edge */
+    z-index: 1000; /* Ensures it stays on top of other content */
+}
+
+/* Logo image */
+.logo {
+    /*height: 60px;*/
+    margin-right: 20px;
+    margin-left: 9%;
+   /* width: 220px;*/
+    max-width: 100%;
+    height: auto;
+    
+}
+
+/* Navbar links container */
+.nav-links {
+	margin-left: 15%;
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* Pushes the nav links to the left */
+    font-size: 18px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar links */
+.nav-links li {
+    position: relative;
+    margin: 0 10px;
+}
+
+.nav-links a {
+    color: #00154A;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+/* Dropdown container */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.nav-links a:hover {
+    color: #02A552; /* Ensure text color remains white on hover */
+}
+
+/* Nav-right styling */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds spacing between items */
+}
+
+/* Search container */
+.search-container {
+    position: relative;
+    margin-right: 20px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    z-index: 10; /* Ensures it's on top of other content */
+    height: 40px;
+}
+
+#search-input {
+    padding: 5px 30px 5px 30px;
+    border: 1px solid transparent; /* Hide the border */
+    border-radius: 4px;
+    font-size: 14px;
+    width: 0;
+    padding-left: 35px; /* Space for icon */
+    background: white;
+    outline: none;
+    transition: width 0.3s, padding 0.3s;
+}
+
+#search-input:focus {
+    width: 200px;
+    padding-left: 35px; /* Adjust for icon */
+}
+
+#search-button {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#search-button .search-icon {
+    font-size: 18px;
+    color: #00a550; /* Set the icon color */
+}
+
+.login-register {
+    background-color: #001549;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.login-register:hover {
+    background-color: white; /* Change the background color on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+    color: #02A552;
+}
+
+.login-register .login-icon {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+    
+    /*THE RIGHT*/
+    
+    .the-left{
+    margin-top: 0px;
+    margin-left: 12%;
+    background-color: #e7eeff;
+    margin-right: -3%;
+    	
+	}
+	
+	 .profile-picture-container, .matric {
+            width: 325px; /* Adjust as needed */
+            /*background-color: #f6fffa; */
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+	
+	
+	.details {
+    background-color: #f6fffa; /* Sets the background color to white */
+    border-radius: 8px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    border: none; /* Ensures no border is visible */
+    padding: 10px; /* Adds some padding for better spacing */
+    width: 300px; 
+    margin-left: 4%;
+    font-size: 17px;
+}
+
+.profile-action {
+    margin-top: 20px;
+    margin-left: 85px;
+}
+	
+      .long-paragraph{
+        margin-top: 20px;
+        text-align: center;
+        font-weight: bold;
+        color: #001549;
+        font-size:35px;
+        height: 10vh;
+        display: block;
+    }
+      
+    /*THE LEFT*/
+    
+    
+ .right-side{
+    width: 60%;
+    background-color: #e7eeff;
+   /*box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    border-radius: 8px;
+    margin-left:5%;
+    margin-top: 19px;
+    font-size: 18px;
+    }
+
+
+  .profile-container{
+        background-color: #f6fffa;
+        border-radius: 8px;
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+        font-size: 18px;
+        
+    }
+    
+    .profile-container {
+            flex: 1;
+        }
+        
+        
+     .about-tutor-row, .qualifications-row {
+	    display: flex;
+	    align-items: center;
+	    border-bottom: 1px solid #1cee50;
+	    padding-top: 15px;
+	    margin-left: 15px;
+	    margin-right: 15px;
+	    
+	   }
+
+     
+    .about-tutor-title, .qualifications-title {
+    width: 150px;
+    height: 100px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #021631;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    text-align: left;
+}
+
+
+.about-tutor-info {
+    flex: 1 1 auto;
+    color: #001549;
+    margin-right: 20px;
+   font-size: 18px;
+    width:50%;
+}
+
+.qualifications-info, .subjects-info {
+    flex: 1 1 auto;
+    color: #001549;
+    overflow: auto;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.subjects-info {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap onto the next line */
+   
+
+}
+
+.subjects-info p {
+    display: inline-block; /* Allows width to be determined by content */
+    padding-left: 5px; /* Set padding to 3px */
+    padding-right: 5px; /* Set padding to 3px */
+    margin: 5px; /* Margin for spacing between paragraphs */
+    background-color: #e7eeff; /* Light background for visibility */
+    text-align: center;
+    border-radius: 3px;
+    color: #00a550;
+}
+
+.subjects-row,  .qualifications-row, .University-row {
+  display: flex;
+  align-items: center; /* Align items to the top */
+}
+
+.subjects-row, .University-row{
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+
+.subjects-title ,.about-tutor-title ,.qualifications-title{
+ 
+  align-items: center; /* Center the icon above the text */
+  text-align: left; /* Center the text within the title */
+  font-size: 14px; /* Adjust text size if needed */
+}
+
+.qualifications-title{
+    align-items: center; /* Center the icon above the text */
+  text-align: center;
+}
+
+
+        .subjects-title i,
+        .about-tutor-title i,
+        .qualifications-title i {
+            font-size: 24px; /* Adjust icon size if needed */
+            margin-bottom: 7px;
+            color: #00a550;
+            display: inline-block; /* Ensure the icon can have a shadow */
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Add shadow */
+            background-color: #e7eeff;
+            width: 35px; /* Fixed width */
+            height: 35px; /* Fixed height */
+            line-height: 35px; /* Center vertically */
+            text-align: center; /* Center horizontally */
+            padding: 0; /* Remove default padding */
+        }
+
+.subjects-info {
+  display: flex;
+  align-items: center; /* Center the content vertically */
+}
+
+#profile_subjects {
+  margin: 0; /* Remove default margin from <p> tag */
+  font-size: 16px; /* Adjust text size if needed */
+}
+
+ .tutoring-container1 {
+            color: #00a550; /* Color for the tutoring title */
+            font-size: 13px; /* Adjust font size as needed */
+            margin-top: 8px; /* Space between title and grades */
+            margin-left: 10px;
+        }
+
+
+        .grades, .modules {
+            color: #001549; /* Color for grades */
+            font-size: 10px; /* Adjust font size as needed */
+            margin-left: 20px;
+            background-color: #e7eeff; /* Light background color */
+            /*border-radius: 8px; /* Rounded corners */
+            /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+        
+    .long-paragraph{
+        margin-top: 40px;
+        text-align: center;
+        font-weight: bold;
+        color: #001549;
+        font-size: 30px;
+        height: 13vh;
+    }
+
+    .short-paragraph{
+        margin-top: 20px;
+        text-align: center;
+        font-size: 35px;
+        font-weight: bold;
+        color: #00a550;
+    }
+
+
+    .button-action{
+	    margin-right: 200px;
+	    display: flex;
+	    width: 100%;
+	    margin-left: 25%;
+	    
+	   }
+	   
+    .container {
+        min-height: 100px; /* Adjust for smaller screens if necessary */
+        margin-top: 4%;
+    }
+	   
+	   .card__container {
+        flex-direction: column; /* Stack cards vertically on smaller screens */
+    }
+
+    .card__article {
+        margin: 10px 0; /* Space between stacked cards */
+    }
+
+    .card__name {
+        font-size: 1.2rem; /* Adjust font size */
+        background-color: white;
+    }
+
+    .card__description {
+        font-size: 1rem; /* Adjust font size */
+         background-color: white;
+         margin-left: 5%;
+         width: 100%;
+    }
+    
+    .card__data{
+		background-color: white;
+	}
+
+	
+}
+
+
+
+/*##########################################################################################################################*/
+
+
+
+    
+ @media (min-width: 1701px) and (max-width: 1850px) {
+		
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+   /* background-color: white; */
+
+    padding: 10px;
+    font-family: 'Arial', sans-serif;
+    position: fixed; /* Fixes the navbar to the top of the viewport */
+    top: 0; /* Positions it at the top */
+    left: 0; /* Ensures it stretches from the left edge */
+    right: 0; /* Ensures it stretches to the right edge */
+    z-index: 1000; /* Ensures it stays on top of other content */
+}
+
+/* Logo image */
+.logo {
+    /*height: 60px;*/
+    margin-right: 20px;
+    margin-left: 9%;
+   /* width: 220px;*/
+    max-width: 100%;
+    height: auto;
+    
+}
+
+/* Navbar links container */
+.nav-links {
+	margin-left: 15%;
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* Pushes the nav links to the left */
+    font-size: 18px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar links */
+.nav-links li {
+    position: relative;
+    margin: 0 10px;
+}
+
+.nav-links a {
+    color: #00154A;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+/* Dropdown container */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.nav-links a:hover {
+    color: #02A552; /* Ensure text color remains white on hover */
+}
+
+/* Nav-right styling */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds spacing between items */
+}
+
+/* Search container */
+.search-container {
+    position: relative;
+    margin-right: 20px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    z-index: 10; /* Ensures it's on top of other content */
+    height: 40px;
+}
+
+#search-input {
+    padding: 5px 30px 5px 30px;
+    border: 1px solid transparent; /* Hide the border */
+    border-radius: 4px;
+    font-size: 14px;
+    width: 0;
+    padding-left: 35px; /* Space for icon */
+    background: white;
+    outline: none;
+    transition: width 0.3s, padding 0.3s;
+}
+
+#search-input:focus {
+    width: 200px;
+    padding-left: 35px; /* Adjust for icon */
+}
+
+#search-button {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#search-button .search-icon {
+    font-size: 18px;
+    color: #00a550; /* Set the icon color */
+}
+
+.login-register {
+    background-color: #001549;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.login-register:hover {
+    background-color: white; /* Change the background color on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+    color: #02A552;
+}
+
+.login-register .login-icon {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+    
+    /*THE RIGHT*/
+    
+    .the-left{
+    margin-top: 0px;
+    margin-left: 15%;
+    background-color: #e7eeff;
+    margin-right: -3%;
+    	
+	}
+	
+	 .profile-picture-container, .matric {
+            width: 325px; /* Adjust as needed */
+            /*background-color: #f6fffa; */
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+	
+	
+	.details {
+    background-color: #f6fffa; /* Sets the background color to white */
+    border-radius: 8px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    border: none; /* Ensures no border is visible */
+    padding: 10px; /* Adds some padding for better spacing */
+    width: 300px; 
+    margin-left: 4%;
+    font-size: 17px;
+}
+
+.profile-action {
+    margin-top: 20px;
+    margin-left: 85px;
+}
+	
+      .long-paragraph{
+        margin-top: 20px;
+        text-align: center;
+        font-weight: bold;
+        color: #001549;
+        font-size:35px;
+        height: 10vh;
+        display: block;
+    }
+      
+    /*THE LEFT*/
+    
+    
+ .right-side{
+    width: 55%;
+    background-color: #e7eeff;
+   /*box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    border-radius: 8px;
+    margin-left:5%;
+    margin-top: 19px;
+    font-size: 18px;
+    }
+
+
+  .profile-container{
+        background-color: #f6fffa;
+        border-radius: 8px;
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+        font-size: 18px;
+        
+    }
+    
+    .profile-container {
+            flex: 1;
+        }
+        
+        
+     .about-tutor-row, .qualifications-row {
+	    display: flex;
+	    align-items: center;
+	    border-bottom: 1px solid #1cee50;
+	    padding-top: 15px;
+	    margin-left: 15px;
+	    margin-right: 15px;
+	    
+	   }
+
+     
+    .about-tutor-title, .qualifications-title {
+    width: 150px;
+    height: 100px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #021631;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    text-align: left;
+}
+
+
+.about-tutor-info {
+    flex: 1 1 auto;
+    color: #001549;
+    margin-right: 20px;
+   font-size: 18px;
+    width:50%;
+}
+
+.qualifications-info, .subjects-info {
+    flex: 1 1 auto;
+    color: #001549;
+    overflow: auto;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.subjects-info {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap onto the next line */
+   
+
+}
+
+.subjects-info p {
+    display: inline-block; /* Allows width to be determined by content */
+    padding-left: 5px; /* Set padding to 3px */
+    padding-right: 5px; /* Set padding to 3px */
+    margin: 5px; /* Margin for spacing between paragraphs */
+    background-color: #e7eeff; /* Light background for visibility */
+    text-align: center;
+    border-radius: 3px;
+    color: #00a550;
+}
+
+.subjects-row,  .qualifications-row, .University-row {
+  display: flex;
+  align-items: center; /* Align items to the top */
+}
+
+.subjects-row, .University-row{
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+
+.subjects-title ,.about-tutor-title ,.qualifications-title{
+ 
+  align-items: center; /* Center the icon above the text */
+  text-align: left; /* Center the text within the title */
+  font-size: 14px; /* Adjust text size if needed */
+}
+
+.qualifications-title{
+    align-items: center; /* Center the icon above the text */
+  text-align: center;
+}
+
+
+        .subjects-title i,
+        .about-tutor-title i,
+        .qualifications-title i {
+            font-size: 24px; /* Adjust icon size if needed */
+            margin-bottom: 7px;
+            color: #00a550;
+            display: inline-block; /* Ensure the icon can have a shadow */
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Add shadow */
+            background-color: #e7eeff;
+            width: 35px; /* Fixed width */
+            height: 35px; /* Fixed height */
+            line-height: 35px; /* Center vertically */
+            text-align: center; /* Center horizontally */
+            padding: 0; /* Remove default padding */
+        }
+
+.subjects-info {
+  display: flex;
+  align-items: center; /* Center the content vertically */
+}
+
+#profile_subjects {
+  margin: 0; /* Remove default margin from <p> tag */
+  font-size: 16px; /* Adjust text size if needed */
+}
+
+ .tutoring-container1 {
+            color: #00a550; /* Color for the tutoring title */
+            font-size: 13px; /* Adjust font size as needed */
+            margin-top: 8px; /* Space between title and grades */
+            margin-left: 10px;
+        }
+
+
+        .grades, .modules {
+            color: #001549; /* Color for grades */
+            font-size: 10px; /* Adjust font size as needed */
+            margin-left: 20px;
+            background-color: #e7eeff; /* Light background color */
+            /*border-radius: 8px; /* Rounded corners */
+            /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+        
+    .long-paragraph{
+        margin-top: 40px;
+        text-align: center;
+        font-weight: bold;
+        color: #001549;
+        font-size: 30px;
+        height: 13vh;
+    }
+
+    .short-paragraph{
+        margin-top: 20px;
+        text-align: center;
+        font-size: 35px;
+        font-weight: bold;
+        color: #00a550;
+    }
+
+
+    .button-action{
+	    margin-right: 200px;
+	    display: flex;
+	    width: 100%;
+	    margin-left: 25%;
+	    
+	   }
+	   
+    .container {
+        min-height: 100px; /* Adjust for smaller screens if necessary */
+        margin-top: 4%;
+    }
+	   
+	   .card__container {
+        flex-direction: column; /* Stack cards vertically on smaller screens */
+    }
+
+    .card__article {
+        margin: 10px 0; /* Space between stacked cards */
+    }
+
+    .card__name {
+        font-size: 1.2rem; /* Adjust font size */
+        background-color: white;
+    }
+
+    .card__description {
+        font-size: 1rem; /* Adjust font size */
+         background-color: white;
+         margin-left: 5%;
+         width: 100%;
+    }
+    
+    .card__data{
+		background-color: white;
+	}
+
+	
+}
+
+/*#################################################################################################################################*/
+
+
+
+    
+ @media (min-width: 1851px){
+		
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+   /* background-color: white; */
+
+    padding: 10px;
+    font-family: 'Arial', sans-serif;
+    position: fixed; /* Fixes the navbar to the top of the viewport */
+    top: 0; /* Positions it at the top */
+    left: 0; /* Ensures it stretches from the left edge */
+    right: 0; /* Ensures it stretches to the right edge */
+    z-index: 1000; /* Ensures it stays on top of other content */
+}
+
+/* Logo image */
+.logo {
+    /*height: 60px;*/
+    margin-right: 20px;
+    margin-left: 12%;
+   /* width: 220px;*/
+    max-width: 100%;
+    height: auto;
+    
+}
+
+/* Navbar links container */
+.nav-links {
+	margin-left: 12%;
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* Pushes the nav links to the left */
+    font-size: 19px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar links */
+.nav-links li {
+    position: relative;
+    margin: 0 10px;
+}
+
+.nav-links a {
+    color: #00154A;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+/* Dropdown container */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.nav-links a:hover {
+    color: #02A552; /* Ensure text color remains white on hover */
+}
+
+/* Nav-right styling */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds spacing between items */
+}
+
+/* Search container */
+.search-container {
+    position: relative;
+    margin-right: 20px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    z-index: 10; /* Ensures it's on top of other content */
+    height: 40px;
+}
+
+#search-input {
+    padding: 5px 30px 5px 30px;
+    border: 1px solid transparent; /* Hide the border */
+    border-radius: 4px;
+    font-size: 14px;
+    width: 0;
+    padding-left: 35px; /* Space for icon */
+    background: white;
+    outline: none;
+    transition: width 0.3s, padding 0.3s;
+}
+
+#search-input:focus {
+    width: 200px;
+    padding-left: 35px; /* Adjust for icon */
+}
+
+#search-button {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#search-button .search-icon {
+    font-size: 18px;
+    color: #00a550; /* Set the icon color */
+}
+
+.login-register {
+    background-color: #001549;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.login-register:hover {
+    background-color: white; /* Change the background color on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+    color: #02A552;
+}
+
+.login-register .login-icon {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+    
+    /*THE RIGHT*/
+    
+    .the-left{
+    margin-top: 0px;
+    margin-left: 15%;
+    background-color: #e7eeff;
+    margin-right: -3%;
+    	
+	}
+	
+	 .profile-picture-container, .matric {
+            width: 325px; /* Adjust as needed */
+            /*background-color: #f6fffa; */
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+	
+	
+	.details {
+    background-color: #f6fffa; /* Sets the background color to white */
+    border-radius: 8px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    border: none; /* Ensures no border is visible */
+    padding: 10px; /* Adds some padding for better spacing */
+    width: 300px; 
+    margin-left: 4%;
+    font-size: 17px;
+}
+
+.profile-action {
+    margin-top: 20px;
+    margin-left: 85px;
+}
+	
+      .long-paragraph{
+        margin-top: 20px;
+        text-align: center;
+        font-weight: bold;
+        color: #001549;
+        font-size:35px;
+        height: 10vh;
+        display: block;
+    }
+      
+    /*THE LEFT*/
+    
+    
+ .right-side{
+    width: 50%;
+    background-color: #e7eeff;
+   /*box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+    border-radius: 8px;
+    margin-left:5%;
+    margin-top: 19px;
+    font-size: 18px;
+    }
+
+
+  .profile-container{
+        background-color: #f6fffa;
+        border-radius: 8px;
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Creates the illusion of elevation */
+        font-size: 18px;
+        
+    }
+    
+    .profile-container {
+            flex: 1;
+        }
+        
+        
+     .about-tutor-row, .qualifications-row {
+	    display: flex;
+	    align-items: center;
+	    border-bottom: 1px solid #1cee50;
+	    padding-top: 15px;
+	    margin-left: 15px;
+	    margin-right: 15px;
+	    
+	   }
+
+     
+    .about-tutor-title, .qualifications-title {
+    width: 150px;
+    height: 100px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #021631;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    text-align: left;
+}
+
+
+.about-tutor-info {
+    flex: 1 1 auto;
+    color: #001549;
+    margin-right: 20px;
+   font-size: 18px;
+    width:50%;
+}
+
+.qualifications-info, .subjects-info {
+    flex: 1 1 auto;
+    color: #001549;
+    overflow: auto;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.subjects-info {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap onto the next line */
+   
+
+}
+
+.subjects-info p {
+    display: inline-block; /* Allows width to be determined by content */
+    padding-left: 5px; /* Set padding to 3px */
+    padding-right: 5px; /* Set padding to 3px */
+    margin: 5px; /* Margin for spacing between paragraphs */
+    background-color: #e7eeff; /* Light background for visibility */
+    text-align: center;
+    border-radius: 3px;
+    color: #00a550;
+}
+
+.subjects-row,  .qualifications-row, .University-row {
+  display: flex;
+  align-items: center; /* Align items to the top */
+}
+
+.subjects-row, .University-row{
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+
+.subjects-title ,.about-tutor-title ,.qualifications-title{
+ 
+  align-items: center; /* Center the icon above the text */
+  text-align: left; /* Center the text within the title */
+  font-size: 14px; /* Adjust text size if needed */
+}
+
+.qualifications-title{
+    align-items: center; /* Center the icon above the text */
+  text-align: center;
+}
+
+
+        .subjects-title i,
+        .about-tutor-title i,
+        .qualifications-title i {
+            font-size: 24px; /* Adjust icon size if needed */
+            margin-bottom: 7px;
+            color: #00a550;
+            display: inline-block; /* Ensure the icon can have a shadow */
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Add shadow */
+            background-color: #e7eeff;
+            width: 35px; /* Fixed width */
+            height: 35px; /* Fixed height */
+            line-height: 35px; /* Center vertically */
+            text-align: center; /* Center horizontally */
+            padding: 0; /* Remove default padding */
+        }
+
+.subjects-info {
+  display: flex;
+  align-items: center; /* Center the content vertically */
+}
+
+#profile_subjects {
+  margin: 0; /* Remove default margin from <p> tag */
+  font-size: 16px; /* Adjust text size if needed */
+}
+
+ .tutoring-container1 {
+            color: #00a550; /* Color for the tutoring title */
+            font-size: 13px; /* Adjust font size as needed */
+            margin-top: 8px; /* Space between title and grades */
+            margin-left: 10px;
+        }
+
+
+        .grades, .modules {
+            color: #001549; /* Color for grades */
+            font-size: 10px; /* Adjust font size as needed */
+            margin-left: 20px;
+            background-color: #e7eeff; /* Light background color */
+            /*border-radius: 8px; /* Rounded corners */
+            /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+        
+    .long-paragraph{
+        margin-top: 40px;
+        text-align: center;
+        font-weight: bold;
+        color: #001549;
+        font-size: 30px;
+        height: 13vh;
+    }
+
+    .short-paragraph{
+        margin-top: 20px;
+        text-align: center;
+        font-size: 35px;
+        font-weight: bold;
+        color: #00a550;
+    }
+
+
+    .button-action{
+	    margin-right: 200px;
+	    display: flex;
+	    width: 100%;
+	    margin-left: 25%;
+	    
+	   }
+	   
+    .container {
+        min-height: 100px; /* Adjust for smaller screens if necessary */
+        margin-top: 4%;
+    }
+	   
+	   .card__container {
+        flex-direction: column; /* Stack cards vertically on smaller screens */
+    }
+
+    .card__article {
+        margin: 10px 0; /* Space between stacked cards */
+    }
+
+    .card__name {
+        font-size: 1.2rem; /* Adjust font size */
+        background-color: white;
+    }
+
+    .card__description {
+        font-size: 1rem; /* Adjust font size */
+         background-color: white;
+         margin-left: 5%;
+         width: 100%;
+    }
+    
+    .card__data{
+		background-color: white;
+	}
+
+	
+}
+
+/* End NavBar*/
+
+/* Responsive styles for smartphones */
+
+
+
+.scroll-container {
+    overflow-x: hidden; /* Allow horizontal scrolling */
+    white-space: nowrap; /* Prevent text from wrapping */
+    border: none; /* Optional: for visual separation */
+    padding: 10px; /* Optional: for spacing */
+    width: 905px; /* Set a fixed width */
+    position: relative; /* Positioning context for arrows */
+    height: 300px; /* Fixed height for consistency */
+}
+
+.scroll-item {
+    display: inline-block; /* Allows items to be placed in a row */
+    margin-right: 20px; /* Space between items */
+    background-color: white; /* Light background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 10px; /* Padding around the item */
+    text-align: center;
+}
+
+#isthombe {
+    width: 180px; /* Set a fixed width for the image */
+    height: 180px; /* Set a fixed height for the image */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    padding: 5px; /* Padding around the image */
+    background-color: #fff; /* Optional: Background for the image */
+    border-radius: 10px; /* Rounded corners for the image */
+}
+
+.arrow {
+    cursor: pointer; /* Pointer cursor on hover */
+    background-color: #e7eeff; 
+    border: none; /* Remove default border */
+    padding: 5px; /* Padding for the arrow */
+    margin: 0 5px; /* Space between arrows and scroll container */
+    font-size: 35px; /* Adjust the size as needed */
+}
+
+.arrow-container {
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 300px; /* Set height */
+    border: none; /* No border */
+    background-color: #e7eeff; /* Light background color */
+    
+}
+
+.reviews {
+    display: inline-flex; /* Ensures icons are inline */
+    margin-top: 10px; /* Margin for reviews */
+    background-color: #fff;
+}
+
+.review-icon {
+    margin-right: 5px; /* Space between icons */
+    color: gold; /* Change color as needed */
+    font-size: 20px; /* Adjust size */
+}
+
+.subjects-title {
+            width: 150px;
+            height: 100px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #021631;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex; /* Use flexbox */
+            flex-direction: column; /* Stack items vertically */
+        }
+        .school_head, .header1 {
+            display: flex; /* Use flexbox for icon and title */
+            align-items: center; /* Center items vertically */
+            font-size: 14px;
+            margin-right: 18px;
+           
+        }
+        .bongi {
+            color: #00a550; /* Color for the tutoring title */
+            font-size: 14px; /* Adjust font size as needed */
+            margin-top: 8px; /* Space between title and grades */
+            margin-left: 10px;
+        }
+       
