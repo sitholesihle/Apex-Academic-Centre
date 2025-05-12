@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 
 import java.io.IOException;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -11,13 +10,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,27 +29,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.demo.model.BecomeTutor;
 import com.example.demo.model.Booking;
 import com.example.demo.model.MathsClass;
 import com.example.demo.model.OnlineClass;
-import com.example.demo.model.PaidBookings;
+
 import com.example.demo.model.Review;
 import com.example.demo.model.Tutor;
 
-import com.example.demo.repository.BecomeTutorRepository;
 
-import com.example.demo.repository.ReviewRepository;
-import com.example.demo.repository.TutorRepository;
-import com.example.demo.service.AdminService;
 import com.example.demo.service.BecomeTutorService;
 import com.example.demo.service.BookingService;
 import com.example.demo.service.EmailSenderService;
 import com.example.demo.service.MathsClassService;
 import com.example.demo.service.OnlineClassService;
-import com.example.demo.service.PaidBookingsService;
+
 import com.example.demo.service.ReviewService;
 import com.example.demo.service.TutorService;
 
@@ -75,10 +70,7 @@ public class PgController {
 	 
 	 @Autowired
 	 private ReviewService reviewService;
-	 
-	 @Autowired
-	 private AdminService adminService;
-	 
+ 
 	 @Autowired
 	 private OnlineClassService onlineService;
 	 
@@ -88,17 +80,6 @@ public class PgController {
 	@Autowired
 	 private BecomeTutorService becomeTutorService;
 	 
-	 @Autowired
-	 private TutorRepository tutorRepo;
-	 
-	 @Autowired
-	 private BecomeTutorRepository becomeTutorRepo;
-
-	 @Autowired
-	 private ReviewRepository reviewRepo;
-
-	 @Autowired
-	 private PaidBookingsService paidService;
 	 
 	 /*Index Page*/
 	 
@@ -147,6 +128,29 @@ public class PgController {
 	     // Return the ModelAndView object
 	     return "index";
 	 }
+	 
+	 @GetMapping("/tutor/image/{id}")
+	 public ResponseEntity<byte[]> getTutorImage(@PathVariable String id) {
+		 
+		 List<Tutor> listTutors = tutorService.getAllTutors();
+		 
+		    for (Tutor tutor : listTutors) {
+		        if (tutor.getEmail().equalsIgnoreCase(id)) {
+		           
+			         byte[] image = tutor.getImage();
+
+			         HttpHeaders headers = new HttpHeaders();
+			         headers.setContentType(MediaType.IMAGE_JPEG); // adjust if it's PNG
+
+			         return new ResponseEntity<>(image, headers, HttpStatus.OK);
+		        	
+		        }
+		    }
+		 
+
+	     return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	 }
+
 	 
 	 /*Index Page*/
 	 
@@ -1516,424 +1520,16 @@ public class PgController {
 				        return "success"; // Name of the success HTML page (success.html)
 				        
 				    }
+				    
+				    
+				    
+				    
 				
 		/*PAYMENT GATEWAY*/
-				 
-	@GetMapping("/admin")
-       public ModelAndView adminDashboard(HttpSession session) {
-		    String email = (String) session.getAttribute("adminEmail");
-		    if (email == null || !adminService.isAdminLoggedIn(email)) {
-		        return new ModelAndView("loginAdmin.html"); // Redirect to login if not logged in
-		    }
-
-		//List<Tutor> tutor = tutorService.listAll();
-		
-	  /*   Page<Tutor> page = tutorService.findPage(1);
-
-	    
-	     long totalPages = page.getTotalPages();
-	     long totalItems = page.getTotalElements();
-	     List<Tutor> tutor = page.getContent();*/
-		
-		
-		List<Booking> booking = bookingService.listAll();
-  
-        booking.sort((tutor1, tutor2) -> {
-
-            // Check if createdAt dates are not null
-            if (tutor1.getCreatedAt() == null && tutor2.getCreatedAt() == null) {
-                return 0; // Both createdAt are null, they are considered equal
-            } else if (tutor1.getCreatedAt() == null) {
-                return 1; // tutor1's createdAt is null, so tutor2 should come first
-            } else if (tutor2.getCreatedAt() == null) {
-                return -1; // tutor2's createdAt is null, so tutor1 should come first
-            }
-
-            // If both createdAt are not null, compare them
-            return tutor2.getCreatedAt().compareTo(tutor1.getCreatedAt());
-        });
-
-		
-		List<Review> reviews = reviewService.listAll();
-		List<OnlineClass> rewrite = onlineService.listAll();
-
-		// Sorting the list with "Not opened" classes on top
-		rewrite.sort((class1, class2) -> {
-		    // First compare based on the status, putting "Not opened" at the top
-		    if ("Pending".equals(class1.getAction()) && !"Pending".equals(class2.getAction())) {
-		        return -1; // class1 should come before class2
-		    } else if (!"Pending".equals(class1.getAction()) && "Pending".equals(class2.getAction())) {
-		        return 1; // class1 should come after class2
-		    }
-		    return 0; // If both have the same status, maintain the order
-		});
-		
-		List<MathsClass> mathsClasses = mathsService.listAll();
-		
-		// Sorting the list with "Not opened" classes on top
-		mathsClasses.sort((class1, class2) -> {
-		    // First compare based on the status, putting "Not opened" at the top
-		    if ("Pending".equals(class1.getAction()) && !"Pending".equals(class2.getAction())) {
-		        return -1; // class1 should come before class2
-		    } else if (!"Pending".equals(class1.getAction()) && "Pending".equals(class2.getAction())) {
-		        return 1; // class1 should come after class2
-		    }
-		    return 0; // If both have the same status, maintain the order
-		});
-		
-		
-		List<BecomeTutor> becomeTutor = becomeTutorService.listAll();
-		
-        becomeTutor.sort((tutor1, tutor2) -> tutor2.getCreatedAt().compareTo(tutor1.getCreatedAt()));
-        
-        List<PaidBookings> paid = paidService.listAll();
-		
-		if(email.equals("info@apexacademiccentre.co.za")) {
-		
-		ModelAndView data = new ModelAndView("adminDashboard.jsp");// load the admin dashboard
-		
-		/*data.addObject("tutors" , tutor);
-		data.addObject("currentPage", 1);
-		data.addObject("totalPages", totalPages);
-		data.addObject("totalItems", totalItems);
-		
-		data.addObject("bookings", booking);
-		data.addObject("reviews", reviews);
-		data.addObject("rewrite", rewrite);
-		data.addObject("mathsClasses",mathsClasses);	
-		data.addObject("becomeTutor",becomeTutor);
-		data.addObject("paid",paid);*/
-		
-		return data;
-		
-		}
-		
-		else {
-			
-			ModelAndView data = new ModelAndView("loginAdmin.html");// login first
-		
-				
-			return data;
-			
-			
-		}
-	}
-	
-	
-	/*Pagination for Admin*/
-	
-	 @GetMapping("/adminpage-{page}")
-	 @ResponseBody
-	 public ModelAndView adminList(@PathVariable int page) {
-		 
-		 return getOnePageAdmin(page);
-	 }
-	 
-	 @GetMapping("/adminlist/{pageNumber}")
-	 public ModelAndView getOnePageAdmin(@PathVariable("pageNumber") int currentPage) {
+				    
+	/*OTHER BOOKINGS*/	    
 
 
-		//List<Tutor> tutor = tutorService.listAll();
-		
-	 /*    Page<Tutor> page = tutorService.findPage(currentPage);
-
-	     // Get the total number of pages and total items
-	     long totalPages = page.getTotalPages();
-	     long totalItems = page.getTotalElements();
-	     List<Tutor> tutor = page.getContent();
-		*/
-		
-		List<Booking> booking = bookingService.listAll();
-
-     booking.sort((tutor1, tutor2) -> {
-
-         // Check if createdAt dates are not null
-         if (tutor1.getCreatedAt() == null && tutor2.getCreatedAt() == null) {
-             return 0; // Both createdAt are null, they are considered equal
-         } else if (tutor1.getCreatedAt() == null) {
-             return 1; // tutor1's createdAt is null, so tutor2 should come first
-         } else if (tutor2.getCreatedAt() == null) {
-             return -1; // tutor2's createdAt is null, so tutor1 should come first
-         }
-
-         // If both createdAt are not null, compare them
-         return tutor2.getCreatedAt().compareTo(tutor1.getCreatedAt());
-     });
-
-		
-		List<Review> reviews = reviewService.listAll();
-		List<OnlineClass> rewrite = onlineService.listAll();
-
-		// Sorting the list with "Not opened" classes on top
-		rewrite.sort((class1, class2) -> {
-		    // First compare based on the status, putting "Not opened" at the top
-		    if ("Pending".equals(class1.getAction()) && !"Pending".equals(class2.getAction())) {
-		        return -1; // class1 should come before class2
-		    } else if (!"Pending".equals(class1.getAction()) && "Pending".equals(class2.getAction())) {
-		        return 1; // class1 should come after class2
-		    }
-		    return 0; // If both have the same status, maintain the order
-		});
-		
-		List<MathsClass> mathsClasses = mathsService.listAll();
-		
-		// Sorting the list with "Not opened" classes on top
-		mathsClasses.sort((class1, class2) -> {
-		    // First compare based on the status, putting "Not opened" at the top
-		    if ("Pending".equals(class1.getAction()) && !"Pending".equals(class2.getAction())) {
-		        return -1; // class1 should come before class2
-		    } else if (!"Pending".equals(class1.getAction()) && "Pending".equals(class2.getAction())) {
-		        return 1; // class1 should come after class2
-		    }
-		    return 0; // If both have the same status, maintain the order
-		});
-		
-		
-		List<BecomeTutor> becomeTutor = becomeTutorService.listAll();
-		
-        becomeTutor.sort((tutor1, tutor2) -> tutor2.getCreatedAt().compareTo(tutor1.getCreatedAt()));
-     
-        List<PaidBookings> paid = paidService.listAll();
-
-		ModelAndView data = new ModelAndView("adminDashboard.jsp");// load the admin dashboard
-		
-	/*	data.addObject("tutors" , tutor);
-		data.addObject("currentPage", currentPage);
-		data.addObject("totalPages", totalPages);
-		data.addObject("totalItems", totalItems);*/
-		
-		data.addObject("bookings", booking);
-		data.addObject("reviews", reviews);
-		data.addObject("rewrite", rewrite);
-		data.addObject("mathsClasses",mathsClasses);	
-		data.addObject("becomeTutor",becomeTutor);
-		data.addObject("paid",paid);
-		
-		return data;		 
-		 
-	 }
-	
-	
-	
-	/*Pagination for Admin*/
-	
-	
-	
-	
-
-	 @PostMapping("/addTutor")//only admin have access
-		public String addTutor(@RequestParam("profile") MultipartFile profile , @RequestParam("hiddenName")  String name ,
-				@RequestParam("hiddenID") String id , @RequestParam("hiddenEmail") String email ,
-				@RequestParam("hiddenPhone") String phone , @RequestParam("hiddenSubjects") String subjects ,
-				@RequestParam("hiddenGrades") String grades , @RequestParam("hiddenSyllabus") String syllabus ,
-				@RequestParam("tutorOption") String tutorOption , @RequestParam("hiddenAddress") String address,
-				@RequestParam("bio") String qualification , @RequestParam("about") String about,
-				@RequestParam("hours") String bio , @RequestParam("hiddenArea") String area, @RequestParam("hiddenCountry") String country , 
-				@RequestParam("hiddenIdentity") String dob , @RequestParam("hiddenSurname") String surname ,@RequestParam("hiddenModules") String hiddenModules ,
-				@RequestParam("hiddenExp") String hiddenExp) throws IOException, ParseException 
-		{
-		 
-		 if(address.equals("")) {
-			 
-			 address = "international";
-			 
-		 }
-		 		 
-		 int expYear = Integer.parseInt(hiddenExp);
-		 int experienceYears = 2024 - expYear;
-		 
-		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		 Date date = dateFormat.parse(dob);
-		 
-           byte[] imageData = profile.getBytes();
-                
-		   Tutor tutor = new Tutor(email,name,id,phone,subjects,grades,address,tutorOption,qualification,about,bio,imageData,syllabus,area,country,date,surname,hiddenModules,experienceYears);
-		      
-		    tutorService.save(tutor); 
-		    
-		    String serverName = request.getServerName();
-		    int serverPort = request.getServerPort();
-		    String protocol = request.getScheme();
-		    String host = protocol + "://" + serverName + ":" + serverPort;
-
-	        String reviewLink = host + "/review-ratings?email=" + email;
-	        
-
-	        // Create and save the second review
-	        Review review2 = new Review();
-	        review2.setTutorEmail(email);
-	        review2.setName("Mabhena Bongisani");
-	        review2.setRating(0);
-	        review2.setMessage("Great tutor! Helped me understand complex concepts, built my confidence, and provided valuable feedback. Would definitely recommend!");
-	        review2.setStatus("approved");
-	        reviewService.save(review2);
-
-	        // Create and save the third review
-	        Review review3 = new Review();
-	        review3.setTutorEmail(email);
-	        review3.setName("Sihle Sithole");
-	        review3.setRating(2);
-	        review3.setMessage("Outstanding guidance and support! Created a comfortable learning environment, addressed all questions, and provided constructive feedback. Grateful for the expertise!");
-	        review3.setStatus("approved");
-	        reviewService.save(review3);
-
-	        // Create and save the fourth review
-	        Review review4 = new Review();
-	        review4.setTutorEmail(email);
-	        review4.setName("Paul Peo");
-	        review4.setRating(1);
-	        review4.setMessage("Fantastic experience! Effective teaching, regular progress updates, and flexible approach helped me achieve my goals. Highly recommend!");
-	        review4.setStatus("approved");
-	        reviewService.save(review4);
-
-	        
-	        String sHeading = "Dear " + name;
-	        
-		   
-			senderService.sendSimpleEmail(email, "Tutor Registration Approval" ,
-			sHeading+",\n\nCongratulations! You have been successfully added to the Apex Academic Centre website. We are confident that you will deliver exceptional service to our clients.\r\n"
-					+ "\r\n"
-					+ "Clients can book your services directly through our website, and we will also assign clients to you via email. To enhance your profile and increase visibility, please share the link below with your students, so they can leave reviews about your services on our website. These reviews will make your profile more attractive to potential clients and increase your chances of being recommended.\n\n Link: " + reviewLink + "\n\nThank you for joining our team, and we look forward to your success!");
-		   
-			 return "redirect:/admin"; // Redirect to adminDashBoard
-		 
- 
-		}
-	 
-	 @PostMapping("/deleteTutor")
-     public String deleteTutor(@RequestParam("deleteEmail") String email ) {
-		 
-		 Tutor tutor = new Tutor();
-		    tutor.setEmail(email);
-		      tutorService.delete(tutor);
-		 	 
-		 return "redirect:/admin";
-		 
-	 }
-	 
-	 @PostMapping("/deleteApplicant")
-     public String deleteApplicant(@RequestParam("emailApplicant") String email ) {
-		 
-		 Optional<BecomeTutor> opT = becomeTutorRepo.findById(email);
-		 BecomeTutor pTutor = new BecomeTutor();
-		 
-	        if (opT.isPresent()){
-				 
-	        	pTutor = opT.get();
-	
-			 }
-	        
-	        String sHeading = "Dear " + pTutor.getName() + " " + pTutor.getSurname();
-	        
-	        /*Send unsuccessful email to the applicant*/
-			   
-				senderService.sendSimpleEmail(email, "Update on Your Tutor Application" ,
-				sHeading+"\n\nThank you for your interest in joining our team of tutors at Apex Academic Centre. We appreciate the time you took to complete our Become a Tutor form.\n"
-						+ "\n"
-						+ "After careful review, we regret to inform you that your current qualifications do not meet our requirements. However, we encourage you to continue developing your skills and qualifications.\n"
-						+ "\n"
-						+ "We invite you to reapply in the future once you have upgraded your qualifications. We appreciate your passion for education and look forward to considering your application again soon.\n"
-						+ "\n"
-						+ "Kind regards,\n"
-						+ "\n"
-						+ "Apex Academic Centre Team");
-
-			/*Delete The Application*/
-				
-				   BecomeTutor tutor = new BecomeTutor();
-				   tutor.setEmail(email);
-				   becomeTutorService.delete(tutor);
-			   
-		    return "redirect:/admin";
-		 
-	 }
-	 
-	 
-	 
-	 @PostMapping("/editTutor")//only admin have access
-	 @ResponseBody
-		public String updateTutor(@RequestParam("editprofile") MultipartFile profile , @RequestParam("edithiddenName")  String name 
-				, @RequestParam("edithiddenEmail") String email ,
-				@RequestParam("edithiddenPhone") String phone , @RequestParam("edithiddenSubjects") String subjects ,
-				@RequestParam("edithiddenGrades") String grades , @RequestParam("edithiddenSyllabus") String syllabus ,
-				@RequestParam("edittutorOption") String tutorOption , @RequestParam("edithiddenAddress") String address,
-				@RequestParam("editbio") String bio , @RequestParam("editabout") String about,@RequestParam("edithiddenCountry") String country,
-				@RequestParam("edithours") String hours , @RequestParam("edithiddenArea") String area  ) throws IOException 
-		{
-		 
-		 System.out.println(country);
-		 System.out.println(address);
-		 
-		 Optional<Tutor> opT = tutorRepo.findById(email);
-		 Tutor pTutor = new Tutor();
-		 
-	        if (opT.isPresent()){
-				 
-	        	pTutor = opT.get();
-	
-			 }
-		 
-			 byte[] imageData;
-			 
-			 if (profile == null || profile.isEmpty()) {
-			 
-				 System.out.println("The Image is empty and will not be updated");
-				 imageData = pTutor.getImage();
-				 
-			    }
-			 
-			 else {
-				 System.out.println("The Image is not empty and it will  be updated");
-				 imageData = profile.getBytes();
-			 }
-			 
-			  // Set the address based on the country
-			    if (!"South Africa".equals(country)) {
-			        address = "n/a"; 
-			    } 
-			    
-           Tutor tutor = new Tutor();
-           tutor.setEmail(email);
-		    tutor.setFullNames(name);
-		    tutor.setImage(imageData);
-		    tutor.setPhoneNumber(phone);
-		    tutor.setEmail(email);
-		    tutor.setAddress(address);
-		    tutor.setSubjects(subjects);
-		    tutor.setGrades(grades);
-		    tutor.setSyllabus(syllabus);
-		    tutor.setBio(bio);
-		    tutor.setAbout(about);
-		    tutor.setHoursTutored(hours);
-		    tutor.setAvailability(tutorOption);
-		    tutor.setArea(area);
-		    tutor.setCountry(country);
-		   
-		    tutorService.update(email, tutor);
-		    
-		    return "Tutor Successfully Updated."; 
-		   
-			//return "redirect:/admin"; // Redirect to adminDashBoard
-		 
-		}
-	 
-	 
-	 @PostMapping("/searchTutor")
-	 @ResponseBody
-	 public List<Tutor> searchTutor(@RequestBody Map<String, String> requestBody) {
-	
-		 String name = requestBody.get("searchEmail");
-		 
-		 System.out.println(name);
-		 
-		 List<Tutor> tutor = tutorRepo.searchByName(name);
-		
-		 return tutor;
-		 
-	 }
-	 
-
-	 
 	 @PostMapping("/other-booking")
 	 @ResponseBody
 	    public void otherBooking(@RequestBody Map<String, String> booking) {
@@ -2205,282 +1801,11 @@ public class PgController {
 	         
 	    }
 	 
+	 /*OTHER BOOKINGS*/	
+	 
 
-	    @GetMapping("/booking-details")
-	    public ModelAndView getBookingDetails(@RequestParam("id") Long id) {
-	    	
-	        Booking booking = bookingService.findOneBook(id);  
-
-			ModelAndView data = new ModelAndView("confirm-booking.jsp");// load the admin dashboard
-			data.addObject("bookings", booking);
-			
-			return data;
-	
-	    }
-	    
-		 @PostMapping("/accept-booking")
-		 @ResponseBody
-		 public RedirectView acceptBooking(@RequestParam("accept-id") Long id, HttpServletRequest request) {
-			 
-			 Booking booking = bookingService.findOneBook(id); 
-			 
-			 String checkStatus = booking.getStatus();
-			 
-			  bookingService.update(id);
-			  
-			    String serverName = request.getServerName();
-			    int serverPort = request.getServerPort();
-			    String protocol = request.getScheme();
-			    String host = protocol + "://" + serverName + ":" + serverPort;
-
-		        String bookingLink = host + "/booking-details?id=" + id;
-		        
-			    /*Send email to applicant*/
-		        
-		        
-		        String email = booking.getEmail();
-		        String subject = booking.getSubject();
-		        String tutorName = booking.getTutorName();
-		        String name = booking.getName();
-		        String surname = booking.getSurname();
- 
-		        String clientName = name + " " + surname;
-		        
-		        if(checkStatus.equals("consult")) {
-		        	
-					senderService.sendSimpleEmail(email, "Booking Confirmation - Next Steps"  ,
-							"Dear " + clientName+",\n\nThank you for choosing Apex Academic Centre. We're delighted to confirm your booking.\r\n"
-									+ "\r\n"
-									+ "\r\n"
-									+ "What's next:\r\n"
-									+ "\r\n"
-									+ "\r\n"
-									+ "- Our team will contact you to discuss tutor-matching\r\n"
-									+ "- Arrange scheduling and logistics\r\n"
-									+ "- Ensure a tailored tutoring plan\r\n"
-									+ "\r\n"
-									+ "\r\n"
-									+ "We're dedicated to your child's academic success.\r\n"
-									+ "\r\n"
-									+ "\r\n"
-									+ "Best regards,\r\n"
-									+ "Apex Academic Centre");
-		        	
-		        	
-		        }
-		        else {
-		        
-				senderService.sendSimpleEmail(email, "Booking Approval - " + subject  ,
-				"Dear " + clientName+",\n\nWe're delighted to inform you that " + tutorName + " has accepted your booking! They will be in touch with you shortly to arrange a suitable timetable and discuss any necessary details.\r\n"
-						+ "\r\n"
-						+ "Please note that if you have any questions, concerns, or misunderstandings, you can reach us directly via:\r\n"
-						+ "\r\n"
-						+ "Email: admin@apexacademiccentre.co.za\r\n"
-						+ "Phone/WhatsApp: 068 035 1845\r\n"
-						+ "\r\n"
-						+ "We're committed to ensuring a smooth and successful tutoring experience.\r\n"
-						+ "\r\n"
-						+ "Kind regards,\r\n"
-						+ "Apex Academic Centre");
-				
-		        }
-			  
-		        return new RedirectView(bookingLink);
-
-			 
-		 }
-		 
-		 @GetMapping("/review-ratings")
-		 public ModelAndView reviewRatings(@RequestParam("email") String tutorEmail) {
-			 
-				ModelAndView data = new ModelAndView("rate-tutor.jsp");// load the admin dashboard
-				data.addObject("tutorEmail", tutorEmail);
-				
-				return data;
-			 
-		 }
-		 
-		 @PostMapping("/add-review-ratings")
-		 public String addReviews(@RequestParam("tutorEmail") String tutorEmail ,  @RequestParam("name") String name , @RequestParam("message") String message , @RequestParam("ratings") int ratings) {
-			 
-			
-			 Review reviews = new Review(name,tutorEmail,message,ratings,"pending");
-			  
-			 reviewService.save(reviews);
-				
-				return "redirect:/";
-			 
-		 }
-		 
-		 @PostMapping("/approve-review")
-		 public String acceptReview(@RequestParam("rEntryId") Long entryId , @RequestParam("rTutorEmail") String email) {
-			 
-			 reviewService.updateReview(entryId);
-				
-				return "redirect:/admin";
-			 
-		 }
-		 
-		 
-
-  
 
 		    
-
-		    /*DELETE CONSULT BOOKING*/
-		    		
-			 @PostMapping("/deleteConsult")
-		     public String deleteConsultant(@RequestParam("deleteEmailConsult") Long id ) {
-				 
-				 Booking booking = bookingService.findOneBook(id);
-				    bookingService.delete(booking);
-				 	 
-				 return "redirect:/admin";
-				 
-			 }
-			 
-			 /*DELETE OTHER BOOKING*/
-			 
-			 @PostMapping("/deleteOther")
-		     public String deleteOther(@RequestParam("deleteEmailOther") Long id ) {
-				 
-				 Booking booking = bookingService.findOneBook(id);
-				    bookingService.delete(booking);
-				 	 
-				 return "redirect:/admin";
-				 
-			 }
-			 
-			 /*DELETE APPROVED BOOKING*/
-			 
-			 @PostMapping("/delete-approved-booking")
-		     public String deleteApprovedBooking(@RequestParam("deleteEmailApproved") Long id) {
-				 
-				 Booking booking = bookingService.findOneBook(id);
-				    bookingService.delete(booking);
-				 	 
-				 return "redirect:/admin";
-				 
-			 }
-			 
-			 /*DELETE REGISTERED MATRIC*/
-			 
-			 @PostMapping("/delete-registered-matric")
-		     public String deleteMatricReg(@RequestParam("deleteMatricReg") Long id) {
-				  
-				 OnlineClass matric = onlineService.findOneBook(id);
-				    onlineService.delete(matric);
-				 	 
-				 return "redirect:/admin";
-				 
-			 }
-			 
-			
-			 
-			 /*RENDER ADMIN LOGIN PAGE*/
-			 
-			    @GetMapping("/adminpanel")
-			    public String adminLogin() {
-			    	
-			    	  return "loginAdmin.html";
-			    }
-			    
-			 /*   @GetMapping("/resetPassword")
-			    @ResponseBody
-			    public passwordReset getAdmin() {
-			 
-					 
-					 return CredentialsUpdate.html;
-			    }*/
-			    
-			    
-
-			    
-
-				 /*AUTHENTIFICATION*/
-				 
-				 @PostMapping("/login")
-				 public ModelAndView login(@RequestParam String email, @RequestParam String password, HttpSession session) {
-				     /*if (adminService.isAdminLoggedIn(email)) {
-				         return new ModelAndView("redirect:/loginAdmin.html").addObject("message", "This admin is already logged in.");
-				     }*/
-
-				     if (adminService.validateAdmin(email, password)) {
-				         session.setAttribute("adminEmail", email); // Store email in session
-				         adminService.logInAdmin(email, session); // Register this session
-				         return new ModelAndView("redirect:/admin"); // Redirect without exposing email in URL
-				     } else {
-				         return new ModelAndView("redirect:/loginAdmin.html").addObject("message", "Invalid credentials.");
-				     }
-				 }
-				 
-				 
-				    @GetMapping("/logout")
-				    public String logout(HttpSession session) {
-				        String email = (String) session.getAttribute("adminEmail");
-				        if (email != null) {
-				            adminService.logOutAdmin(email); // Remove this admin from logged-in users
-				            session.invalidate(); // Invalidate the session
-				        }
-				        return "loginAdmin.html"; // Redirect to the login page
-				    }
-				    
-				    
-				    
-				    /*RESET CREDENTIALS*/
-				    
-				    @GetMapping("/rstapexpasswyhjbhcentre")
-					   
-				    public String passwordReset() {
-				 
-						 
-						 return "CredentialsUpdate.html";
-						 
-				    }
-				    
-				    @GetMapping("/generateVerificationCode")
-				    @ResponseBody
-				    public String generateVerificationCode() {
-				        // Generate a random 6-digit verification code
-				        String generatedCode = String.valueOf(new Random().nextInt(900000) + 100000);
-				        System.out.println("Generated Code: " + generatedCode); // Log the generated code (for demo purposes)
-				        // In a real application, you would send this code to the user's email
-
-				        String subject = "Apex Academic Centre - Security";
-				       
-				        String recipientEmail = "info@apexacademiccentre.co.za"; 
-				       
-				        String emailBody = String.format(
-				            "Dear Admin,\n\n" +
-				            "To enhance your account security, we have generated a verification code for you. Please use the code below to proceed:\n\n" +
-				            "Verification Code:" + generatedCode +
-				            "\n\nIf you did not request this code, please ignore this email or contact our support team if you have any concerns.\n\n" +
-				            "Best regards,\n" +
-				            "Apex Academic Centre Team\n");
-
-				        // Send the email
-				        senderService.sendSimpleEmail(recipientEmail, subject, emailBody);
-
-				        return generatedCode; // Return the generated code
-				    }
-				    
-				    
-				    
-				    @PostMapping("/resetPassword")
-				    @ResponseBody
-				    public ResponseEntity<String> resetPassword(@RequestBody Map<String, String> password) {
-				        String newPassword = password.get("password");
-				        
-				        // Log the received password
-				        System.out.println("Received password: " + newPassword);
-				           
-				        adminService.update(newPassword);
-				        
-	        
-				        return ResponseEntity.ok("Password reset successfully."); // Sending success response
-				    }
-				    
-				    
 				    /*SEARCH ENGINE*/
     
 				    @PostMapping("/searchEngine")
@@ -2511,7 +1836,7 @@ public class PgController {
 				        }
 
 				        // Get all tutors
-				        List<Tutor> tutors = tutorService.listAll();
+				        List<Tutor> tutors = tutorService.getAllTutors();
 
 				        // Filter the tutors based on the provided attributes
 				        List<Tutor> filteredTutors = tutors.stream()
@@ -2567,361 +1892,38 @@ public class PgController {
 
 				    
 					@GetMapping("/searchOptimazation")
-				       public ModelAndView searchOptimazation(HttpSession session) {
+				       public String searchOptimazation(Model model, HttpSession session) {
 						
 					
 						List<Tutor> tutors = (List<Tutor>)session.getAttribute("filteredTutors");
 						    
-							ModelAndView data = new ModelAndView("tutorsSearchPage.jsp");
-							data.addObject("tutors" , tutors);
-					
-							return data;
+						 Page<Tutor> page = tutorService.findPage(tutors,1,10);
+						 
+					     int totalPages = page.getTotalPages();
+					     long totalItems = page.getTotalElements();
+					     
+						 long pageStart = Math.max(1 - 2, 1); // 
+						 long pageEnd = Math.min(1 + 3, totalPages); 
+					     
+					     List<Tutor> countries = page.getContent(); 
+
+					     model.addAttribute("user", countries);
+					     model.addAttribute("tutors", countries);
+					     
+					     model.addAttribute("totalPages", totalPages);
+					     model.addAttribute("totalItems", totalItems);
+					     
+					     model.addAttribute("pageStart", pageStart);
+					     model.addAttribute("pageEnd", pageEnd);
+					     
+					     model.addAttribute("currentPage", 1);
+					     
+					     // Return the ModelAndView object
+					     return "index";
 						
 					}
 					
 					
-					/*ONLINE CLASSES : REGISTRATION*/
-					
-
-					
-				
-					
-				    
-					    /*MATHS ONLINE CLASSES*/
-					    
-
 						
-						 
-						 /*UPDATE VIEW MATRIC STATUS*/
-						 
-						 @PostMapping("/update-view-status")
-						 @ResponseBody
-						 public void updateViewStatus(@RequestBody Map<String, String> status) {
-							 
-							 
-							 String id = status.get("status");
-							 Long parsId = Long.valueOf(id);
-							 
-							 onlineService.update(parsId);
-							 
-							 
-						 }
-						 
-						 
-						 /*UPDATE VIEW MATHS STATUS*/
-						 
-						 @PostMapping("/mark-as-viewed")
-						 @ResponseBody
-						 public void updateMathsView(@RequestBody Map<String, String> status) {
-							 
-							 
-							 String id = status.get("status");
-							 Long parsId = Long.valueOf(id);
-							 
-							 mathsService.update(parsId);
-							 
-							 
-						 }
-						 
-						 
-						 /*THE Become A TUTOR*/
-						 
-						 
-						
-						    
-						    /*Admin Accept Tutor*/
-						    
-							 @PostMapping("/add-accepted-tutor")//only admin have access
-								public String addAcceptedTutor(@RequestParam("rName")  String name, @RequestParam("rEmail") String email ,
-										@RequestParam("rPhone") String phone , @RequestParam("rSubjects") String subjects ,
-										@RequestParam("rGrades") String grades , @RequestParam("rSyllabus") String syllabus ,
-										@RequestParam("rTutorOption") String tutorOption , @RequestParam("rAddress") String address,
-										@RequestParam("rAchievements") String qualification , @RequestParam("rAbout") String about,
-										@RequestParam("rHours") String bio , @RequestParam("rArea") String area, @RequestParam("rCountry") String country , @RequestParam("rProfile") String profile , 
-										@RequestParam("rDOB") String dob , @RequestParam("rSurname") String surname ,@RequestParam("rModules") String hiddenModules ,
-										@RequestParam("rExp") String hiddenExp) throws IOException, ParseException 
-								{
-								 
-								 
-								 
-							 if(address.equals("")) {
-									 
-									 address = "international";
-									 
-								 }
-							
-								 
-								 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-								 Date date = dateFormat.parse(dob);
-								 
-								 int expYear = Integer.parseInt(hiddenExp);
-								 
-								   BecomeTutor bTutor = becomeTutorService.findOneTutor(email);
-								 
-						           byte[] imageData = bTutor.getImage();
-						           byte[] cv = bTutor.getCv();
-						           byte[] qualiDoc = bTutor.getEducation();
-						           byte[] idPass = bTutor.getIdPassport();
-						              
-								   Tutor tutor = new Tutor(email,name,"Yes",phone,subjects,grades,address,tutorOption,qualification,about,bio,imageData,syllabus,area,country,date,surname,hiddenModules,expYear);
-								   tutor.setCv(cv);
-								   tutor.setEducation(qualiDoc);
-								   tutor.setIdPassport(idPass);
-								   tutor.setCreatedAt(bTutor.getCreatedAt());
-								   
-								   
-								    tutorService.save(tutor); 
-								    becomeTutorService.delete(bTutor);
-								    
-								    String serverName = request.getServerName();
-								    int serverPort = request.getServerPort();
-								    String protocol = request.getScheme();
-								    String host = protocol + "://" + serverName + ":" + serverPort;
-
-							        String reviewLink = host + "/review-ratings?email=" + email;
-
-							        // Create and save the third review
-							        Review review1 = new Review();
-							        review1.setTutorEmail(email);
-							        review1.setName("Sihle Sithole");
-							        review1.setRating(2);
-							        review1.setMessage("Outstanding guidance and support! Created a comfortable learning environment, addressed all questions, and provided constructive feedback. Grateful for the expertise!");
-							        review1.setStatus("approved");
-							        reviewService.save(review1);
-
-							        // Create and save the second review
-							        Review review2 = new Review();
-							        review2.setTutorEmail(email);
-							        review2.setName("Mabhena Bongisani");
-							        review2.setRating(0);
-							        review2.setMessage("Great tutor! Helped me understand complex concepts, built my confidence, and provided valuable feedback. Would definitely recommend!");
-							        review2.setStatus("approved");
-							        reviewService.save(review2);
-
-
-							        // Create and save the fourth review
-							        Review review4 = new Review();
-							        review4.setTutorEmail(email);
-							        review4.setName("Paul Peo");
-							        review4.setRating(1);
-							        review4.setMessage("Fantastic experience! Effective teaching, regular progress updates, and flexible approach helped me achieve my goals. Highly recommend!");
-							        review4.setStatus("approved");
-							        reviewService.save(review4);
-
-							        
-							        String sHeading = "Dear " + name;
-							        
-								   
-									senderService.sendSimpleEmail(email, "Tutor Registration Approval" ,
-									sHeading+",\n\nCongratulations! You have been successfully added to the Apex Academic Centre website. We are confident that you will deliver exceptional service to our clients.\r\n"
-											+ "\r\n"
-											+ "Clients can book your services directly through our website, and we will also assign clients to you via email. To enhance your profile and increase visibility, please share the link below with your students, so they can leave reviews about your services on our website. These reviews will make your profile more attractive to potential clients and increase your chances of being recommended.\n\n Link: " + reviewLink + "\n\nThank you for joining our team, and we look forward to your success!");
-								
-									 return "redirect:/admin"; // Redirect to adminDashBoard
-								 
-						 
-								}
-					 
-							 
-
-							 
-							 
-						/*	 @PostMapping("/subscribe")
-								public ModelAndView subscribeMethod(@RequestParam("email") String email) {
-								 
-								 
-									senderService.sendSimpleEmail(email, " Welcome to Apex Academic Centre!" ,
-									"Dear,\n"
-									+ "\n"
-									+ "Thank you for subscribing to Apex Academic Centre! We're thrilled to have you on board.\n"
-									+ "\n"
-									+ "What to Expect:\n"
-									+ "\n"
-									+ "- Personalized academic support for primary, high school, and university students\n"
-									+ "- Expert tutors in all subjects\n"
-									+ "- Flexible online and in-person lessons\n"
-									+ "\n"
-									+ "Getting Started:\n"
-									+ "\n"
-									+ "1. Browse our tutor profiles\n"
-									+ "2. Book a tutor https://bookatutorapexacademiccentre.co.za\n"
-									+ "3. Achieve academic success!\n"
-									+ "\n"
-									+ "Need Help?\n"
-									+ "\n"
-									+ "Email: info@apexacademiccentre.co.za\n"
-									+ "Phone: 011 354 0198\n"
-									+ "WhatsApp: 068 035 1845\n"
-									+ "\n"
-									+ "Thank you for choosing Apex Academic Centre. We look forward to supporting your academic journey!\n"
-									+ "\n"
-									+ "Best regards,\n"
-									+ "\n"
-									+ "Apex Academic Centre Team");
-									
-									
-									senderService.sendSimpleEmail("marketing@apexacademiccentre.co.za", "" ,
-									"Dear Apex Academic Centre \n"
-									+ "\n"
-									+ "We are pleased to inform you that " + email + " subscribed to your website.\n"
-									+ "\n"
-									+ "Best regards\n"
-									+ "\n"
-									+ "The admin Team");
-									
-									
-								 
-								    // Retrieve the list of tutors
-									
-									return getOnePage(1);
-									
-								}*/
-							 
-							 
-							 @PostMapping("/deleteReview")
-							 public String deleteReview(@RequestParam("entryReview") Long entryId) {
-								 
-								 Review rev = reviewService.findOneReview(entryId);
-								 reviewRepo.delete(rev);
-								 
-								return "redirect:/admin";
-								 
-							 }
-							 
-							 @PostMapping("/sendEmail")
-							 public String sendEmail(@RequestParam("lclient") String clientName, @RequestParam("lstudname") String studentName , @RequestParam("lemail") String email,
-									 @RequestParam("ldate") String date, @RequestParam("lamount") String amount , @RequestParam("lsession") String sess , @RequestParam("ltutor") String optTutor) {
-								 
-								 int clientOrBoth = 0;
-								 String subject;
-								 
-								 if(!studentName.equals("")) {
-									 
-									 clientOrBoth++;
-									 subject = 	"Re: Tuition Fee Payment Notification for " + studentName;
-									 
-								 }
-								 
-								 else {
-									 
-									 clientOrBoth = 0;
-									 subject = 	"Re: Tuition Fee Payment Notification";
-									 
-								 }
-							
-								 System.out.println(studentName);
-								 System.out.println(date);
-								 System.out.println(amount);
-								 System.out.println(sess);
-								 System.out.println(optTutor);
-								 System.out.println(email);
-						
-								 clientName = clientName.replace(" ", "@");
-								 studentName = studentName.replace(" ", "@");
-								
-								 senderService.sendEmailWithButton(email,subject,clientName,studentName,date,amount,sess,optTutor,clientOrBoth);
-								
-								 return "redirect:/admin";
-								 
-							 }
-							 
-							 
-							                     /*Cancel Payment*/
-							 
-							    @GetMapping("/cancel-link")
-							    public String handlePaymentLinkCancel(@RequestParam Map<String, String> paymentDetails , HttpSession session) {
-							    	
-							    	
-							    	   String details = paymentDetails.get("details");
-							    	   
-							    	   session.setAttribute("paymentDetails", details);
-							    	   
-							    	   return "redirect:/unsuccessful-payment";
-							    	   
-							    }
-							    
-							    
-							    @GetMapping("/unsuccessful-payment")
-							    public ModelAndView handlePaymentLinkUnsuccessful(HttpSession session) {
-							    
-							    	   String details = (String)session.getAttribute("paymentDetails");
-							    	   
-							    	   String[] clientDetails = details.split("_");
-							    	   
-							    	   String clientName = clientDetails[0];
-							    		clientName = clientName.replace("@", " ");
-							    			
-							    	   String studentName = clientDetails[1];
-							    	   studentName = studentName.replace("@", " ");
-							    	   
-							    	   System.out.println("Name " + clientName);
-							    	   System.out.println("Surname " + studentName);
-							    	   
-								        ModelAndView data = new ModelAndView("unsuccessfulPayment.jsp"); 
-								        data.addObject("name", clientName);
-								        data.addObject("email", studentName);
-							    
-								        
-								          return data;
-							    	   
-							    }
-							    
-							    
-							               /* Successful Payment*/
-							    
-							    @GetMapping("/success-link")
-							    public String handlePaymentLinkSuccess(@RequestParam Map<String, String> paymentDetails , HttpSession session) {
-							    	
-							    	
-							    	   String details = paymentDetails.get("details");
-							    	   
-							    	   session.setAttribute("paymentDetailsSuccess", details);
-							    	   
-							    	   return "redirect:/successful-payment";
-							    	   
-							    }
-							    
-							    
-							    @GetMapping("/successful-payment")
-							    public ModelAndView handlePaymentLinkSuccessful(HttpSession session) {
-							    
-							    	   String details = (String)session.getAttribute("paymentDetailsSuccess");
-							    	   
-							    	   String[] clientDetails = details.split("_");
-							    	   
-							    	   String clientName = clientDetails[0];
-							    		clientName = clientName.replace("@", " ");
-							    			
-							    	   String studentName = clientDetails[1];
-							    	   studentName = studentName.replace("@", " ");
-							    	   
-							    	   String amount = clientDetails[2];
-							    	   String sess = clientDetails[3];
-							    	   String tutorOpt = clientDetails[4];
-							    	   String email = clientDetails[5];
-							    	   
-							    	   PaidBookings paid = new PaidBookings(clientName,studentName,amount,sess,email,tutorOpt);
-							    	   paidService.save(paid);
-							    	   
-							    	   System.out.println("Name " + clientName);
-							    	   System.out.println("Surname " + studentName);
-							    	   
-							    	   /*Save to database*/
-							    	   
-								        ModelAndView data = new ModelAndView("successPayment.jsp"); 
-								        data.addObject("name", clientName);
-								        data.addObject("email", studentName);
-							    
-								        
-								        return data;
-							    	   
-							    }
-							 
-							 
-							 
-							 
-							 
-							 
-							 
 				 }
 

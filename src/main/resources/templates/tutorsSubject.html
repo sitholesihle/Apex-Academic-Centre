@@ -138,7 +138,9 @@
 			        <div class="row">
 			        <div class="profile">
 						<!--<img th:src="@{/images/{filename}(filename=${tutor.fullNames.replace(' ', '') + '.' + (tutor.imageBase64 == 'jpeg' ? 'jpeg' : 'png')})}" alt="Tutor Image"  loading="lazy" /> -->
-						<img src="/images/Chrishner.jpeg" loading="lazy" alt="Image 1" class="image image1">
+						<!--<img src="/images/Chrishner.jpeg" loading="lazy" alt="Image 1" class="image image1"> -->
+						<img th:src="@{'/tutor/image/' + ${tutor.email}}" 
+						     alt="Tutor Image" >
 					 </div>
 			        <div class="details">
 			            <p>
