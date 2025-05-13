@@ -53,7 +53,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-public class PgController {
+public class TutorController {
 	
 
 	@Autowired
@@ -99,8 +99,7 @@ public class PgController {
 
 	 
 	 public String getOnePage(Model model, int currentPage) {
-	     // Retrieve the paginated list of tutors
-	   //  Page<Tutor> page = tutorService.findPage(currentPage);
+
 		
 		 List<Tutor> listTutors = tutorService.getAllTutors();
 
@@ -1895,6 +1894,7 @@ public class PgController {
 				       public String searchOptimazation(Model model, HttpSession session) {
 						
 					
+						@SuppressWarnings("unchecked")
 						List<Tutor> tutors = (List<Tutor>)session.getAttribute("filteredTutors");
 						    
 						 Page<Tutor> page = tutorService.findPage(tutors,1,10);

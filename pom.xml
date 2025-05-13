@@ -11,6 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>ApexAcademicCentreWebsite</artifactId>
 	<version>0.0.1-SNAPSHOT</version> 
+	 <packaging>jar</packaging> <!-- This is where you add it -->
 	<name>ApexAcademicCentreWebsite</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>

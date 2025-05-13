@@ -117,19 +117,7 @@ public class TutorService {
 
 	 /*VIEW PROFILE*/
 	 
-	
-	
-	
-	    /*NOT UPDATED OLD VERSION*/
-	
-	
-	
-	    public List<Tutor> listAll() {
-	        return tutors;
-	    }
 
-	
-	
 	public List<Tutor> getRandomTutors() {
 	    // Get all tutors
 	    List<Tutor> allTutors = repo.findAll();

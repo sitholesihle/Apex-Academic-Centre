@@ -223,9 +223,15 @@
 		    <div class="paginat">
 		        
 		        <!-- Previous Page Button -->
-				<a th:href="@{/tutor-in-{location}-{page}(location=${location}, page=${currentPage - 1})}" 
-				   th:classappend="${currentPage > 1 ? '' : 'disabled'}" 
+				<a th:if="${currentPage > 1}"
+				   th:href="@{/tutor-in-{location}-{page}(location=${location}, page=${currentPage - 1})}"
 				   class="prev">
+				    <i class="fas fa-arrow-left"></i>
+				</a>
+				
+				<!-- Disabled 'prev' link if currentPage is 1 -->
+				<a th:unless="${currentPage > 1}"
+				   class="prev disabled">
 				    <i class="fas fa-arrow-left"></i>
 				</a>
 
@@ -236,11 +242,18 @@
 				    </span>
 				</span>
 
-				<a th:href="@{/tutor-in-{location}-{page}(location=${location}, page=${currentPage + 1})}" 
-				   th:classappend="${currentPage < totalPages ? '' : 'disabled'}" 
+				<a th:if="${currentPage < totalPages}"
+				   th:href="@{/tutor-in-{location}-{page}(location=${location}, page=${currentPage + 1})}"
 				   class="next">
 				    <i class="fas fa-arrow-right"></i>
 				</a>
+				
+				<!-- Disabled 'next' link if currentPage is last page -->
+				<a th:unless="${currentPage < totalPages}"
+				   class="next disabled">
+				    <i class="fas fa-arrow-right"></i>
+				</a>
+				
 		    </div>
 		</div>
 	</div>

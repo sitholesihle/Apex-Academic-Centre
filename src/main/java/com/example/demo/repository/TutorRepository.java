@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.example.demo.Projection.TutorProjection;
 import com.example.demo.model.Tutor;
 
 public interface TutorRepository extends JpaRepository<Tutor, String>{
@@ -23,7 +22,5 @@ public interface TutorRepository extends JpaRepository<Tutor, String>{
 
     @Query("SELECT t FROM Tutor t WHERE t.subjects LIKE %:subject%")
     Page<Tutor> findTutorsBySubjects(@Param("subject") String subject, Pageable pageable);
-    
-    Page<TutorProjection> findAllProjectedBy(Pageable pageable);
-    		
+        		
 }
