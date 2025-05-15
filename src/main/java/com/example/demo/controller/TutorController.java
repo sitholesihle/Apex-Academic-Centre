@@ -1902,7 +1902,7 @@ public class TutorController {
 				        session.setAttribute("filteredTutors", filteredTutors);
 				    }
 
-				    
+     				    
 					@GetMapping("/searchOptimazation")
 				       public String searchOptimazation(Model model, HttpSession session) {
 						
@@ -1934,6 +1934,59 @@ public class TutorController {
 					     // Return the ModelAndView object
 					     return "index";
 						
+					}
+					
+					@PostMapping("/subscribe")
+					public String subscribeMethod(@RequestParam("email") String email, Model model) {
+					 
+					 
+						senderService.sendSimpleEmail(email, " Welcome to Apex Academic Centre!" ,
+						"Dear,\n"
+						+ "\n"
+						+ "Thank you for subscribing to Apex Academic Centre! We're thrilled to have you on board.\n"
+						+ "\n"
+						+ "What to Expect:\n"
+						+ "\n"
+						+ "- Personalized academic support for primary, high school, and university students\n"
+						+ "- Expert tutors in all subjects\n"
+						+ "- Flexible online and in-person lessons\n"
+						+ "\n"
+						+ "Getting Started:\n"
+						+ "\n"
+						+ "1. Browse our tutor profiles\n"
+						+ "2. Book a tutor https://bookatutorapexacademiccentre.co.za\n"
+						+ "3. Achieve academic success!\n"
+						+ "\n"
+						+ "Need Help?\n"
+						+ "\n"
+						+ "Email: info@apexacademiccentre.co.za\n"
+						+ "Phone: 011 354 0198\n"
+						+ "WhatsApp: 068 035 1845\n"
+						+ "\n"
+						+ "Thank you for choosing Apex Academic Centre. We look forward to supporting your academic journey!\n"
+						+ "\n"
+						+ "Best regards,\n"
+						+ "\n"
+						+ "Apex Academic Centre Team");
+						
+						
+						senderService.sendSimpleEmail("marketing@apexacademiccentre.co.za", "" ,
+						"Dear Apex Academic Centre \n"
+						+ "\n"
+						+ "We are pleased to inform you that " + email + " subscribed to your website.\n"
+						+ "\n"
+						+ "Best regards\n"
+						+ "\n"
+						+ "The admin Team");
+						
+					 
+					    // Retrieve the list of tutors
+						
+						   int currentPage = 1;
+						   
+						    return getOnePage(model,currentPage);
+						
+		
 					}
 					
 					
