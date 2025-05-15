@@ -9,11 +9,29 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.MathsClass;
 import com.example.demo.repository.MathsClassRepository;
 
+import jakarta.annotation.PostConstruct;
+
 @Service
 public class MathsClassService{
 	
 	@Autowired
 	private MathsClassRepository repo;
+	
+	private List<MathsClass> mathsClass;
+	
+    @PostConstruct
+    public void init() {
+        // Load data from the database when the application starts
+    	mathsClass = repo.findAll();  // Or your custom query
+        
+        System.out.println("Maths Classes Loaded.");
+                
+    }
+    
+	public List<MathsClass> loadedMathsClasses(){
+		
+		 return mathsClass;
+	}
 	
 	public List<MathsClass> listAll(){
 		

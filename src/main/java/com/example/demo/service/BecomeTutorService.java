@@ -7,14 +7,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.BecomeTutor;
-
 import com.example.demo.repository.BecomeTutorRepository;
+
+import jakarta.annotation.PostConstruct;
 
 @Service
 public class BecomeTutorService {
 	
 	@Autowired
 	private BecomeTutorRepository repo;
+	
+	private List<BecomeTutor> tutors;
+	
+    @PostConstruct
+    public void init() {
+        // Load data from the database when the application starts
+    	tutors = repo.findAll();  // Or your custom query
+        
+        System.out.println("Tutors Application Loaded.");
+                
+    }
+    
+	public List<BecomeTutor> loadedTutors(){
+		
+		 return tutors;
+	}
+	
 	
 	public List<BecomeTutor> listAll(){
 		

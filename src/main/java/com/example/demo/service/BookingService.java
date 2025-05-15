@@ -9,12 +9,30 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.Booking;
 import com.example.demo.repository.BookingRepository;
 
+import jakarta.annotation.PostConstruct;
+
 
 @Service
 public class BookingService {
 	
 	@Autowired
 	private BookingRepository repo;
+	
+ 	private List<Booking> bookings;
+	   
+    @PostConstruct
+    public void init() {
+        // Load data from the database when the application starts
+        bookings = repo.findAll(); 
+
+        System.out.println("Bookings Loaded!");
+                
+    }
+    
+    public List<Booking> getAllBookings() {
+        return bookings;
+    }
+
 	
 	public List<Booking> listAll(){
 		

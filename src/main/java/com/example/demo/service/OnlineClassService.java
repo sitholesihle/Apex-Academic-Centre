@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 
 
 import com.example.demo.model.OnlineClass;
-
 import com.example.demo.repository.OnlineClassRepository;
+
+import jakarta.annotation.PostConstruct;
 
 
 @Service
@@ -17,6 +18,22 @@ public class OnlineClassService {
 	
 	@Autowired
 	private OnlineClassRepository repo;
+	
+	private List<OnlineClass> classes;
+	
+    @PostConstruct
+    public void init() {
+        // Load data from the database when the application starts
+    	classes = repo.findAll();  // Or your custom query
+        
+        System.out.println("Matric Rewrite Loaded.");
+                
+    }
+    
+	public List<OnlineClass> loadedClasses(){
+		
+		 return classes;
+	}
 	
 	public List<OnlineClass> listAll(){
 		

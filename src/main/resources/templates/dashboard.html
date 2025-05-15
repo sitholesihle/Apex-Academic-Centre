@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+	<title>Admin Dashboard</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+
+	<link rel="preload" href="/css/dashboard.css" as="style" />
+	<link rel="stylesheet" href="/css/dashboard.css" th:href="@{/css/dashboard.css}" />
+
+	<!--google fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+	<!--google material icon-->
+	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+	<style>
+		/* Hide the second form by default */
+		#form2 {
+			display: none;
+		}
+
+		.toUse {
+			display: none;
+		}
+
+		/* Style for input fields on hover */
+		input[type="text"]:hover,
+		input[type="email"]:hover,
+		input[type="tel"]:hover {
+			border-color: rgb(128, 255, 255);
+			/* Light blue border color */
+		}
+
+		/* Style for the button */
+		input[type="button"],
+		input[type="submit"] {
+			background-color: rgb(128, 128, 128);
+			/* Blue background color */
+			color: white;
+			/* White text color */
+			padding: 10px 20px;
+			/* Padding */
+			border: none;
+			/* Remove border */
+			border-radius: 5px;
+			/* Rounded corners */
+			cursor: pointer;
+			/* Cursor style */
+		}
+
+		/* Hover style for the button */
+		/*  input[type="button"]:hover {
+            background-color: rgb(128, 255, 255); /* Darker blue on hover */
+		/* }*/
+
+		.grid-container {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			/* Two columns layout */
+			gap: 1rem;
+			/* Space between items */
+		}
+
+		.mb-3 {
+			margin-bottom: 1rem;
+		}
+
+		#fProvince {
+			display: none;
+			/* Hide province by default */
+		}
+
+		.green-link {
+			color: #00a550;
+
+		}
+
+		/* Pagination container */
+		.paginat {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 20px 0;
+		}
+
+		/* Style for Previous/Next buttons */
+		.paginat .prev,
+		.paginat .next {
+			background-color: #00a550;
+			color: #fff;
+			padding: 8px 16px;
+			border-radius: 4px;
+			text-decoration: none;
+			margin: 0 10px;
+		}
+
+		.paginat .prev.disabled,
+		.paginat .next.disabled {
+			background-color: #00a550;
+			color: #777;
+			cursor: not-allowed;
+		}
+
+		.paginat .prev:hover,
+		.paginat .next:hover {
+			background-color: #00a550;
+		}
+
+		/* Page Number Link Styles */
+		.paginat .page-number {
+			display: inline-block;
+			background-color: #f0f0f0;
+			color: #333;
+			border-radius: 50%;
+			width: 30px;
+			height: 30px;
+			text-align: center;
+			line-height: 30px;
+			margin: 0 5px;
+			text-decoration: none;
+			font-size: 16px;
+			transition: background-color 0.3s;
+		}
+
+		/* Current Page Number Styling */
+		.paginat .page-number.current {
+			background-color: #00a550;
+			color: white;
+		}
+
+		/* Hover Effect for Page Numbers */
+		.paginat .page-number:hover {
+			background-color: #00a550;
+			color: white;
+		}
+	</style>
+
+</head>
+
+<body>
+	
+									<div class="wrapper">
+	
+										<div class="body-overlay">
+	
+										<!-------sidebar--design------------>
+	
+										<div id="sidebar">
+											<div class="sidebar-header">
+												<h3><span>APEX ACADEMIC CENTRE</span></h3>
+											</div>
+											<ul class="list-unstyled component m-0">
+	
+											<li class="dropdown active">
+													<a href="#tutorsMenu" data-toggle="collapse" aria-expanded="false"
+														class="dropdown-toggle">
+														<i class="material-icons">dashboard</i><span>Tutors
+														</span></a>
+													<ul class="collapse list-unstyled menu" id="tutorsMenu">
+														<li  id="tutors">
+															<a href="#" class="dashboard"
+																onclick="showTutorPanel(); return false;">Registered Tutors </a>
+														</li>
+														<li id="applicationsTutor">
+															<a href="#" class="dashboard"
+																onclick="showTutorsApplications(); return false;">
+																Tutors applications
+															</a>
+														</li>
+	
+													</ul>
+												</li>
+	
+												<li id="bookings">
+													<a href="#" class="dashboard"
+														onclick="showBookingsPanel(); return false;"><i
+															class="material-icons">library_books</i>Pending Bookings
+													</a>
+												</li>
+	
+												<li id="blogs">
+													<a href="#" class="dashboard"
+														onclick="showApprovedPanel(); return false;">
+														<i class="material-icons">check_circle</i>Approved Bookings
+													</a>
+												</li>
+												
+	
+												<li id="paid">
+												    <a href="#" class="dashboard" onclick="showPaidBookingsPanel(); return false;">
+												        <i class="material-icons">credit_card</i>Paid Bookings
+												    </a>
+												</li>
+												
+	
+												<li class="dropdown">
+													<a href="#pageSubmenu5" data-toggle="collapse" aria-expanded="false"
+														class="dropdown-toggle">
+														<i class="material-icons">border_color</i><span>Matric
+															Re-Write</span></a>
+													<ul class="collapse list-unstyled menu" id="pageSubmenu5">
+														<li id="registered">
+															<a href="#" class="dashboard"
+																onclick="showRedisterMatricPanel(); return false;">
+																Registered
+															</a>
+														</li>
+														<li id="consultMatric">
+															<a href="#" class="dashboard"
+																onclick="showConsultMatricPanel(); return false;">
+																Consultants
+															</a>
+														</li>
+	
+													</ul>
+												</li>
+	
+												<li class="dropdown">
+													<a href="#MathspageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+														<i class="material-icons">calculate</i><span>Maths Classes</span>
+													</a>
+													<ul class="collapse list-unstyled menu" id="MathspageSubmenu">
+														<li id="registeredMaths">
+															<a href="#" class="dashboard" onclick="showRedisterMathsClassesPanel(); return false;">
+																Registered Maths Classes
+															</a>
+														</li>
+														<li id="consultMaths">
+															<a href="#" class="dashboard" onclick="showConsultMathsClassesPanel(); return false;">
+																Consultants Maths Classes
+															</a>
+														</li>
+													</ul>
+												</li> 
+												
+	
+												<li id="reviews">
+													<a href="#" class="dashboard"
+														onclick="showReviewsPanel(); return false;">
+														<i class="material-icons">rate_review</i>Reviews
+													</a>
+												</li>
+	
+												<li id="consultants">
+													<a href="#" class="dashboard"
+														onclick="showConsultantsPanel(); return false;">
+														<i class="material-icons">business_center</i>Consultants
+													</a>
+												</li>
+	
+												<li id="others">
+													<a href="#" class="dashboard"
+														onclick="showOthersPanel(); return false;">
+														<i class="material-icons">help_outline</i>Others
+													</a>
+												</li>
+	
+											</ul>
+										</div>
+										
+										
+										<!--Added this closing -->
+										
+										</div>
+										
+										</div>
+										
+									
+	
+	
+</body>
+
+</html>
