@@ -35,12 +35,16 @@ public class TutorService {
                 .sorted((tutor1, tutor2) -> Integer.compare(tutor2.getRatings(), tutor1.getRatings()))
                 .collect(Collectors.toList());
         
+        int i = 0;
+        
         for (Tutor tutor : tutors) {
             if (tutor.getImage() != null) {
                 tutor.setImageBase64("jpeg");  // Set the Base64 string in the tutor object
+                 i++;
             }
         }
         
+        System.out.println(i + "Tutors");
         System.out.println("Tutor data preloaded at startup!");
                 
     }

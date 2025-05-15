@@ -198,17 +198,17 @@
 			        </div>
 					<!--Buttons-->
 					<div class="book-view">
-					    <form action="/view-profile" method="get" id="profileForm1">
-					        <input type="hidden" id="encryptedEmail1" name="email" th:value="${tutor.email}"/> 
-					        <div class="repoStyle">
-					            <button type="submit" class="view_pp">
-					                VIEW PROFILE
-					            </button>
-								<button type="button"  class="bk_tutor">
-									<a th:href="@{/bookingTutor/{email}(email=${tutor.email})}" style="text-decoration: none; color: white;">BOOK TUTOR</a> 
+						<form action="/view-profile" method="get" id="profileForm1">
+							<input type="hidden" id="encryptedEmail1" name="tutor" th:value="${tutor.fullNames + '-' + tutor.entryId}" />
+						    <div class="repoStyle">
+								<button type="submit" class="view_pp">
+								    VIEW PROFILE
 								</button>
-					        </div>
-					    </form>
+						        <button type="button"  class="bk_tutor">
+						            <a th:href="@{/bookingTutor/{email}(email=${tutor.fullNames + '-' + tutor.entryId})}" style="text-decoration: none; color: white;">BOOK TUTOR</a> 
+						        </button>
+						    </div>
+						</form>
 					    <br>
 					</div>
 			       </div>

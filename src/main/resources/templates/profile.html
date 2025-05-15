@@ -952,9 +952,10 @@
 			    <!--Book Tutor Button and find tutor-->
 			    <div class="button-action">
 					<button id="book-tutor-button" class="book-tutor-button">
-					    <a th:href="@{/bookingTutor/{email}(email=${tutor.email})}" style="text-decoration: none; color: white;">
+						<a th:href="@{/bookingTutor/{email}(email=${tutor.fullNames + '-' + tutor.entryId})}" style="text-decoration: none; color: white;">
 					        Book <span th:text="${tutor.fullNames}"></span>
 					    </a>
+						
 					</button>
 			        <button id="find-tutor-button" class="find-tutor-button" onclick="window.location.href='/bookingTutor';">Find Me A Tutor</button>
 			    </div>

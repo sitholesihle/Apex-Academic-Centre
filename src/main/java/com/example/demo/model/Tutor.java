@@ -163,6 +163,11 @@ public class Tutor {
 	public int getEntryId() {
 		return entryId;
 	}
+	
+	public void setEntryId(int entryId) {
+		
+		 this.entryId = entryId;
+	}
 
 
 	public String getFullNames() {

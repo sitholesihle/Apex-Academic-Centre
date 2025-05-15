@@ -570,13 +570,19 @@ public class TutorController {
 			 @GetMapping("/bookingTutor/{tutorId}")
 			 public String bookingFormTutor(@PathVariable String tutorId, Model model) {
 				 
+				    tutorId = tutorId.trim();
+				 
+			    	System.out.println(tutorId);
+			    	String[] data = tutorId.split("-");
+			    	int value = Integer.parseInt(data[1]);
+				 
 			    	List<Tutor> tutors = tutorService.getAllTutors();
 			    	String email ="", name = "", surname ="";
 			    	Tutor tutorBook = new Tutor();
 			    	
 			        for (Tutor tutor : tutors) {
 			            // If a tutor's email matches the search email, return that tutor
-			            if (tutor.getEmail().equalsIgnoreCase(tutorId)) {
+			        	 if (tutor.getFullNames().trim().equalsIgnoreCase(data[0].trim()) && tutor.getEntryId() == value) {
 			            	
 			            	email = tutor.getEmail();
 			            	name = tutor.getFullNames();
@@ -602,7 +608,11 @@ public class TutorController {
 	 
 	 
 	    @GetMapping("/view-profile")
-	    public String getTry(@RequestParam("email") String email, Model model) {
+	    public String getTry(@RequestParam("tutor") String email, Model model) {
+	    	
+	    	System.out.println(email);
+	    	String[] data = email.split("-");
+	    	int value = Integer.parseInt(data[1]);
 	    	
 	    	Tutor tutorView = new Tutor();
 	    	List<Tutor> tutors = tutorService.getAllTutors();
@@ -610,18 +620,21 @@ public class TutorController {
 	    	List<Review> review = new ArrayList<>();
 	    	List<Review> reviews = reviewService.loadedReviews();
 	    	
+	    	String tutorEmail = "";
+	    	
 	        for (Tutor tutor : tutors) {
 	            // If a tutor's email matches the search email, return that tutor
-	            if (tutor.getEmail().equalsIgnoreCase(email)) {
+	            if (tutor.getFullNames().equalsIgnoreCase(data[0]) && tutor.getEntryId() == value) {
 	            	
 	            	tutorView = tutor;
+	            	tutorEmail = tutor.getEmail();
 	               
 	            }
 	        }
 	        
 	        for (Review rev : reviews) {
 	            // If a tutor's email matches the search email, return that tutor
-	            if (rev.getTutorEmail().equalsIgnoreCase(email)) {
+	            if (rev.getTutorEmail().equalsIgnoreCase(tutorEmail)) {
 	            	
 	            	review.add(rev);
 	               
