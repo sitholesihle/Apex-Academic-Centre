@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character set and viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Tutor | Expert Online and In-person Tutors | Apex Academic Centre</title>
+    <meta name="description" content="Get personalized tutoring with Apex Academic Centre's expert online and in-person tutors. Book your tutor today!">
+    
+    <!-- SEO Image -->
+    <link rel="icon" href="seo_logo.jpeg" sizes="50x50" type="image/x-icon">
+
+    <!-- Open Graph Protocol (Facebook, LinkedIn) -->
+    <meta property="og:title" content="Book a Tutor | Expert Online and In-person Tutors | Apex Academic Centre">
+    <meta property="og:description" content="Get personalized tutoring with Apex Academic Centre's expert online and in-person tutors. Book your tutor today!">
+    <meta property="og:image" content="https://bookatutorapexacademiccentre.co.za/seo.jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://bookatutorapexacademiccentre.co.za/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Book a Tutor | Expert Online and In-person Tutors | Apex Academic Centre">
+    <meta name="twitter:description" content="Get personalized tutoring with Apex Academic Centre's expert online and in-person tutors. Book your tutor today!">
+    <meta name="twitter:image" content="https://bookatutorapexacademiccentre.co.za/seo.jpeg">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Custom CSS (if any) -->
+    <link rel="stylesheet" href="css/non.css">
+</head>
+<body>
+
+    <div th:if="${book != null}">
+        <!-- Modal Structure -->
+        <div id="bookingModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="bookingModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="bookingModalLabel">Booking Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <!-- Applicant Section -->
+                            <div class="col-md-6">
+                                <h5>Applicant</h5>
+                                <p><strong>Name:</strong> <span th:text="${book.name}"></span></p>
+                                <p><strong>Surname:</strong> <span th:text="${book.surname}"></span></p>
+                                
+                                <div th:if="${book.tutorEmail == 'apexexcellencetutors@gmail.com'}">
+                                    <p><strong>Phone:</strong> <span th:text="${book.phone}"></span></p>
+                                    <p><strong>Email:</strong> <span th:text="${book.email}"></span></p>
+                                </div>
+
+                                <p><strong>Province:</strong> <span th:text="${book.province}"></span></p>
+                                <p><strong>Country:</strong> <span th:text="${book.country}"></span></p>
+                                <p><strong>Language of Instruction:</strong> <span th:text="${book.instrLanguage}"></span></p>
+
+                                <div th:if="${book.address != 'n/a'}">
+                                    <p><strong>When To Start:</strong> <span th:text="${book.address}"></span></p>
+                                    <p><strong>Suburb:</strong> <span th:text="${book.suburb}"></span></p>
+                                </div>
+                            </div>
+
+                            <!-- Student Details Section -->
+                            <div class="col-md-6">
+                                <h5>Student Details</h5>
+
+                                <div th:if="${book.schName != 'n/a'}">
+                                    <p><strong>Student Name:</strong> <span th:text="${book.schName}"></span></p>
+                                    <p><strong>Student Surname:</strong> <span th:text="${book.schSurname}"></span></p>
+                                    <p><strong>Grade:</strong> <span th:text="${book.schGrade}"></span></p>
+                                    <p><strong>Syllabus:</strong> <span th:text="${book.schSyllabus}"></span></p>
+                                    <p><strong>Subject:</strong> <span th:text="${book.subject}"></span></p>
+                                </div>
+
+                                <div th:if="${book.schName == 'n/a'}">
+                                    <p><strong>Student Name:</strong> <span th:text="${book.unName}"></span></p>
+                                    <p><strong>Student Surname:</strong> <span th:text="${book.unSurname}"></span></p>
+                                    <p><strong>Year:</strong> <span th:text="${book.unYear}"></span></p>
+                                    <p><strong>Qualification:</strong> <span th:text="${book.qualification}"></span></p>
+                                    <p><strong>Module:</strong> <span th:text="${book.module}"></span></p>
+                                    <p><strong>Specification of support:</strong> <span th:text="${book.specification}"></span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Message Section -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Tutor</h5>
+                                <p><strong>Tutoring Option:</strong> <span th:text="${book.tutorStyle}"></span></p>
+                                <p><strong>Package Type:</strong> <span th:text="${book.packageType}"></span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Progress</h5>
+                                <div th:if="${book.message != 'null'}">
+                                    <p><strong>Booking Message:</strong> <span th:text="${book.message}"></span></p>
+                                </div>
+                                <p><strong>Status:</strong> <span th:text="${book.status}"></span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form action="/accept-booking" method="post">
+                        <div class="modal-footer">
+                            <input type="hidden" id="accept-id" name="accept-id" th:value="${book.entry}" />
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
+                                <div th:if="${book.status == 'approved'}">
+                                    <p>Booking approved...</p>
+                                </div>
+                                <div th:if="${book.status != 'approved'}">
+                                    <button class="btn btn-success" type="submit">Accept</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:if="${book == null}">
+        <p>No booking details found.</p>
+    </div>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript to show the modal automatically -->
+    <script>
+        $(document).ready(function() {
+            // Show the modal when the page is ready
+            $('#bookingModal').modal('show');
+        });
+    </script>
+
+</body>
+</html>

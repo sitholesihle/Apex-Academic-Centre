@@ -79,7 +79,7 @@ public class AdminController {
 	    } else {
 	        // Use flash attributes to store the message
 	        redirectAttributes.addFlashAttribute("message", "Invalid credentials.");
-	        return "redirect:/admin"; // Redirect back to login page
+	        return "redirect:/adminLogin"; // Redirect back to login page
 	        
 	    }
 	}
@@ -196,7 +196,7 @@ public class AdminController {
 		     		     
 		     model.addAttribute("currentPage", 1);
 	
-		     return "dashboard";
+		     return "admin";
 			
 			}
 			

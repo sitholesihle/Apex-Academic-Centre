@@ -124,7 +124,7 @@ public class TutorController {
 	     
 	     model.addAttribute("currentPage", currentPage);
 	     
-	     // Return the ModelAndView object
+	    
 	     return "index";
 	 }
 	 
