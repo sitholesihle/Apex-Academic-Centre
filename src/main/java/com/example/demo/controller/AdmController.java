@@ -30,9 +30,8 @@ import com.example.demo.service.TutorService;
 import jakarta.servlet.http.HttpSession;
 
 
-
 @Controller
-public class AdminController {
+public class AdmController {
 	
 	@Autowired
 	 private AdminService adminService;
@@ -196,7 +195,7 @@ public class AdminController {
 		     		     
 		     model.addAttribute("currentPage", 1);
 	
-		     return "admin";
+		     return "dashboard";
 			
 			}
 			
@@ -208,12 +207,6 @@ public class AdminController {
 				
 			}
 		}
-	    
-	    
-	    
-	    
-	    
-	    
 	    
 	    
 	    

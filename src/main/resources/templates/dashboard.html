@@ -8,8 +8,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
 	<title>Admin Dashboard</title>
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+
+	<link rel="preload" href="/css/bootstrap.min.css" as="style" />
+	<link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 
 	<link rel="preload" href="/css/dashboard.css" as="style" />
 	<link rel="stylesheet" href="/css/dashboard.css" th:href="@{/css/dashboard.css}" />
@@ -372,10 +373,10 @@
 							            <td th:text="${#dates.format(tutor.createdAt, 'dd/MM/yyyy - HH:mm')}"></td>
 							            <td>
 							                <a href="#documentsModal" class="documents" data-toggle="modal"
-							                   th:data-cvi="${tutor.cv != null ? #strings.encodeBase64(tutor.cv) : ''}"
-							                   th:data-educationi="${tutor.education != null ? #strings.encodeBase64(tutor.education) : ''}"
-							                   th:data-idpassporti="${tutor.idPassport != null ? #strings.encodeBase64(tutor.idPassport) : ''}"
-							                   th:data-imagei="${tutor.image != null ? #strings.encodeBase64(tutor.image) : ''}">
+							                   th:data-cvi="${tutor.cv}"
+							                   th:data-educationi="${tutor.education }"
+							                   th:data-idpassporti="${tutor.idPassport }"
+							                   th:data-imagei="${tutor.image }">
 							                    <i class="material-icons" data-toggle="tooltip" title="Document">&#xE2C7;</i>
 							                </a>
 							            </td>
@@ -405,11 +406,11 @@
 							        </tr>
 							
 							        <tr>
-							            <td colspan="7">
-							                <!-- Pagination -->
+							     <!--       <td colspan="7">
+							                
 							                <div class="pagination">
 							                    <span th:if="${totalPages > 1}">
-							                        <!-- Page Number Links -->
+							                       
 							                        <span th:each="i : ${#numbers.sequence(pageStart, pageEnd)}" 
 							                              th:text="${i}" 
 							                              th:classappend="${i == currentPage ? 'current' : ''}">
@@ -420,7 +421,7 @@
 							                        <p>No Tutors found.</p>
 							                    </span>
 							                </div>
-							            </td>
+							            </td> -->
 							        </tr>
 							    </tbody>
 							</table>
