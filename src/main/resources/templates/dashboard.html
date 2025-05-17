@@ -2285,102 +2285,48 @@
 								</thead>
 
 								<tbody>
-								<!--	<% List<OnlineClass> metric = (List<OnlineClass>)
-											request.getAttribute("rewrite");
-											if (metric != null &&
-											!metric.isEmpty()) {
-											for (OnlineClass re : metric) {
-
-											String mName = re.getName();
-											String mSurname = re.getSurname();
-											String mEmail = re.getEmail();
-											String mMobile = re.getPhone();
-											String mID = re.getIdNumber() ;
-											String mGender = re.getGender();
-
-											String mFullName = mName + " " + mSurname;
-
-											String mProvince = re.getProvince();
-											String mWritingDate = re.getDate();
-											String mSubjects = re.getSubject();
-											String mAvailability = re.getAvailableDays();
-											String mMessage = re.getMessage();
-											String mStatus = re.getStatus();
-											String mViewed = re.getAction();
-
-
-											Long mEntry = re.getEntry();
-
-											LocalDateTime createdAtStampX = re.getCreatedAt();
-											DateTimeFormatter dateFormatX = DateTimeFormatter.ofPattern("dd/MM/yyyy -
-											HH:mm");
-											String formattedTimestampsX = (createdAtStampX != null) ?
-											createdAtStampX.format(dateFormatX) : "N/A";
-
-
-											if (mStatus.equalsIgnoreCase("paid"))
-											{
-											%>
-											<tr>
-												<th>
-													<%= mFullName %>
-												</th>
-												<th>
-													<%= mEmail %>
-												</th>
-
-												<th>
-													<%= mMobile %>
-												</th>
-
-												<th>
-													<%= formattedTimestampsX %>
-												</th>
-
-
-												<% if(mViewed.equals("Pending")){ %>
-													<th>
-
-														<span id="matricViewR<%=mEntry%>"
-															style="color: red ; font-weight: bold;">Not opened</span>
-													</th>
-
-													<% } else{ %>
-
-														<th>
-
-															<span
-																style="color: green ; font-weight: bold;">Opened</span>
-														</th>
-
-
-														<% } %>
-
-															<th>
-																<a href="#" class="registeredView" data-toggle="modal"
-																	data-mname="<%= mFullName %>"
-																	data-memail="<%= mEmail %>"
-																	data-mmobile="<%= mMobile %>" data-mid="<%= mID %>"
-																	data-mgender="<%= mGender %>"
-																	data-mprovince="<%= mProvince%>"
-																	data-mwritingdate="<%= mWritingDate %>"
-																	data-msubjects="<%= mSubjects %>"
-																	data-mavailability="<%= mAvailability %>"
-																	data-mmessage="<%= mMessage%>"
-																	data-mstatus="<%= mStatus %>"
-																	data-cmentry="<%= mEntry %>"
-																	data-target="#registeredModal">
-																	<i class="material-icons" data-toggle="tooltip"
-																		title="View">&#xE8F4;</i>
-																</a>
-															</th>
-											</tr>
-
-											<% } } } else { %>
-												<tr>
-													<th>No Others yet..</th>
-												</tr>
-												<% } %> -->
+						
+									<!-- No Records -->
+									<tr th:if="${#lists.isEmpty(rewrite)}">
+									  <th colspan="6">No Others yet..</th>
+									</tr>
+									
+									<!-- Loop through rewrite list and show only entries with "paid" status -->
+									<tr th:each="re : ${rewrite}" th:if="${re.status.equalsIgnoreCase('paid')}">
+									  <th th:text="${re.name + ' ' + re.surname}"></th>
+									  <th th:text="${re.email}"></th>
+									  <th th:text="${re.phone}"></th>
+									  <th>Updating...</th>
+									 <!-- <th th:text="${re.createdAt != null ? #dates.format(re.createdAt, 'dd/MM/yyyy - HH:mm') : 'N/A'}"></th> -->
+									
+									  <!-- Viewed Status -->
+									  <th>
+									    <span th:if="${re.action.equals('Pending')}"
+									          th:id="'matricViewR' + ${re.entry}"
+									          style="color: red; font-weight: bold;">Not opened</span>
+									    <span th:if="${!re.action.equals('Pending')}"
+									          style="color: green; font-weight: bold;">Opened</span>
+									  </th>
+									
+									  <!-- View Button with Modal Data Attributes -->
+									  <th>
+									    <a href="#registeredModal" class="registeredView" data-toggle="modal" 
+									       th:attr="data-mname=${re.name + ' ' + re.surname},
+									                data-memail=${re.email},
+									                data-mmobile=${re.phone},
+									                data-mid=${re.idNumber},
+									                data-mgender=${re.gender},
+									                data-mprovince=${re.province},
+									                data-mwritingdate=${re.date},
+									                data-msubjects=${re.subject},
+									                data-mavailability=${re.availableDays},
+									                data-mmessage=${re.message},
+									                data-mstatus=${re.status},
+									                data-cmentry=${re.entry}">
+									      <i class="material-icons" data-toggle="tooltip" title="View">&#xE8F4;</i>
+									    </a>
+									  </th>
+									</tr>
 
 								</tbody>
 
@@ -2421,101 +2367,48 @@
 								</thead>
 
 								<tbody>
-								<!--	<% List<OnlineClass> cmetric = (List<OnlineClass>)
-											request.getAttribute("rewrite");
-											if (cmetric != null &&
-											!cmetric.isEmpty()) {
-											for (OnlineClass cre : cmetric) {
-
-											String cmName = cre.getName();
-											String cmSurname = cre.getSurname();
-											String cmEmail = cre.getEmail();
-											String cmMobile = cre.getPhone();
-											String cmID = cre.getIdNumber() ;
-											String cmGender = cre.getGender();
-
-											String cmFullName = cmName + " " + cmSurname;
-
-											String cmProvince = cre.getProvince();
-											String cmWritingDate = cre.getDate();
-											String cmSubjects = cre.getSubject();
-											String cmAvailability = cre.getAvailableDays();
-											String cmMessage = cre.getMessage();
-											String cmStatus = cre.getStatus();
-
-											String cmViewed = cre.getAction();
-
-											Long cmEntry = cre.getEntry();
-
-											LocalDateTime createdAtStampA = cre.getCreatedAt();
-											DateTimeFormatter dateFormatA = DateTimeFormatter.ofPattern("dd/MM/yyyy -
-											HH:mm");
-											String formattedTimestampsA = (createdAtStampA != null) ?
-											createdAtStampA.format(dateFormatA) : "N/A";
-
-											if (cmStatus.equalsIgnoreCase("consult"))
-											{
-											%>
-											<tr>
-												<th>
-													<%= cmFullName %>
-												</th>
-												<th>
-													<%= cmEmail %>
-												</th>
-												<th>
-													<%= cmMobile %>
-												</th>
-												<th>
-													<%= formattedTimestampsA %>
-												</th>
-
-
-												<% if(cmViewed.equals("Pending")){ %>
-													<th>
-
-														<span id="matricView<%=cmEntry%>"
-															style="color: red ; font-weight: bold;">Not opened</span>
-													</th>
-
-													<% } else{ %>
-
-														<th>
-
-															<span
-																style="color: green ; font-weight: bold;">Opened</span>
-														</th>
-
-
-														<% } %>
-
-
-															<th>
-																<a href="#" class="registeredView" data-toggle="modal"
-																	data-mname="<%= cmFullName %>"
-																	data-memail="<%= cmEmail %>"
-																	data-mmobile="<%= cmMobile %>"
-																	data-mid="<%= cmID %>"
-																	data-mgender="<%= cmGender %>"
-																	data-mprovince="<%= cmProvince%>"
-																	data-mwritingdate="<%= cmWritingDate %>"
-																	data-msubjects="<%= cmSubjects %>"
-																	data-mavailability="<%= cmAvailability %>"
-																	data-mmessage="<%= cmMessage%>"
-																	data-mstatus="<%= cmStatus %>"
-																	data-cmentry="<%= cmEntry %>"
-																	data-target="#registeredModal">
-																	<i class="material-icons" data-toggle="tooltip"
-																		title="View">&#xE8F4;</i>
-																</a>
-															</th>
-											</tr>
-
-											<% } } } else { %>
-												<tr>
-													<th>No Others yet..</th>
-												</tr>
-												<% } %> -->
+							
+									<!-- No Records -->
+									<tr th:if="${#lists.isEmpty(rewrite)}">
+									  <th colspan="6">No Others yet..</th>
+									</tr>
+									
+									<!-- Loop through rewrite list and filter only "consult" status -->
+									<tr th:each="cre : ${rewrite}" th:if="${cre.status.equalsIgnoreCase('consult')}">
+									  <th th:text="${cre.name + ' ' + cre.surname}"></th>
+									  <th th:text="${cre.email}"></th>
+									  <th th:text="${cre.phone}"></th>
+									  <th>Updating...</th>
+									 <!-- <th th:text="${cre.createdAt != null ? #dates.format(cre.createdAt, 'dd/MM/yyyy - HH:mm') : 'N/A'}"></th> -->
+									
+									  <!-- Viewed status -->
+									  <th>
+									    <span th:if="${cre.action.equals('Pending')}"
+									          th:id="'matricView' + ${cre.entry}"
+									          style="color: red; font-weight: bold;">Not opened</span>
+									    <span th:if="${!cre.action.equals('Pending')}"
+									          style="color: green; font-weight: bold;">Opened</span>
+									  </th>
+									
+									  <!-- View Button -->
+									  <th>
+									    <a href="#registeredModal" class="registeredView" data-toggle="modal"
+									       th:attr="data-mname=${cre.name + ' ' + cre.surname},
+									                data-memail=${cre.email},
+									                data-mmobile=${cre.phone},
+									                data-mid=${cre.idNumber},
+									                data-mgender=${cre.gender},
+									                data-mprovince=${cre.province},
+									                data-mwritingdate=${cre.date},
+									                data-msubjects=${cre.subject},
+									                data-mavailability=${cre.availableDays},
+									                data-mmessage=${cre.message},
+									                data-mstatus=${cre.status},
+									                data-cmentry=${cre.entry}">
+									      <i class="material-icons" data-toggle="tooltip" title="View">&#xE8F4;</i>
+									    </a>
+									  </th>
+									</tr>
 
 								</tbody>
 
@@ -2557,81 +2450,50 @@
 									</tr>
 								</thead>
 								<tbody>
-								<!--	<% List<MathsClass> mathsClassesList = (List<MathsClass>)
-											request.getAttribute("mathsClasses");
-											if (mathsClassesList != null && !mathsClassesList.isEmpty()) {
-											for (MathsClass mathsClassEntry : mathsClassesList) {
-											String parentFirstName = mathsClassEntry.getPname();
-											String parentLastName = mathsClassEntry.getPsurname();
-											String parentEmailAddress = mathsClassEntry.getPemail();
-											String parentContact = mathsClassEntry.getPphone();
-											String studentFirstName = mathsClassEntry.getSname();
-											String studentLastName = mathsClassEntry.getSsurname();
-											String studentGrade = mathsClassEntry.getGrade();
-											String studentSubject = mathsClassEntry.getSubject();
-											String currentStatus = mathsClassEntry.getStatus();
-											String studentMsg = mathsClassEntry.getMessage();
-											String studCurriculum = mathsClassEntry.getCurriculum();
-											String studMarks = mathsClassEntry.getMarks();
-											Long entryIdentifier = mathsClassEntry.getEntry();
-											String entryView = mathsClassEntry.getAction();
-
-											LocalDateTime createdAtStampM = mathsClassEntry.getCreatedAt();
-											DateTimeFormatter dateFormatM = DateTimeFormatter.ofPattern("dd/MM/yyyy -
-											HH:mm");
-											String formattedTimestampsM = (createdAtStampM != null) ?
-											createdAtStampM.format(dateFormatM) : "N/A";
-
-											// Check if the currentStatus is "approved"
-											if ("approved".equals(currentStatus)) {
-											%>
-											<tr>
-												<td>
-													<%= parentFirstName %>
-												</td>
-												<td>
-													<%= parentLastName %>
-												</td>
-												<td>
-													<%= parentEmailAddress %>
-												</td>
-												<td>
-													<%= formattedTimestampsM %>
-												</td>
-												<td>
-													<% if ("Pending".equals(entryView)) { %>
-														<span id="rgsView<%= entryIdentifier %>"
-															style="color: red; font-weight: bold;">Not opened</span>
-														<% } else { %>
-															<span style="color: green; font-weight: bold;">Opened</span>
-															<% } %>
-												</td>
-												<td>
-													<a href="#" class="approvedMathsView" data-toggle="modal"
-														data-parentname="<%= parentFirstName %>"
-														data-parentsurname="<%= parentLastName %>"
-														data-parentemail="<%= parentEmailAddress %>"
-														data-parentphone="<%= parentContact %>"
-														data-studentname="<%= studentFirstName %>"
-														data-studentsurname="<%= studentLastName %>"
-														data-grade="<%= studentGrade %>"
-														data-subject="<%= studentSubject %>"
-														data-status="<%= currentStatus %>"
-														data-entryid="<%= entryIdentifier %>"
-														data-curriculum="<%= studCurriculum %>"
-														data-marks="<%= studMarks %>" data-message="<%= studentMsg %>"
-														data-action="<%= entryView %>"
-														data-target="#registeredMathsClassModal">
-														<i class="material-icons" data-toggle="tooltip"
-															title="View">&#xE8F4;</i>
-													</a>
-												</td>
-											</tr>
-											<% } } } else { %>
-												<tr>
-													<td colspan="5">No registered students yet.</td>
-												</tr>
-												<% } %> -->
+									<!-- Show message when no entries exist -->
+									<tr th:if="${#lists.isEmpty(mathsClasses)}">
+									  <td colspan="6">No registered students yet.</td>
+									</tr>
+									
+									<!-- Loop over mathsClasses list -->
+									<tr th:each="mathsClass : ${mathsClasses}" th:if="${mathsClass.status == 'approved'}">
+									  <td th:text="${mathsClass.pname}"></td>
+									  <td th:text="${mathsClass.psurname}"></td>
+									  <td th:text="${mathsClass.pemail}"></td>
+									  <td>Updating...</td>
+									 <!-- <td th:text="${mathsClass.createdAt != null ? #dates.format(mathsClass.createdAt, 'dd/MM/yyyy - HH:mm') : 'N/A'}"></td>-->
+									
+									  <!-- Action status (Viewed or Not Opened) -->
+									  <td>
+									    <span th:if="${mathsClass.action == 'Pending'}"
+									          th:id="'rgsView' + ${mathsClass.entry}"
+									          style="color: red; font-weight: bold;">Not opened</span>
+									    <span th:if="${mathsClass.action != 'Pending'}"
+									          style="color: green; font-weight: bold;">Opened</span>
+									  </td>
+									
+									  <!-- View button with data attributes -->
+									  <td>
+									    <a href="#registeredMathsClassModal" class="approvedMathsView" data-toggle="modal"
+									       th:attr="data-parentname=${mathsClass.pname},
+									                data-parentsurname=${mathsClass.psurname},
+									                data-parentemail=${mathsClass.pemail},
+									                data-parentphone=${mathsClass.pphone},
+									                data-studentname=${mathsClass.sname},
+									                data-studentsurname=${mathsClass.ssurname},
+									                data-grade=${mathsClass.grade},
+									                data-subject=${mathsClass.subject},
+									                data-status=${mathsClass.status},
+									                data-entryid=${mathsClass.entry},
+									                data-curriculum=${mathsClass.curriculum},
+									                data-marks=${mathsClass.marks},
+									                data-message=${mathsClass.message},
+									                data-action=${mathsClass.action}
+									          ">
+									      <i class="material-icons" data-toggle="tooltip" title="View">&#xE8F4;</i>
+									    </a>
+									  </td>
+									</tr>
 								</tbody>
 							</table>
 						</div>
@@ -2671,71 +2533,49 @@
 									</tr>
 								</thead>
 								<tbody>
-								<!--	<% List<MathsClass> mathsClasses = (List<MathsClass>)
-											request.getAttribute("mathsClasses");
-											if (mathsClasses != null && !mathsClasses.isEmpty()) {
-											for (MathsClass mathsClass : mathsClasses) {
-											String parentName = mathsClass.getPname() + " " + mathsClass.getPsurname();
-											String parentEmail = mathsClass.getPemail();
-											String parentPhone = mathsClass.getPphone();
-											String studentName = mathsClass.getSname() + " " + mathsClass.getSsurname();
-											String grade = mathsClass.getGrade();
-											String subject = mathsClass.getSubject();
-											String status = mathsClass.getStatus();
-											String parentCurriculum = mathsClass.getCurriculum();
-											String cMarks = mathsClass.getMarks();
-											String parentMessage = mathsClass.getMessage();
-											Long cnsEntryId = mathsClass.getEntry();
-											String consultMathsView = mathsClass.getAction();
-
-											LocalDateTime createdAtStampB = mathsClass.getCreatedAt();
-											DateTimeFormatter dateFormatB = DateTimeFormatter.ofPattern("dd/MM/yyyy -
-											HH:mm");
-											String formattedTimestampsB = (createdAtStampB != null) ?
-											createdAtStampB.format(dateFormatB) : "N/A";
-
-											if ("consult".equalsIgnoreCase(status)) {
-											%>
-											<tr>
-												<td>
-													<%= parentName %>
-												</td>
-												<td>
-													<%= parentPhone %>
-												</td>
-												<td>
-													<%= formattedTimestampsB %>
-												</td>
-
-												<td>
-													<% if ("Pending".equals(consultMathsView)) { %>
-														<span id="mathematicsView<%= cnsEntryId %>"
-															style="color: red; font-weight: bold;">Not opened</span>
-														<% } else { %>
-															<span style="color: green; font-weight: bold;">Opened</span>
-															<% } %>
-												</td>
-												<td>
-													<a href="#" class="consultregisteredView" data-toggle="modal"
-														data-parentname="<%= parentName %>"
-														data-parentemail="<%= parentEmail %>"
-														data-parentphone="<%= parentPhone %>"
-														data-studentname="<%= studentName %>" data-grade="<%= grade %>"
-														data-subject="<%= subject %>" data-status="<%= status %>"
-														data-entryid="<%= cnsEntryId %>"
-														data-curriculum="<%= parentCurriculum %>"
-														data-marks="<%= cMarks %>" data-message="<%= parentMessage %>"
-														data-target="#ConsultantModal">
-														<i class="material-icons" data-toggle="tooltip"
-															title="View">&#xE8F4;</i>
-													</a>
-												</td>
-											</tr>
-											<% } } } else { %>
-												<tr>
-													<td colspan="6">No consultants registered yet.</td>
-												</tr>
-												<% } %> -->
+									
+									<!-- No Consultants -->
+									<tr th:if="${#lists.isEmpty(mathsClasses)}">
+									  <td colspan="6">No consultants registered yet.</td>
+									</tr>
+									
+									<!-- Loop and filter consult status -->
+									<tr th:each="mathsClass : ${mathsClasses}" th:if="${mathsClass.status.equalsIgnoreCase('consult')}">
+									
+									  <td th:text="${mathsClass.pname + ' ' + mathsClass.psurname}"></td>
+									
+									  <td th:text="${mathsClass.pphone}"></td>
+				                      <td>Updating...</td>
+									<!--  <td th:text="${mathsClass.createdAt != null ? #dates.format(mathsClass.createdAt, 'dd/MM/yyyy - HH:mm') : 'N/A'}"></td> -->
+									
+									  <!-- View Status -->
+									  <td>
+									    <span th:if="${mathsClass.action == 'Pending'}"
+									          th:id="'mathematicsView' + ${mathsClass.entry}"
+									          style="color: red; font-weight: bold;">Not opened</span>
+									    <span th:if="${mathsClass.action != 'Pending'}"
+									          style="color: green; font-weight: bold;">Opened</span>
+									  </td>
+									
+									  <!-- View Button -->
+									  <td>
+									    <a href="#ConsultantModal" class="consultregisteredView" data-toggle="modal" 
+									       th:attr="data-parentname=${mathsClass.pname + ' ' + mathsClass.psurname},
+									                data-parentemail=${mathsClass.pemail},
+									                data-parentphone=${mathsClass.pphone},
+									                data-studentname=${mathsClass.sname + ' ' + mathsClass.ssurname},
+									                data-grade=${mathsClass.grade},
+									                data-subject=${mathsClass.subject},
+									                data-status=${mathsClass.status},
+									                data-entryid=${mathsClass.entry},
+									                data-curriculum=${mathsClass.curriculum},
+									                data-marks=${mathsClass.marks},
+									                data-message=${mathsClass.message}">
+									      <i class="material-icons" data-toggle="tooltip" title="View">&#xE8F4;</i>
+									    </a>
+									  </td>
+									</tr>
+						
 								</tbody>
 							</table>
 						</div>
@@ -3670,8 +3510,6 @@
 							matricViewR.style.color = "green";
 							matricViewR.style.fontWeight = "bold";
 						}
-
-
 
 						const dataToSend = {
 							status: statusIdSend

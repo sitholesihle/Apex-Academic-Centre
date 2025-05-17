@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.model.BecomeTutor;
@@ -472,6 +475,19 @@ public class AdmController {
 		 
 				}
 	    
+			 /*Delete Tutor*/
+			 
+			 @PostMapping("/deleteTutor")
+		     public String deleteTutor(@RequestParam("deleteEmail") String email, Model model ) {
+				 
+				 Tutor tutor = new Tutor();
+				    tutor.setEmail(email);
+				      tutorService.delete(tutor);
+				 	 
+				      return getOnePageAdmin(1,model);
+				 
+			 }
+			 
 			 
 			 /*unsuccessfully application*/
 			 
@@ -577,6 +593,50 @@ public class AdmController {
 					    bookingService.delete(booking);
 					 	 
 					  return getOnePageAdmin(1,model);
+					 
+				 }
+				 
+				 
+				 /*DELETE REGISTERED MATRIC*/
+				 
+				 @PostMapping("/delete-registered-matric")
+			     public String deleteMatricReg(@RequestParam("deleteMatricReg") Long id, Model model) {
+					  
+					 OnlineClass matric = onlineService.findOneBook(id);
+					    onlineService.delete(matric);
+					 	 
+					    return getOnePageAdmin(1,model);
+					 
+				 }
+				 
+				 /*UPDATE VIEW MATRIC STATUS*/
+				 
+				 @PostMapping("/update-view-status")
+				 @ResponseBody
+				 public void updateViewStatus(@RequestBody Map<String, String> status) {
+					 
+					 
+					 String id = status.get("status");
+					 Long parsId = Long.valueOf(id);
+					 
+					 onlineService.update(parsId);
+					 
+					 
+				 }
+				 
+				 
+				 /*UPDATE VIEW MATHS STATUS*/
+				 
+				 @PostMapping("/mark-as-viewed")
+				 @ResponseBody
+				 public void updateMathsView(@RequestBody Map<String, String> status) {
+					 
+					 
+					 String id = status.get("status");
+					 Long parsId = Long.valueOf(id);
+					 
+					 mathsService.update(parsId);
+					 
 					 
 				 }
     
