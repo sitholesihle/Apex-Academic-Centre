@@ -370,7 +370,7 @@
 							            <td th:text="${tutor.email}"></td>
 							            <td th:text="${tutor.availability}"></td>
 							            <td th:text="${tutor.phoneNumber}"></td>
-							            <td th:text="${#dates.format(tutor.createdAt, 'dd/MM/yyyy - HH:mm')}"></td>
+							            <td>Updating...</td>
 							            <td>
 							                <a href="#documentsModal" class="documents" data-toggle="modal"
 							                   th:data-cvi="${tutor.cv}"
@@ -406,22 +406,21 @@
 							        </tr>
 							
 							        <tr>
-							     <!--       <td colspan="7">
+							           <td colspan="7">
 							                
-							                <div class="pagination">
-							                    <span th:if="${totalPages > 1}">
-							                       
-							                        <span th:each="i : ${#numbers.sequence(pageStart, pageEnd)}" 
-							                              th:text="${i}" 
-							                              th:classappend="${i == currentPage ? 'current' : ''}">
-							                            <a th:href="@{/adminpage-{page}(page=${i})}" th:text="${i}"></a>
-							                        </span>
-							                    </span>
-							                    <span th:if="${totalPages == 0}">
-							                        <p>No Tutors found.</p>
-							                    </span>
-							                </div>
-							            </td> -->
+										<div class="paginat">
+										    <div th:if="${totalPages > 0}">
+										        <span th:each="i : ${#numbers.sequence(pageStart, pageEnd)}">
+										            <span th:if="${i == currentPage}" th:text="${i}" class="page-number current"></span>
+										            <a th:if="${i != currentPage}" th:href="@{/adminpage-{page}(page=${i})}" th:text="${i}" class="page-number"></a>
+										        </span>
+										    </div>
+										    <div th:if="${totalPages == 0}">
+										        <p>No Tutors found.</p>
+										    </div>
+										</div>
+
+							            </td> 
 							        </tr>
 							    </tbody>
 							</table>
@@ -1811,135 +1810,59 @@
 
 								<tbody>
 
-								<!--	<% List<Booking> bookings = (List<Booking>)
-											request.getAttribute("bookings");
-											if (bookings != null && !bookings.isEmpty())
-											{
-
-											for (Booking book : bookings) {
-
-											String bName = book.getName();
-											String bSurname = book.getSurname();
-											String bEmail = book.getEmail();
-											String bTutoringOption =
-											book.getTutorStyle();
-											String bTutorName = book.getTutorName();
-											String bTutorEmail = book.getTutorEmail();
-											String bStatus = book.getStatus();
-											String clientName = bName + " " + bSurname;
-
-											String bPaid = book.getIsPaid();
-											String bPackageType = book.getPackageType();
-											String bTutorOption = book.getTutorOption();
-											String bMessage = book.getMessage();
-											String bSuburb = book.getSuburb();
-											String bAddress = book.getAddress();
-											String bSubject = book.getSubject();
-											String bPhone = book.getPhone();
-											String bProvince = book.getProvince();
-											String bCountry = book.getCountry();
-											String bInstrLanguage =
-											book.getInstrLanguage();
-											String bTutorFor = book.getTutorFor();
-											String bHelpWith = book.getHelpWith();
-											String bSchName = book.getSchName() ;
-											String bSchSurname = book.getSchSurname();
-											String bSchGrade = book.getSchGrade();
-											String bSchSyllabus = book.getSchSyllabus();
-											String bnName = book.getUnName();
-											String bnSurname = book.getUnSurname();
-											String bnYear = book.getUnYear();
-											String amountPaid = book.getPaidAmount();
-											String bQualification =
-											book.getQualification() ;
-											String bModule = book.getModule();
-											String bSpecification =
-											book.getSpecification();
-
-
-											if(amountPaid.equals("")){
-
-											amountPaid = "Not paid.";
-											}
-
-											String numSessions = book.getSessions();
-
-											if(numSessions.equals("")){
-
-											numSessions = "Not Selected.";
-											}
-
-											LocalDateTime createdAtStampP = book.getCreatedAt();
-											DateTimeFormatter dateFormatP = DateTimeFormatter.ofPattern("dd/MM/yyyy -
-											HH:mm");
-											String formattedTimestampsP = (createdAtStampP != null) ?
-											createdAtStampP.format(dateFormatP) : "N/A";
-
-
-											if(bStatus.equalsIgnoreCase("pending")){
-
-											%>
-											<tr>
-
-												<th>
-													<%= bName %>
-														<%= bSurname %>
-												</th>
-												<th>
-													<%= bEmail %>
-												</th>
-												<th>
-													<%= bTutoringOption %>
-												</th>
-
-												<th>
-													<%= bTutorEmail %>
-												</th>
-												<th>
-													<%= formattedTimestampsP %>
-												</th>
-												<th>
-													<%= bStatus %>
-												</th>
-												<th>
-
-
-													<a href="#" class="view" data-toggle="modal"
-														data-target="#bookingModal" data-name="<%= clientName%>"
-														data-phone="<%= bPhone %> " data-email="<%= bEmail %> "
-														data-country="<%= bCountry %> "
-														data-province="<%= bProvince %> "
-														data-language="<%= bInstrLanguage %> "
-														data-tutoringfor="<%= bTutorFor %> "
-														data-helpwith="<%= bHelpWith %> " data-sname="<%= bSchName %> "
-														data-ssurname="<%= bSchSurname %> "
-														data-sgrade="<%= bSchGrade %> "
-														data-ssyllabus="<%= bSchSyllabus %> "
-														data-ssubject="<%= bSubject %> " data-syear="<%= bnYear%> "
-														data-uname="<%= bnName %> " data-usurname="<%= bnSurname %>"
-														data-address="<%= bAddress %>" data-suburb="<%= bSuburb %>"
-														data-message="<%= bMessage %>" data-status="<%= bStatus %>"
-														data-tutorname="<%= bTutorName %>"
-														data-tutoremail="<%= bTutorEmail %>"
-														data-tutoropt="<%= bTutoringOption %>"
-														data-secondopt="<%= bTutorOption %>"
-														data-package="<%= bPackageType %>"
-														data-session="<%= numSessions %>" data-paid="<%= amountPaid %>"
-														data-qualification="<%= bQualification %>"
-														data-module="<%= bModule %>"
-														data-specification="<%= bSpecification %>">
-														<i class="material-icons" data-toggle="tooltip"
-															title="View">&#xE8F4;</i>
-													</a>
-
-												</th>
-											</tr>
-
-											<% } } } else { %>
-												<tr>
-													<th>No Bookings yet..</th>
-												</tr>
-												<% } %> -->
+						
+									<!-- No Bookings Case -->
+									<tr th:if="${#lists.isEmpty(bookings)}">
+									  <th colspan="7">No Bookings yet..</th>
+									</tr>
+									
+									<!-- Loop through bookings and filter for "pending" status -->
+									<tr th:each="book : ${bookings}" th:if="${book.status.equalsIgnoreCase('pending')}">
+									  <th th:text="${book.name + ' ' + book.surname}"></th>
+									  <th th:text="${book.email}"></th>
+									  <th th:text="${book.tutorStyle}"></th>
+									  <th th:text="${book.tutorEmail}"></th>
+									  <th>Updating...</th>
+									 <!-- <th th:text="${book.createdAt != null ? #dates.format(book.createdAt, 'dd/MM/yyyy - HH:mm') : 'N/A'}"></th> -->
+									  <th th:text="${book.status}"></th>
+									  <th>
+									    <a href="#bookingModal" class="view" data-toggle="modal"
+									       th:attr="data-name=${book.name + ' ' + book.surname},
+									                data-phone=${book.phone},
+									                data-email=${book.email},
+									                data-country=${book.country},
+									                data-province=${book.province},
+									                data-language=${book.instrLanguage},
+									                data-tutoringfor=${book.tutorFor},
+									                data-helpwith=${book.helpWith},
+									                data-sname=${book.schName},
+									                data-ssurname=${book.schSurname},
+									                data-sgrade=${book.schGrade},
+									                data-ssyllabus=${book.schSyllabus},
+									                data-ssubject=${book.subject},
+									                data-syear=${book.unYear},
+									                data-uname=${book.unName},
+									                data-usurname=${book.unSurname},
+									                data-address=${book.address},
+									                data-suburb=${book.suburb},
+									                data-message=${book.message},
+									                data-status=${book.status},
+									                data-tutorname=${book.tutorName},
+									                data-tutoremail=${book.tutorEmail},
+									                data-tutoropt=${book.tutorStyle},
+									                data-secondopt=${book.tutorOption},
+									                data-package=${book.packageType},
+									                data-session=${book.sessions != '' ? book.sessions : 'Not Selected.'},
+									                data-paid=${book.paidAmount != '' ? book.paidAmount : 'Not paid.'},
+									                data-qualification=${book.qualification},
+									                data-module=${book.module},
+													data-aid=${book.entry},
+									                data-specification=${book.specification}">
+													
+									      <i class="material-icons" data-toggle="tooltip" title="View">&#xE8F4;</i>
+									    </a>
+									  </th>
+									</tr>
 
 								</tbody>
 							</table>
@@ -1977,93 +1900,51 @@
 									</tr>
 								</thead>
 								<tbody>
-								<!--	<% List<BecomeTutor> tutorApplicationsList = (List<BecomeTutor>)
-											request.getAttribute("becomeTutor");
-											if (tutorApplicationsList != null && !tutorApplicationsList.isEmpty()) {
-											for (BecomeTutor tutorApplicationEntry : tutorApplicationsList) {
-											String tutorFirstName = tutorApplicationEntry.getName();
-											String tutorLastName = tutorApplicationEntry.getSurname();
-											String tutorEmailAddress = tutorApplicationEntry.getEmail();
-											String tutorPhone = tutorApplicationEntry.getPhone();
-											String tutorCountry = tutorApplicationEntry.getCountry();
-											java.util.Date tutorDob = tutorApplicationEntry.getDob();
-											int tutorExperience = tutorApplicationEntry.getExperience();
-											String tutorArea = tutorApplicationEntry.getArea();
-											String tutorAddress = tutorApplicationEntry.getAddress();
-											String tutorProvince = tutorApplicationEntry.getProvince();
-											String tutorSubjects = tutorApplicationEntry.getSubjects();
-											String tutorGrades = tutorApplicationEntry.getGrades();
-											String tutorSyllabus = tutorApplicationEntry.getSyllabus();
-											String tutorOptions = tutorApplicationEntry.getTutorOptions();
-											String tutorQualification = tutorApplicationEntry.getQualification();
-											String tutorSpecification = tutorApplicationEntry.getSpecification();
-											String tutorBio = tutorApplicationEntry.getBio();
-											String tutorAbout = tutorApplicationEntry.getAbout();
-											String tutorAchievements = tutorApplicationEntry.getAchievements();
+									<tr th:if="${#lists.isEmpty(becomeTutor)}">
+									  <td colspan="18">No applications yet.</td>
+									</tr>
+									
+									<tr th:each="tutorApplicationEntry : ${becomeTutor}">
+									  <td th:text="${tutorApplicationEntry.name}"></td>
+									  <td th:text="${tutorApplicationEntry.surname}"></td>
+									  <td th:text="${tutorApplicationEntry.email}"></td>
+									  <td th:text="${tutorApplicationEntry.phone}"></td>
+									<!--  <td th:text="${tutorApplicationEntry.createdAt != null ? #dates.format(tutorApplicationEntry.createdAt, 'dd/MM/yyyy - HH:mm') : 'N/A'}"></td> -->
+									<td>Updating...</td>
+									  <td>
+										<a href="#registeredTutorModal" class="becomeTutorView"
+										   data-toggle="modal"
+										   th:data-tutorname="${tutorApplicationEntry.name}"
+										   th:data-tutorsurname="${tutorApplicationEntry.surname}"
+										   th:data-tutoremail="${tutorApplicationEntry.email}"
+										   th:data-tutorphone="${tutorApplicationEntry.phone}"
+										   th:data-country="${tutorApplicationEntry.country}"
+										   th:data-dob="${tutorApplicationEntry.dob != null ? #dates.format(tutorApplicationEntry.dob, 'dd/MM/yyyy') : ''}"
+										   th:data-experience="${tutorApplicationEntry.experience}"
+										   th:data-area="${tutorApplicationEntry.area}"
+										   th:data-address="${tutorApplicationEntry.address}"
+										   th:data-province="${tutorApplicationEntry.province}"
+										   th:data-subjects="${tutorApplicationEntry.subjects}"
+										   th:data-grades="${tutorApplicationEntry.grades}"
+										   th:data-syllabus="${tutorApplicationEntry.syllabus}"
+										   th:data-options="${tutorApplicationEntry.tutorOptions}"
+										   th:data-qualification="${tutorApplicationEntry.qualification}"
+										   th:data-specification="${tutorApplicationEntry.specification}"
+										   th:data-bio="${tutorApplicationEntry.bio}"
+										   th:data-about="${tutorApplicationEntry.about}"
+										   th:data-achievements="${tutorApplicationEntry.achievements}"
+										   th:data-cv="${tutorApplicationEntry.cv}"
+										   th:data-education="${tutorApplicationEntry.education}"
+										   th:data-idpassport="${tutorApplicationEntry.idPassport}"
+										   th:data-image="${tutorApplicationEntry.image}"
+										   th:data-isithombe="${tutorApplicationEntry.image}"
+										   th:data-datedate="${tutorApplicationEntry.dob}"
+										  >
+										   <i class="material-icons" data-toggle="tooltip" title="View">&#xE8F4;</i>
+										</a>
 
-
-											LocalDateTime createdAtStamp = tutorApplicationEntry.getCreatedAt();
-											DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy -
-											HH:mm");
-											String formattedTimestamps = (createdAtStamp != null) ?
-											createdAtStamp.format(dateFormat) : "N/A";
-											%>
-											<tr>
-												<td>
-													<%= tutorFirstName %>
-												</td>
-												<td>
-													<%= tutorLastName %>
-												</td>
-												<td>
-													<%= tutorEmailAddress %>
-												</td>
-												<td>
-													<%= tutorPhone %>
-												</td>
-
-												<td>
-													<%= formattedTimestamps %>
-												</td>
-												<td>
-													<a href="#" class="becomeTutorView" data-toggle="modal"
-														data-tutorname="<%= tutorFirstName %>"
-														data-tutorsurname="<%= tutorLastName %>"
-														data-tutoremail="<%= tutorEmailAddress %>"
-														data-tutorphone="<%= tutorPhone %>"
-														data-country="<%= tutorCountry %>"
-														data-dob='<%= (tutorDob != null) ? new SimpleDateFormat("dd/MM/yyyy").format(tutorDob) : "" %>'
-														data-experience="<%= tutorApplicationEntry.getExperience() %>"
-														data-area="<%= tutorApplicationEntry.getArea() %>"
-														data-address="<%= tutorApplicationEntry.getAddress() %>"
-														data-province="<%= tutorApplicationEntry.getProvince() %>"
-														data-subjects="<%= tutorApplicationEntry.getSubjects() %>"
-														data-grades="<%= tutorApplicationEntry.getGrades() %>"
-														data-syllabus="<%= tutorApplicationEntry.getSyllabus() %>"
-														data-options="<%= tutorApplicationEntry.getTutorOptions() %>"
-														data-qualification="<%= tutorApplicationEntry.getQualification() %>"
-														data-specification="<%= tutorApplicationEntry.getSpecification() %>"
-														data-bio="<%= tutorApplicationEntry.getBio() %>"
-														data-about="<%= tutorApplicationEntry.getAbout() %>"
-														data-achievements="<%= tutorApplicationEntry.getAchievements() %>"
-														data-cv='<%= tutorApplicationEntry.getCv() != null ? Base64.getEncoder().encodeToString(tutorApplicationEntry.getCv()) : "" %>'
-														data-education='<%= tutorApplicationEntry.getEducation() != null ?  Base64.getEncoder().encodeToString(tutorApplicationEntry.getEducation()) : "" %>'
-														data-idpassport='<%= tutorApplicationEntry.getIdPassport() != null ? Base64.getEncoder().encodeToString(tutorApplicationEntry.getIdPassport()) : "" %>'
-														data-image='<%= tutorApplicationEntry.getImage() != null ? Base64.getEncoder().encodeToString(tutorApplicationEntry.getImage()) : "" %>'
-														data-isithombe='<%= tutorApplicationEntry.getImage() %>'
-														data-datedate='<%= tutorApplicationEntry.getDob() %>'
-														data-target="#registeredTutorModal">
-														<i class="material-icons" data-toggle="tooltip"
-															title="View">&#xE8F4;</i>
-													</a>
-
-												</td>
-											</tr>
-											<% } } else { %>
-												<tr>
-													<td colspan="18">No applications yet.</td>
-												</tr>
-												<% } %> -->
+									  </td>
+									</tr>
 								</tbody>
 							</table>
 						</div>
@@ -2099,48 +1980,22 @@
 								</thead>
 
 								<tbody>
-
-								<!--	<% List<PaidBookings> paidBookings = (List<PaidBookings>)
-											request.getAttribute("paid");
-											if (paidBookings != null && !paidBookings.isEmpty()) {
-
-											for (PaidBookings pb : paidBookings) {
-
-											String pcName = pb.getClientName();
-											String pcStudent = pb.getStudentName();
-											String pcEmail = pb.getEmail();
-											String pcAmount = pb.getAmount();
-											String pcSessions = pb.getNumSessions();
-											String pcTutoring = pb.getTutoringOption();
-
-											%>
-
-											<tr>
-												<th>
-													<%= pcName %>
-												</th>
-												<th>
-													<%= pcStudent %>
-												</th>
-												<th>
-													<%= pcEmail %>
-												</th>
-												<th>
-													R<%= pcAmount %>
-												</th>
-												<th>
-													<%= pcSessions %>
-												</th>
-												<th>
-													<%= pcTutoring %>
-												</th>
-											</tr>
-											<% } } else { %>
-												<tr>
-													<th>No Paid Bookings yet..</th>
-												</tr>
-												<% } %> -->
-
+									<!-- Display message if there are no paid bookings -->
+									<tr th:if="${#lists.isEmpty(paid)}">
+									  <th colspan="6">No Paid Bookings yet..</th>
+									</tr>
+									
+									<!-- Iterate over paid bookings -->
+									<tr th:each="pb : ${paid}">
+									  <th th:text="${pb.clientName}"></th>
+									  <th th:text="${pb.studentName}"></th>
+									  <th th:text="${pb.email}"></th>
+									  <th>
+									    R<span th:text="${pb.amount}"></span>
+									  </th>
+									  <th th:text="${pb.numSessions}"></th>
+									  <th th:text="${pb.tutoringOption}"></th>
+									</tr>
 
 								</tbody>
 							</table>
@@ -2183,59 +2038,32 @@
 
 								<tbody>
 
-								<!--	<% List<Review> reviews = (List<Review>)
-											request.getAttribute("reviews");
-											if (reviews != null && !reviews.isEmpty()) {
-
-											for (Review rv : reviews) {
-
-											String message = rv.getMessage();
-											String msg = message;
-											String useMessage = msg;
-
-											String rName = rv.getName();
-											String rTutorEmail = rv.getTutorEmail();
-											int rRating = rv.getRating();
-											Long rEntryId = rv.getEntryId();
-											String rStatus = rv.getStatus();
-
-											if(rStatus.equals("pending")){
-
-											%>
-
-											<tr>
-												<th>
-													<%= rName %>
-												</th>
-												<th>
-													<%= rRating %>
-												</th>
-												<th>
-													<%= useMessage %>
-												</th>
-												<th>
-													<%= rTutorEmail %>
-												</th>
-												<th>
-
-													<a href="#" class="review" data-toggle="modal"
-														data-target="#reviewModal" data-name="<%= rName %>"
-														data-message="<%= message %>" data-rating="<%= rRating %>"
-														data-message="<%= message %>" data-tutor="<%= rEntryId %>"
-														data-email="rTutorEmail">
-														<i class="material-icons" data-toggle="tooltip"
-															title="View">&#xE8F4;</i>
-													</a>
-
-												</th>
-											</tr>
-											<% } } } else { %>
-												<tr>
-													<th>No Reviews yet..</th>
-												</tr>
-												<% } %> -->
-
-
+									<!-- Show message if there are no reviews or no pending reviews -->
+									<tr th:if="${#lists.isEmpty(reviews)}">
+									  <th colspan="5">No Reviews yet..</th>
+									</tr>
+									
+									<!-- Loop through and display only pending reviews -->
+									<tr th:each="rv : ${reviews}"
+									    th:if="${rv.status != null and rv.status.equalsIgnoreCase('pending')}">
+									
+									  <th th:text="${rv.name}"></th>
+									  <th th:text="${rv.rating}"></th>
+									  <th th:text="${rv.message}"></th>
+									  <th th:text="${rv.tutorEmail}"></th>
+									
+									  <th>
+									    <a href="#reviewModal" class="review" data-toggle="modal" 
+									       th:data-name="${rv.name}"
+									       th:data-message="${rv.message}"
+									       th:data-rating="${rv.rating}"
+									       th:data-tutor="${rv.entryId}"
+									       th:data-email="${rv.tutorEmail}">
+									      <i class="material-icons" data-toggle="tooltip" title="View">&#xE8F4;</i>
+									    </a>
+									  </th>
+									</tr>
+									
 								</tbody>
 							</table>
 						</div>
@@ -2275,144 +2103,62 @@
 								</thead>
 
 								<tbody>
+									
+									<!-- No consultations -->
+									 <tr th:if="${#lists.isEmpty(bookings)}">
+									   <th colspan="4">No Consultations yet..</th>
+									 </tr>
+									
+									 <!-- Consultations only -->
+									 <tr th:each="consultation : ${bookings}"
+									     th:if="${consultation.status != null and consultation.status.toLowerCase() == 'consult'}">
+									  
 
-									<!--<% List<Booking> consultations = (List<Booking>)
-											request.getAttribute("bookings");
-											if (consultations != null &&
-											!consultations.isEmpty()) {
-
-											for (Booking consultation : consultations) {
-
-											String cbName = consultation.getName();
-											String cbSurname =
-											consultation.getSurname();
-											String cbEmail = consultation.getEmail();
-											String cbTutoringOption =
-											consultation.getTutorStyle();
-											String cbTutorName =
-											consultation.getTutorName();
-											String cbTutorEmail =
-											consultation.getTutorEmail();
-											String cbStatus = consultation.getStatus();
-											String cclientName = cbName + " " +
-											cbSurname;
-
-											String cbPaid = consultation.getIsPaid();
-											String cbPackageType =
-											consultation.getPackageType();
-											String cbTutorOption =
-											consultation.getTutorOption();
-											String cbMessage =
-											consultation.getMessage();
-											String cbSuburb = consultation.getSuburb();
-											String cbAddress =
-											consultation.getAddress();
-											String cbSubject =
-											consultation.getSubject();
-											String cbPhone = consultation.getPhone();
-											String cbProvince =
-											consultation.getProvince();
-											String cbCountry =
-											consultation.getCountry();
-											String cbInstrLanguage =
-											consultation.getInstrLanguage();
-											String cbTutorFor =
-											consultation.getTutorFor();
-											String cbHelpWith =
-											consultation.getHelpWith();
-											String cbSchName = consultation.getSchName()
-											;
-											String cbSchSurname =
-											consultation.getSchSurname();
-											String cbSchGrade =
-											consultation.getSchGrade();
-											String cbSchSyllabus =
-											consultation.getSchSyllabus();
-											String cbnName = consultation.getUnName();
-											String cbnSurname =
-											consultation.getUnSurname();
-											String cbnYear = consultation.getUnYear();
-
-											String cqualification =
-											consultation.getQualification() ;
-											String cmodule = consultation.getModule();
-											String cspecification =
-											consultation.getSpecification();
-
-											Long cId = consultation.getEntry();
-
-											LocalDateTime createdAtStampC = consultation.getCreatedAt();
-											DateTimeFormatter dateFormatC = DateTimeFormatter.ofPattern("dd/MM/yyyy -
-											HH:mm");
-											String formattedTimestampsC = (createdAtStampC != null) ?
-											createdAtStampC.format(dateFormatC) : "N/A";
-
-											if(cbStatus.equalsIgnoreCase("consult")) {
-
-											%>
-											<tr>
-
-												<th>
-													<%= cclientName %>
-												</th>
-												<th>
-													<%= cbEmail %>
-												</th>
-												<th>
-													<%= cbTutoringOption %>
-												</th>
-
-												<th>
-													<%= cbTutorEmail %>
-												</th>
-												<th>
-													<%= formattedTimestampsC %>
-												</th>
-												<th>
-													<%= cbStatus %>
-												</th>
-												<th>
-
-													<a href="#" class="consultView" data-toggle="modal"
-														data-target="#consultationModal" data-name="<%= cclientName%>"
-														data-phone="<%= cbPhone %> " data-email="<%= cbEmail %> "
-														data-country="<%= cbCountry %> "
-														data-province="<%= cbProvince %> "
-														data-language="<%= cbInstrLanguage %> "
-														data-tutoringfor="<%= cbTutorFor %> "
-														data-helpwith="<%= cbHelpWith %> "
-														data-sname="<%= cbSchName %> "
-														data-ssurname="<%= cbSchSurname %> "
-														data-sgrade="<%= cbSchGrade %> "
-														data-ssyllabus="<%= cbSchSyllabus %> "
-														data-ssubject="<%= cbSubject %> " data-syear="<%= cbnYear%> "
-														data-uname="<%= cbnName %> " data-usurname="<%= cbnSurname %>"
-														data-address="<%= cbAddress %>" data-suburb="<%= cbSuburb %>"
-														data-message="<%= cbMessage %>" data-status="<%= cbStatus %>"
-														data-tutorname="<%= cbTutorName %>"
-														data-tutoremail="<%= cbTutorEmail %>"
-														data-tutoropt="<%= cbTutoringOption %>"
-														data-secondopt="<%= cbTutorOption %>"
-														data-package="<%= cbPackageType %>" data-sid="<%= cId %>"
-														data-cqualification="<%= cqualification %>"
-														data-cmodule="<%= cmodule %>"
-														data-cspecification="<%= cspecification %>">
-
-														<i class="material-icons" data-toggle="tooltip"
-															title="View">&#xE8F4;</i>
-
-													</a>
-
-												</th>
-
-
-											</tr>
-
-											<% } } } else { %>
-												<tr>
-													<th>No Consultations yet..</th>
-												</tr>
-												<% } %> -->
+									  <th th:text="${consultation.name + ' ' + consultation.surname}"></th>
+									  <th th:text="${consultation.email}"></th>
+									  <th th:text="${consultation.tutorStyle}"></th>
+									  <th th:text="${consultation.tutorEmail}"></th>
+									  <th>Updating...</th>
+									 <!-- <th th:text="${consultation.createdAt != null ? #dates.format(consultation.createdAt, 'dd/MM/yyyy - HH:mm') : 'N/A'}"></th> -->
+									  <th th:text="${consultation.status}"></th>
+									  
+									  <th>
+									    <a href="#consultationModal" class="consultView" data-toggle="modal" 
+									       th:data-name="${consultation.name + ' ' + consultation.surname}"
+									       th:data-phone="${consultation.phone}"
+									       th:data-email="${consultation.email}"
+									       th:data-country="${consultation.country}"
+									       th:data-province="${consultation.province}"
+									       th:data-language="${consultation.instrLanguage}"
+									       th:data-tutoringfor="${consultation.tutorFor}"
+									       th:data-helpwith="${consultation.helpWith}"
+									       th:data-sname="${consultation.schName}"
+									       th:data-ssurname="${consultation.schSurname}"
+									       th:data-sgrade="${consultation.schGrade}"
+									       th:data-ssyllabus="${consultation.schSyllabus}"
+									       th:data-ssubject="${consultation.subject}"
+									       th:data-syear="${consultation.unYear}"
+									       th:data-uname="${consultation.unName}"
+									       th:data-usurname="${consultation.unSurname}"
+									       th:data-address="${consultation.address}"
+									       th:data-suburb="${consultation.suburb}"
+									       th:data-message="${consultation.message}"
+									       th:data-status="${consultation.status}"
+									       th:data-tutorname="${consultation.tutorName}"
+									       th:data-tutoremail="${consultation.tutorEmail}"
+									       th:data-tutoropt="${consultation.tutorStyle}"
+									       th:data-secondopt="${consultation.tutorOption}"
+									       th:data-package="${consultation.packageType}"
+									       th:data-sid="${consultation.entry}"
+									       th:data-cqualification="${consultation.qualification}"
+									       th:data-cmodule="${consultation.module}"
+									       th:data-cspecification="${consultation.specification}">
+									       
+									      <i class="material-icons" data-toggle="tooltip" title="View">&#xE8F4;</i>
+									    </a>
+									  </th>
+									</tr>
+									
 
 								</tbody>
 							</table>
@@ -2450,116 +2196,56 @@
 
 								<tbody>
 
-								<!--	<% List<Booking> othersBookings = (List<Booking>)
-											request.getAttribute("bookings");
-											if (othersBookings != null &&
-											!othersBookings.isEmpty()) {
-											for (Booking other : othersBookings) {
-
-											String obName = other.getName();
-											String obSurname = other.getSurname();
-											String obEmail = other.getEmail();
-											String obTutoringOption =
-											other.getTutorStyle();
-											String obTutorName = other.getTutorName();
-											String obTutorEmail = other.getTutorEmail();
-											String obStatus = other.getStatus();
-											String oclientName = obName + " " +
-											obSurname;
-
-											String obPaid = other.getIsPaid();
-											String obPackageType =
-											other.getPackageType();
-											String obTutorOption =
-											other.getTutorOption();
-											String obMessage = other.getMessage();
-											String obSuburb = other.getSuburb();
-											String obAddress = other.getAddress();
-											String obSubject = other.getSubject();
-											String obPhone = other.getPhone();
-											String obProvince = other.getProvince();
-											String obCountry = other.getCountry();
-											String obInstrLanguage =
-											other.getInstrLanguage();
-											String obTutorFor = other.getTutorFor();
-											String obHelpWith = other.getHelpWith();
-											String obSchName = other.getSchName() ;
-											String obSchSurname = other.getSchSurname();
-											String obSchGrade = other.getSchGrade();
-											String obSchSyllabus =
-											other.getSchSyllabus();
-											String obnName = other.getUnName();
-											String obnSurname = other.getUnSurname();
-											String obnYear = other.getUnYear();
-
-											String oQualification =
-											other.getQualification() ;
-											String oModule = other.getModule();
-											String oSpecification =
-											other.getSpecification();
-
-											Long oid = other.getEntry();
-
-											LocalDateTime createdAtStampO = other.getCreatedAt();
-											DateTimeFormatter dateFormatO = DateTimeFormatter.ofPattern("dd/MM/yyyy -
-											HH:mm");
-											String formattedTimestamps0 = (createdAtStampO != null) ?
-											createdAtStampO.format(dateFormatO) : "N/A";
-
-											if (obSchSyllabus.equalsIgnoreCase("other"))
-											{
-											%>
-											<tr>
-												<th>
-													<%= oclientName %>
-												</th>
-												<th>
-													<%= obEmail %>
-												</th>
-												<th>
-													<%= obPhone %>
-												</th>
-												<th>
-													<%= formattedTimestamps0 %>
-												</th>
-
-
-												<th>
-													<a href="#" class="otherView" data-toggle="modal"
-														data-target="#otherModal" data-name="<%= oclientName%>"
-														data-phone="<%= obPhone %> " data-email="<%= obEmail %> "
-														data-country="<%= obCountry %> "
-														data-province="<%= obProvince %> "
-														data-language="<%= obInstrLanguage %> "
-														data-tutoringfor="<%= obTutorFor %> "
-														data-helpwith="<%= obHelpWith %> "
-														data-sname="<%= obSchName %> "
-														data-ssurname="<%= obSchSurname %> "
-														data-sgrade="<%= obSchGrade %> "
-														data-ssyllabus="<%= obSchSyllabus %> "
-														data-ssubject="<%= obSubject %> " data-syear="<%= obnYear%> "
-														data-uname="<%= obnName %> " data-usurname="<%= obnSurname %>"
-														data-address="<%= obAddress %>" data-suburb="<%= obSuburb %>"
-														data-message="<%= obMessage %>" data-status="<%= obStatus %>"
-														data-tutorname="<%= obTutorName %>"
-														data-tutoremail="<%= obTutorEmail %>"
-														data-tutoropt="<%= obTutoringOption %>"
-														data-secondopt="<%= obTutorOption %>"
-														data-package="<%= obPackageType %>" data-oid="<%= oid %>"
-														data-oqualification="<%= oQualification %>"
-														data-omodule="<%= oModule %>"
-														data-ospecification="<%= oSpecification %>">
-														<i class="material-icons" data-toggle="tooltip"
-															title="View">&#xE8F4;</i>
-													</a>
-												</th>
-											</tr>
-
-											<% } } } else { %>
-												<tr>
-													<th>No Others yet..</th>
-												</tr>
-												<% } %> -->
+									<!-- If list is empty -->
+									 <tr th:if="${#lists.isEmpty(bookings)}">
+									   <th colspan="4">No Others yet..</th>
+									 </tr>
+									
+									 <!-- If list is not empty and schSyllabus equals 'other' -->
+									 <tr th:each="booking : ${bookings}"
+									     th:if="${booking.schSyllabus != null and booking.schSyllabus.toLowerCase() == 'other'}">
+									   
+									   <th th:text="${booking.name + ' ' + booking.surname}"></th>
+									   <th th:text="${booking.email}"></th>
+									   <th th:text="${booking.phone}"></th>
+									   <th>Updating...</th>
+									 <!--  <th th:text="${booking.createdAt != null ? #dates.format(booking.createdAt, 'dd/MM/yyyy - HH:mm') : 'N/A'}"></th> -->
+									
+									   <th>
+									     <a href="#otherModal" class="otherView" data-toggle="modal"
+									        th:data-name="${booking.name + ' ' + booking.surname}"
+									        th:data-phone="${booking.phone}"
+									        th:data-email="${booking.email}"
+									        th:data-country="${booking.country}"
+									        th:data-province="${booking.province}"
+									        th:data-language="${booking.instrLanguage}"
+									        th:data-tutoringfor="${booking.tutorFor}"
+									        th:data-helpwith="${booking.helpWith}"
+									        th:data-sname="${booking.schName}"
+									        th:data-ssurname="${booking.schSurname}"
+									        th:data-sgrade="${booking.schGrade}"
+									        th:data-ssyllabus="${booking.schSyllabus}"
+									        th:data-ssubject="${booking.subject}"
+									        th:data-syear="${booking.unYear}"
+									        th:data-uname="${booking.unName}"
+									        th:data-usurname="${booking.unSurname}"
+									        th:data-address="${booking.address}"
+									        th:data-suburb="${booking.suburb}"
+									        th:data-message="${booking.message}"
+									        th:data-status="${booking.status}"
+									        th:data-tutorname="${booking.tutorName}"
+									        th:data-tutoremail="${booking.tutorEmail}"
+									        th:data-tutoropt="${booking.tutorStyle}"
+									        th:data-secondopt="${booking.tutorOption}"
+									        th:data-package="${booking.packageType}"
+									        th:data-oid="${booking.entry}"
+									        th:data-oqualification="${booking.qualification}"
+									        th:data-omodule="${booking.module}"
+									        th:data-ospecification="${booking.specification}">
+									       <i class="material-icons" data-toggle="tooltip" title="View">&#xE8F4;</i>
+									     </a>
+									   </th>
+									 </tr>
 
 								</tbody>
 							</table>
@@ -3092,147 +2778,59 @@
 
 								<tbody>
 
-								<!--	<% List<Booking> bk = (List<Booking>)
-											request.getAttribute("bookings");
-											if (bk != null && !bk.isEmpty()) {
-
-											for (Booking bks : bk) {
-
-											String aName = bks.getName();
-											String aSurname = bks.getSurname();
-											String aEmail = bks.getEmail();
-											String aTutoringOption =
-											bks.getTutorStyle();
-											String aTutorName = bks.getTutorName();
-											String aTutorEmail = bks.getTutorEmail();
-											String aStatus = bks.getStatus();
-
-											String aPaid = bks.getIsPaid();
-											String aPackageType = bks.getPackageType();
-											String aTutorOption = bks.getTutorOption();
-											String aMessage = bks.getMessage();
-											String aSuburb = bks.getSuburb();
-											String aAddress = bks.getAddress();
-											String aSubject = bks.getSubject();
-											String aPhone = bks.getPhone();
-											String aProvince = bks.getProvince();
-											String aCountry = bks.getCountry();
-											String aInstrLanguage =
-											bks.getInstrLanguage();
-											String aTutorFor = bks.getTutorFor();
-											String aHelpWith = bks.getHelpWith();
-											String aSchName = bks.getSchName() ;
-											String aSchSurname = bks.getSchSurname();
-											String aSchGrade = bks.getSchGrade();
-											String aSchSyllabus = bks.getSchSyllabus();
-											String anName = bks.getUnName();
-											String anSurname = bks.getUnSurname();
-											String anYear = bks.getUnYear();
-											String aPackage = bks.getPackageType();
-											String aamountPaid = bks.getPaidAmount();
-											Long aID = bks.getEntry();
-
-											String aQualification =
-											bks.getQualification() ;
-											String aModule = bks.getModule();
-											String aSpecification =
-											bks.getSpecification();
-
-											if(aamountPaid.equals("")){
-
-											aamountPaid = "Not paid.";
-											}
-
-											String anumSessions = bks.getSessions();
-
-											if(anumSessions.equals("")){
-
-											anumSessions = "Not Selected.";
-											}
-
-
-											LocalDateTime createdAt = bks.getCreatedAt();
-
-
-											DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy -
-											HH:mm");
-
-
-											String formattedTimestamp = "N/A";
-
-
-											if (createdAt != null) {
-											formattedTimestamp = createdAt.format(dateFormat);
-											}
-
-
-
-											if(aStatus.equalsIgnoreCase("approved")){
-
-
-											%>
-											<tr>
-												<th>
-													<%= aName %>
-														<%= aSurname %>
-												</th>
-												<th>
-													<%= aEmail %>
-												</th>
-												<th>
-													<%= aTutoringOption %>
-												</th>
-												<th>
-													<%= aTutorName%>
-												</th>
-
-												<th>
-													<%= aStatus %>
-												</th>
-
-												<th>
-													<%= formattedTimestamp %>
-												</th>
-												<th>
-
-													<a href="#" class="view" data-toggle="modal"
-														data-target="#bookingModal"
-														data-name="<%= aName %> <%= aSurname %>"
-														data-phone="<%= aPhone %> " data-email="<%= aEmail %> "
-														data-country="<%= aCountry %> "
-														data-province="<%= aProvince %> "
-														data-language="<%= aInstrLanguage %> "
-														data-tutoringfor="<%= aTutorFor %> "
-														data-helpwith="<%= aHelpWith %> " data-sname="<%= aSchName %> "
-														data-ssurname="<%= aSchSurname %> "
-														data-sgrade="<%= aSchGrade %> "
-														data-ssyllabus="<%= aSchSyllabus %> "
-														data-ssubject="<%= aSubject %> " data-syear="<%= anYear%> "
-														data-uname="<%= anName %> " data-usurname="<%= anSurname %>"
-														data-address="<%= aAddress %>" data-suburb="<%= aSuburb %>"
-														data-message="<%= aMessage %>" data-status="<%= aStatus %>"
-														data-tutorname="<%= aTutorName %>"
-														data-tutoremail="<%= aTutorEmail %>"
-														data-tutoropt="<%= aTutoringOption %>"
-														data-secondopt="<%= aTutorOption %>"
-														data-package="<%= aPackage %>"
-														data-session="<%= anumSessions %>"
-														data-paid="<%= aamountPaid %>"
-														data-qualification="<%= aQualification %>"
-														data-module="<%= aModule %>" data-aid="<%= aID %>"
-														data-specification="<%= aSpecification %>">
-														<i class="material-icons" data-toggle="tooltip"
-															title="View">&#xE8F4;</i>
-													</a>
-
-												</th>
-											</tr>
-
-											<% } } } else { %>
-												<tr>
-													<th>No Tutor yet..</th>
-												</tr>
-												<% } %> -->
+				
+									<!-- If the list is empty -->
+									 <tr th:if="${#lists.isEmpty(bookings)}">
+									   <th colspan="7">No Bookings yet..</th>
+									 </tr>
+									
+									 <!-- Iterate over bookings -->
+									 <tr th:each="bks : ${bookings}" th:if="${bks.status.equalsIgnoreCase('approved')}">
+									   <th th:text="${bks.name + ' ' + bks.surname}"></th>
+									   <th th:text="${bks.email}"></th>
+									   <th th:text="${bks.tutorStyle}"></th>
+									   <th th:text="${bks.tutorName}"></th>
+									   <th th:text="${bks.status}"></th>
+									   <th>Updating...</th>
+									   <!--<th th:text="${bks.createdAt != null ? #dates.format(bks.createdAt, 'dd/MM/yyyy - HH:mm') : 'N/A'}"></th> -->
+									   <th>
+									     <a href="#bookingModal" class="view" data-toggle="modal" data-target="#bookingModal"
+									        th:attr="data-name=${bks.name + ' ' + bks.surname},
+									                 data-phone=${bks.phone},
+									                 data-email=${bks.email},
+									                 data-country=${bks.country},
+									                 data-province=${bks.province},
+									                 data-language=${bks.instrLanguage},
+									                 data-tutoringfor=${bks.tutorFor},
+									                 data-helpwith=${bks.helpWith},
+									                 data-sname=${bks.schName},
+									                 data-ssurname=${bks.schSurname},
+									                 data-sgrade=${bks.schGrade},
+									                 data-ssyllabus=${bks.schSyllabus},
+									                 data-ssubject=${bks.subject},
+									                 data-syear=${bks.unYear},
+									                 data-uname=${bks.unName},
+									                 data-usurname=${bks.unSurname},
+									                 data-address=${bks.address},
+									                 data-suburb=${bks.suburb},
+									                 data-message=${bks.message},
+									                 data-status=${bks.status},
+									                 data-tutorname=${bks.tutorName},
+									                 data-tutoremail=${bks.tutorEmail},
+									                 data-tutoropt=${bks.tutorStyle},
+									                 data-secondopt=${bks.tutorOption},
+									                 data-package=${bks.packageType},
+									                 data-session=${bks.sessions != '' ? bks.sessions : 'Not Selected.'},
+									                 data-paid=${bks.paidAmount != '' ? bks.paidAmount : 'Not paid.'},
+									                 data-qualification=${bks.qualification},
+									                 data-module=${bks.module},
+									                 data-aid=${bks.entry},
+									                 data-specification=${bks.specification}">
+									       <i class="material-icons" data-toggle="tooltip" title="View">&#xE8F4;</i>
+									     </a>
+									   </th>
+									 </tr>
+									
 
 								</tbody>
 							</table>
