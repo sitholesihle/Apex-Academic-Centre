@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.model.BecomeTutor;
@@ -28,6 +29,7 @@ import com.example.demo.model.Review;
 import com.example.demo.model.Tutor;
 import com.example.demo.repository.BecomeTutorRepository;
 import com.example.demo.repository.ReviewRepository;
+import com.example.demo.repository.TutorRepository;
 import com.example.demo.service.AdminService;
 import com.example.demo.service.BecomeTutorService;
 import com.example.demo.service.BookingService;
@@ -57,6 +59,9 @@ public class AdmController {
 	
 	@Autowired
 	 private AdminService adminService;
+	
+	 @Autowired
+	 private TutorRepository tutorRepo;
 	
 	 @Autowired
 	 private TutorService tutorService;
@@ -637,6 +642,89 @@ public class AdmController {
 					 
 					 mathsService.update(parsId);
 					 
+					 
+				 }
+				 
+				 /*Update Tutor*/
+				 
+				 @PostMapping("/editTutor")
+				 @ResponseBody
+					public String updateTutor(@RequestParam("editprofile") MultipartFile profile , @RequestParam("edithiddenName")  String name 
+							, @RequestParam("edithiddenEmail") String email ,
+							@RequestParam("edithiddenPhone") String phone , @RequestParam("edithiddenSubjects") String subjects ,
+							@RequestParam("edithiddenGrades") String grades , @RequestParam("edithiddenSyllabus") String syllabus ,
+							@RequestParam("edittutorOption") String tutorOption , @RequestParam("edithiddenAddress") String address,
+							@RequestParam("editbio") String bio , @RequestParam("editabout") String about,@RequestParam("edithiddenCountry") String country,
+							@RequestParam("edithours") String hours , @RequestParam("edithiddenArea") String area  ) throws IOException 
+					{
+					 
+					 System.out.println(country);
+					 System.out.println(address);
+					 
+					 Optional<Tutor> opT = tutorRepo.findById(email);
+					 Tutor pTutor = new Tutor();
+					 
+				        if (opT.isPresent()){
+							 
+				        	pTutor = opT.get();
+				
+						 }
+					 
+						 byte[] imageData;
+						 
+						 if (profile == null || profile.isEmpty()) {
+						 
+							 System.out.println("The Image is empty and will not be updated");
+							 imageData = pTutor.getImage();
+							 
+						    }
+						 
+						 else {
+							 System.out.println("The Image is not empty and it will  be updated");
+							 imageData = profile.getBytes();
+						 }
+						 
+						  // Set the address based on the country
+						    if (!"South Africa".equals(country)) {
+						        address = "n/a"; 
+						    } 
+						    
+			           Tutor tutor = new Tutor();
+			           tutor.setEmail(email);
+					    tutor.setFullNames(name);
+					    tutor.setImage(imageData);
+					    tutor.setPhoneNumber(phone);
+					    tutor.setEmail(email);
+					    tutor.setAddress(address);
+					    tutor.setSubjects(subjects);
+					    tutor.setGrades(grades);
+					    tutor.setSyllabus(syllabus);
+					    tutor.setBio(bio);
+					    tutor.setAbout(about);
+					    tutor.setHoursTutored(hours);
+					    tutor.setAvailability(tutorOption);
+					    tutor.setArea(area);
+					    tutor.setCountry(country);
+					   
+					    tutorService.update(email, tutor);
+					    
+					    return "Tutor Successfully Updated."; 
+					   
+						
+					}
+				 
+				 
+				 @PostMapping("/searchTutor")
+				 @ResponseBody
+				 public List<Tutor> searchTutor(@RequestBody Map<String, String> requestBody) {
+				
+					 String name = requestBody.get("searchEmail");
+					 
+					 System.out.println(name);
+					 
+					 List<Tutor> tutor = tutorRepo.searchByName(name);
+					
+					 return tutor;
 					 
 				 }
     
