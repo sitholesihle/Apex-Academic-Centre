@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.MathsClass;
@@ -61,7 +62,7 @@ public class MathsClassService{
 		
 		}
 	
-	
+	@Async
 	public void update(Long id) {
 	       
 		 Optional<MathsClass> onClass = repo.findById(id);
@@ -74,7 +75,23 @@ public class MathsClassService{
 			  
 	            repo.save(oneClass);
 	            
+	            // Update the object in the list
+	            for (MathsClass css : mathsClass) {
+	            	
+	                if (css.equals(oneClass)) {
+	                    css.setAction("Opened");
+	                    break;
+	                }
+	            }
+	            
        }
-	        
+        
 	 }
+	
+	public void reloadClasses() {
+	    this.mathsClass = repo.findAll();
+	}
+	
+	
+	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Booking;
@@ -76,5 +77,26 @@ public class BookingService {
         }
 	        
 	 }
+	
+	/*update list*/
+	
+	@Async
+	public void updateBooking(Long id) {
+		
+		 Optional<Booking> book = repo.findById(id);
+		 
+		    if (book.isPresent()) {
+		    	
+		        Booking oneBooking = book.get();
 
+		        // Remove the booking from the list
+		        bookings.remove(oneBooking);
+		        
+		       
+
+		    }
+
+      }
+	
+	
 }

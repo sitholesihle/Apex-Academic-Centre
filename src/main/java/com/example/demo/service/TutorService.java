@@ -41,6 +41,9 @@ public class TutorService {
             if (tutor.getImage() != null) {
                 tutor.setImageBase64("jpeg");  // Set the Base64 string in the tutor object
                  i++;
+                 
+                 
+                 
             }
         }
         

@@ -373,10 +373,11 @@
 							            <td>Updating...</td>
 							            <td>
 							                <a href="#documentsModal" class="documents" data-toggle="modal"
-							                   th:data-cvi="${tutor.cv}"
-							                   th:data-educationi="${tutor.education }"
-							                   th:data-idpassporti="${tutor.idPassport }"
-							                   th:data-imagei="${tutor.image }">
+										
+											   th:data-cvi="${tutor.cv != null ? tutor.email : ''}"
+							                   th:data-educationi="${tutor.education != null ? tutor.email : '' }"
+							                   th:data-idpassporti="${tutor.idPassport != null ? tutor.email : '' }"
+							                   th:data-imagei="${tutor.image != null ? tutor.email : ''}">
 							                    <i class="material-icons" data-toggle="tooltip" title="Document">&#xE2C7;</i>
 							                </a>
 							            </td>
@@ -1933,11 +1934,13 @@
 										   th:data-bio="${tutorApplicationEntry.bio}"
 										   th:data-about="${tutorApplicationEntry.about}"
 										   th:data-achievements="${tutorApplicationEntry.achievements}"
-										   th:data-cv="${tutorApplicationEntry.cv}"
-										   th:data-education="${tutorApplicationEntry.education}"
-										   th:data-idpassport="${tutorApplicationEntry.idPassport}"
-										   th:data-image="${tutorApplicationEntry.image}"
-										   th:data-isithombe="${tutorApplicationEntry.image}"
+										   
+										   th:data-cv="${tutorApplicationEntry.cv != null ? tutorApplicationEntry.email : ''}"
+										   th:data-education="${tutorApplicationEntry.education != null ? tutorApplicationEntry.email : ''}"
+										   th:data-idpassport="${tutorApplicationEntry.idPassport != null ? tutorApplicationEntry.email : ''}"
+										   th:data-image="${tutorApplicationEntry.image != null ? tutorApplicationEntry.email : ''}"
+										   th:data-isithombe="${tutorApplicationEntry.image != null ? tutorApplicationEntry.email : ''}"
+										   
 										   th:data-datedate="${tutorApplicationEntry.dob}"
 										  >
 										   <i class="material-icons" data-toggle="tooltip" title="View">&#xE8F4;</i>
@@ -3451,28 +3454,32 @@
 
 					// Set CV link
 					if (cvBase64) {
-						$('#cmodalCvLinkee').attr('href', 'data:application/pdf;base64,' + cvBase64);
+				
+						$('#cmodalCvLinkee').attr('href', `/tutor/${cvBase64}/cv`).attr('target', '_blank');
 					} else {
 						$('#cmodalCvLinkee').attr('href', '#').text(' not uploaded');
 					}
 
 					// Set Education link
 					if (educationBase64) {
-						$('#cmodalEducationLinkee').attr('href', 'data:application/pdf;base64,' + educationBase64);
+						$('#cmodalEducationLinkee').attr('href', `/tutor/${educationBase64}/education`).attr('target', '_blank');
+			
 					} else {
 						$('#cmodalEducationLinkee').attr('href', '#').text(' not uploaded');
 					}
 
 					// Set ID Passport link
 					if (idPassportBase64) {
-						$('#cmodalIdPassportLinkee').attr('href', 'data:application/pdf;base64,' + idPassportBase64);
+						$('#cmodalIdPassportLinkee').attr('href', `/tutor/${idPassportBase64}/idpassport`).attr('target', '_blank');
+			
 					} else {
 						$('#cmodalIdPassportLinkee').attr('href', '#').text(' not uploaded');
 					}
 
 					// Set Image link
 					if (imageBase64) {
-						$('#cmodalImageLinkee').attr('href', 'data:image/jpeg;base64,' + imageBase64);
+						$('#cmodalImageLinkee').attr('href', `/tutor/${imageBase64}/img`).attr('target', '_blank');
+			
 					} else {
 						$('#cmodalImageLinkee').attr('href', '#').text(' not uploaded');
 					}
@@ -5257,28 +5264,31 @@
 
 					// Set CV link
 					if (cvBase64) {
-						$('#cmodalCvLink').attr('href', 'data:application/pdf;base64,' + cvBase64);
+						$('#cmodalCvLink').attr('href', `/app/${cvBase64}/cv`).attr('target', '_blank');
+					
 					} else {
 						$('#cmodalCvLink').attr('href', '#').text('N/A');
 					}
 
 					// Set Education link
 					if (educationBase64) {
-						$('#cmodalEducationLink').attr('href', 'data:application/pdf;base64,' + educationBase64);
+						$('#cmodalEducationLink').attr('href', `/app/${educationBase64}/education`).attr('target', '_blank');
+	
 					} else {
 						$('#cmodalEducationLink').attr('href', '#').text('N/A');
 					}
 
 					// Set ID Passport link
 					if (idPassportBase64) {
-						$('#cmodalIdPassportLink').attr('href', 'data:application/pdf;base64,' + idPassportBase64);
+						$('#cmodalIdPassportLink').attr('href', `/app/${idPassportBase64}/idpassport`).attr('target', '_blank');
+					
 					} else {
 						$('#cmodalIdPassportLink').attr('href', '#').text('N/A');
 					}
 
 					// Set Image link
 					if (imageBase64) {
-						$('#cmodalImageLink').attr('href', 'data:image/jpeg;base64,' + imageBase64);
+						$('#cmodalImageLink').attr('href', `/app/${imageBase64}/img`).attr('target', '_blank');
 					} else {
 						$('#cmodalImageLink').attr('href', '#').text('N/A');
 					}

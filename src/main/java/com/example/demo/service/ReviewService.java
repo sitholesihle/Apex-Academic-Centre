@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+
 import com.example.demo.model.Review;
 import com.example.demo.repository.ReviewRepository;
 
@@ -45,6 +47,7 @@ public class ReviewService {
 		  repo.save(msc);
 	}
 	
+	@Async
 	public void updateReview(Long id) {
 	       
 		 Optional<Review> rev = repo.findById(id);
@@ -61,6 +64,17 @@ public class ReviewService {
 			  
 	            // Save the updated student object
 	            repo.save(extReview);
+	            
+	            // Update the object in the list
+	            for (Review css : reviews) {
+	            	
+	                if (css.equals(extReview)) {
+	                    css.setStatus("approved");
+	                    break;
+	                }
+	            }
+	            
+	            
 	            
            }
 		 
@@ -86,10 +100,22 @@ public class ReviewService {
          
 	}
 	
+	/*update list*/
 	
+	@Async
+	public void updateBooking(Review review) {
+		 
+		        // Remove the booking from the list
+		        reviews.remove(review);
+		        
+		        System.out.println("Review Removed");
+
+      }
 	
+	public void reloadReviews() {
+	    this.reviews = repo.findAll();
+	}
 	
-	
-	
+
 
 }

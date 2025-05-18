@@ -155,7 +155,7 @@ public class AdmController {
 			 long pageStart = Math.max(currentPage - 2, 1); // 
 			 long pageEnd = Math.min(currentPage + 3, totalPages); 
 	
-			 List<Booking> booking = bookingService.listAll();
+			 List<Booking> booking = bookingService.getAllBookings();
 	  
 	        booking.sort((tutor1, tutor2) -> {
 
@@ -545,6 +545,9 @@ public class AdmController {
 				 
 				 Booking booking = bookingService.findOneBook(id);
 				    bookingService.delete(booking);
+				   
+				    bookingService.updateBooking(id);
+				    
 				 	 
 				 return getOnePageAdmin(1,model);
 				 
@@ -560,6 +563,8 @@ public class AdmController {
 					 
 					 Booking booking = bookingService.findOneBook(id);
 					    bookingService.delete(booking);
+
+					    bookingService.updateBooking(id);
 					
 					  return getOnePageAdmin(1,model);
 					 
@@ -572,7 +577,8 @@ public class AdmController {
 				 public String acceptReview(@RequestParam("rEntryId") Long entryId , @RequestParam("rTutorEmail") String email, Model model ) {
 					 
 					 reviewService.updateReview(entryId);
-						
+					 reviewService.reloadReviews();  
+					 
 					 return getOnePageAdmin(1,model);					 
 				 }
 				 
@@ -583,7 +589,10 @@ public class AdmController {
 				 public String deleteReview(@RequestParam("entryReview") Long entryId, Model model) {
 					 
 					 Review rev = reviewService.findOneReview(entryId);
+					 
+					 reviewService.updateBooking(rev);
 					 reviewRepo.delete(rev);
+					 reviewService.reloadReviews();  
 					 
 					 return getOnePageAdmin(1,model);
 					 
@@ -596,6 +605,9 @@ public class AdmController {
 					 
 					 Booking booking = bookingService.findOneBook(id);
 					    bookingService.delete(booking);
+
+					    bookingService.updateBooking(id);
+					    
 					 	 
 					  return getOnePageAdmin(1,model);
 					 
@@ -609,6 +621,9 @@ public class AdmController {
 					  
 					 OnlineClass matric = onlineService.findOneBook(id);
 					    onlineService.delete(matric);
+					   
+					    onlineService.updateClass(id);
+					    onlineService.reloadClasses();
 					 	 
 					    return getOnePageAdmin(1,model);
 					 
@@ -625,6 +640,7 @@ public class AdmController {
 					 Long parsId = Long.valueOf(id);
 					 
 					 onlineService.update(parsId);
+					 onlineService.reloadClasses();
 					 
 					 
 				 }
@@ -641,6 +657,7 @@ public class AdmController {
 					 Long parsId = Long.valueOf(id);
 					 
 					 mathsService.update(parsId);
+					 mathsService.reloadClasses();
 					 
 					 
 				 }

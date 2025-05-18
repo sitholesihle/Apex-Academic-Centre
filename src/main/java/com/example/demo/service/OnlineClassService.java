@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 
@@ -61,6 +62,7 @@ public class OnlineClassService {
 	
 	}
 	
+	@Async
 	public void update(Long id) {
 	       
 		 Optional<OnlineClass> onClass = repo.findById(id);
@@ -70,11 +72,44 @@ public class OnlineClassService {
 			 OnlineClass oneClass = onClass.get();
 
 			 oneClass.setAction("Opened");
-			  
+		
 	            repo.save(oneClass);
+	            
+	            // Update the object in the list
+	            for (OnlineClass css : classes) {
+	            	
+	                if (css.equals(oneClass)) {
+	                    css.setAction("Opened");
+	                    break;
+	                }
+	            }
 	            
         }
 	        
 	 }
+	
+	
+	/*update list*/
+	
+	@Async
+	public void updateClass(Long id) {
+
+		Optional<OnlineClass> clas = repo.findById(id);
+		 
+		    if (clas.isPresent()) {
+		    	
+		        OnlineClass cs = clas.get();
+
+		        // Remove the booking from the list
+		        classes.remove(cs);
+		        
+		    }
+
+      }
+	
+	public void reloadClasses() {
+	    this.classes = repo.findAll();
+	}
+	
 
 }

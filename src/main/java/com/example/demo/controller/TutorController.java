@@ -149,7 +149,6 @@ public class TutorController {
 
 	     return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	 }
-
 	 
 	 /*Index Page*/
 	 
@@ -1989,6 +1988,161 @@ public class TutorController {
 		
 					}
 					
+					
+					
+					/*Documents*/
+					
+					
+					 
+					 @GetMapping("/tutor/{id}/cv")
+					 public ResponseEntity<byte[]> getTutorImageBase64(@PathVariable String id) {
+					     List<Tutor> listTutors = tutorService.getAllTutors();
+
+					     for (Tutor tutor : listTutors) {
+					         if (tutor.getEmail().equalsIgnoreCase(id)) {
+					             byte[] cv = tutor.getCv();
+					             return ResponseEntity.ok()
+					            	        .contentType(MediaType.APPLICATION_PDF)
+					            	        .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=cv.pdf")
+					            	        .body(cv);
+					         }
+					     }
+
+					     return ResponseEntity.notFound().build();
+					 }
+					 
+					 @GetMapping("/tutor/{id}/education")
+					 public ResponseEntity<byte[]> getTutorEducation(@PathVariable String id) {
+					     List<Tutor> listTutors = tutorService.getAllTutors();
+
+					     for (Tutor tutor : listTutors) {
+					         if (tutor.getEmail().equalsIgnoreCase(id)) {
+					             byte[] cv = tutor.getEducation();
+					             return ResponseEntity.ok()
+					            	        .contentType(MediaType.APPLICATION_PDF)
+					            	        .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=qualification.pdf")
+					            	        .body(cv);
+					         }
+					     }
+
+					     return ResponseEntity.notFound().build();
+					 }
+					 
+					 @GetMapping("/tutor/{id}/idpassport")
+					 public ResponseEntity<byte[]> getTutorId(@PathVariable String id) {
+					     List<Tutor> listTutors = tutorService.getAllTutors();
+
+					     for (Tutor tutor : listTutors) {
+					         if (tutor.getEmail().equalsIgnoreCase(id)) {
+					             byte[] cv = tutor.getIdPassport();
+					             return ResponseEntity.ok()
+					            	        .contentType(MediaType.APPLICATION_PDF)
+					            	        .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=id/passport.pdf")
+					            	        .body(cv);
+					         }
+					     }
+
+					     return ResponseEntity.notFound().build();
+					 }
+
+					 @GetMapping("/tutor/{id}/img")
+					 public ResponseEntity<byte[]> getTutorImg(@PathVariable String id) {
+					     List<Tutor> listTutors = tutorService.getAllTutors();
+
+					     for (Tutor tutor : listTutors) {
+					         if (tutor.getEmail().equalsIgnoreCase(id)) {
+					             byte[] cv = tutor.getImage();
+					             return ResponseEntity.ok()
+					            	        .contentType(MediaType.IMAGE_JPEG)
+					            	        .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=image.png")
+					            	        .body(cv);
+					         }
+					     }
+
+					     return ResponseEntity.notFound().build();
+					 }
+					 
+					 
+					 
+					 
+	/*Documents*/
+					
+					
+					 
+					 @GetMapping("/app/{id}/cv")
+					 public ResponseEntity<byte[]> getTutorImageApp(@PathVariable String id) {
+						 
+					     List<BecomeTutor> listTutors = becomeTutorService.loadedTutors();
+
+					     for (BecomeTutor tutor : listTutors) {
+					         if (tutor.getEmail().equalsIgnoreCase(id)) {
+					             byte[] cv = tutor.getCv();
+					             return ResponseEntity.ok()
+					            	        .contentType(MediaType.APPLICATION_PDF)
+					            	        .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=cv.pdf")
+					            	        .body(cv);
+					         }
+					     }
+
+					     return ResponseEntity.notFound().build();
+					 }
+					 
+					 @GetMapping("/app/{id}/education")
+					 public ResponseEntity<byte[]> getTutorEducationApp(@PathVariable String id) {
+					   
+						  List<BecomeTutor> listTutors = becomeTutorService.loadedTutors();
+
+					     for (BecomeTutor tutor : listTutors) {
+					         if (tutor.getEmail().equalsIgnoreCase(id)) {
+					             byte[] cv = tutor.getEducation();
+					             return ResponseEntity.ok()
+					            	        .contentType(MediaType.APPLICATION_PDF)
+					            	        .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=qualification.pdf")
+					            	        .body(cv);
+					         }
+					     }
+
+					     return ResponseEntity.notFound().build();
+					 }
+					 
+					 @GetMapping("/app/{id}/idpassport")
+					 public ResponseEntity<byte[]> getTutorIdApp(@PathVariable String id) {
+					
+						 List<BecomeTutor> listTutors = becomeTutorService.loadedTutors();
+
+					     for (BecomeTutor tutor : listTutors) {
+					         if (tutor.getEmail().equalsIgnoreCase(id)) {
+					             byte[] cv = tutor.getIdPassport();
+					             return ResponseEntity.ok()
+					            	        .contentType(MediaType.APPLICATION_PDF)
+					            	        .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=id/passport.pdf")
+					            	        .body(cv);
+					         }
+					     }
+
+					     return ResponseEntity.notFound().build();
+					 }
+
+					 @GetMapping("/app/{id}/img")
+					 public ResponseEntity<byte[]> getTutorImgApp(@PathVariable String id) {
+						 
+						 List<BecomeTutor> listTutors = becomeTutorService.loadedTutors();
+					
+
+					     for (BecomeTutor tutor : listTutors) {
+					         if (tutor.getEmail().equalsIgnoreCase(id)) {
+					             byte[] cv = tutor.getImage();
+					             return ResponseEntity.ok()
+					            	        .contentType(MediaType.IMAGE_JPEG)
+					            	        .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=image.png")
+					            	        .body(cv);
+					         }
+					     }
+
+					     return ResponseEntity.notFound().build();
+					 }
+					 	 
+			
 							
 				 }
 

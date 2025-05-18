@@ -107,7 +107,8 @@ public class Tutor {
     
     @Column(name = "createdAt")
     private LocalDateTime createdAt;
-	
+    	
+
 	public Tutor() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -370,7 +371,6 @@ public class Tutor {
     public void setImageBase64(String imageBase64) {
         this.imageBase64 = imageBase64;
     }
-	
-
+    
 			
 }
