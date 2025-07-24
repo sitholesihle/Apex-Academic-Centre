@@ -55,7 +55,7 @@ src/
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/sithole-sihle/apex-academic-centre.git
 cd your-repo
 
 # Run the app
