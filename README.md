@@ -27,20 +27,6 @@ Visit the application here:
 
 ---
 
-## 📂 Project Structure (High-level)
-
-src/
-├── main/
-│ ├── java/
-│ │ └── com.example.app/ # Java source files
-│ └── resources/
-│ ├── templates/ # Thymeleaf templates
-│ ├── static/ # Static files (CSS, JS)
-│ └── application.properties # Spring Boot config
-└── test/ # Unit and integration tests
-
----
-
 ## ⚙️ Setup & Run Locally
 
 ### Prerequisites
