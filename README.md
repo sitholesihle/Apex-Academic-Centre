@@ -14,7 +14,7 @@ Visit the application here:
 - Tutor application form
 - Matric rewrite program details
 - Maths class information
-- Admin and backend management (if applicable)
+- Admin and backend management
 
 ---
 
@@ -22,7 +22,7 @@ Visit the application here:
 
 - **Backend:** Spring Boot (Java)
 - **Frontend:** Thymeleaf (HTML/CSS/JavaScript)
-- **Database:** SQL (e.g., MySQL or PostgreSQL)
+- **Database:** MySQL
 - **Hosting:** [Heroku](https://heroku.com)
 
 ---
