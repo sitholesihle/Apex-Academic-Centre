@@ -1,7 +1,5 @@
 # Apex-Academic-Centre
 
-# Book A Tutor – Apex Academic Centre
-
 This is a full-stack web application built for Apex Academic Centre, allowing users to book tutoring sessions, apply to become tutors, and access academic programs such as Matric Rewrite and Maths Classes.
 
 ### 🌐 Live Site
